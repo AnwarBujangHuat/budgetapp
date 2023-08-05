@@ -1,6 +1,6 @@
 {
-  "@@locale": "en",
-  "appTitle": "budgetapp",
+  "@@locale": "ms",
+  "appTitle": "budgetapp MY",
   "@appTitle": {
     "description": "The title of the application"
   }

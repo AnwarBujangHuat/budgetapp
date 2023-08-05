@@ -17,6 +17,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   freezed: ^2.4.1
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
