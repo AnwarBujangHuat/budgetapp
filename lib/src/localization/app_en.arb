@@ -1,6 +1,12 @@
 {
   "@@locale": "en",
   "appTitle": "budgetapp",
+  "goals": "goals",
+  "transaction": "transaction",
+  "dashboard": "Dashboard",
+  "totalNetWorth": "Total Net Worth",
+  "expenses": "Expenses",
+  "income": "Income",
   "@appTitle": {
     "description": "The title of the application"
   }

@@ -1,5 +1,10 @@
 {
   "appTitle": "budgetapp",
+  "goals": "goals ZH",
+  "transaction": "transaction ZH",
+  "dashboard": "dashboard ZH",
+  "expenses": "expenses",
+  "income": "income",
   "@appTitle": {
     "description": "The title of the application"
   }

@@ -1,3 +1,4 @@
+import 'package:budgetapp/src/features/dashboard/view/dashboard_view.dart';
 import 'package:flutter/material.dart';
 
 import '../settings/settings_view.dart';
@@ -61,7 +62,7 @@ class SampleItemListView extends StatelessWidget {
                 // background, the navigation stack is restored.
                 Navigator.restorablePushNamed(
                   context,
-                  SampleItemDetailsView.routeName,
+                  DashboardView.routeName,
                 );
               });
         },
