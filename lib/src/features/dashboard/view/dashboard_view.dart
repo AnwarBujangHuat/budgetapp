@@ -23,6 +23,7 @@ class DashboardView extends ConsumerWidget {
   const DashboardView({super.key});
   static const routeName = '/home';
 
+  @override
   Widget build(BuildContext context, WidgetRef ref) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -31,7 +32,6 @@ class DashboardView extends ConsumerWidget {
         AppLocalizations.of(context)!.expenses;
 
     final selectedPeriod = ref.watch(selectedPeriodProvider);
-
     return Scaffold(
       floatingActionButton: FlaotingFAB(
         distance: 60,

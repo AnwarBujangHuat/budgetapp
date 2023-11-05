@@ -1,0 +1,274 @@
+{
+    "expenses": [
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        },
+        {
+            "date": "2023-09-15",
+            "description": "Groceries",
+            "amount": 50.00,
+            "tag": "Food"
+        },
+        {
+            "date": "2023-09-14",
+            "description": "Dinner with friends",
+            "amount": 30.00,
+            "tag": "Social"
+        },
+        {
+            "date": "2023-09-10",
+            "description": "Gasoline",
+            "amount": 40.00,
+            "tag": "Transportation"
+        }
+    ]
+}
