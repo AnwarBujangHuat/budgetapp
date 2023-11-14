@@ -4,6 +4,7 @@
   "goals": "goals MY",
   "transaction": "transaction MY",
   "dashboard": "dashboard MY",
+  "totalNetWorth": "Total Net Worth MY",
   "expenses": "Expenses",
   "income": "Income",
   "@appTitle": {
