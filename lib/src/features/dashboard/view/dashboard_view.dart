@@ -1,6 +1,7 @@
 import 'package:budgetapp/src/common_widgets/header.dart';
 import 'package:budgetapp/src/config/app_colors.dart';
 import 'package:budgetapp/src/config/app_font.dart';
+import 'package:budgetapp/src/features/dashboard/widget/goal_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -228,7 +229,7 @@ class DashboardView extends ConsumerWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 200,
+                    height: 180,
                     child: LineChartWidget(
                       isExpenses:
                           selectedValue == AppLocalizations.of(context)!.income,
@@ -252,19 +253,11 @@ class DashboardView extends ConsumerWidget {
                       ),
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => Container(
-                        width: 250,
-                        decoration: BoxDecoration(
-                            color: theme.cardColor,
-                            boxShadow: [GlobalStyle.boxShadow],
-                            borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(0),
-                                bottomRight: Radius.circular(16),
-                                topLeft: Radius.circular(16),
-                                topRight: Radius.circular(0))),
-                        child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Container()),
+                      itemBuilder: (context, index) => GoalCard(
+                        onPressed: () {},
+                        title: 'hello',
+                        description: '',
+                        progress: 10,
                       ),
                       itemCount: 2,
                     ),
