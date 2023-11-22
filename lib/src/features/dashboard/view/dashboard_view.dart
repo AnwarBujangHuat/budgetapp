@@ -26,7 +26,7 @@ class DashboardView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    double height = MediaQuery.of(context).size.height;
+    // double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     final theme = Theme.of(context);
     String selectedValue = ref.watch(selectedButtonProvider) ??
