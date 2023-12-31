@@ -1,12 +1,13 @@
-import 'package:budgetapp/src/common_widgets/header.dart';
-import 'package:budgetapp/src/config/app_colors.dart';
-import 'package:budgetapp/src/config/app_font.dart';
+import 'package:budgetapp/src/presentation/common_widgets/header.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../common_widgets/globalStyle.dart';
-import '../../../settings/settings_view.dart';
+import '../../../app/app_colors.dart';
+import '../../../app/app_font.dart';
+import '../../common_widgets/globalStyle.dart';
+import '../../settings/settings_view.dart';
 import '../widget/expandedFab.dart';
 import '../widget/line_chart.dart';
 

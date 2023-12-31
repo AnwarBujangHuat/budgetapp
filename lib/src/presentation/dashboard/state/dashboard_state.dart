@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../shared/http/app_exception.dart';
+import '../../../domain/http/app_exception.dart';
 
 part 'dashboard_state.freezed.dart';
 

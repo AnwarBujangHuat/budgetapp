@@ -1,8 +1,8 @@
-import 'package:budgetapp/src/config/app_colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import '../../../config/app_font.dart';
+import '../../../app/app_colors.dart';
+import '../../../app/app_font.dart';
 
 class LineChartWidget extends StatelessWidget {
   const LineChartWidget({super.key, required this.isExpenses});

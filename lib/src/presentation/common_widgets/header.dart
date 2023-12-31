@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../config/app_font.dart';
+import '../../app/app_font.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key, required this.title});
