@@ -1,24 +1,17 @@
-import 'package:budgetapp/src/presentation/common_widgets/header.dart';
-
-import 'package:flutter/material.dart';
+import 'package:budgetapp/src/presentation/shared/appbar.dart';
+import 'package:budgetapp/src/presentation/shared/header.dart';
+import 'package:budgetapp/src/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
+import 'package:budgetapp/src/presentation/dashboard/widget/card_transaction.dart';
+import 'package:budgetapp/src/presentation/dashboard/widget/tab_duration.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../../../app/app_colors.dart';
 import '../../../app/app_font.dart';
-import '../../common_widgets/globalStyle.dart';
 import '../../settings/settings_view.dart';
-import '../widget/expandedFab.dart';
+import '../widget/expanded_fab.dart';
 import '../widget/line_chart.dart';
-
-const List<String> filterButton = <String>[
-  'Yearly',
-  'Monthly',
-  'Weekly',
-  'Daily'
-];
-final selectedButtonProvider = StateProvider<String?>((_) => null);
-final selectedPeriodProvider = StateProvider<String>((_) => filterButton[0]);
+import '../widget/sized_boxes.dart';
 
 class DashboardView extends ConsumerWidget {
   const DashboardView({super.key});
@@ -26,9 +19,9 @@ class DashboardView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    final theme = Theme.of(context);
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     String selectedValue = ref.watch(selectedButtonProvider) ??
         AppLocalizations.of(context)!.expenses;
 
@@ -39,22 +32,20 @@ class DashboardView extends ConsumerWidget {
         children: [
           ActionButton(
             title: AppLocalizations.of(context)!.income,
-            onPressed: () => print("object"),
+            onPressed: () => {},
             icon: const Icon(Icons.attach_money),
           ),
           ActionButton(
             title: AppLocalizations.of(context)!.expenses,
-            onPressed: () => print("object"),
+            onPressed: () => {},
             icon: const Icon(Icons.payment),
           ),
         ],
       ),
       body: RefreshIndicator(
-        onRefresh: () async {
-          print("Refresh");
-        },
+        onRefresh: () async {},
         child: ListView(
-          padding: const EdgeInsets.only(bottom: 40),
+          padding: const EdgeInsets.only(bottom: 10),
           shrinkWrap: true,
           children: [
             Container(
@@ -62,24 +53,10 @@ class DashboardView extends ConsumerWidget {
               decoration: const BoxDecoration(color: AppColors.darkBlue),
               child: Column(
                 children: [
-                  AppBar(
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    centerTitle: true,
-                    title: Text(AppLocalizations.of(context)!.dashboard,
-                        style: const TextStyle(
-                            fontSize: AppFontSizes.title1,
-                            color: AppColors.white,
-                            fontWeight: FontWeight.bold)),
-                    leading: GestureDetector(
-                      onTap: () => Navigator.restorablePushNamed(
-                          context, SettingsView.routeName),
-                      child: const Icon(
-                        Icons.menu,
-                        color: AppColors.white,
-                      ),
-                    ),
-                  ),
+                  MTAppBar(
+                      title: AppLocalizations.of(context)!.dashboard,
+                      onPressedBack: () => Navigator.restorablePushNamed(
+                          context, SettingsView.routeName)),
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(
@@ -90,56 +67,20 @@ class DashboardView extends ConsumerWidget {
                           children: [
                             SizedBox(
                               height: 40,
-                              width: width * .92,
+                              width: screenWidth * .92,
                               child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
                                   shrinkWrap: true,
                                   itemCount: filterButton.length,
-                                  itemBuilder: (context, index) {
-                                    return GestureDetector(
-                                      onTap: () {
-                                        ref
+                                  itemBuilder: (context, index) => TimelineTab(
+                                        selected: selectedPeriod,
+                                        onTap: () => ref
                                             .read(
                                                 selectedPeriodProvider.notifier)
-                                            .state = filterButton[index];
-                                      },
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.white),
-                                            color: selectedPeriod != filterButton[index]
-                                                ? Colors.transparent
-                                                : AppColors.offWhite,
-                                            borderRadius: BorderRadius.only(
-                                                bottomLeft: Radius.circular(
-                                                    index == 0 ? 5 : 0),
-                                                topLeft: Radius.circular(
-                                                    index == 0 ? 5 : 0),
-                                                bottomRight: Radius.circular(
-                                                    index + 1 == filterButton.length
-                                                        ? 5
-                                                        : 0),
-                                                topRight: Radius.circular(
-                                                    index + 1 == filterButton.length
-                                                        ? 5
-                                                        : 0))),
-                                        width: width * .23,
-                                        child: Center(
-                                            child: Text(
-                                          filterButton[index],
-                                          style: TextStyle(
-                                              color: selectedPeriod !=
-                                                      filterButton[index]
-                                                  ? AppColors.white
-                                                  : AppColors.darkBlueVariant),
-                                        )),
-                                      ),
-                                    );
-                                  }),
+                                            .state = filterButton[index],
+                                      )),
                             ),
-                            const SizedBox(
-                              height: 20,
-                            ),
+                            const SizedH20(),
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -155,9 +96,7 @@ class DashboardView extends ConsumerWidget {
                                             fontSize: AppFontSizes.subheadline,
                                             color: AppColors.offWhiteVariant,
                                             fontWeight: FontWeight.bold)),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
+                                    const SizedH05(),
                                     const Text("RM 9700",
                                         style: TextStyle(
                                             fontSize: AppFontSizes.title4,
@@ -243,58 +182,41 @@ class DashboardView extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Header(title: "Goals"),
+                  const SizedH10(),
+                  const AHeader(title: "Goals"),
                   SizedBox(
                     height: 150,
                     child: ListView.separated(
                       padding: const EdgeInsets.all(5),
-                      separatorBuilder: (context, index) => const SizedBox(
-                        width: 10,
-                      ),
+                      separatorBuilder: (context, index) => const SizedW10(),
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => Container(
+                      itemBuilder: (context, index) => const SizedBox(
                         width: 250,
-                        decoration: BoxDecoration(
-                            color: theme.cardColor,
-                            boxShadow: [GlobalStyle.boxShadow],
-                            borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(0),
-                                bottomRight: Radius.circular(16),
-                                topLeft: Radius.circular(16),
-                                topRight: Radius.circular(0))),
-                        child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Container()),
+                        child: Card(
+                            child: Padding(
+                                padding: EdgeInsets.all(16.0),
+                                child: Text("j"))),
                       ),
                       itemCount: 2,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Header(title: "Transaction"),
+                  const SizedH10(),
+                  const AHeader(title: "Transactions"),
                   SizedBox(
-                    height: 310,
+                    height: screenHeight * .3,
                     child: ListView.separated(
                       padding: const EdgeInsets.symmetric(
                           vertical: 5, horizontal: 2),
-                      physics: const NeverScrollableScrollPhysics(),
                       separatorBuilder: (context, index) => const SizedBox(
                         height: 10,
                       ),
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemBuilder: (context, index) => Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: theme.cardColor,
-                          boxShadow: [GlobalStyle.boxShadow],
-                        ),
-                        child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Container()),
-                      ),
+                      itemBuilder: (context, index) => TransactionCard(
+                          onPressed: () {},
+                          title: 'title',
+                          description: 'description'),
                       itemCount: 10,
                     ),
                   ),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../app/app_font.dart';
 
-class Header extends StatelessWidget {
-  const Header({super.key, required this.title});
+class AHeader extends StatelessWidget {
+  const AHeader({super.key, required this.title});
   final String title;
   @override
   Widget build(BuildContext context) {

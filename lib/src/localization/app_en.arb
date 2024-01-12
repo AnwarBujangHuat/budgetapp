@@ -7,6 +7,10 @@
   "totalNetWorth": "Total Net Worth",
   "expenses": "Expenses",
   "income": "Income",
+  "yearly": "Yearly",
+  "monthly": "Monthly",
+  "weekly": "Weekly",
+  "daily": "Daily",
   "@appTitle": {
     "description": "The title of the application"
   }

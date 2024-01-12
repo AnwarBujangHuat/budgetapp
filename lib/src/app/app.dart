@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
 import '../presentation/dashboard/view/dashboard_view.dart';
-import '../presentation/sample_item_details_view.dart';
-import '../presentation/sample_item_list_view.dart';
 import '../presentation/settings/settings_controller.dart';
 import '../presentation/settings/settings_view.dart';
 import 'app_colors.dart';
@@ -43,6 +40,17 @@ class MyApp extends StatelessWidget {
                   const AppBarTheme(backgroundColor: AppColors.offWhite),
               scaffoldBackgroundColor: AppColors.offWhite,
               cardColor: AppColors.white,
+              cardTheme: const CardTheme(
+                elevation: 5,
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(0),
+                      bottomRight: Radius.circular(16),
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(0)),
+                ),
+              ),
               primaryColorLight: AppColors.darkBlue,
               primaryColor: AppColors.darkBlue),
           darkTheme: ThemeData.dark().copyWith(
@@ -60,11 +68,10 @@ class MyApp extends StatelessWidget {
                 switch (routeSettings.name) {
                   case SettingsView.routeName:
                     return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
+
                   case DashboardView.routeName:
                     return const DashboardView();
-                  case SampleItemListView.routeName:
+
                   default:
                     return const DashboardView();
                 }
