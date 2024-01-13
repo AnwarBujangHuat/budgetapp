@@ -26,13 +26,15 @@ class DashboardView extends ConsumerWidget {
         AppLocalizations.of(context)!.expenses;
 
     final selectedPeriod = ref.watch(selectedPeriodProvider);
+
     return Scaffold(
       floatingActionButton: FlaotingFAB(
         distance: 60,
         children: [
           ActionButton(
             title: AppLocalizations.of(context)!.income,
-            onPressed: () => {},
+            onPressed: () =>
+                {ref.read(dashboardProvider.notifier).insertNewdata()},
             icon: const Icon(Icons.attach_money),
           ),
           ActionButton(
@@ -184,23 +186,45 @@ class DashboardView extends ConsumerWidget {
                 children: [
                   const SizedH10(),
                   const AHeader(title: "Goals"),
-                  SizedBox(
-                    height: 150,
-                    child: ListView.separated(
-                      padding: const EdgeInsets.all(5),
-                      separatorBuilder: (context, index) => const SizedW10(),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => const SizedBox(
-                        width: 250,
-                        child: Card(
-                            child: Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Text("j"))),
+                  ref.watch(dashboardProvider).when(loading: () {
+                    return const Text('Loadimg');
+                  }, loaded: (dataList) {
+                    return SizedBox(
+                      height: 150,
+                      child: ListView.separated(
+                        padding: const EdgeInsets.all(5),
+                        separatorBuilder: (context, index) => const SizedW10(),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => SizedBox(
+                          width: 250,
+                          child: Card(
+                              child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Text(dataList[index]))),
+                        ),
+                        itemCount: dataList.length,
                       ),
-                      itemCount: 2,
-                    ),
-                  ),
+                    );
+                  }, error: (appException) {
+                    return SizedBox(
+                      height: 150,
+                      child: ListView.separated(
+                        padding: const EdgeInsets.all(5),
+                        separatorBuilder: (context, index) => const SizedW10(),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => const SizedBox(
+                          width: 250,
+                          child: Card(
+                              child: Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Text("j"))),
+                        ),
+                        itemCount: 2,
+                      ),
+                    );
+                  }),
                   const SizedH10(),
                   const AHeader(title: "Transactions"),
                   SizedBox(
