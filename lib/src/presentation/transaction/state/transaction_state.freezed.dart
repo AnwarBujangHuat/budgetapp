@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'dashboard_state.dart';
+part of 'transaction_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$DashboardState {
+mixin _$TransactionsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
@@ -63,16 +63,16 @@ mixin _$DashboardState {
 }
 
 /// @nodoc
-abstract class $DashboardStateCopyWith<$Res> {
-  factory $DashboardStateCopyWith(
-          DashboardState value, $Res Function(DashboardState) then) =
-      _$DashboardStateCopyWithImpl<$Res, DashboardState>;
+abstract class $TransactionsStateCopyWith<$Res> {
+  factory $TransactionsStateCopyWith(
+          TransactionsState value, $Res Function(TransactionsState) then) =
+      _$TransactionsStateCopyWithImpl<$Res, TransactionsState>;
 }
 
 /// @nodoc
-class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
-    implements $DashboardStateCopyWith<$Res> {
-  _$DashboardStateCopyWithImpl(this._value, this._then);
+class _$TransactionsStateCopyWithImpl<$Res, $Val extends TransactionsState>
+    implements $TransactionsStateCopyWith<$Res> {
+  _$TransactionsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -88,7 +88,7 @@ abstract class _$$LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$Loading>
+    extends _$TransactionsStateCopyWithImpl<$Res, _$Loading>
     implements _$$LoadingCopyWith<$Res> {
   __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
       : super(_value, _then);
@@ -101,7 +101,7 @@ class _$Loading implements Loading {
 
   @override
   String toString() {
-    return 'DashboardState.loading()';
+    return 'TransactionsState.loading()';
   }
 
   @override
@@ -182,7 +182,7 @@ class _$Loading implements Loading {
   }
 }
 
-abstract class Loading implements DashboardState {
+abstract class Loading implements TransactionsState {
   const factory Loading() = _$Loading;
 }
 
@@ -196,7 +196,7 @@ abstract class _$$LoadedCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadedCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$Loaded>
+    extends _$TransactionsStateCopyWithImpl<$Res, _$Loaded>
     implements _$$LoadedCopyWith<$Res> {
   __$$LoadedCopyWithImpl(_$Loaded _value, $Res Function(_$Loaded) _then)
       : super(_value, _then);
@@ -230,7 +230,7 @@ class _$Loaded implements Loaded {
 
   @override
   String toString() {
-    return 'DashboardState.loaded(dataList: $dataList)';
+    return 'TransactionsState.loaded(dataList: $dataList)';
   }
 
   @override
@@ -320,7 +320,7 @@ class _$Loaded implements Loaded {
   }
 }
 
-abstract class Loaded implements DashboardState {
+abstract class Loaded implements TransactionsState {
   const factory Loaded(final List<String> dataList) = _$Loaded;
 
   List<String> get dataList;
@@ -341,7 +341,7 @@ abstract class _$$ErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$Error>
+    extends _$TransactionsStateCopyWithImpl<$Res, _$Error>
     implements _$$ErrorCopyWith<$Res> {
   __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
       : super(_value, _then);
@@ -378,7 +378,7 @@ class _$Error implements Error {
 
   @override
   String toString() {
-    return 'DashboardState.error(appException: $appException)';
+    return 'TransactionsState.error(appException: $appException)';
   }
 
   @override
@@ -468,7 +468,7 @@ class _$Error implements Error {
   }
 }
 
-abstract class Error implements DashboardState {
+abstract class Error implements TransactionsState {
   const factory Error(final AppException appException) = _$Error;
 
   AppException get appException;

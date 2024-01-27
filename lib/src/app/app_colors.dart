@@ -19,4 +19,7 @@ class AppColors {
   static const Color lightGreenVariant = Colors.lightGreen;
   static const Color lightRed = Colors.red;
   static const Color lightRedVariant = Colors.redAccent;
+  static const Color darkYellow = Color(0xFFFFD700);
+  static const Color lightYellow = Color(0xFFFFFF00);
+  static const Color lightYellowVariant = Color(0xFFFFFACD);
 }

@@ -6,7 +6,6 @@ import '../presentation/settings/settings_controller.dart';
 import '../presentation/settings/settings_view.dart';
 import 'app_colors.dart';
 
-/// The Widget that configures your application.
 class MyApp extends StatelessWidget {
   const MyApp({
     super.key,
@@ -21,6 +20,8 @@ class MyApp extends StatelessWidget {
       animation: settingsController,
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          // showPerformanceOverlay: true,
           restorationScopeId: 'app',
           localizationsDelegates: const [
             AppLocalizations.delegate,
@@ -38,9 +39,21 @@ class MyApp extends StatelessWidget {
               fontFamily: 'RobotoFlex',
               appBarTheme:
                   const AppBarTheme(backgroundColor: AppColors.offWhite),
-              scaffoldBackgroundColor: AppColors.offWhite,
               cardColor: AppColors.white,
+              colorScheme: const ColorScheme(
+                  brightness: Brightness.light,
+                  primary: AppColors.darkBlue,
+                  onPrimary: AppColors.darkBlue,
+                  secondary: AppColors.darkBlueVariant,
+                  onSecondary: AppColors.white,
+                  error: AppColors.lightRed,
+                  onError: AppColors.lightRedVariant,
+                  background: AppColors.offWhite,
+                  onBackground: AppColors.offWhite,
+                  surface: Colors.white,
+                  onSurface: AppColors.black),
               cardTheme: const CardTheme(
+                surfaceTintColor: Colors.white,
                 elevation: 5,
                 clipBehavior: Clip.antiAlias,
                 shape: RoundedRectangleBorder(
@@ -51,6 +64,8 @@ class MyApp extends StatelessWidget {
                       topRight: Radius.circular(0)),
                 ),
               ),
+              progressIndicatorTheme: const ProgressIndicatorThemeData(
+                  circularTrackColor: AppColors.offWhite),
               primaryColorLight: AppColors.darkBlue,
               primaryColor: AppColors.darkBlue),
           darkTheme: ThemeData.dark().copyWith(
