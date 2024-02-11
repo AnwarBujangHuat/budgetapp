@@ -1,5 +1,11 @@
+import 'package:budgetapp/src/app/app_colors.dart';
+import 'package:budgetapp/src/app/app_font.dart';
 import 'package:budgetapp/src/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/src/presentation/dashboard/widget/card_goal.dart';
+import 'package:budgetapp/src/presentation/dashboard/widget/expanded_fab.dart';
+import 'package:budgetapp/src/presentation/dashboard/widget/line_chart.dart';
+import 'package:budgetapp/src/presentation/dashboard/widget/sized_boxes.dart';
+import 'package:budgetapp/src/presentation/settings/settings_view.dart';
 import 'package:budgetapp/src/presentation/shared/appbar.dart';
 import 'package:budgetapp/src/presentation/shared/header.dart';
 import 'package:budgetapp/src/presentation/dashboard/widget/card_transaction.dart';
@@ -8,12 +14,6 @@ import 'package:budgetapp/src/presentation/transaction/transaction_viewmodel.dar
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../app/app_colors.dart';
-import '../../../app/app_font.dart';
-import '../../settings/settings_view.dart';
-import '../widget/expanded_fab.dart';
-import '../widget/line_chart.dart';
-import '../widget/sized_boxes.dart';
 
 class DashboardView extends ConsumerWidget {
   const DashboardView({Key? key}) : super(key: key);
@@ -28,8 +28,9 @@ class DashboardView extends ConsumerWidget {
         children: [
           ActionButton(
             title: AppLocalizations.of(context)!.income,
-            onPressed: () =>
-                {ref.read(transactionsProvider.notifier).insertNewdata()},
+            onPressed: () => {
+              ref.read(transactionViewmodelProvider.notifier).insertNewdata()
+            },
             icon: const Icon(Icons.attach_money),
           ),
           ActionButton(
@@ -216,7 +217,7 @@ class MyGoals extends ConsumerWidget {
       children: [
         const SizedH10(),
         const AHeader(title: "Goals"),
-        ref.watch(transactionsProvider).when(
+        ref.watch(transactionViewmodelProvider).when(
           loading: () {
             return const Text('Loading');
           },

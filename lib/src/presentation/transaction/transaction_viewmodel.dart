@@ -1,32 +1,22 @@
 import 'package:budgetapp/src/domain/repository/budget_repository.dart';
 import 'package:budgetapp/src/presentation/transaction/state/transaction_state.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+part 'transaction_viewmodel.g.dart';
 
-final transactionsProvider =
-    StateNotifierProvider<TransactionsProvider, TransactionsState>((ref) {
-  return TransactionsProvider(ref);
-});
-
-class TransactionsProvider extends StateNotifier<TransactionsState> {
-  TransactionsProvider(this._ref) : super(const TransactionsState.loading()) {
-    getAllExpanses();
+@riverpod
+class TransactionViewmodel extends _$TransactionViewmodel {
+  @override
+  TransactionsState build() {
+    return const TransactionsState.loading();
   }
-
-  final Ref _ref;
-  late final ExpansesRepository _expensesRepository =
-      _ref.read(expansesRepositoryProvider);
 
   Future<void> getAllExpanses() async {
     state = const TransactionsState.loading();
-    List<String> response = await _expensesRepository.getAllExpanses();
-
-    if (mounted) {
-      state = TransactionsState.loaded(response);
-    }
+    state = await ref.read(expansesRepositoryProvider).getAllExpanses();
   }
 
   Future<void> insertNewdata() async {
     List<String> response =
-        await _expensesRepository.addElement(data: 'Ikhsan');
+        await ref.read(expansesRepositoryProvider).addElement(data: 'Ikhsan');
   }
 }

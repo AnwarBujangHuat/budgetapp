@@ -19,9 +19,11 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  flutter_riverpod: ^2.4.10
   freezed: ^2.4.1
   freezed_annotation: ^2.4.1
   hooks_riverpod: ^2.3.8
+  riverpod_annotation: ^2.3.4
   shimmer: ^3.0.0
 
 dev_dependencies:
@@ -30,6 +32,9 @@ dev_dependencies:
 
 
   flutter_lints: ^2.0.0
+  riverpod_generator: ^2.3.11
+  custom_lint: ^0.6.0
+  riverpod_lint: ^2.3.9
 
 flutter:
   uses-material-design: true
