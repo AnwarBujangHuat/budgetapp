@@ -1,7 +1,5 @@
+import 'package:budgetapp/app/app_style.dart';
 import 'package:flutter/material.dart';
-
-import '../../app/app_colors.dart';
-import '../../app/app_font.dart';
 
 class MTAppBar extends StatelessWidget {
   const MTAppBar({super.key, required this.title, required this.onPressedBack});

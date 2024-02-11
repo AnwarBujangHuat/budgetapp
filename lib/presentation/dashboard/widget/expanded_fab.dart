@@ -1,8 +1,7 @@
+import 'package:budgetapp/app/app_style.dart';
 import 'package:flutter/material.dart';
 
 import 'dart:math' as math;
-
-import '../../../app/app_colors.dart';
 
 @immutable
 class FlaotingFAB extends StatefulWidget {

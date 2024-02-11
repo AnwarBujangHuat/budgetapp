@@ -1,13 +1,12 @@
-import 'package:budgetapp/app/app_colors.dart';
-import 'package:budgetapp/app/app_font.dart';
+import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/presentation/dashboard/widget/card_goal.dart';
 import 'package:budgetapp/presentation/dashboard/widget/expanded_fab.dart';
 import 'package:budgetapp/presentation/dashboard/widget/line_chart.dart';
 import 'package:budgetapp/presentation/dashboard/widget/sized_boxes.dart';
 import 'package:budgetapp/presentation/settings/settings_view.dart';
-import 'package:budgetapp/presentation/shared/appbar.dart';
-import 'package:budgetapp/presentation/shared/header.dart';
+import 'package:budgetapp/shared/appbar.dart';
+import 'package:budgetapp/shared/header.dart';
 import 'package:budgetapp/presentation/dashboard/widget/card_transaction.dart';
 import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
 import 'package:budgetapp/presentation/transaction/transaction_viewmodel.dart';
