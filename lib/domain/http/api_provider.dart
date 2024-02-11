@@ -16,7 +16,7 @@ final apiProvider = Provider<ApiProvider>(
 );
 
 class ApiProvider {
-  final Duration timeout = Duration(seconds: 10);
+  final Duration timeout = const Duration(seconds: 10);
   ApiProvider(this._ref) {
     _dio = Dio();
     _dio.options.sendTimeout = timeout;

@@ -1,5 +1,5 @@
+import 'package:budgetapp/common/transaction/state/transaction_state.dart';
 import 'package:budgetapp/domain/repository/budget_repository.dart';
-import 'package:budgetapp/presentation/transaction/state/transaction_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'transaction_viewmodel.g.dart';
 
@@ -16,6 +16,8 @@ class TransactionViewmodel extends _$TransactionViewmodel {
   }
 
   Future<void> insertNewdata() async {
+    state = const TransactionsState.loading();
+
     List<String> response =
         await ref.read(expansesRepositoryProvider).addElement(data: 'Ikhsan');
   }

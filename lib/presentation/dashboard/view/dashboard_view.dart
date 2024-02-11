@@ -1,4 +1,5 @@
 import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/common/transaction/viewmodel/transaction_viewmodel.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/presentation/dashboard/widget/card_goal.dart';
 import 'package:budgetapp/presentation/dashboard/widget/expanded_fab.dart';
@@ -9,7 +10,6 @@ import 'package:budgetapp/shared/appbar.dart';
 import 'package:budgetapp/shared/header.dart';
 import 'package:budgetapp/presentation/dashboard/widget/card_transaction.dart';
 import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
-import 'package:budgetapp/presentation/transaction/transaction_viewmodel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
