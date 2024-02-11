@@ -1,4 +1,4 @@
-import 'package:budgetapp/src/presentation/transaction/state/transaction_state.dart';
+import 'package:budgetapp/presentation/transaction/state/transaction_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final expansesRepositoryProvider = Provider((ref) => ExpansesRepository(ref));

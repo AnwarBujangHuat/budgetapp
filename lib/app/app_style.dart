@@ -1,4 +1,4 @@
-import 'package:budgetapp/src/app/app_colors.dart';
+import 'package:budgetapp/app/app_colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData lightThemeData = ThemeData(
