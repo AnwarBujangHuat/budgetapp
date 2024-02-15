@@ -12,6 +12,7 @@ environment:
 dependencies:
   build_runner: ^2.4.6
   connectivity_plus: ^5.0.1
+  dartz: ^0.10.1
   derry: ^1.5.0
   dio: ^5.4.0
   fl_chart: ^0.63.0

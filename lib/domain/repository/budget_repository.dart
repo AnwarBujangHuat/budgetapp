@@ -1,4 +1,5 @@
-import 'package:budgetapp/common/transaction/state/transaction_state.dart';
+import 'package:budgetapp/domain/http/app_exception.dart';
+import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final expansesRepositoryProvider = Provider((ref) => ExpansesRepository(ref));
@@ -10,8 +11,8 @@ class ExpansesRepository {
   final Ref _ref;
   final List<String> expenses = ["Anwar", "Aiman"];
 
-  Future<TransactionsState> getAllExpanses() async {
-    return TransactionsState.loaded(expenses);
+  Future<Either<AppException, List<String>>> getAllExpanses() async {
+    return Right(expenses);
   }
 
   Future<List<String>> addElement({required String data}) async {

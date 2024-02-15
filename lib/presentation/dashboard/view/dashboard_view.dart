@@ -220,7 +220,7 @@ class MyGoals extends ConsumerWidget {
           loading: () {
             return const Text('Loading');
           },
-          loaded: (dataList) {
+          data: (dataList) {
             return SizedBox(
               height: 170,
               child: ListView.separated(
@@ -238,7 +238,7 @@ class MyGoals extends ConsumerWidget {
               ),
             );
           },
-          error: (appException) {
+          error: (error, stack) {
             return SizedBox(
               height: 150,
               child: ListView.separated(
