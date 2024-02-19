@@ -1,4 +1,5 @@
 import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/common/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class GoalCard extends StatelessWidget {
@@ -24,21 +25,16 @@ class GoalCard extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         width: MediaQuery.of(context).size.width * 0.6,
         constraints: const BoxConstraints(minWidth: 100, maxWidth: 250),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _CircularProgressIndicator(
+            const Text('TITLE', style: TextStyle(fontWeight: FontWeight.bold)),
+            _LinearProgressIndicator(
               value: progress,
               total: total,
             ),
-            const SizedBox(width: 16),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title,
-                    style: const TextStyle(fontWeight: FontWeight.bold)),
-                Text(description),
-              ],
-            ),
+            Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+            Text(description),
           ],
         ),
       ),
@@ -46,16 +42,19 @@ class GoalCard extends StatelessWidget {
   }
 }
 
-Color _calculateProgressColor(double value, double total) {
-  double progress = value / total;
-  if (progress == 0) return AppColors.black;
+class _LinearProgressIndicator extends StatelessWidget {
+  const _LinearProgressIndicator({required this.value, required this.total});
+  final double value;
+  final double total;
 
-  if (progress < 0.4) {
-    return AppColors.lightRed;
-  } else if (progress < 0.6) {
-    return AppColors.lightYellow;
-  } else {
-    return AppColors.lightGreen;
+  @override
+  Widget build(BuildContext context) {
+    return LinearProgressIndicator(
+        minHeight: 8,
+        value: value / total,
+        backgroundColor: Colors.amber,
+        color: calculateProgressColor(value, total),
+        borderRadius: BorderRadius.circular(10));
   }
 }
 
@@ -81,7 +80,7 @@ class _CircularProgressIndicator extends StatelessWidget {
                   height: boxHeight,
                   width: boxHeight,
                   child: CircularProgressIndicator(
-                    color: _calculateProgressColor(value, total),
+                    color: calculateProgressColor(value, total),
                     strokeWidth: 4,
                     value: value / total,
                   ),
@@ -91,7 +90,7 @@ class _CircularProgressIndicator extends StatelessWidget {
                 child: Text(
                   '${(value / total * 100).toStringAsFixed(0)}%',
                   style: currentTheme.textTheme.titleLarge!
-                      .copyWith(color: _calculateProgressColor(value, total)),
+                      .copyWith(color: calculateProgressColor(value, total)),
                 ),
               ),
             ],
