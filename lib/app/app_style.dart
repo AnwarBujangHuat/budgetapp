@@ -39,7 +39,6 @@ ThemeData lightThemeData = ThemeData(
     primaryColorLight: AppColors.darkBlue,
     primaryColor: AppColors.darkBlue);
 ThemeData darkThemeData = ThemeData(
-  fontFamily: 'RobotoFlex',
   cardColor: AppColors.cardBackgroundColor,
   scaffoldBackgroundColor: AppColors.primaryDarkBackground,
   primaryColorLight: AppColors.whiteVariant,
