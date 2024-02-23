@@ -1,17 +1,15 @@
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/transaction/viewmodel/transaction_viewmodel.dart';
+import 'package:budgetapp/common/widgets/header.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/presentation/dashboard/widget/card_goal.dart';
+import 'package:budgetapp/presentation/dashboard/widget/card_transaction.dart';
 import 'package:budgetapp/presentation/dashboard/widget/expanded_fab.dart';
 import 'package:budgetapp/presentation/dashboard/widget/line_chart.dart';
 import 'package:budgetapp/presentation/dashboard/widget/sized_boxes.dart';
-import 'package:budgetapp/presentation/settings/settings_view.dart';
-import 'package:budgetapp/shared/appbar.dart';
-import 'package:budgetapp/shared/header.dart';
-import 'package:budgetapp/presentation/dashboard/widget/card_transaction.dart';
 import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DashboardView extends ConsumerWidget {
@@ -22,6 +20,12 @@ class DashboardView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.dashboard),
+        leading: GestureDetector(
+          child: const Icon(Icons.menu),
+        ),
+      ),
       floatingActionButton: FlaotingFAB(
         distance: 60,
         children: [
@@ -42,14 +46,10 @@ class DashboardView extends ConsumerWidget {
       body: RefreshIndicator(
         onRefresh: () async {},
         child: ListView(
-          padding: const EdgeInsets.only(bottom: 10),
           shrinkWrap: true,
           children: const [
             MyHeader(),
-            MyLineChartWidget(),
-            SizedBox(height: 10),
             MyGoals(),
-            SizedBox(height: 10),
             MyTransactions(),
           ],
         ),
@@ -74,10 +74,6 @@ class MyHeader extends ConsumerWidget {
       decoration: const BoxDecoration(color: AppColors.darkBlue),
       child: Column(
         children: [
-          MTAppBar(
-              title: AppLocalizations.of(context)!.dashboard,
-              onPressedBack: () => Navigator.restorablePushNamed(
-                  context, SettingsView.routeName)),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -144,7 +140,6 @@ class MyHeader extends ConsumerWidget {
                                 ? AppColors.lightRed
                                 : AppColors.lightGreenVariant,
                           ),
-                          color: Colors.transparent,
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -196,8 +191,7 @@ class MyLineChartWidget extends ConsumerWidget {
     String selectedValue = ref.watch(selectedButtonProvider) ??
         AppLocalizations.of(context)!.expenses;
 
-    return Container(
-      decoration: const BoxDecoration(color: AppColors.darkBlue),
+    return SizedBox(
       height: 200,
       child: LineChartWidget(
         isExpenses: selectedValue == AppLocalizations.of(context)!.income,

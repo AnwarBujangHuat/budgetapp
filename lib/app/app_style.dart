@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 ThemeData lightThemeData = ThemeData(
     fontFamily: 'RobotoFlex',
-    appBarTheme: const AppBarTheme(backgroundColor: AppColors.offWhite),
+    appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.darkBlue,
+        iconTheme: IconThemeData(color: AppColors.white),
+        titleTextStyle: TextStyle(
+            fontSize: AppFontSizes.title1,
+            color: AppColors.white,
+            fontWeight: FontWeight.bold)),
     cardColor: AppColors.white,
     colorScheme: const ColorScheme(
         brightness: Brightness.light,
