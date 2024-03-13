@@ -1,4 +1,3 @@
-import 'package:budgetapp/app/app_style.dart';
 import 'package:flutter/material.dart';
 
 class AHeader extends StatelessWidget {
@@ -9,12 +8,8 @@ class AHeader extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Text(title,
-          style: TextStyle(
-              fontSize: AppFontSizes.title2,
-              color: theme.primaryColorLight,
-              fontWeight: FontWeight.bold)),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4),
+      child: Text(title, style: theme.textTheme.titleLarge),
     );
   }
 }

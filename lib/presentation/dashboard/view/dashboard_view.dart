@@ -49,8 +49,15 @@ class DashboardView extends ConsumerWidget {
           shrinkWrap: true,
           children: const [
             MyHeader(),
-            MyGoals(),
-            MyTransactions(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
+                children: [
+                  MyGoals(),
+                  MyTransactions(),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -63,6 +70,8 @@ class MyHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+
     String selectedValue = ref.watch(selectedButtonProvider) ??
         AppLocalizations.of(context)!.expenses;
 
@@ -106,20 +115,14 @@ class MyHeader extends ConsumerWidget {
                       children: [
                         Text(
                           AppLocalizations.of(context)!.totalNetWorth,
-                          style: const TextStyle(
-                            fontSize: AppFontSizes.subheadline,
-                            color: AppColors.offWhiteVariant,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: theme.textTheme.titleSmall!
+                              .copyWith(color: AppColors.offWhiteVariant),
                         ),
                         const SizedH05(),
-                        const Text(
+                        Text(
                           "RM 9700",
-                          style: TextStyle(
-                            fontSize: AppFontSizes.title4,
-                            color: AppColors.offWhite,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: theme.textTheme.displaySmall!
+                              .copyWith(color: AppColors.white),
                         ),
                       ],
                     ),
@@ -138,7 +141,7 @@ class MyHeader extends ConsumerWidget {
                             color: selectedValue !=
                                     AppLocalizations.of(context)!.income
                                 ? AppColors.lightRed
-                                : AppColors.lightGreenVariant,
+                                : AppColors.lightGreen,
                           ),
                           borderRadius: BorderRadius.circular(5),
                         ),
@@ -150,11 +153,10 @@ class MyHeader extends ConsumerWidget {
                               Text(
                                 selectedValue,
                                 style: TextStyle(
-                                  fontSize: AppFontSizes.subheadline,
                                   color: selectedValue !=
                                           AppLocalizations.of(context)!.income
                                       ? AppColors.lightRed
-                                      : AppColors.lightGreenVariant,
+                                      : AppColors.lightGreen,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -165,7 +167,7 @@ class MyHeader extends ConsumerWidget {
                                 color: selectedValue !=
                                         AppLocalizations.of(context)!.income
                                     ? AppColors.lightRed
-                                    : AppColors.lightGreenVariant,
+                                    : AppColors.lightGreen,
                               ),
                             ],
                           ),
@@ -208,7 +210,6 @@ class MyGoals extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedH10(),
         const AHeader(title: "Goals"),
         ref.watch(transactionViewmodelProvider).when(
           loading: () {
@@ -216,19 +217,19 @@ class MyGoals extends ConsumerWidget {
           },
           data: (dataList) {
             return SizedBox(
-              height: 170,
+              height: 160,
               child: ListView.separated(
-                padding: const EdgeInsets.all(5),
+                padding: EdgeInsets.zero,
                 separatorBuilder: (context, index) => const SizedW10(),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => GoalCard(
                   onPressed: () {},
-                  title: index.toString(),
-                  description: '',
+                  title: "Savings For Da Future",
+                  description: 'Description',
                   total: 100,
                   progress: 80,
                 ),
-                itemCount: 1,
+                itemCount: 3,
               ),
             );
           },

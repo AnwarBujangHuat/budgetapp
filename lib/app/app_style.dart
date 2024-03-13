@@ -5,11 +5,63 @@ ThemeData lightThemeData = ThemeData(
     appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.darkBlue,
         iconTheme: IconThemeData(color: AppColors.white),
-        titleTextStyle: TextStyle(
-            fontSize: AppFontSizes.title1,
-            color: AppColors.white,
-            fontWeight: FontWeight.bold)),
+        titleTextStyle:
+            TextStyle(color: AppColors.white, fontWeight: FontWeight.bold)),
     cardColor: AppColors.white,
+    textTheme: const TextTheme(
+      titleSmall: TextStyle(
+        letterSpacing: 0,
+        fontSize: FontSize.smallTitle,
+        fontWeight: FontWeight.bold,
+        color: AppColors.darkBlue,
+      ),
+      titleMedium: TextStyle(
+        letterSpacing: 0,
+        fontSize: FontSize.mediumTitle,
+        color: AppColors.darkBlue,
+      ),
+      displaySmall: TextStyle(
+        letterSpacing: 0,
+        fontSize: FontSize.smallDisplay,
+        color: AppColors.darkBlue,
+      ),
+      displayMedium: TextStyle(
+        fontSize: FontSize.mediumDisplay,
+        fontWeight: FontWeight.w900,
+        color: AppColors.darkBlue,
+      ),
+      displayLarge: TextStyle(
+        fontSize: FontSize.largeDisplay,
+        color: AppColors.darkBlue,
+      ),
+      titleLarge: TextStyle(
+        fontSize: FontSize.largeTitle,
+        fontWeight: FontWeight.bold,
+        color: AppColors.darkBlue,
+      ),
+      bodySmall: TextStyle(
+        fontSize: FontSize.subtitle,
+        color: AppColors.darkBlue,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: FontSize.body,
+        color: AppColors.darkBlue,
+      ),
+      bodyLarge: TextStyle(
+        fontSize: FontSize.smallTitle,
+        color: AppColors.darkBlue,
+      ),
+      labelMedium: TextStyle(
+        letterSpacing: 0,
+        fontSize: FontSize.body,
+        color: AppColors.darkBlue,
+      ),
+      labelSmall: TextStyle(
+        letterSpacing: 0,
+        fontSize: FontSize.subtitle,
+        color: AppColors.darkBlueLessOpacity,
+      ),
+    ),
     colorScheme: const ColorScheme(
         brightness: Brightness.light,
         primary: AppColors.darkBlue,
@@ -53,11 +105,12 @@ class AppColors {
   static const Color cardBackgroundColor = Color.fromARGB(255, 28, 28, 28);
   static const Color blackVariant = Color(0xFF333333);
   static const Color darkBlue = Color(0xFF282D49);
+  static const Color darkBlueLessOpacity =
+      Color.fromARGB(128, 0x28, 0x2D, 0x49);
   static const Color primaryDarkBackground = Color.fromARGB(255, 19, 19, 20);
   static const Color secondaryDarkBackground = Color(0xFF1F212A);
   static const Color darkBlueVariant = Color(0xFF202531);
-  static const Color lightGreen = Colors.green;
-  static const Color lightGreenVariant = Colors.lightGreen;
+  static const Color lightGreen = Color(0xCC4F9360);
   static const Color lightRed = Colors.red;
   static const Color lightRedVariant = Colors.redAccent;
   static const Color darkYellow = Color(0xFFFFD700);
@@ -65,26 +118,13 @@ class AppColors {
   static const Color lightYellowVariant = Color(0xFFFFFACD);
 }
 
-class AppFontSizes {
-  static const double title4 = 34.0;
-
-  static const double title1 = 28.0;
-
-  static const double title2 = 22.0;
-
-  static const double title3 = 20.0;
-
-  static const double headline = 17.0;
-
-  static const double subheadline = 15.0;
-
-  static const double body = 16.0;
-
-  static const double callout = 16.0;
-
-  static const double footnote = 13.0;
-
-  static const double caption1 = 12.0;
-
-  static const double caption2 = 11.0;
+class FontSize {
+  static const double largeDisplay = 96;
+  static const double mediumDisplay = 48;
+  static const double smallDisplay = 32;
+  static const double largeTitle = 24;
+  static const double mediumTitle = 20;
+  static const double smallTitle = 16;
+  static const double body = 14;
+  static const double subtitle = 12;
 }

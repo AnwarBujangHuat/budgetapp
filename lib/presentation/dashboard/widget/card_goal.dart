@@ -19,21 +19,36 @@ class GoalCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData currentTheme = Theme.of(context);
     return Card(
       child: Container(
         padding: const EdgeInsets.all(8),
-        width: MediaQuery.of(context).size.width * 0.6,
         constraints: const BoxConstraints(minWidth: 100, maxWidth: 250),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('TITLE', style: TextStyle(fontWeight: FontWeight.bold)),
+            Expanded(
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: currentTheme.textTheme.titleSmall),
+                Text(description, style: currentTheme.textTheme.labelSmall),
+              ],
+            )),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(title, style: currentTheme.textTheme.labelSmall),
+                Text(progress.toString(),
+                    style: currentTheme.textTheme.labelSmall),
+              ],
+            ),
             _LinearProgressIndicator(
               value: progress,
               total: total,
             ),
-            Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-            Text(description),
+            Text("To Date", style: currentTheme.textTheme.labelSmall),
           ],
         ),
       ),
@@ -51,7 +66,7 @@ class _LinearProgressIndicator extends StatelessWidget {
     return LinearProgressIndicator(
         minHeight: 8,
         value: value / total,
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.grey.withOpacity(.5),
         color: calculateProgressColor(value, total),
         borderRadius: BorderRadius.circular(10));
   }

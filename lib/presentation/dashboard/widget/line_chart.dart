@@ -74,10 +74,8 @@ class LineChartWidget extends StatelessWidget {
       );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-        fontSize: AppFontSizes.caption2,
-        color: AppColors.white,
-        fontWeight: FontWeight.bold);
+    const style =
+        TextStyle(color: AppColors.white, fontWeight: FontWeight.bold);
 
     return SideTitleWidget(
       axisSide: meta.axisSide,
@@ -110,7 +108,7 @@ class LineChartWidget extends StatelessWidget {
       );
 
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
-        color: isExpenses ? AppColors.lightGreenVariant : AppColors.lightRed,
+        color: isExpenses ? AppColors.lightGreen : AppColors.lightRed,
         barWidth: 2,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
@@ -120,7 +118,7 @@ class LineChartWidget extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  isExpenses ? AppColors.lightGreenVariant : AppColors.lightRed,
+                  isExpenses ? AppColors.lightGreen : AppColors.lightRed,
                   Colors.transparent
                 ])),
         spots: const [
