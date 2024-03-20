@@ -39,7 +39,8 @@ class GoalCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(title, style: currentTheme.textTheme.labelSmall),
+                Text('RM $progress / RM $total',
+                    style: currentTheme.textTheme.labelSmall),
                 Text(progress.toString(),
                     style: currentTheme.textTheme.labelSmall),
               ],

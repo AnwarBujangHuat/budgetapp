@@ -105,8 +105,7 @@ class AppColors {
   static const Color cardBackgroundColor = Color.fromARGB(255, 28, 28, 28);
   static const Color blackVariant = Color(0xFF333333);
   static const Color darkBlue = Color(0xFF282D49);
-  static const Color darkBlueLessOpacity =
-      Color.fromARGB(128, 0x28, 0x2D, 0x49);
+  static const Color darkBlueLessOpacity = Color(0xB3282D49);
   static const Color primaryDarkBackground = Color.fromARGB(255, 19, 19, 20);
   static const Color secondaryDarkBackground = Color(0xFF1F212A);
   static const Color darkBlueVariant = Color(0xFF202531);
