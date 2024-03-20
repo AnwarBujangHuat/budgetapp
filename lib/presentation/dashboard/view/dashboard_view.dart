@@ -228,31 +228,15 @@ class MyGoals extends ConsumerWidget {
                   description: 'Description',
                   total: 120,
                   progress: 80,
+                  startDate: DateTime.now(),
+                  endDate: DateTime.now().copyWith(day: DateTime.now().day + 5),
                 ),
                 itemCount: 3,
               ),
             );
           },
           error: (error, stack) {
-            return SizedBox(
-              height: 150,
-              child: ListView.separated(
-                padding: const EdgeInsets.all(5),
-                separatorBuilder: (context, index) => const SizedW10(),
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => const SizedBox(
-                  width: 250,
-                  child: Card(
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Text("j"),
-                    ),
-                  ),
-                ),
-                itemCount: 2,
-              ),
-            );
+            return Container();
           },
         ),
         const SizedH10(),
@@ -270,20 +254,18 @@ class MyTransactions extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const AHeader(title: "Transactions"),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * .3,
-          child: ListView.separated(
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 2),
-            separatorBuilder: (context, index) => const SizedBox(height: 10),
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            itemBuilder: (context, index) => TransactionCard(
-              onPressed: () {},
-              title: 'title',
-              description: 'description',
-            ),
-            itemCount: 10,
+        ListView.separated(
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 2),
+          separatorBuilder: (context, index) => const SizedBox(height: 10),
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          itemBuilder: (context, index) => TransactionCard(
+            onPressed: () {},
+            title: 'title',
+            description: 'description',
           ),
+          itemCount: 10,
         ),
       ],
     );

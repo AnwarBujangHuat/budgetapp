@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:budgetapp/common/utils/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +11,8 @@ class GoalCard extends StatelessWidget {
     required this.description,
     required this.progress,
     required this.total,
+    required this.startDate,
+    required this.endDate,
   }) : super(key: key);
 
   final VoidCallback onPressed;
@@ -16,6 +20,19 @@ class GoalCard extends StatelessWidget {
   final double total;
   final String description;
   final double progress;
+  final DateTime startDate;
+  final DateTime endDate;
+
+  int calculateDaysLeft(
+      {required DateTime startDate, required DateTime? endDate}) {
+    if (endDate == null) {
+      //Todo Unspecified Due Date
+      return -1;
+    }
+    Duration difference = endDate.difference(startDate);
+
+    return difference.inDays;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +56,7 @@ class GoalCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                //Do handle for multiple currencies
                 Text('RM $progress / RM $total',
                     style: currentTheme.textTheme.labelSmall),
                 Text('${((progress / total) * 100).toInt()}%',
@@ -49,7 +67,9 @@ class GoalCard extends StatelessWidget {
               value: progress,
               total: total,
             ),
-            Text("To Date", style: currentTheme.textTheme.labelSmall),
+            Text(
+                "${calculateDaysLeft(startDate: startDate, endDate: endDate)} Days Left",
+                style: currentTheme.textTheme.labelSmall),
           ],
         ),
       ),
