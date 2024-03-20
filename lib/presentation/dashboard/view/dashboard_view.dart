@@ -226,7 +226,7 @@ class MyGoals extends ConsumerWidget {
                   onPressed: () {},
                   title: "Savings For Da Future",
                   description: 'Description',
-                  total: 100,
+                  total: 120,
                   progress: 80,
                 ),
                 itemCount: 3,

@@ -41,7 +41,7 @@ class GoalCard extends StatelessWidget {
               children: [
                 Text('RM $progress / RM $total',
                     style: currentTheme.textTheme.labelSmall),
-                Text(progress.toString(),
+                Text('${((progress / total) * 100).toInt()}%',
                     style: currentTheme.textTheme.labelSmall),
               ],
             ),
