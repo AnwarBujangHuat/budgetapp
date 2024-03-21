@@ -88,7 +88,7 @@ class _LinearProgressIndicator extends StatelessWidget {
         minHeight: 8,
         value: value / total,
         backgroundColor: Colors.grey.withOpacity(.5),
-        color: calculateProgressColor(value, total),
+        color: calculateProgressColor(value: value, total: total),
         borderRadius: BorderRadius.circular(10));
   }
 }
@@ -115,7 +115,7 @@ class _CircularProgressIndicator extends StatelessWidget {
                   height: boxHeight,
                   width: boxHeight,
                   child: CircularProgressIndicator(
-                    color: calculateProgressColor(value, total),
+                    color: calculateProgressColor(value: value, total: total),
                     strokeWidth: 4,
                     value: value / total,
                   ),
@@ -124,8 +124,9 @@ class _CircularProgressIndicator extends StatelessWidget {
               Center(
                 child: Text(
                   '${(value / total * 100).toStringAsFixed(0)}%',
-                  style: currentTheme.textTheme.titleLarge!
-                      .copyWith(color: calculateProgressColor(value, total)),
+                  style: currentTheme.textTheme.titleLarge!.copyWith(
+                      color:
+                          calculateProgressColor(value: value, total: total)),
                 ),
               ),
             ],

@@ -5,8 +5,10 @@ ThemeData lightThemeData = ThemeData(
     appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.darkBlue,
         iconTheme: IconThemeData(color: AppColors.white),
-        titleTextStyle:
-            TextStyle(color: AppColors.white, fontWeight: FontWeight.bold)),
+        titleTextStyle: TextStyle(
+            color: AppColors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: FontSize.mediumTitle)),
     cardColor: AppColors.white,
     textTheme: const TextTheme(
       titleSmall: TextStyle(
@@ -18,6 +20,13 @@ ThemeData lightThemeData = ThemeData(
       titleMedium: TextStyle(
         letterSpacing: 0,
         fontSize: FontSize.mediumTitle,
+        fontWeight: FontWeight.bold,
+        color: AppColors.darkBlue,
+      ),
+      titleLarge: TextStyle(
+        letterSpacing: 0,
+        fontSize: FontSize.largeTitle,
+        fontWeight: FontWeight.bold,
         color: AppColors.darkBlue,
       ),
       displaySmall: TextStyle(
@@ -32,11 +41,6 @@ ThemeData lightThemeData = ThemeData(
       ),
       displayLarge: TextStyle(
         fontSize: FontSize.largeDisplay,
-        color: AppColors.darkBlue,
-      ),
-      titleLarge: TextStyle(
-        fontSize: FontSize.largeTitle,
-        fontWeight: FontWeight.bold,
         color: AppColors.darkBlue,
       ),
       bodySmall: TextStyle(
@@ -76,7 +80,7 @@ ThemeData lightThemeData = ThemeData(
         onSurface: AppColors.black),
     cardTheme: const CardTheme(
       surfaceTintColor: Colors.white,
-      elevation: 5,
+      elevation: 1,
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(

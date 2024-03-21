@@ -24,6 +24,7 @@ dependencies:
   freezed: ^2.4.1
   freezed_annotation: ^2.4.1
   hooks_riverpod: ^2.3.8
+  intl: ^0.18.1
   riverpod_annotation: ^2.3.4
   shimmer: ^3.0.0
 

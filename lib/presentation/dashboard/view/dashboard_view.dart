@@ -1,4 +1,5 @@
 import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/common/const/const.dart';
 import 'package:budgetapp/common/transaction/viewmodel/transaction_viewmodel.dart';
 import 'package:budgetapp/common/widgets/header.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
@@ -254,16 +255,17 @@ class MyTransactions extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const AHeader(title: "Transactions"),
-        ListView.separated(
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 2),
-          separatorBuilder: (context, index) => const SizedBox(height: 10),
+        ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) => TransactionCard(
             onPressed: () {},
-            title: 'title',
-            description: 'description',
+            title: 'Groceries Shopping',
+            date: DateTime.now(),
+            category: TransactionCategory.grocery,
+            type: TransactionType.out,
+            expenses: 300.0,
           ),
           itemCount: 10,
         ),
