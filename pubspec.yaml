@@ -2,12 +2,12 @@ name: budgetapp
 description: A new Flutter project.
 
 # Prevent accidental publishing to pub.dev.
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.2 <4.0.0'
+  sdk: ">=3.0.2 <4.0.0"
 
 dependencies:
   build_runner: ^2.4.6
@@ -29,13 +29,11 @@ dependencies:
   shimmer: ^3.0.0
 
 dev_dependencies:
+  custom_lint: ^0.6.0
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-
-
-  flutter_lints: ^2.0.0
   riverpod_generator: ^2.3.11
-  custom_lint: ^0.6.0
   riverpod_lint: ^2.3.9
 
 flutter:
@@ -54,12 +52,12 @@ flutter:
         - asset: assets/fonts/Nunito-Black.ttf
         - asset: assets/fonts/Nunito-BlackItalic.ttf
         - asset: assets/fonts/Nunito-Bold.ttf
-        - asset: assets/fonts/Nunito-BoldItalic.ttf       
+        - asset: assets/fonts/Nunito-BoldItalic.ttf
         - asset: assets/fonts/Nunito-ExtraBold.ttf
-        - asset: assets/fonts/Nunito-ExtraBoldItalic.ttf        
+        - asset: assets/fonts/Nunito-ExtraBoldItalic.ttf
         - asset: assets/fonts/Nunito-ExtraLight.ttf
         - asset: assets/fonts/Nunito-ExtraLightItalic.ttf
-        - asset: assets/fonts/Nunito-Italic.ttf        
+        - asset: assets/fonts/Nunito-Italic.ttf
         - asset: assets/fonts/Nunito-Light.ttf
         - asset: assets/fonts/Nunito-LightItalic.ttf
         - asset: assets/fonts/Nunito-Medium.ttf
@@ -72,7 +70,7 @@ flutter:
         - asset: assets/fonts/RobotoCondensed-Bold.ttf
         - asset: assets/fonts/RobotoCondensed-BoldItalic.ttf
         - asset: assets/fonts/RobotoCondensed-Italic.ttf
-        - asset: assets/fonts/RobotoCondensed-Light.ttf       
+        - asset: assets/fonts/RobotoCondensed-Light.ttf
         - asset: assets/fonts/RobotoCondensed-LightItalic.ttf
         - asset: assets/fonts/RobotoCondensed-Regular.ttf
     - family: RobotoFlex

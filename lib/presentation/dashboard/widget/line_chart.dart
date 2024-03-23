@@ -3,17 +3,15 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class LineChartWidget extends StatelessWidget {
-  const LineChartWidget({super.key, required this.isExpenses});
+  const LineChartWidget({required this.isExpenses, super.key});
 
   final bool isExpenses;
 
   @override
-  Widget build(BuildContext context) {
-    return LineChart(
-      sampleData1,
-      duration: const Duration(milliseconds: 250),
-    );
-  }
+  Widget build(BuildContext context) => LineChart(
+        sampleData1,
+        duration: const Duration(milliseconds: 250),
+      );
 
   LineChartData get sampleData1 => LineChartData(
         lineTouchData: lineTouchData1,
@@ -28,7 +26,6 @@ class LineChartWidget extends StatelessWidget {
       );
 
   LineTouchData get lineTouchData1 => LineTouchData(
-        handleBuiltInTouches: true,
         touchTooltipData: LineTouchTooltipData(
           tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
         ),
@@ -38,15 +35,9 @@ class LineChartWidget extends StatelessWidget {
         bottomTitles: AxisTitles(
           sideTitles: bottomTitles,
         ),
-        rightTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        leftTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
+        rightTitles: const AxisTitles(),
+        topTitles: const AxisTitles(),
+        leftTitles: const AxisTitles(),
       );
 
   List<LineChartBarData> get lineBarsData1 => [
@@ -65,9 +56,7 @@ class LineChartWidget extends StatelessWidget {
         rightTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: true),
         ),
-        topTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
+        topTitles: const AxisTitles(),
         leftTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: true),
         ),
@@ -109,7 +98,6 @@ class LineChartWidget extends StatelessWidget {
 
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
         color: isExpenses ? AppColors.lightGreen : AppColors.lightRed,
-        barWidth: 2,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(
@@ -167,12 +155,10 @@ class LineChartSample1State extends State<LineChartSample1> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(right: 0, left: 0),
-        child: LineChartWidget(isExpenses: isExpenses),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Expanded(
+        child: Padding(
+          padding: const EdgeInsets.only(),
+          child: LineChartWidget(isExpenses: isExpenses),
+        ),
+      );
 }

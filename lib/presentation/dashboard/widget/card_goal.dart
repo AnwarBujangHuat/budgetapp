@@ -1,11 +1,8 @@
-import 'dart:math';
-
 import 'package:budgetapp/common/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class GoalCard extends StatelessWidget {
   const GoalCard({
-    Key? key,
     required this.onPressed,
     required this.title,
     required this.description,
@@ -13,7 +10,8 @@ class GoalCard extends StatelessWidget {
     required this.total,
     required this.startDate,
     required this.endDate,
-  }) : super(key: key);
+    super.key,
+  });
 
   final VoidCallback onPressed;
   final String title;
@@ -53,11 +51,11 @@ class GoalCard extends StatelessWidget {
               ],
             )),
             Row(
-              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 //Do handle for multiple currencies
-                Text('RM $progress / RM $total',
+                Text(
+                    'RM ${progress.toStringAsFixed(2)} / RM ${total.toStringAsFixed(2)}',
                     style: currentTheme.textTheme.labelSmall),
                 Text('${((progress / total) * 100).toInt()}%',
                     style: currentTheme.textTheme.labelSmall),
@@ -68,7 +66,7 @@ class GoalCard extends StatelessWidget {
               total: total,
             ),
             Text(
-                "${calculateDaysLeft(startDate: startDate, endDate: endDate)} Days Left",
+                '${calculateDaysLeft(startDate: startDate, endDate: endDate)} Days Left',
                 style: currentTheme.textTheme.labelSmall),
           ],
         ),
@@ -83,14 +81,12 @@ class _LinearProgressIndicator extends StatelessWidget {
   final double total;
 
   @override
-  Widget build(BuildContext context) {
-    return LinearProgressIndicator(
-        minHeight: 8,
-        value: value / total,
-        backgroundColor: Colors.grey.withOpacity(.5),
-        color: calculateProgressColor(value: value, total: total),
-        borderRadius: BorderRadius.circular(10));
-  }
+  Widget build(BuildContext context) => LinearProgressIndicator(
+      minHeight: 8,
+      value: value / total,
+      backgroundColor: Colors.grey.withOpacity(.5),
+      color: calculateProgressColor(value: value, total: total),
+      borderRadius: BorderRadius.circular(10));
 }
 
 class _CircularProgressIndicator extends StatelessWidget {
@@ -116,7 +112,6 @@ class _CircularProgressIndicator extends StatelessWidget {
                   width: boxHeight,
                   child: CircularProgressIndicator(
                     color: calculateProgressColor(value: value, total: total),
-                    strokeWidth: 4,
                     value: value / total,
                   ),
                 ),

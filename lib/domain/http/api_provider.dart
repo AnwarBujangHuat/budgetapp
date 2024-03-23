@@ -40,7 +40,7 @@ class ApiProvider {
     Map<String, String?>? query,
     ContentType contentType = ContentType.json,
   }) async {
-    final connectivityResult = await (Connectivity().checkConnectivity());
+    final connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult == ConnectivityResult.none) {
       return const APIResponse.error(AppException.connectivity());
     }
@@ -80,11 +80,10 @@ class ApiProvider {
 
       if (response.statusCode! < 300) {
         if (response.data['data'].runtimeType == List &&
-                response.data['data'].isEmpty ||
-            response.data["data"] == null) {
+            response.data['data'] == null) {
           return APIResponse.success(response.data['message']);
         } else {
-          return APIResponse.success(response.data["data"]);
+          return APIResponse.success(response.data['data']);
         }
       } else {
         if (response.statusCode! == 401) {
@@ -93,22 +92,15 @@ class ApiProvider {
           return const APIResponse.error(AppException.error());
         } else if (response.statusCode == 422) {
           if (response.data['errors'] != null) {
-            var firstKey = response.data['errors'].keys.toList()[0];
-            return APIResponse.error(AppException.errorWithMessage(
-                response.data['errors'][firstKey][0]));
+            return APIResponse.error(AppException.errorWithMessage(''));
           } else {
-            return APIResponse.error(
-                AppException.errorWithMessage(response.data['message']));
+            return APIResponse.error(AppException.errorWithMessage(''));
           }
         } else if (response.statusCode == 403) {
           if (response.data['data'] != null) {
-            Map<String, dynamic> message = response.data['data'];
-            var firstKey = message.keys.toList()[0];
-            return APIResponse.error(
-                AppException.errorWithMessage(message[firstKey][0]));
+            return APIResponse.error(AppException.errorWithMessage(''));
           } else {
-            return APIResponse.error(
-                AppException.errorWithMessage(response.data['message']));
+            return APIResponse.error(AppException.errorWithMessage(''));
           }
         } else {
           if (response.data['message'] != null) {
@@ -138,9 +130,8 @@ class ApiProvider {
         }
       }
       return APIResponse.error(AppException.errorWithMessage(e.message!));
-    } on Error catch (e) {
-      return APIResponse.error(
-          AppException.errorWithMessage(e.stackTrace.toString()));
+    } on Exception catch (e) {
+      return APIResponse.error(AppException.errorWithMessage(e.toString()));
     }
   }
 
@@ -151,7 +142,7 @@ class ApiProvider {
     Map<String, dynamic>? query,
     ContentType contentType = ContentType.json,
   }) async {
-    final connectivityResult = await (Connectivity().checkConnectivity());
+    final connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult == ConnectivityResult.none) {
       return const APIResponse.error(AppException.connectivity());
     }

@@ -1,8 +1,8 @@
 import 'package:budgetapp/app/app_style.dart';
-import 'package:intl/intl.dart';
 import 'package:budgetapp/common/const/const.dart';
 import 'package:budgetapp/common/widgets/custom_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 Color calculateProgressColor({required double value, required double total}) {
   double progress = value / total;
@@ -45,6 +45,5 @@ Color getCategoryColor({required TransactionCategory category}) {
   }
 }
 
-String formatDate({required DateTime dateTime}) {
-  return DateFormat('dd MMM yy').format(dateTime);
-}
+String formatDate({required DateTime dateTime}) =>
+    DateFormat('dd MMM yy').format(dateTime);

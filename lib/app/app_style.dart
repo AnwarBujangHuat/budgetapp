@@ -84,10 +84,7 @@ ThemeData lightThemeData = ThemeData(
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(0),
-            bottomRight: Radius.circular(16),
-            topLeft: Radius.circular(16),
-            topRight: Radius.circular(0)),
+            bottomRight: Radius.circular(16), topLeft: Radius.circular(16)),
       ),
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(

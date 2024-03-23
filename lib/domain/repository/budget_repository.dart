@@ -9,13 +9,11 @@ class ExpansesRepository {
   //use this to read api
 
   final Ref _ref;
-  final List<String> expenses = ["Anwar", "Aiman"];
+  final List<String> expenses = ['Anwar', 'Aiman'];
 
-  Future<Either<AppException, List<String>>> getAllExpanses() async {
-    return Right(expenses);
-  }
+  Future<Either<AppException, List<String>>> getAllExpanses() async =>
+      Right(expenses);
 
-  Future<List<String>> addElement({required String data}) async {
-    return [...expenses, data];
-  }
+  Future<List<String>> addElement({required String data}) async =>
+      [...expenses, data];
 }

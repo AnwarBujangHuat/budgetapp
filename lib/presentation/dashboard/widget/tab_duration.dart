@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TimelineTab extends StatelessWidget {
-  const TimelineTab({super.key, required this.onTap, required this.selected});
+  const TimelineTab({required this.onTap, required this.selected, super.key});
   final Function() onTap;
   final String selected;
 
@@ -24,34 +24,32 @@ class TimelineTab extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
           itemCount: filterButton.length,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                    color: selected != filterButton[index]
-                        ? Colors.transparent
-                        : AppColors.offWhite,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(index == 0 ? 5 : 0),
-                        topLeft: Radius.circular(index == 0 ? 5 : 0),
-                        bottomRight: Radius.circular(
-                            index + 1 == filterButton.length ? 5 : 0),
-                        topRight: Radius.circular(
-                            index + 1 == filterButton.length ? 5 : 0))),
-                width: width * .23,
-                child: Center(
-                    child: Text(
-                  filterButton[index],
-                  style: TextStyle(
+          itemBuilder: (context, index) => GestureDetector(
+                onTap: () {},
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
                       color: selected != filterButton[index]
-                          ? AppColors.white
-                          : AppColors.darkBlueVariant),
-                )),
-              ),
-            );
-          }),
+                          ? Colors.transparent
+                          : AppColors.offWhite,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(index == 0 ? 5 : 0),
+                          topLeft: Radius.circular(index == 0 ? 5 : 0),
+                          bottomRight: Radius.circular(
+                              index + 1 == filterButton.length ? 5 : 0),
+                          topRight: Radius.circular(
+                              index + 1 == filterButton.length ? 5 : 0))),
+                  width: width * .23,
+                  child: Center(
+                      child: Text(
+                    filterButton[index],
+                    style: TextStyle(
+                        color: selected != filterButton[index]
+                            ? AppColors.white
+                            : AppColors.darkBlueVariant),
+                  )),
+                ),
+              )),
     );
   }
 }

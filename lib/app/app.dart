@@ -8,18 +8,16 @@ import '../presentation/settings/settings_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({
-    super.key,
     required this.settingsController,
+    super.key,
   });
 
   final SettingsController settingsController;
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: settingsController,
-      builder: (BuildContext context, Widget? child) {
-        return MaterialApp(
+  Widget build(BuildContext context) => AnimatedBuilder(
+        animation: settingsController,
+        builder: (BuildContext context, Widget? child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           // showPerformanceOverlay: true,
           restorationScopeId: 'app',
@@ -30,33 +28,30 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: const [
-            Locale('en', null),
-            Locale('ms', null),
-            Locale('zh', null),
+            Locale('en'),
+            Locale('ms'),
+            Locale('zh'),
           ],
           locale: const Locale('en', ''),
           theme: lightThemeData,
           darkTheme: darkThemeData,
           themeMode: settingsController.themeMode,
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case SettingsView.routeName:
-                    return SettingsView(controller: settingsController);
+          onGenerateRoute: (RouteSettings routeSettings) =>
+              MaterialPageRoute<void>(
+            settings: routeSettings,
+            builder: (BuildContext context) {
+              switch (routeSettings.name) {
+                case SettingsView.routeName:
+                  return SettingsView(controller: settingsController);
 
-                  case DashboardView.routeName:
-                    return const DashboardView();
+                case DashboardView.routeName:
+                  return const DashboardView();
 
-                  default:
-                    return const DashboardView();
-                }
-              },
-            );
-          },
-        );
-      },
-    );
-  }
+                default:
+                  return const DashboardView();
+              }
+            },
+          ),
+        ),
+      );
 }

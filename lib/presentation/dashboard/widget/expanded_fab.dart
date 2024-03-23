@@ -1,15 +1,15 @@
+import 'dart:math' as math;
+
 import 'package:budgetapp/app/app_style.dart';
 import 'package:flutter/material.dart';
-
-import 'dart:math' as math;
 
 @immutable
 class FlaotingFAB extends StatefulWidget {
   const FlaotingFAB({
-    super.key,
-    this.initialOpen,
     required this.distance,
     required this.children,
+    super.key,
+    this.initialOpen,
   });
 
   final bool? initialOpen;
@@ -60,43 +60,39 @@ class _ExpandableFabState extends State<FlaotingFAB>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return SizedBox.expand(
-      child: Stack(
-        alignment: Alignment.bottomRight,
-        clipBehavior: Clip.none,
-        children: [
-          _buildTapToCloseFab(),
-          ..._buildExpandingActionButtons(),
-          _buildTapToOpenFab(),
-        ],
-      ),
-    );
-  }
+  Widget build(BuildContext context) => SizedBox.expand(
+        child: Stack(
+          alignment: Alignment.bottomRight,
+          clipBehavior: Clip.none,
+          children: [
+            _buildTapToCloseFab(),
+            ..._buildExpandingActionButtons(),
+            _buildTapToOpenFab(),
+          ],
+        ),
+      );
 
-  Widget _buildTapToCloseFab() {
-    return SizedBox(
-      width: 56,
-      height: 56,
-      child: Center(
-        child: Material(
-          shape: const CircleBorder(),
-          clipBehavior: Clip.antiAlias,
-          elevation: 4,
-          child: InkWell(
-            onTap: _toggle,
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: Icon(
-                Icons.close,
-                color: Theme.of(context).primaryColor,
+  Widget _buildTapToCloseFab() => SizedBox(
+        width: 56,
+        height: 56,
+        child: Center(
+          child: Material(
+            shape: const CircleBorder(),
+            clipBehavior: Clip.antiAlias,
+            elevation: 4,
+            child: InkWell(
+              onTap: _toggle,
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Icon(
+                  Icons.close,
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
             ),
           ),
         ),
-      ),
-    );
-  }
+      );
 
   List<Widget> _buildExpandingActionButtons() {
     final children = <Widget>[];
@@ -117,31 +113,29 @@ class _ExpandableFabState extends State<FlaotingFAB>
     return children;
   }
 
-  Widget _buildTapToOpenFab() {
-    return IgnorePointer(
-      ignoring: _open,
-      child: AnimatedContainer(
-        transformAlignment: Alignment.center,
-        transform: Matrix4.diagonal3Values(
-          _open ? 0.7 : 1.0,
-          _open ? 0.7 : 1.0,
-          1.0,
-        ),
-        duration: const Duration(milliseconds: 250),
-        curve: const Interval(0.0, 0.5, curve: Curves.easeOut),
-        child: AnimatedOpacity(
-          opacity: _open ? 0.0 : 1.0,
-          curve: const Interval(0.25, 1.0, curve: Curves.easeInOut),
+  Widget _buildTapToOpenFab() => IgnorePointer(
+        ignoring: _open,
+        child: AnimatedContainer(
+          transformAlignment: Alignment.center,
+          transform: Matrix4.diagonal3Values(
+            _open ? 0.7 : 1.0,
+            _open ? 0.7 : 1.0,
+            1.0,
+          ),
           duration: const Duration(milliseconds: 250),
-          child: FloatingActionButton(
-            backgroundColor: AppColors.darkBlue,
-            onPressed: _toggle,
-            child: const Icon(Icons.add),
+          curve: const Interval(0.0, 0.5, curve: Curves.easeOut),
+          child: AnimatedOpacity(
+            opacity: _open ? 0.0 : 1.0,
+            curve: const Interval(0.25, 1.0, curve: Curves.easeInOut),
+            duration: const Duration(milliseconds: 250),
+            child: FloatingActionButton(
+              backgroundColor: AppColors.darkBlue,
+              onPressed: _toggle,
+              child: const Icon(Icons.add),
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }
 
 @immutable
@@ -159,38 +153,36 @@ class _ExpandingActionButton extends StatelessWidget {
   final Widget child;
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: progress,
-      builder: (context, child) {
-        final offset = Offset.fromDirection(
-          directionInDegrees * (math.pi / 180.0),
-          progress.value * maxDistance,
-        );
-        return Positioned(
-          right: 4.0 + offset.dx,
-          bottom: 4.0 + offset.dy,
-          child: Transform.rotate(
-            angle: (1.0 - progress.value) * math.pi / 2,
-            child: child!,
-          ),
-        );
-      },
-      child: FadeTransition(
-        opacity: progress,
-        child: child,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => AnimatedBuilder(
+        animation: progress,
+        builder: (context, child) {
+          final offset = Offset.fromDirection(
+            directionInDegrees * (math.pi / 180.0),
+            progress.value * maxDistance,
+          );
+          return Positioned(
+            right: 4.0 + offset.dx,
+            bottom: 4.0 + offset.dy,
+            child: Transform.rotate(
+              angle: (1.0 - progress.value) * math.pi / 2,
+              child: child,
+            ),
+          );
+        },
+        child: FadeTransition(
+          opacity: progress,
+          child: child,
+        ),
+      );
 }
 
 @immutable
 class ActionButton extends StatelessWidget {
   const ActionButton({
-    super.key,
     required this.title,
-    this.onPressed,
     required this.icon,
+    super.key,
+    this.onPressed,
   });
 
   final VoidCallback? onPressed;
@@ -238,21 +230,19 @@ class ActionButton extends StatelessWidget {
 @immutable
 class FakeItem extends StatelessWidget {
   const FakeItem({
-    super.key,
     required this.isBig,
+    super.key,
   });
 
   final bool isBig;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-      height: isBig ? 128 : 36,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(8)),
-        color: Colors.grey.shade300,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Container(
+        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+        height: isBig ? 128 : 36,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          color: Colors.grey.shade300,
+        ),
+      );
 }

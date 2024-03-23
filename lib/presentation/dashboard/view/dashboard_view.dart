@@ -14,56 +14,54 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DashboardView extends ConsumerWidget {
-  const DashboardView({Key? key}) : super(key: key);
+  const DashboardView({super.key});
 
   static const routeName = '/home';
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.dashboard),
-        leading: GestureDetector(
-          child: const Icon(Icons.menu),
+  Widget build(BuildContext context, WidgetRef ref) => Scaffold(
+        appBar: AppBar(
+          title: Text(AppLocalizations.of(context)!.dashboard),
+          leading: GestureDetector(
+            child: const Icon(Icons.menu),
+          ),
         ),
-      ),
-      floatingActionButton: FlaotingFAB(
-        distance: 60,
-        children: [
-          ActionButton(
-            title: AppLocalizations.of(context)!.income,
-            onPressed: () => {
-              ref.read(transactionViewmodelProvider.notifier).insertNewdata()
-            },
-            icon: const Icon(Icons.attach_money),
-          ),
-          ActionButton(
-            title: AppLocalizations.of(context)!.expenses,
-            onPressed: () => {},
-            icon: const Icon(Icons.payment),
-          ),
-        ],
-      ),
-      body: RefreshIndicator(
-        onRefresh: () async {},
-        child: ListView(
-          shrinkWrap: true,
-          children: const [
-            MyHeader(),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: Column(
-                children: [
-                  MyGoals(),
-                  MyTransactions(),
-                ],
-              ),
-            )
+        floatingActionButton: FlaotingFAB(
+          distance: 60,
+          children: [
+            ActionButton(
+              title: AppLocalizations.of(context)!.income,
+              onPressed: () async => {
+                ref.read(transactionViewmodelProvider.notifier).insertNewdata()
+              },
+              icon: const Icon(Icons.attach_money),
+            ),
+            ActionButton(
+              title: AppLocalizations.of(context)!.expenses,
+              onPressed: () => {},
+              icon: const Icon(Icons.payment),
+            ),
           ],
         ),
-      ),
-    );
-  }
+        body: RefreshIndicator(
+          onRefresh: () async {},
+          child: ListView(
+            shrinkWrap: true,
+            children: const [
+              MyHeader(),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: Column(
+                  children: [
+                    MyGoals(),
+                    MyTransactions(),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      );
 }
 
 class MyHeader extends ConsumerWidget {
@@ -87,8 +85,6 @@ class MyHeader extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
                   height: 40,
@@ -107,11 +103,9 @@ class MyHeader extends ConsumerWidget {
                 ),
                 const SizedH20(),
                 Row(
-                  mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -121,7 +115,7 @@ class MyHeader extends ConsumerWidget {
                         ),
                         const SizedH05(),
                         Text(
-                          "RM 9700",
+                          'RM 9700',
                           style: theme.textTheme.displaySmall!
                               .copyWith(color: AppColors.white),
                         ),
@@ -161,7 +155,7 @@ class MyHeader extends ConsumerWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const SizedBox(width: 5),
+                              const SizedW05(),
                               Icon(
                                 Icons.compare_arrows,
                                 size: 16,
@@ -204,70 +198,63 @@ class MyLineChartWidget extends ConsumerWidget {
 }
 
 class MyGoals extends ConsumerWidget {
-  const MyGoals({Key? key}) : super(key: key);
+  const MyGoals({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const AHeader(title: "Goals"),
-        ref.watch(transactionViewmodelProvider).when(
-          loading: () {
-            return const Text('Loading');
-          },
-          data: (dataList) {
-            return SizedBox(
-              height: 160,
-              child: ListView.separated(
-                padding: EdgeInsets.zero,
-                separatorBuilder: (context, index) => const SizedW10(),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => GoalCard(
-                  onPressed: () {},
-                  title: "Savings For Da Future",
-                  description: 'Description',
-                  total: 120,
-                  progress: 80,
-                  startDate: DateTime.now(),
-                  endDate: DateTime.now().copyWith(day: DateTime.now().day + 5),
+  Widget build(BuildContext context, WidgetRef ref) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const AHeader(title: 'Goals'),
+          ref.watch(transactionViewmodelProvider).when(
+                loading: () => const Text('Loading'),
+                data: (dataList) => SizedBox(
+                  height: 160,
+                  child: ListView.separated(
+                    padding: EdgeInsets.zero,
+                    separatorBuilder: (context, index) => const SizedW10(),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => GoalCard(
+                      onPressed: () {},
+                      title: 'Savings For Da Future',
+                      description: 'Description',
+                      total: 120,
+                      progress: 80,
+                      startDate: DateTime.now(),
+                      endDate:
+                          DateTime.now().copyWith(day: DateTime.now().day + 5),
+                    ),
+                    itemCount: 3,
+                  ),
                 ),
-                itemCount: 3,
+                error: (error, stack) => Container(),
               ),
-            );
-          },
-          error: (error, stack) {
-            return Container();
-          },
-        ),
-        const SizedH10(),
-      ],
-    );
-  }
+          const SizedH10(),
+        ],
+      );
 }
 
 class MyTransactions extends StatelessWidget {
-  const MyTransactions({Key? key}) : super(key: key);
+  const MyTransactions({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<String> meow = ['Meow', '2', '3'];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const AHeader(title: "Transactions"),
+        const AHeader(title: 'Transactions'),
         ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          scrollDirection: Axis.vertical,
           itemBuilder: (context, index) => TransactionCard(
             onPressed: () {},
             title: 'Groceries Shopping',
             date: DateTime.now(),
             category: TransactionCategory.grocery,
             type: TransactionType.out,
-            expenses: 300.0,
+            expenses: 300,
           ),
-          itemCount: 10,
+          itemCount: meow.length > 5 ? 5 : meow.length,
         ),
       ],
     );
