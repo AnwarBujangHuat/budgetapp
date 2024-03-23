@@ -24,6 +24,20 @@ class TransactionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData currentTheme = Theme.of(context);
+    return ListTile(
+      minVerticalPadding: 0,
+      dense: true,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+      title: Text(title, style: currentTheme.textTheme.titleSmall),
+      subtitle: Text(formatDate(dateTime: date),
+          style: currentTheme.textTheme.labelSmall),
+      trailing: Text('RM $expenses',
+          style: currentTheme.textTheme.bodyMedium!.copyWith(
+              fontWeight: FontWeight.bold,
+              color: type == TransactionType.out
+                  ? AppColors.lightRed
+                  : AppColors.lightGreen)),
+    );
 
     return Card(
       child: Padding(
