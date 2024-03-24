@@ -17,7 +17,7 @@ class TransactionViewmodel extends _$TransactionViewmodel {
   Future<void> insertNewdata() async {
     state = const AsyncLoading();
 
-    List<String> response =
-        await ref.read(expansesRepositoryProvider).addElement(data: 'Ikhsan');
+    // List<String> response =
+    //     await ref.read(expansesRepositoryProvider).addElement(data: 'Ikhsan');
   }
 }

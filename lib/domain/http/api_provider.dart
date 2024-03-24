@@ -11,10 +11,6 @@ import 'app_exception.dart';
 
 enum ContentType { urlEncoded, json }
 
-final apiProvider = Provider<ApiProvider>(
-  (ref) => ApiProvider(ref),
-);
-
 class ApiProvider {
   final Duration timeout = const Duration(seconds: 10);
   ApiProvider(this._ref) {
