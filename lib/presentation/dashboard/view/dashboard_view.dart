@@ -21,10 +21,21 @@ class DashboardView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) => Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: Text(AppLocalizations.of(context)!.dashboard),
+          automaticallyImplyLeading: false,
           leading: GestureDetector(
             child: const Icon(Icons.menu),
           ),
+          actions: [
+            IconButton(
+              icon: const Icon(
+                Icons.analytics_outlined,
+                color: Colors.white,
+              ),
+              onPressed: null,
+            ),
+          ],
         ),
         floatingActionButton: FlaotingFAB(
           distance: 60,
@@ -52,6 +63,7 @@ class DashboardView extends ConsumerWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MyGoals(),
                     MyTransactions(),
@@ -201,36 +213,39 @@ class MyGoals extends ConsumerWidget {
   const MyGoals({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const AHeader(title: 'Goals'),
-          ref.watch(transactionViewmodelProvider).when(
-                loading: () => const Text('Loading'),
-                data: (dataList) => SizedBox(
-                  height: 160,
-                  child: ListView.separated(
-                    padding: EdgeInsets.zero,
-                    separatorBuilder: (context, index) => const SizedW10(),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => GoalCard(
-                      onPressed: () {},
-                      title: 'Savings For Da Future',
-                      description: 'Description',
-                      total: 120,
-                      progress: 80,
-                      startDate: DateTime.now(),
-                      endDate:
-                          DateTime.now().copyWith(day: DateTime.now().day + 5),
-                    ),
-                    itemCount: 3,
-                  ),
+  Widget build(BuildContext context, WidgetRef ref) =>
+      ref.watch(transactionViewmodelProvider).when(
+            loading: () => const Text('Loading'),
+            data: (dataList) => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [const AHeader(title: 'Goals'), Icon(Icons.add)],
                 ),
-                error: (error, stack) => Container(),
-              ),
-          const SizedH10(),
-        ],
-      );
+                SizedBox(
+                    height: dataList.isNotEmpty ? 160 : 0,
+                    child: ListView.separated(
+                      padding: EdgeInsets.zero,
+                      separatorBuilder: (context, index) => const SizedW10(),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => GoalCard(
+                        onPressed: () {},
+                        title: 'Savings For Da Future',
+                        description: 'Description',
+                        total: 120,
+                        progress: 80,
+                        startDate: DateTime.now(),
+                        endDate: DateTime.now()
+                            .copyWith(day: DateTime.now().day + 5),
+                      ),
+                      itemCount: dataList.length,
+                    )),
+                const SizedH10(),
+              ],
+            ),
+            error: (error, stack) => Container(),
+          );
 }
 
 class MyTransactions extends StatelessWidget {
@@ -238,7 +253,9 @@ class MyTransactions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> meow = ['Meow', '2', '3'];
+    int maxDisplayTrascation = 4;
+
+    List<String> meow = ['Meow', '2', '3', '2', '3', '2', '3'];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -254,7 +271,9 @@ class MyTransactions extends StatelessWidget {
             type: TransactionType.out,
             expenses: 300,
           ),
-          itemCount: meow.length > 5 ? 5 : meow.length,
+          itemCount: meow.length > maxDisplayTrascation
+              ? maxDisplayTrascation
+              : meow.length,
         ),
       ],
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData lightThemeData = ThemeData(
     fontFamily: 'RobotoFlex',
+    scaffoldBackgroundColor: AppColors.offWhite,
     appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.darkBlue,
         iconTheme: IconThemeData(color: AppColors.white),
