@@ -103,16 +103,11 @@ class MyHeader extends ConsumerWidget {
                 SizedBox(
                   height: 40,
                   width: screenWidth,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemCount: filterButton.length,
-                    itemBuilder: (context, index) => TimelineTab(
-                      selected: selectedPeriod,
-                      onTap: () => ref
-                          .read(selectedPeriodProvider.notifier)
-                          .state = filterButton[index],
-                    ),
+                  child: TimelineTab(
+                    selected: selectedPeriod,
+                    onTap: (selected) => ref
+                        .read(selectedPeriodProvider.notifier)
+                        .state = selected,
                   ),
                 ),
                 const SizedH20(),

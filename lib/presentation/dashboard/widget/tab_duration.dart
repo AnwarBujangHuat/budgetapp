@@ -4,17 +4,17 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TimelineTab extends StatelessWidget {
   const TimelineTab({required this.onTap, required this.selected, super.key});
-  final Function() onTap;
+  final Function(String) onTap;
   final String selected;
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     List<String> filterButton = <String>[
-      AppLocalizations.of(context)!.yearly,
-      AppLocalizations.of(context)!.monthly,
-      AppLocalizations.of(context)!.weekly,
       AppLocalizations.of(context)!.daily,
+      AppLocalizations.of(context)!.weekly,
+      AppLocalizations.of(context)!.monthly,
+      AppLocalizations.of(context)!.yearly,
     ];
 
     return SizedBox(
@@ -25,7 +25,7 @@ class TimelineTab extends StatelessWidget {
           shrinkWrap: true,
           itemCount: filterButton.length,
           itemBuilder: (context, index) => GestureDetector(
-                onTap: () {},
+                onTap: () => onTap(filterButton[index]),
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
