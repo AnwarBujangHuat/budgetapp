@@ -21,25 +21,78 @@ Widget getCategoryIcon({required TransactionCategory category}) {
   switch (category) {
     case TransactionCategory.dining:
       return CustomIcon(
-        iconData: Icons.dining,
+        iconData: Icons.restaurant,
+        backgroundColor: getCategoryColor(category: category),
+      );
+    case TransactionCategory.travel:
+      return CustomIcon(
+        iconData: Icons.airplanemode_active,
+        backgroundColor: getCategoryColor(category: category),
+      );
+    case TransactionCategory.utilities:
+      return CustomIcon(
+        iconData: Icons.lightbulb_outline,
+        backgroundColor: getCategoryColor(category: category),
+      );
+    case TransactionCategory.rent:
+      return CustomIcon(
+        iconData: Icons.home,
+        backgroundColor: getCategoryColor(category: category),
+      );
+    case TransactionCategory.entertainment:
+      return CustomIcon(
+        iconData: Icons.local_movies,
         backgroundColor: getCategoryColor(category: category),
       );
 
-    default:
+    case TransactionCategory.healthcare:
+      return CustomIcon(
+        iconData: Icons.local_hospital,
+        backgroundColor: getCategoryColor(category: category),
+      );
+    case TransactionCategory.education:
+      return CustomIcon(
+        iconData: Icons.school,
+        backgroundColor: getCategoryColor(category: category),
+      );
+    case TransactionCategory.clothing:
+      return CustomIcon(
+        iconData: Icons.shopping_bag,
+        backgroundColor: getCategoryColor(category: category),
+      );
+    case TransactionCategory.grocery:
       return CustomIcon(
         iconData: Icons.local_grocery_store,
-        backgroundColor: getCategoryColor(
-            category:
-                category), // You can specify any background color you want
+        backgroundColor: getCategoryColor(category: category),
+      );
+    default:
+      return CustomIcon(
+        iconData: Icons.attach_money,
+        backgroundColor: getCategoryColor(category: category),
       );
   }
 }
 
 Color getCategoryColor({required TransactionCategory category}) {
   switch (category) {
+    case TransactionCategory.grocery:
+      return AppColors.orange;
+    case TransactionCategory.travel:
+      return AppColors.green;
+    case TransactionCategory.utilities:
+      return AppColors.lightGreen;
+    case TransactionCategory.rent:
+      return AppColors.yellow;
+    case TransactionCategory.entertainment:
+      return AppColors.lightPurple;
     case TransactionCategory.dining:
       return AppColors.lightRed;
-
+    case TransactionCategory.healthcare:
+      return AppColors.pink;
+    case TransactionCategory.education:
+      return AppColors.teal;
+    case TransactionCategory.clothing:
+      return AppColors.purple;
     default:
       return AppColors.darkBlue;
   }

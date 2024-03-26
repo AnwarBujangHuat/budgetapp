@@ -7,8 +7,10 @@ import 'package:budgetapp/presentation/dashboard/widget/card_goal.dart';
 import 'package:budgetapp/presentation/dashboard/widget/card_transaction.dart';
 import 'package:budgetapp/presentation/dashboard/widget/expanded_fab.dart';
 import 'package:budgetapp/presentation/dashboard/widget/line_chart.dart';
+import 'package:budgetapp/presentation/dashboard/widget/pie_chart.dart';
 import 'package:budgetapp/presentation/dashboard/widget/sized_boxes.dart';
 import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -41,16 +43,16 @@ class DashboardView extends ConsumerWidget {
           distance: 60,
           children: [
             ActionButton(
-              title: AppLocalizations.of(context)!.income,
+              title: AppLocalizations.of(context)!.transaction,
               onPressed: () async => {
                 ref.read(transactionViewmodelProvider.notifier).insertNewdata()
               },
               icon: const Icon(Icons.attach_money),
             ),
             ActionButton(
-              title: AppLocalizations.of(context)!.expenses,
+              title: 'Import Transaction',
               onPressed: () => {},
-              icon: const Icon(Icons.payment),
+              icon: const Icon(Icons.attachment_sharp),
             ),
           ],
         ),
@@ -65,8 +67,8 @@ class DashboardView extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    MyGoals(),
                     MyTransactions(),
+                    MyGoals(),
                   ],
                 ),
               )
@@ -121,7 +123,10 @@ class MyHeader extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          AppLocalizations.of(context)!.totalNetWorth,
+                          ref.watch(selectedButtonProvider) !=
+                                  AppLocalizations.of(context)!.income
+                              ? AppLocalizations.of(context)!.totalExpenses
+                              : AppLocalizations.of(context)!.totalIncome,
                           style: theme.textTheme.titleSmall!
                               .copyWith(color: AppColors.offWhiteVariant),
                         ),
@@ -148,7 +153,7 @@ class MyHeader extends ConsumerWidget {
                             color: selectedValue !=
                                     AppLocalizations.of(context)!.income
                                 ? AppColors.lightRed
-                                : AppColors.lightGreen,
+                                : AppColors.lighterGreen,
                           ),
                           borderRadius: BorderRadius.circular(5),
                         ),
@@ -163,7 +168,7 @@ class MyHeader extends ConsumerWidget {
                                   color: selectedValue !=
                                           AppLocalizations.of(context)!.income
                                       ? AppColors.lightRed
-                                      : AppColors.lightGreen,
+                                      : AppColors.lighterGreen,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -183,6 +188,7 @@ class MyHeader extends ConsumerWidget {
                     ),
                   ],
                 ),
+                IBPieChartWidget()
               ],
             ),
           ),
@@ -221,7 +227,10 @@ class MyGoals extends ConsumerWidget {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [const AHeader(title: 'Goals'), Icon(Icons.add)],
+                  children: [
+                    AHeader(title: AppLocalizations.of(context)!.goals),
+                    Icon(Icons.add)
+                  ],
                 ),
                 SizedBox(
                     height: dataList.isNotEmpty ? 160 : 0,
@@ -253,13 +262,13 @@ class MyTransactions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int maxDisplayTrascation = 4;
+    int maxDisplayTrascation = 8;
 
     List<String> meow = ['Meow', '2', '3', '2', '3', '2', '3'];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const AHeader(title: 'Transactions'),
+        AHeader(title: AppLocalizations.of(context)!.recentTransaction),
         ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,

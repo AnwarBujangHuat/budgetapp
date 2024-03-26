@@ -112,11 +112,19 @@ class AppColors {
   static const Color secondaryDarkBackground = Color(0xFF1F212A);
   static const Color darkBlueVariant = Color(0xFF202531);
   static const Color lightGreen = Color(0xCC4F9360);
+  static const Color lighterGreen = Color(0xCC8EFFA8);
   static const Color lightRed = Colors.red;
   static const Color lightRedVariant = Colors.redAccent;
   static const Color darkYellow = Color(0xFFFFD700);
   static const Color lightYellow = Color(0xFFFFFF00);
   static const Color lightYellowVariant = Color(0xFFFFFACD);
+  static const Color purple = Color(0xFF7E59B3);
+  static const Color orange = Color(0xFFFA7F72);
+  static const Color green = Color(0xFF62BC76);
+  static const Color yellow = Color(0xFFFFD166);
+  static const Color lightPurple = Color(0xFFA79DF3);
+  static const Color pink = Color(0xFFFA7F72);
+  static const Color teal = Color(0xFF64C4D6);
 }
 
 class FontSize {
