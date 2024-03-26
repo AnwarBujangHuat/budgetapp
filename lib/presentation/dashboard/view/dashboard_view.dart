@@ -39,7 +39,7 @@ class DashboardView extends ConsumerWidget {
             ),
           ],
         ),
-        floatingActionButton: FlaotingFAB(
+        floatingActionButton: IBFlaotingFAB(
           distance: 60,
           children: [
             ActionButton(
@@ -110,7 +110,7 @@ class MyHeader extends ConsumerWidget {
                         .state = selected,
                   ),
                 ),
-                const SizedH20(),
+                const IBSizedH20(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -125,7 +125,7 @@ class MyHeader extends ConsumerWidget {
                           style: theme.textTheme.titleSmall!
                               .copyWith(color: AppColors.offWhiteVariant),
                         ),
-                        const SizedH05(),
+                        const IBSizedH05(),
                         Text(
                           'RM 9700',
                           style: theme.textTheme.displaySmall!
@@ -167,7 +167,7 @@ class MyHeader extends ConsumerWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const SizedW05(),
+                              const IBSizedW05(),
                               Icon(
                                 Icons.compare_arrows,
                                 size: 16,
@@ -231,9 +231,9 @@ class MyGoals extends ConsumerWidget {
                     height: dataList.isNotEmpty ? 160 : 0,
                     child: ListView.separated(
                       padding: EdgeInsets.zero,
-                      separatorBuilder: (context, index) => const SizedW10(),
+                      separatorBuilder: (context, index) => const IBSizedW10(),
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => GoalCard(
+                      itemBuilder: (context, index) => IBGoalCard(
                         onPressed: () {},
                         title: 'Savings For Da Future',
                         description: 'Description',
@@ -245,7 +245,7 @@ class MyGoals extends ConsumerWidget {
                       ),
                       itemCount: dataList.length,
                     )),
-                const SizedH10(),
+                const IBSizedH10(),
               ],
             ),
             error: (error, stack) => Container(),
@@ -267,7 +267,7 @@ class MyTransactions extends StatelessWidget {
         ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemBuilder: (context, index) => TransactionCard(
+          itemBuilder: (context, index) => IBTransactionCard(
             onPressed: () {},
             title: 'Groceries Shopping',
             date: DateTime.now(),

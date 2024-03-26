@@ -3,8 +3,8 @@ import 'package:budgetapp/common/const/const.dart';
 import 'package:budgetapp/common/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-class TransactionCard extends StatelessWidget {
-  const TransactionCard({
+class IBTransactionCard extends StatelessWidget {
+  const IBTransactionCard({
     required this.onPressed,
     required this.title,
     required this.date,

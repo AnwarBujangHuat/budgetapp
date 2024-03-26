@@ -4,8 +4,8 @@ import 'package:budgetapp/app/app_style.dart';
 import 'package:flutter/material.dart';
 
 @immutable
-class FlaotingFAB extends StatefulWidget {
-  const FlaotingFAB({
+class IBFlaotingFAB extends StatefulWidget {
+  const IBFlaotingFAB({
     required this.distance,
     required this.children,
     super.key,
@@ -17,10 +17,10 @@ class FlaotingFAB extends StatefulWidget {
   final List<Widget> children;
 
   @override
-  State<FlaotingFAB> createState() => _ExpandableFabState();
+  State<IBFlaotingFAB> createState() => _ExpandableFabState();
 }
 
-class _ExpandableFabState extends State<FlaotingFAB>
+class _ExpandableFabState extends State<IBFlaotingFAB>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _expandAnimation;

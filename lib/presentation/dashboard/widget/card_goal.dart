@@ -1,8 +1,8 @@
 import 'package:budgetapp/common/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-class GoalCard extends StatelessWidget {
-  const GoalCard({
+class IBGoalCard extends StatelessWidget {
+  const IBGoalCard({
     required this.onPressed,
     required this.title,
     required this.description,
