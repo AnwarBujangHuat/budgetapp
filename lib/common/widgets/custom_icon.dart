@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CustomIcon extends StatelessWidget {
+class IBIcon extends StatelessWidget {
   final IconData iconData;
   final Color? backgroundColor;
   final double size;
 
-  const CustomIcon({
+  const IBIcon({
     required this.iconData,
     super.key,
     this.backgroundColor,

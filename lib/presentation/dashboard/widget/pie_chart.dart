@@ -20,21 +20,17 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
     TransactionCategory.dining,
     TransactionCategory.education,
     TransactionCategory.entertainment,
-    TransactionCategory.grocery,
-    TransactionCategory.utilities,
-    TransactionCategory.travel,
-    TransactionCategory.rent,
   };
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1.5,
+      aspectRatio: 1.8,
       child: Row(
         children: <Widget>[
           Expanded(
             child: AspectRatio(
-              aspectRatio: 1,
+              aspectRatio: 2,
               child: PieChart(
                 PieChartData(
                   pieTouchData: PieTouchData(
@@ -56,10 +52,11 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
                   ),
                   sectionsSpace: 0,
                   centerSpaceRadius: 40,
+                  startDegreeOffset: 180,
                   sections: [
                     for (int i = 0; i < temp.length; i++)
                       pieChartData(
-                          value: 20,
+                          value: 30,
                           category: temp.elementAt(i),
                           isTouched: touchedIndex == i),
                   ],
@@ -111,7 +108,7 @@ PieChartSectionData pieChartData(
   final radius = isTouched ? 60.0 : 50.0;
   return PieChartSectionData(
       radius: radius,
-      value: 30,
+      value: value,
       color: getCategoryColor(category: category),
       titleStyle: TextStyle(
           color: AppColors.white,

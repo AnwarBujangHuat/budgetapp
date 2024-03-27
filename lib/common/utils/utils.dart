@@ -20,53 +20,53 @@ Color calculateProgressColor({required double value, required double total}) {
 Widget getCategoryIcon({required TransactionCategory category}) {
   switch (category) {
     case TransactionCategory.dining:
-      return CustomIcon(
+      return IBIcon(
         iconData: Icons.restaurant,
         backgroundColor: getCategoryColor(category: category),
       );
     case TransactionCategory.travel:
-      return CustomIcon(
+      return IBIcon(
         iconData: Icons.airplanemode_active,
         backgroundColor: getCategoryColor(category: category),
       );
     case TransactionCategory.utilities:
-      return CustomIcon(
+      return IBIcon(
         iconData: Icons.lightbulb_outline,
         backgroundColor: getCategoryColor(category: category),
       );
     case TransactionCategory.rent:
-      return CustomIcon(
+      return IBIcon(
         iconData: Icons.home,
         backgroundColor: getCategoryColor(category: category),
       );
     case TransactionCategory.entertainment:
-      return CustomIcon(
+      return IBIcon(
         iconData: Icons.local_movies,
         backgroundColor: getCategoryColor(category: category),
       );
 
     case TransactionCategory.healthcare:
-      return CustomIcon(
+      return IBIcon(
         iconData: Icons.local_hospital,
         backgroundColor: getCategoryColor(category: category),
       );
     case TransactionCategory.education:
-      return CustomIcon(
+      return IBIcon(
         iconData: Icons.school,
         backgroundColor: getCategoryColor(category: category),
       );
     case TransactionCategory.clothing:
-      return CustomIcon(
+      return IBIcon(
         iconData: Icons.shopping_bag,
         backgroundColor: getCategoryColor(category: category),
       );
     case TransactionCategory.grocery:
-      return CustomIcon(
+      return IBIcon(
         iconData: Icons.local_grocery_store,
         backgroundColor: getCategoryColor(category: category),
       );
     default:
-      return CustomIcon(
+      return IBIcon(
         iconData: Icons.attach_money,
         backgroundColor: getCategoryColor(category: category),
       );

@@ -15,13 +15,14 @@ dependencies:
   dartz: ^0.10.1
   derry: ^1.5.0
   dio: ^5.4.0
+  expressions: ^0.2.5+1
   fl_chart: ^0.63.0
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^2.4.10
-  freezed: ^2.4.1
+  freezed: ^2.4.7
   freezed_annotation: ^2.4.1
   hooks_riverpod: ^2.3.8
   intl: ^0.18.1
@@ -33,6 +34,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  json_serializable: ^6.7.1
   riverpod_generator: ^2.3.11
   riverpod_lint: ^2.3.9
 

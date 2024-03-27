@@ -59,11 +59,16 @@ ThemeData lightThemeData = ThemeData(
       labelMedium: TextStyle(
         letterSpacing: 0,
         fontSize: FontSize.body,
-        color: AppColors.darkBlue,
+        color: AppColors.darkBlueLessOpacity,
       ),
       labelSmall: TextStyle(
         letterSpacing: 0,
         fontSize: FontSize.subtitle,
+        color: AppColors.darkBlueLessOpacity,
+      ),
+      labelLarge: TextStyle(
+        letterSpacing: 0,
+        fontSize: FontSize.smallTitle,
         color: AppColors.darkBlueLessOpacity,
       ),
     ),
@@ -96,6 +101,14 @@ ThemeData darkThemeData = ThemeData(
   cardColor: AppColors.cardBackgroundColor,
   scaffoldBackgroundColor: AppColors.primaryDarkBackground,
   primaryColorLight: AppColors.whiteVariant,
+  textButtonTheme: TextButtonThemeData(
+      style: const ButtonStyle(
+          textStyle: MaterialStatePropertyAll(TextStyle(
+    letterSpacing: 0,
+    fontSize: FontSize.smallTitle,
+    fontWeight: FontWeight.bold,
+    color: AppColors.white,
+  )))),
 );
 
 class AppColors {
@@ -125,6 +138,7 @@ class AppColors {
   static const Color lightPurple = Color(0xFFA79DF3);
   static const Color pink = Color(0xFFFA7F72);
   static const Color teal = Color(0xFF64C4D6);
+  static const Color slateBlue = Color(0xFF62758D);
 }
 
 class FontSize {

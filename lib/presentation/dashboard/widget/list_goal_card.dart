@@ -1,5 +1,74 @@
+import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/common/transaction/viewmodel/transaction_viewmodel.dart';
 import 'package:budgetapp/common/utils/utils.dart';
+import 'package:budgetapp/common/widgets/custom_icon.dart';
+import 'package:budgetapp/common/widgets/text/header.dart';
+import 'package:budgetapp/presentation/dashboard/widget/sized_boxes.dart';
+import 'package:budgetapp/shared/card/card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+class IBGoalListWidget extends ConsumerWidget {
+  const IBGoalListWidget({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+
+    return ref.watch(transactionViewmodelProvider).when(
+          loading: () => const Text('Loading'),
+          data: (dataList) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IBTextHeader(title: AppLocalizations.of(context)!.goals),
+                  Text(
+                    'View More',
+                    style: theme.textTheme.labelMedium!
+                        .copyWith(fontStyle: FontStyle.italic),
+                  ),
+                ],
+              ),
+              Container(
+                  child: dataList.isNotEmpty
+                      ? ListView.separated(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          separatorBuilder: (context, index) =>
+                              const IBSizedW10(),
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) => IBGoalCard(
+                            onPressed: () {},
+                            title: 'Savings For Da Future',
+                            description: 'Description',
+                            total: 120,
+                            progress: 80,
+                            startDate: DateTime.now(),
+                            endDate: DateTime.now()
+                                .copyWith(day: DateTime.now().day + 5),
+                          ),
+                          itemCount: dataList.length,
+                        )
+                      : IBCard(
+                          title: 'Setup Goals',
+                          icon: IBIcon(
+                            iconData: Icons.add,
+                            backgroundColor: AppColors.slateBlue,
+                          ),
+                          description: 'No Goal Record Found')),
+              const IBSizedH10(),
+            ],
+          ),
+          error: (error, stack) => Container(
+            color: Colors.amber,
+            height: 100,
+          ),
+        );
+  }
+}
 
 class IBGoalCard extends StatelessWidget {
   const IBGoalCard({

@@ -1,4 +1,6 @@
 import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/common/const/const.dart';
+import 'package:budgetapp/presentation/transaction/views/transaction_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -44,8 +46,10 @@ class MyApp extends StatelessWidget {
                 case SettingsView.routeName:
                   return SettingsView(controller: settingsController);
 
-                case DashboardView.routeName:
+                case RouteNames.homePage:
                   return const DashboardView();
+                case RouteNames.transactionPage:
+                  return const TransactionPage();
 
                 default:
                   return const DashboardView();
