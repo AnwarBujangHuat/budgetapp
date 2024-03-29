@@ -14,7 +14,7 @@ Color calculateProgressColor({required double value, required double total}) {
   if (progress < 0.4) {
     return AppColors.lightRed;
   } else if (progress < 0.6) {
-    return AppColors.lightYellow;
+    return AppColors.darkYellow;
   } else {
     return AppColors.lightGreen;
   }

@@ -11,7 +11,7 @@ _$TransactionModelImpl _$$TransactionModelImplFromJson(
     _$TransactionModelImpl(
       title: json['title'] as String,
       description: json['description'] as String,
-      dateTime: json['dateTime'] as String,
+      dateTime: DateTime.parse(json['dateTime'] as String),
       transactionAmount: json['transactionAmount'] as String,
       source: json['source'] as String,
       attachmentUrl: json['attachmentUrl'] as String,
@@ -28,7 +28,7 @@ Map<String, dynamic> _$$TransactionModelImplToJson(
     <String, dynamic>{
       'title': instance.title,
       'description': instance.description,
-      'dateTime': instance.dateTime,
+      'dateTime': instance.dateTime.toIso8601String(),
       'transactionAmount': instance.transactionAmount,
       'source': instance.source,
       'attachmentUrl': instance.attachmentUrl,

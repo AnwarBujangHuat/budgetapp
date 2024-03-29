@@ -9,7 +9,7 @@ class TransactionModel with _$TransactionModel {
   const factory TransactionModel({
     required String title,
     required String description,
-    required String dateTime,
+    required DateTime dateTime,
     required String transactionAmount,
     required String source,
     required String attachmentUrl,

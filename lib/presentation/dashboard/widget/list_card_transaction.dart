@@ -49,7 +49,7 @@ class IBTranscationListWidget extends ConsumerWidget {
                           //Todo open page for transaction details, like a reciept page
                           onPressed: () {},
                           title: transactionList[index].title,
-                          date: DateTime.parse(transactionList[index].dateTime),
+                          date: transactionList[index].dateTime,
                           category: transactionList[index].category,
                           type: transactionList[index].type,
                           expenses: double.parse(

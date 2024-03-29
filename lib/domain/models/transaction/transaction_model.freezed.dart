@@ -22,7 +22,7 @@ TransactionModel _$TransactionModelFromJson(Map<String, dynamic> json) {
 mixin _$TransactionModel {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get dateTime => throw _privateConstructorUsedError;
+  DateTime get dateTime => throw _privateConstructorUsedError;
   String get transactionAmount => throw _privateConstructorUsedError;
   String get source => throw _privateConstructorUsedError;
   String get attachmentUrl => throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $TransactionModelCopyWith<$Res> {
   $Res call(
       {String title,
       String description,
-      String dateTime,
+      DateTime dateTime,
       String transactionAmount,
       String source,
       String attachmentUrl,
@@ -89,7 +89,7 @@ class _$TransactionModelCopyWithImpl<$Res, $Val extends TransactionModel>
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       transactionAmount: null == transactionAmount
           ? _value.transactionAmount
           : transactionAmount // ignore: cast_nullable_to_non_nullable
@@ -129,7 +129,7 @@ abstract class _$$TransactionModelImplCopyWith<$Res>
   $Res call(
       {String title,
       String description,
-      String dateTime,
+      DateTime dateTime,
       String transactionAmount,
       String source,
       String attachmentUrl,
@@ -171,7 +171,7 @@ class __$$TransactionModelImplCopyWithImpl<$Res>
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       transactionAmount: null == transactionAmount
           ? _value.transactionAmount
           : transactionAmount // ignore: cast_nullable_to_non_nullable
@@ -222,7 +222,7 @@ class _$TransactionModelImpl implements _TransactionModel {
   @override
   final String description;
   @override
-  final String dateTime;
+  final DateTime dateTime;
   @override
   final String transactionAmount;
   @override
@@ -290,7 +290,7 @@ abstract class _TransactionModel implements TransactionModel {
   const factory _TransactionModel(
       {required final String title,
       required final String description,
-      required final String dateTime,
+      required final DateTime dateTime,
       required final String transactionAmount,
       required final String source,
       required final String attachmentUrl,
@@ -306,7 +306,7 @@ abstract class _TransactionModel implements TransactionModel {
   @override
   String get description;
   @override
-  String get dateTime;
+  DateTime get dateTime;
   @override
   String get transactionAmount;
   @override

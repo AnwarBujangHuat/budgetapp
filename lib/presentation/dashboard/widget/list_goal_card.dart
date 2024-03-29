@@ -17,7 +17,7 @@ class IBGoalListWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ref.watch(goalsViewmodelProvider).when(
           loading: () => const Text('Loading'),
-          data: (dataList) => Column(
+          data: (goalList) => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -32,7 +32,7 @@ class IBGoalListWidget extends ConsumerWidget {
               ),
               SizedBox(
                   height: 130,
-                  child: dataList.isNotEmpty
+                  child: goalList.isNotEmpty
                       ? ListView.separated(
                           shrinkWrap: true,
                           padding: EdgeInsets.zero,
@@ -41,15 +41,14 @@ class IBGoalListWidget extends ConsumerWidget {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) => IBGoalCard(
                             onPressed: () {},
-                            title: 'Savings For Da Future',
-                            description: 'Description',
-                            total: 120,
-                            progress: 80,
-                            startDate: DateTime.now(),
-                            endDate: DateTime.now()
-                                .copyWith(day: DateTime.now().day + 5),
+                            title: goalList[index].title,
+                            description: goalList[index].description,
+                            total: goalList[index].total.toDouble(),
+                            progress: goalList[index].progress.toDouble(),
+                            startDate: goalList[index].startDate,
+                            endDate: goalList[index].endDate,
                           ),
-                          itemCount: dataList.length,
+                          itemCount: goalList.length,
                         )
                       : IBCard(
                           title: 'Setup Goals',
@@ -63,7 +62,7 @@ class IBGoalListWidget extends ConsumerWidget {
           ),
           error: (error, stack) => Container(
             height: 100,
-            child: Text('data'),
+            child: Text(error.toString()),
           ),
         );
   }
@@ -124,9 +123,11 @@ class IBGoalCard extends StatelessWidget {
                 //Do handle for multiple currencies
                 Text(
                     'RM ${progress.toStringAsFixed(2)} / RM ${total.toStringAsFixed(2)}',
-                    style: currentTheme.textTheme.labelSmall),
+                    style: currentTheme.textTheme.labelSmall!
+                        .copyWith(fontWeight: FontWeight.bold)),
                 Text('${((progress / total) * 100).toInt()}%',
-                    style: currentTheme.textTheme.labelSmall),
+                    style: currentTheme.textTheme.labelSmall!
+                        .copyWith(fontWeight: FontWeight.bold)),
               ],
             ),
             _LinearProgressIndicator(
@@ -135,7 +136,8 @@ class IBGoalCard extends StatelessWidget {
             ),
             Text(
                 '${calculateDaysLeft(startDate: startDate, endDate: endDate)} Days Left',
-                style: currentTheme.textTheme.labelSmall),
+                style: currentTheme.textTheme.labelSmall!
+                    .copyWith(fontWeight: FontWeight.bold)),
           ],
         ),
       ),
