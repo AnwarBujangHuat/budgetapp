@@ -1,6 +1,7 @@
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/transaction/viewmodel/transaction_viewmodel.dart';
 import 'package:budgetapp/common/utils/utils.dart';
+import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/custom_icon.dart';
 import 'package:budgetapp/common/widgets/text/header.dart';
 import 'package:budgetapp/presentation/dashboard/widget/sized_boxes.dart';
@@ -14,8 +15,6 @@ class IBGoalListWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
-
     return ref.watch(transactionViewmodelProvider).when(
           loading: () => const Text('Loading'),
           data: (dataList) => Column(
@@ -25,14 +24,14 @@ class IBGoalListWidget extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IBTextHeader(title: AppLocalizations.of(context)!.goals),
-                  Text(
-                    'View More',
-                    style: theme.textTheme.labelMedium!
-                        .copyWith(fontStyle: FontStyle.italic),
+                  IBTextButton(
+                    title: 'View More',
+                    onTap: () {},
                   ),
                 ],
               ),
-              Container(
+              SizedBox(
+                  height: 130,
                   child: dataList.isNotEmpty
                       ? ListView.separated(
                           shrinkWrap: true,
@@ -63,8 +62,8 @@ class IBGoalListWidget extends ConsumerWidget {
             ],
           ),
           error: (error, stack) => Container(
-            color: Colors.amber,
             height: 100,
+            child: Text('data'),
           ),
         );
   }

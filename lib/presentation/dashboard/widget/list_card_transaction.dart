@@ -1,21 +1,22 @@
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/const/const.dart';
+import 'package:budgetapp/common/transaction/viewmodel/transaction_viewmodel.dart';
 import 'package:budgetapp/common/utils/utils.dart';
+import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/custom_icon.dart';
 import 'package:budgetapp/common/widgets/text/header.dart';
 import 'package:budgetapp/shared/card/card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class IBTranscationListWidget extends StatelessWidget {
+class IBTranscationListWidget extends ConsumerWidget {
   const IBTranscationListWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    int maxDisplayTrascation = 8;
-    final theme = Theme.of(context);
+  Widget build(BuildContext context, WidgetRef ref) {
+    int maxDisplayTrascation = 5;
 
-    List<String> meow = ['Meow', '2', '3', '2', '3', '2', '3'];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,33 +25,47 @@ class IBTranscationListWidget extends StatelessWidget {
           children: [
             IBTextHeader(
                 title: AppLocalizations.of(context)!.recentTransaction),
-            Text('View More', style: theme.textTheme.labelMedium),
+            IBTextButton(
+              title: 'View More',
+              onTap: () {},
+            ),
           ],
         ),
         //Todo make locale for this
-        meow.isEmpty
-            ? IBCard(
-                title: 'Add New Transaction',
-                icon: IBIcon(
-                  iconData: Icons.add,
-                  backgroundColor: AppColors.slateBlue,
-                ),
-                description: 'No Transaction Record Found')
-            : ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) => IBTransactionCard(
-                  onPressed: () {},
-                  title: 'Groceries Shopping',
-                  date: DateTime.now(),
-                  category: TransactionCategory.grocery,
-                  type: TransactionType.out,
-                  expenses: 300,
-                ),
-                itemCount: meow.length > maxDisplayTrascation
-                    ? maxDisplayTrascation
-                    : meow.length,
+        ref.watch(transactionViewmodelProvider).when(
+              data: (transactionList) {
+                return transactionList.isEmpty
+                    ? IBCard(
+                        title: 'Add New Transaction',
+                        icon: IBIcon(
+                          iconData: Icons.add,
+                          backgroundColor: AppColors.slateBlue,
+                        ),
+                        description: 'No Transaction Record Found')
+                    : ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) => IBTransactionCard(
+                          //Todo open page for transaction details, like a reciept page
+                          onPressed: () {},
+                          title: transactionList[index].title,
+                          date: DateTime.parse(transactionList[index].dateTime),
+                          category: transactionList[index].category,
+                          type: transactionList[index].type,
+                          expenses: double.parse(
+                              transactionList[index].transactionAmount),
+                        ),
+                        itemCount: transactionList.length > maxDisplayTrascation
+                            ? maxDisplayTrascation
+                            : transactionList.length,
+                      );
+              },
+              error: (error, stackTrace) => Container(
+                height: 100,
+                child: Text(error.toString()),
               ),
+              loading: () => Container(),
+            )
       ],
     );
   }

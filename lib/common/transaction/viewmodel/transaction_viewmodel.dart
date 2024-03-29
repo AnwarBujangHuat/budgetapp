@@ -1,3 +1,4 @@
+import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
 import 'package:budgetapp/domain/repository/budget_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'transaction_viewmodel.g.dart';
@@ -5,19 +6,24 @@ part 'transaction_viewmodel.g.dart';
 @riverpod
 class TransactionViewmodel extends _$TransactionViewmodel {
   @override
-  Future<List<String>> build() async => [];
+  Future<List<TransactionModel>> build() async {
+    final result = await ref.read(expansesRepositoryProvider).getAllExpanses();
+    return result.fold(
+      (error) => throw Exception(error),
+      (data) => data,
+    );
+  }
 
   Future<void> getAllExpanses() async {
     state = const AsyncLoading();
     final result = await ref.read(expansesRepositoryProvider).getAllExpanses();
     state = result.fold(
-        (error) => AsyncError(error, StackTrace.current), AsyncData.new);
+      (error) => AsyncError(error, StackTrace.current),
+      (data) => AsyncData(data),
+    );
   }
 
   Future<void> insertNewdata() async {
     state = const AsyncLoading();
-
-    // List<String> response =
-    //     await ref.read(expansesRepositoryProvider).addElement(data: 'Ikhsan');
   }
 }

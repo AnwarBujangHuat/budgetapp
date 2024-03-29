@@ -1,3 +1,4 @@
+import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/calculator/calculator.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,8 @@ class TransactionPage extends ConsumerWidget {
           IBTextButton(
             title: 'Submit',
             onTap: () {},
+            textColor: AppColors.white,
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           ),
         ],
       ),

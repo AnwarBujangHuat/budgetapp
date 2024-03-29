@@ -13,9 +13,13 @@ _$TransactionModelImpl _$$TransactionModelImplFromJson(
       description: json['description'] as String,
       dateTime: json['dateTime'] as String,
       transactionAmount: json['transactionAmount'] as String,
-      category: json['category'] as String,
       source: json['source'] as String,
       attachmentUrl: json['attachmentUrl'] as String,
+      category:
+          $enumDecodeNullable(_$TransactionCategoryEnumMap, json['category']) ??
+              TransactionCategory.other,
+      type: $enumDecodeNullable(_$TransactionTypeEnumMap, json['type']) ??
+          TransactionType.out,
     );
 
 Map<String, dynamic> _$$TransactionModelImplToJson(
@@ -25,7 +29,26 @@ Map<String, dynamic> _$$TransactionModelImplToJson(
       'description': instance.description,
       'dateTime': instance.dateTime,
       'transactionAmount': instance.transactionAmount,
-      'category': instance.category,
       'source': instance.source,
       'attachmentUrl': instance.attachmentUrl,
+      'category': _$TransactionCategoryEnumMap[instance.category]!,
+      'type': _$TransactionTypeEnumMap[instance.type]!,
     };
+
+const _$TransactionCategoryEnumMap = {
+  TransactionCategory.grocery: 'grocery',
+  TransactionCategory.travel: 'travel',
+  TransactionCategory.utilities: 'utilities',
+  TransactionCategory.rent: 'rent',
+  TransactionCategory.entertainment: 'entertainment',
+  TransactionCategory.dining: 'dining',
+  TransactionCategory.healthcare: 'healthcare',
+  TransactionCategory.education: 'education',
+  TransactionCategory.clothing: 'clothing',
+  TransactionCategory.other: 'other',
+};
+
+const _$TransactionTypeEnumMap = {
+  TransactionType.income: 'income',
+  TransactionType.out: 'out',
+};

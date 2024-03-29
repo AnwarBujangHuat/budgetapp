@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/const/const.dart';
 import 'package:budgetapp/common/widgets/custom_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 Color calculateProgressColor({required double value, required double total}) {
@@ -96,6 +99,11 @@ Color getCategoryColor({required TransactionCategory category}) {
     default:
       return AppColors.darkBlue;
   }
+}
+
+Future<Map<String, dynamic>> loadJsonFromAssets(String filePath) async {
+  String jsonString = await rootBundle.loadString(filePath);
+  return jsonDecode(jsonString) as Map<String, dynamic>;
 }
 
 String formatDate({required DateTime dateTime}) =>

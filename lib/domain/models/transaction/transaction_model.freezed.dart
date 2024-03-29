@@ -24,9 +24,10 @@ mixin _$TransactionModel {
   String get description => throw _privateConstructorUsedError;
   String get dateTime => throw _privateConstructorUsedError;
   String get transactionAmount => throw _privateConstructorUsedError;
-  String get category => throw _privateConstructorUsedError;
   String get source => throw _privateConstructorUsedError;
   String get attachmentUrl => throw _privateConstructorUsedError;
+  TransactionCategory get category => throw _privateConstructorUsedError;
+  TransactionType get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,9 +46,10 @@ abstract class $TransactionModelCopyWith<$Res> {
       String description,
       String dateTime,
       String transactionAmount,
-      String category,
       String source,
-      String attachmentUrl});
+      String attachmentUrl,
+      TransactionCategory category,
+      TransactionType type});
 }
 
 /// @nodoc
@@ -67,9 +69,10 @@ class _$TransactionModelCopyWithImpl<$Res, $Val extends TransactionModel>
     Object? description = null,
     Object? dateTime = null,
     Object? transactionAmount = null,
-    Object? category = null,
     Object? source = null,
     Object? attachmentUrl = null,
+    Object? category = null,
+    Object? type = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -88,10 +91,6 @@ class _$TransactionModelCopyWithImpl<$Res, $Val extends TransactionModel>
           ? _value.transactionAmount
           : transactionAmount // ignore: cast_nullable_to_non_nullable
               as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
       source: null == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
@@ -100,6 +99,14 @@ class _$TransactionModelCopyWithImpl<$Res, $Val extends TransactionModel>
           ? _value.attachmentUrl
           : attachmentUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as TransactionCategory,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TransactionType,
     ) as $Val);
   }
 }
@@ -117,9 +124,10 @@ abstract class _$$TransactionModelImplCopyWith<$Res>
       String description,
       String dateTime,
       String transactionAmount,
-      String category,
       String source,
-      String attachmentUrl});
+      String attachmentUrl,
+      TransactionCategory category,
+      TransactionType type});
 }
 
 /// @nodoc
@@ -137,9 +145,10 @@ class __$$TransactionModelImplCopyWithImpl<$Res>
     Object? description = null,
     Object? dateTime = null,
     Object? transactionAmount = null,
-    Object? category = null,
     Object? source = null,
     Object? attachmentUrl = null,
+    Object? category = null,
+    Object? type = null,
   }) {
     return _then(_$TransactionModelImpl(
       title: null == title
@@ -158,10 +167,6 @@ class __$$TransactionModelImplCopyWithImpl<$Res>
           ? _value.transactionAmount
           : transactionAmount // ignore: cast_nullable_to_non_nullable
               as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
       source: null == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
@@ -170,6 +175,14 @@ class __$$TransactionModelImplCopyWithImpl<$Res>
           ? _value.attachmentUrl
           : attachmentUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as TransactionCategory,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TransactionType,
     ));
   }
 }
@@ -182,9 +195,10 @@ class _$TransactionModelImpl implements _TransactionModel {
       required this.description,
       required this.dateTime,
       required this.transactionAmount,
-      required this.category,
       required this.source,
-      required this.attachmentUrl});
+      required this.attachmentUrl,
+      this.category = TransactionCategory.other,
+      this.type = TransactionType.out});
 
   factory _$TransactionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TransactionModelImplFromJson(json);
@@ -198,15 +212,19 @@ class _$TransactionModelImpl implements _TransactionModel {
   @override
   final String transactionAmount;
   @override
-  final String category;
-  @override
   final String source;
   @override
   final String attachmentUrl;
+  @override
+  @JsonKey()
+  final TransactionCategory category;
+  @override
+  @JsonKey()
+  final TransactionType type;
 
   @override
   String toString() {
-    return 'TransactionModel(title: $title, description: $description, dateTime: $dateTime, transactionAmount: $transactionAmount, category: $category, source: $source, attachmentUrl: $attachmentUrl)';
+    return 'TransactionModel(title: $title, description: $description, dateTime: $dateTime, transactionAmount: $transactionAmount, source: $source, attachmentUrl: $attachmentUrl, category: $category, type: $type)';
   }
 
   @override
@@ -221,17 +239,18 @@ class _$TransactionModelImpl implements _TransactionModel {
                 other.dateTime == dateTime) &&
             (identical(other.transactionAmount, transactionAmount) ||
                 other.transactionAmount == transactionAmount) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
             (identical(other.source, source) || other.source == source) &&
             (identical(other.attachmentUrl, attachmentUrl) ||
-                other.attachmentUrl == attachmentUrl));
+                other.attachmentUrl == attachmentUrl) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, title, description, dateTime,
-      transactionAmount, category, source, attachmentUrl);
+      transactionAmount, source, attachmentUrl, category, type);
 
   @JsonKey(ignore: true)
   @override
@@ -254,9 +273,10 @@ abstract class _TransactionModel implements TransactionModel {
       required final String description,
       required final String dateTime,
       required final String transactionAmount,
-      required final String category,
       required final String source,
-      required final String attachmentUrl}) = _$TransactionModelImpl;
+      required final String attachmentUrl,
+      final TransactionCategory category,
+      final TransactionType type}) = _$TransactionModelImpl;
 
   factory _TransactionModel.fromJson(Map<String, dynamic> json) =
       _$TransactionModelImpl.fromJson;
@@ -270,11 +290,13 @@ abstract class _TransactionModel implements TransactionModel {
   @override
   String get transactionAmount;
   @override
-  String get category;
-  @override
   String get source;
   @override
   String get attachmentUrl;
+  @override
+  TransactionCategory get category;
+  @override
+  TransactionType get type;
   @override
   @JsonKey(ignore: true)
   _$$TransactionModelImplCopyWith<_$TransactionModelImpl> get copyWith =>
