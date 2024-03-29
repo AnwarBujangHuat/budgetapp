@@ -27,6 +27,7 @@ dependencies:
   hooks_riverpod: ^2.3.8
   intl: ^0.18.1
   riverpod_annotation: ^2.3.4
+  riverpod_lint: ^2.3.10
   shimmer: ^3.0.0
 
 dev_dependencies:
@@ -36,7 +37,6 @@ dev_dependencies:
     sdk: flutter
   json_serializable: ^6.7.1
   riverpod_generator: ^2.3.11
-  riverpod_lint: ^2.3.9
 
 flutter:
   uses-material-design: true

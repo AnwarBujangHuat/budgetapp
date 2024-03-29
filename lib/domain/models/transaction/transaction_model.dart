@@ -13,6 +13,7 @@ class TransactionModel with _$TransactionModel {
     required String transactionAmount,
     required String source,
     required String attachmentUrl,
+    @Default(null) int? goalTagId,
     @Default(TransactionCategory.other) TransactionCategory category,
     @Default(TransactionType.out) TransactionType type,
   }) = _TransactionModel;

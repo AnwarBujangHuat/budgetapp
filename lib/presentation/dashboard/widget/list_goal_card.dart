@@ -1,6 +1,6 @@
 import 'package:budgetapp/app/app_style.dart';
-import 'package:budgetapp/common/transaction/viewmodel/transaction_viewmodel.dart';
 import 'package:budgetapp/common/utils/utils.dart';
+import 'package:budgetapp/common/viewmodel/goals/goals_viewmodel.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/custom_icon.dart';
 import 'package:budgetapp/common/widgets/text/header.dart';
@@ -15,7 +15,7 @@ class IBGoalListWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ref.watch(transactionViewmodelProvider).when(
+    return ref.watch(goalsViewmodelProvider).when(
           loading: () => const Text('Loading'),
           data: (dataList) => Column(
             crossAxisAlignment: CrossAxisAlignment.start,

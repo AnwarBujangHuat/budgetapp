@@ -107,6 +107,7 @@
             "transactionAmount": "300",
             "category": "other",
             "source": "Client",
+            "goalTagId": 0,
             "attachmentUrl": "https://example.com/image11.png",
             "type": "income"
         },
@@ -117,6 +118,7 @@
             "transactionAmount": "50",
             "category": "other",
             "source": "Family",
+            "goalTagId": 0,
             "attachmentUrl": "https://example.com/image12.png",
             "type": "income"
         }

@@ -3,16 +3,19 @@ import 'package:budgetapp/domain/http/app_exception.dart';
 import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+part 'transaction_repository.g.dart';
 
-final expansesRepositoryProvider = Provider((ref) => ExpansesRepository(ref));
+@Riverpod(keepAlive: true)
+TransactionRepository transactionsRepository(TransactionsRepositoryRef ref) {
+  return TransactionRepository(ref);
+}
 
-class ExpansesRepository {
-  ExpansesRepository(this._ref);
-  //use this to read api
+class TransactionRepository {
+  TransactionRepository(this._ref);
 
   final Ref _ref;
-  final List<TransactionModel> transactionRecords = [];
-
+  final List<TransactionModel> transactionsRecords = [];
   Future<Either<AppException, List<TransactionModel>>> getAllExpanses() async {
     try {
       List<TransactionModel> transactionRecords = [];
