@@ -264,7 +264,6 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
   String? _acLabel;
 
   final List<String?> _nums = List.filled(10, '', growable: false);
-  final _baseStyle = const TextStyle(fontSize: 26);
 
   /// This allows a value of type T or T?
   /// to be treated as a value of type T?.
@@ -469,28 +468,32 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
         return KeyEventResult.ignored;
       },
       descendantsAreFocusable: false,
-      child: GestureDetector(
-        onTap: () {
-          _focusNode.requestFocus();
-        },
-        child: Column(children: <Widget>[
-          Expanded(
-            child: _CalcDisplay(
-              hideSurroundingBorder: widget.hideSurroundingBorder,
-              hideExpression: widget.hideExpression,
-              onTappedDisplay: (a, b) {
-                _focusNode.requestFocus();
-                widget.onTappedDisplay?.call(a, b);
-              },
-              theme: widget.theme,
-              controller: _controller,
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * .8,
+        child: GestureDetector(
+          onTap: () {
+            _focusNode.requestFocus();
+          },
+          child: Column(children: <Widget>[
+            Expanded(
+              flex: 2,
+              child: _CalcDisplay(
+                hideSurroundingBorder: widget.hideSurroundingBorder,
+                hideExpression: widget.hideExpression,
+                onTappedDisplay: (a, b) {
+                  _focusNode.requestFocus();
+                  widget.onTappedDisplay?.call(a, b);
+                },
+                theme: widget.theme,
+                controller: _controller,
+              ),
             ),
-          ),
-          Expanded(
-            flex: 5,
-            child: _getButtons(),
-          ),
-        ]),
+            Expanded(
+              flex: 10,
+              child: _getButtons(),
+            ),
+          ]),
+        ),
       ),
     );
   }
@@ -544,54 +547,80 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
   }
 
   Widget _getButtons() {
-    return Column(
-      children: _getItems().map((rowItems) {
-        return Row(
-          children: rowItems.map((button) {
-            return Expanded(
-              child: Container(
-                height: 60,
-                child: TextButton(
-                  onPressed: () => _onButtonPressed(button.data ?? ''),
-                  child: button,
-                ),
+    return GridView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.all(8),
+      itemCount: 20,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 4,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
+      ),
+      itemBuilder: (context, index) {
+        List<Text> button = _getTextItems();
+        return TextButton(
+            style: ButtonStyle(
+              padding: MaterialStateProperty.all<EdgeInsets>(
+                  EdgeInsets.zero), // Remove padding
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  Colors.transparent), // Make background transparent
+              overlayColor: MaterialStateProperty.all<Color>(
+                  Colors.grey[400]!), // Change overlay color
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100),
+                    side: BorderSide(
+                        color: Colors.grey[400]!)), // Add border side
               ),
-            );
-          }).toList(),
-        );
-      }).toList(),
+            ),
+            onPressed: () => _onButtonPressed(button[index].data ?? ''),
+            child: button[index]);
+      },
     );
   }
 
-  List<List<Text>> _getItems() {
+  List<Text> _getTextItems() {
     return [
-      [_acLabel, '→', _controller.numberFormat.symbols.PERCENT, '÷'],
-      [_nums[7], _nums[8], _nums[9], '×'],
-      [_nums[4], _nums[5], _nums[6], '-'],
-      [_nums[1], _nums[2], _nums[3], '+'],
-      [_nums[0], _controller.numberFormat.symbols.DECIMAL_SEP, '±', '='],
-    ].map((items) {
-      return items.map((title) {
-        TextStyle style = TextStyle(
-            color: AppColors.darkBlue, fontSize: FontSize.mediumTitle);
-        if (title == '=' ||
-            title == '+' ||
-            title == '-' ||
-            title == '×' ||
-            title == '÷') {
-          style = style.copyWith(fontSize: FontSize.largeTitle);
-        }
-        if (title == _controller.numberFormat.symbols.PERCENT ||
-            title == '→' ||
-            title == 'C' ||
-            title == 'AC') {
-          style = style;
-        }
-        return Text(
-          title ?? '',
-          style: style,
-        );
-      }).toList();
+      _acLabel,
+      '→',
+      _controller.numberFormat.symbols.PERCENT,
+      '÷',
+      _nums[7],
+      _nums[8],
+      _nums[9],
+      '×',
+      _nums[4],
+      _nums[5],
+      _nums[6],
+      '-',
+      _nums[1],
+      _nums[2],
+      _nums[3],
+      '+',
+      _controller.numberFormat.symbols.DECIMAL_SEP,
+      _nums[0],
+      '±',
+      '='
+    ].map((title) {
+      TextStyle style =
+          TextStyle(color: AppColors.darkBlue, fontSize: FontSize.mediumTitle);
+      if (title == '=' ||
+          title == '+' ||
+          title == '-' ||
+          title == '×' ||
+          title == '÷') {
+        style = style.copyWith(fontSize: FontSize.largeTitle);
+      }
+      if (title == _controller.numberFormat.symbols.PERCENT ||
+          title == '→' ||
+          title == 'C' ||
+          title == 'AC') {
+        style = style;
+      }
+      return Text(
+        title ?? '',
+        style: style,
+      );
     }).toList();
   }
 }
@@ -613,13 +642,12 @@ class _CalcDisplay extends StatefulWidget {
   final Function(double?, TapDownDetails)? onTappedDisplay;
 
   const _CalcDisplay({
-    Key? key,
+    required this.onTappedDisplay,
+    required this.controller,
     this.hideSurroundingBorder,
     this.hideExpression,
-    required this.onTappedDisplay,
     this.theme,
-    required this.controller,
-  }) : super(key: key);
+  });
 
   @override
   _CalcDisplayState createState() => _CalcDisplayState();

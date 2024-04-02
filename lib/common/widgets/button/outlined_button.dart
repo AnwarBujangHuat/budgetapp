@@ -23,6 +23,7 @@ class IBOutlinedButton extends StatelessWidget {
             children: [
               icon,
               Text(
+                textAlign: TextAlign.center,
                 title,
                 style: theme.textTheme.bodyMedium!.copyWith(
                     color: AppColors.white, fontWeight: FontWeight.bold),

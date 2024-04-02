@@ -1,4 +1,5 @@
 import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/common/widgets/button/outlined_button.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/calculator/calculator.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,30 @@ class TransactionPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: Center(
-        child: IBCalculatorWidget(),
+      bottomSheet: IBCalculatorWidget(),
+      body: Column(
+        children: [
+          Container(
+            color: AppColors.darkBlue,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  child: IBOutlinedButton(
+                    title: 'Meow',
+                    onTap: () {},
+                  ),
+                ),
+                Expanded(
+                  child: IBOutlinedButton(
+                    title: 'Meow',
+                    onTap: () {},
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
       appBar: AppBar(
         centerTitle: true,
