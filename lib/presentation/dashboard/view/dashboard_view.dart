@@ -1,5 +1,6 @@
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/const/const.dart';
+import 'package:budgetapp/common/widgets/button/transaction_type_button.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/presentation/dashboard/widget/expanded_fab.dart';
 import 'package:budgetapp/presentation/dashboard/widget/line_chart.dart';
@@ -79,9 +80,6 @@ class MyHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
 
-    String selectedValue = ref.watch(selectedButtonProvider) ??
-        AppLocalizations.of(context)!.expenses;
-
     final selectedPeriod = ref.watch(selectedPeriodProvider);
 
     double screenWidth = MediaQuery.of(context).size.width;
@@ -127,54 +125,7 @@ class MyHeader extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        final selectedButton = ref.read(selectedButtonProvider);
-                        ref.read(selectedButtonProvider.notifier).state =
-                            selectedButton ==
-                                    AppLocalizations.of(context)!.income
-                                ? AppLocalizations.of(context)!.expenses
-                                : AppLocalizations.of(context)!.income;
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: selectedValue !=
-                                    AppLocalizations.of(context)!.income
-                                ? AppColors.lightRed
-                                : AppColors.lighterGreen,
-                          ),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Wrap(
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              Text(
-                                selectedValue,
-                                style: TextStyle(
-                                  color: selectedValue !=
-                                          AppLocalizations.of(context)!.income
-                                      ? AppColors.lightRed
-                                      : AppColors.lighterGreen,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const IBSizedW05(),
-                              Icon(
-                                Icons.compare_arrows,
-                                size: 16,
-                                color: selectedValue !=
-                                        AppLocalizations.of(context)!.income
-                                    ? AppColors.lightRed
-                                    : AppColors.lightGreen,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                    IBTransactionTypeWidget()
                   ],
                 ),
                 IBPieChartWidget()
@@ -192,14 +143,12 @@ class MyLineChartWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    String selectedValue = ref.watch(selectedButtonProvider) ??
-        AppLocalizations.of(context)!.expenses;
+    TransactionType selectedValue = ref.watch(selectedButtonProvider);
 
     return SizedBox(
       height: 200,
-      child: LineChartWidget(
-        isExpenses: selectedValue == AppLocalizations.of(context)!.income,
-      ),
+      child:
+          LineChartWidget(isExpenses: selectedValue == TransactionType.income),
     );
   }
 }

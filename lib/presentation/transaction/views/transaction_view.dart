@@ -1,7 +1,9 @@
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/widgets/button/outlined_button.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
+import 'package:budgetapp/common/widgets/button/transaction_type_button.dart';
 import 'package:budgetapp/common/widgets/calculator/calculator.dart';
+import 'package:budgetapp/presentation/dashboard/widget/sized_boxes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -17,21 +19,18 @@ class TransactionPage extends ConsumerWidget {
         children: [
           Container(
             color: AppColors.darkBlue,
+            padding: EdgeInsets.all(4),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Expanded(
                   child: IBOutlinedButton(
-                    title: 'Meow',
+                    title: 'Category',
                     onTap: () {},
                   ),
                 ),
-                Expanded(
-                  child: IBOutlinedButton(
-                    title: 'Meow',
-                    onTap: () {},
-                  ),
-                )
+                IBSizedW05(),
+                Expanded(child: IBTransactionTypeWidget())
               ],
             ),
           ),
