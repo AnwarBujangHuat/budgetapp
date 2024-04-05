@@ -37,9 +37,9 @@ class IBTranscationListWidget extends ConsumerWidget {
                 return transactionList.isEmpty
                     ? IBCard(
                         title: 'Add New Transaction',
-                        icon: IBIcon(
+                        icon: IconWidget(
                           iconData: Icons.add,
-                          backgroundColor: AppColors.slateBlue,
+                          color: AppColors.slateBlue,
                         ),
                         description: 'No Transaction Record Found')
                     : ListView.builder(
@@ -50,7 +50,7 @@ class IBTranscationListWidget extends ConsumerWidget {
                           onPressed: () {},
                           title: transactionList[index].title,
                           date: transactionList[index].dateTime,
-                          category: transactionList[index].category,
+                          tagId: transactionList[index].tagId,
                           type: transactionList[index].type,
                           expenses: double.parse(
                               transactionList[index].transactionAmount),
@@ -71,7 +71,7 @@ class IBTranscationListWidget extends ConsumerWidget {
   }
 }
 
-class IBTransactionCard extends StatelessWidget {
+class IBTransactionCard extends ConsumerWidget {
   const IBTransactionCard({
     required this.onPressed,
     required this.title,
@@ -79,22 +79,22 @@ class IBTransactionCard extends StatelessWidget {
     required this.expenses,
     super.key,
     this.type = TransactionType.income,
-    this.category = TransactionCategory.other,
+    this.tagId = 0,
   });
   final VoidCallback onPressed;
   final String title;
   final DateTime date;
   final double expenses;
-  final TransactionCategory category;
+  final int tagId;
   final TransactionType type;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     ThemeData currentTheme = Theme.of(context);
     return ListTile(
       minVerticalPadding: 0,
       dense: true,
-      leading: getCategoryIcon(category: category),
+      leading: IBIcon(tagId: tagId),
       contentPadding: const EdgeInsets.symmetric(horizontal: 8),
       title: Text(title, style: currentTheme.textTheme.titleSmall),
       subtitle: Text(formatDate(dateTime: date),

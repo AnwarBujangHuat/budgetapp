@@ -263,7 +263,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
   late FocusNode _focusNode;
   String? _acLabel;
 
-  final List<String?> _nums = List.filled(10, '', growable: false);
+  final List<String?> _nums = List.filled(10, '');
 
   /// This allows a value of type T or T?
   /// to be treated as a value of type T?.
@@ -870,7 +870,9 @@ class CalcExpression {
   num operate() {
     try {
       return evaluator.eval(Expression.parse(internal), {}) as num;
-    } catch (e) {}
+    } on Exception {
+      //
+    }
     return double.nan;
   }
 
@@ -902,7 +904,7 @@ class CalcExpression {
     if (_op == '+' || _op == '-') {
       base = evaluator.eval(Expression.parse(_lefInternal!), {}) as double;
     }
-    var val = base! * percent / 100;
+    var val = base * percent / 100;
     if (_op == null) {
       _left = value = string;
       _lefInternal = internal = val.toString();

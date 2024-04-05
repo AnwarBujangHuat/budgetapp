@@ -52,9 +52,9 @@ class IBGoalListWidget extends ConsumerWidget {
                         )
                       : IBCard(
                           title: 'Setup Goals',
-                          icon: IBIcon(
+                          icon: IconWidget(
                             iconData: Icons.add,
-                            backgroundColor: AppColors.slateBlue,
+                            color: AppColors.slateBlue,
                           ),
                           description: 'No Goal Record Found')),
               const IBSizedH10(),

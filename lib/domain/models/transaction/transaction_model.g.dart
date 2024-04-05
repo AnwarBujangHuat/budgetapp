@@ -15,10 +15,8 @@ _$TransactionModelImpl _$$TransactionModelImplFromJson(
       transactionAmount: json['transactionAmount'] as String,
       source: json['source'] as String,
       attachmentUrl: json['attachmentUrl'] as String,
-      goalTagId: json['goalTagId'] as int? ?? null,
-      category:
-          $enumDecodeNullable(_$TransactionCategoryEnumMap, json['category']) ??
-              TransactionCategory.other,
+      tagId: json['tagId'] as int,
+      goalTagId: json['goalTagId'] as int? ?? 0,
       type: $enumDecodeNullable(_$TransactionTypeEnumMap, json['type']) ??
           TransactionType.out,
     );
@@ -32,23 +30,10 @@ Map<String, dynamic> _$$TransactionModelImplToJson(
       'transactionAmount': instance.transactionAmount,
       'source': instance.source,
       'attachmentUrl': instance.attachmentUrl,
+      'tagId': instance.tagId,
       'goalTagId': instance.goalTagId,
-      'category': _$TransactionCategoryEnumMap[instance.category]!,
       'type': _$TransactionTypeEnumMap[instance.type]!,
     };
-
-const _$TransactionCategoryEnumMap = {
-  TransactionCategory.grocery: 'grocery',
-  TransactionCategory.travel: 'travel',
-  TransactionCategory.utilities: 'utilities',
-  TransactionCategory.rent: 'rent',
-  TransactionCategory.entertainment: 'entertainment',
-  TransactionCategory.dining: 'dining',
-  TransactionCategory.healthcare: 'healthcare',
-  TransactionCategory.education: 'education',
-  TransactionCategory.clothing: 'clothing',
-  TransactionCategory.other: 'other',
-};
 
 const _$TransactionTypeEnumMap = {
   TransactionType.income: 'income',

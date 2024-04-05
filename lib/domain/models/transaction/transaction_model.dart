@@ -1,8 +1,8 @@
 import 'package:budgetapp/common/const/const.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'transaction_model.g.dart';
 part 'transaction_model.freezed.dart';
+part 'transaction_model.g.dart';
 
 @freezed
 class TransactionModel with _$TransactionModel {
@@ -13,8 +13,8 @@ class TransactionModel with _$TransactionModel {
     required String transactionAmount,
     required String source,
     required String attachmentUrl,
-    @Default(null) int? goalTagId,
-    @Default(TransactionCategory.other) TransactionCategory category,
+    required int tagId,
+    @Default(0) int goalTagId,
     @Default(TransactionType.out) TransactionType type,
   }) = _TransactionModel;
 

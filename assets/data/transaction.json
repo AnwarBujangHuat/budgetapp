@@ -8,7 +8,8 @@
             "category": "grocery",
             "source": "Supermarket",
             "attachmentUrl": "https://example.com/image1.png",
-            "type": "out"
+            "type": "out",
+            "tagId": 1
         },
         {
             "title": "Weekend Getaway",
@@ -18,7 +19,8 @@
             "category": "travel",
             "source": "Travel Agency",
             "attachmentUrl": "https://example.com/image2.png",
-            "type": "out"
+            "type": "out",
+            "tagId": 3
         },
         {
             "title": "Electricity Bill",
@@ -28,7 +30,8 @@
             "category": "utilities",
             "source": "Utility Company",
             "attachmentUrl": "https://example.com/image3.png",
-            "type": "out"
+            "type": "out",
+            "tagId": 5
         },
         {
             "title": "Rent Payment",
@@ -38,7 +41,8 @@
             "category": "rent",
             "source": "Landlord",
             "attachmentUrl": "https://example.com/image4.png",
-            "type": "out"
+            "type": "out",
+            "tagId": 7
         },
         {
             "title": "Movie Night",
@@ -48,7 +52,8 @@
             "category": "entertainment",
             "source": "Cinema",
             "attachmentUrl": "https://example.com/image5.png",
-            "type": "out"
+            "type": "out",
+            "tagId": 9
         },
         {
             "title": "Dinner with Friends",
@@ -58,7 +63,8 @@
             "category": "dining",
             "source": "Restaurant",
             "attachmentUrl": "https://example.com/image6.png",
-            "type": "out"
+            "type": "out",
+            "tagId": 11
         },
         {
             "title": "Doctor's Appointment",
@@ -68,7 +74,8 @@
             "category": "healthcare",
             "source": "Hospital",
             "attachmentUrl": "https://example.com/image7.png",
-            "type": "out"
+            "type": "out",
+            "tagId": 13
         },
         {
             "title": "Textbook Purchase",
@@ -78,7 +85,8 @@
             "category": "education",
             "source": "Bookstore",
             "attachmentUrl": "https://example.com/image8.png",
-            "type": "out"
+            "type": "out",
+            "tagId": 15
         },
         {
             "title": "New Jacket",
@@ -88,7 +96,8 @@
             "category": "clothing",
             "source": "Clothing Store",
             "attachmentUrl": "https://example.com/image9.png",
-            "type": "out"
+            "type": "out",
+            "tagId": 17
         },
         {
             "title": "Miscellaneous Expense",
@@ -98,7 +107,8 @@
             "category": "other",
             "source": "N/A",
             "attachmentUrl": "https://example.com/image10.png",
-            "type": "out"
+            "type": "out",
+            "tagId": 19
         },
         {
             "title": "Freelance Payment",
@@ -109,7 +119,8 @@
             "source": "Client",
             "goalTagId": 0,
             "attachmentUrl": "https://example.com/image11.png",
-            "type": "income"
+            "type": "income",
+            "tagId": 19
         },
         {
             "title": "Gift from Family",
@@ -120,7 +131,8 @@
             "source": "Family",
             "goalTagId": 0,
             "attachmentUrl": "https://example.com/image12.png",
-            "type": "income"
+            "type": "income",
+            "tagId": 19
         }
     ]
 }
