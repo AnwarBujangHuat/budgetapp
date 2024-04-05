@@ -27,21 +27,17 @@ class IBIcon extends ConsumerWidget {
 
         IconModel icon = currentTag.icon;
 
-        return CircleAvatar(
+        return IconWidget(
+          iconData: IconData(icon.codePaint, fontFamily: icon.fontFamily),
+          size: size,
           backgroundColor: getColorFromHex(currentTag.color),
-          radius: size / 2,
-          child: Icon(
-            IconData(icon.codePaint, fontFamily: icon.fontFamily),
-            color: Colors.white,
-            size: size * 0.6, // Adjust icon size as needed
-          ),
         );
       },
       error: (error) {
         return IconWidget(
           iconData: Icons.error,
           size: size,
-          color: AppColors.lightRed,
+          backgroundColor: AppColors.lightRed,
         );
       },
       loading: (loading) {
@@ -49,7 +45,7 @@ class IBIcon extends ConsumerWidget {
             child: IconWidget(
               iconData: Icons.error,
               size: size,
-              color: AppColors.lightRed,
+              backgroundColor: AppColors.lightRed,
             ),
             baseColor: currentTheme.cardColor.withAlpha(1),
             highlightColor: currentTheme.cardColor.withAlpha(1));
@@ -60,15 +56,18 @@ class IBIcon extends ConsumerWidget {
 
 class IconWidget extends StatelessWidget {
   const IconWidget(
-      {required this.iconData, this.size = 32.0, super.key, this.color});
-  final Color? color;
+      {required this.iconData,
+      this.size = 32.0,
+      super.key,
+      this.backgroundColor});
+  final Color? backgroundColor;
   final IconData iconData;
   final double size;
 
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundColor: color,
+      backgroundColor: backgroundColor,
       radius: size / 2,
       child: Icon(
         iconData,

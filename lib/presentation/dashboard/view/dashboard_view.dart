@@ -111,7 +111,7 @@ class MyHeader extends ConsumerWidget {
                       children: [
                         Text(
                           ref.watch(selectedButtonProvider) !=
-                                  AppLocalizations.of(context)!.income
+                                  TransactionType.income
                               ? AppLocalizations.of(context)!.totalExpenses
                               : AppLocalizations.of(context)!.totalIncome,
                           style: theme.textTheme.titleSmall!

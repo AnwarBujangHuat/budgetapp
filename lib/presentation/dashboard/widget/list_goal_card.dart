@@ -2,7 +2,7 @@ import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/utils/utils.dart';
 import 'package:budgetapp/common/viewmodel/goals/goals_viewmodel.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
-import 'package:budgetapp/common/widgets/custom_icon.dart';
+import 'package:budgetapp/common/widgets/icons/custom_icon.dart';
 import 'package:budgetapp/common/widgets/text/header.dart';
 import 'package:budgetapp/presentation/dashboard/widget/sized_boxes.dart';
 import 'package:budgetapp/shared/card/card.dart';
@@ -54,7 +54,7 @@ class IBGoalListWidget extends ConsumerWidget {
                           title: 'Setup Goals',
                           icon: IconWidget(
                             iconData: Icons.add,
-                            color: AppColors.slateBlue,
+                            backgroundColor: AppColors.slateBlue,
                           ),
                           description: 'No Goal Record Found')),
               const IBSizedH10(),

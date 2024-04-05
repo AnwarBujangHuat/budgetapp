@@ -1,5 +1,6 @@
 import 'package:budgetapp/app/app_style.dart';
-import 'package:budgetapp/common/const/const.dart';
+import 'package:budgetapp/common/utils/utils.dart';
+import 'package:budgetapp/common/viewmodel/tag/tag_viewmodel.dart';
 import 'package:budgetapp/common/viewmodel/transaction/transaction_viewmodel.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,11 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
   Widget build(BuildContext context) {
     return ref.watch(transactionViewmodelProvider).when(
       data: (data) {
-        return Container();
+        return Container(
+          height: 100,
+          color: getColorFromHex(
+              ref.read(tagViewmodelProvider.notifier).getTagColor(tagId: 1)),
+        );
       },
       error: (error, stackTrace) {
         return Container();

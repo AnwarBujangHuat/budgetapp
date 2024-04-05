@@ -24,7 +24,11 @@ class TagViewmodel extends _$TagViewmodel {
     );
   }
 
-  Future<void> insertNewTag() async {
+  Future<void> insertNewTag({required int tagId}) async {
     state = const AsyncLoading();
+  }
+
+  String getTagColor({required int tagId}) {
+    return ref.read(tagRepositoryProvider).getTagColor(tagId: tagId);
   }
 }

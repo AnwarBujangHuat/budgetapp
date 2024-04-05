@@ -3,7 +3,7 @@ import 'package:budgetapp/common/const/const.dart';
 import 'package:budgetapp/common/utils/utils.dart';
 import 'package:budgetapp/common/viewmodel/transaction/transaction_viewmodel.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
-import 'package:budgetapp/common/widgets/custom_icon.dart';
+import 'package:budgetapp/common/widgets/icons/custom_icon.dart';
 import 'package:budgetapp/common/widgets/text/header.dart';
 import 'package:budgetapp/shared/card/card.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +39,7 @@ class IBTranscationListWidget extends ConsumerWidget {
                         title: 'Add New Transaction',
                         icon: IconWidget(
                           iconData: Icons.add,
-                          color: AppColors.slateBlue,
+                          backgroundColor: AppColors.slateBlue,
                         ),
                         description: 'No Transaction Record Found')
                     : ListView.builder(
