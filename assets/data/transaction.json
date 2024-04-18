@@ -64,7 +64,7 @@
             "source": "Restaurant",
             "attachmentUrl": "https://example.com/image6.png",
             "type": "out",
-            "tagId": 11
+            "tagId": 8
         },
         {
             "title": "Doctor's Appointment",
@@ -75,7 +75,7 @@
             "source": "Hospital",
             "attachmentUrl": "https://example.com/image7.png",
             "type": "out",
-            "tagId": 13
+            "tagId": 1
         },
         {
             "title": "Textbook Purchase",
@@ -86,7 +86,7 @@
             "source": "Bookstore",
             "attachmentUrl": "https://example.com/image8.png",
             "type": "out",
-            "tagId": 15
+            "tagId": 8
         },
         {
             "title": "New Jacket",
@@ -97,7 +97,7 @@
             "source": "Clothing Store",
             "attachmentUrl": "https://example.com/image9.png",
             "type": "out",
-            "tagId": 17
+            "tagId": 7
         },
         {
             "title": "Miscellaneous Expense",
@@ -108,7 +108,7 @@
             "source": "N/A",
             "attachmentUrl": "https://example.com/image10.png",
             "type": "out",
-            "tagId": 19
+            "tagId": 4
         },
         {
             "title": "Freelance Payment",
@@ -120,7 +120,7 @@
             "goalTagId": 0,
             "attachmentUrl": "https://example.com/image11.png",
             "type": "income",
-            "tagId": 19
+            "tagId": 1
         },
         {
             "title": "Gift from Family",
@@ -132,7 +132,7 @@
             "goalTagId": 0,
             "attachmentUrl": "https://example.com/image12.png",
             "type": "income",
-            "tagId": 19
+            "tagId": 2
         }
     ]
 }
