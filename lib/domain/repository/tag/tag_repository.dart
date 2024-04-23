@@ -32,12 +32,4 @@ class TagRepository {
   }
 
   Future<List<TagModel>> addElement({required String tagId}) async => [];
-  String getTagColor({required int tagId}) {
-    for (var tag in tagsList) {
-      if (tag.tagId == tagId) {
-        return tag.color;
-      }
-    }
-    return '';
-  }
 }

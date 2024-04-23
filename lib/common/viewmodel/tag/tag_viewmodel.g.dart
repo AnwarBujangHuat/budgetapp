@@ -6,7 +6,7 @@ part of 'tag_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tagViewmodelHash() => r'2ea5728e4a3be8e7629a70b16e0dbb9a2aa42732';
+String _$tagViewmodelHash() => r'f052b4d754aa44ef50a3dd8974063838200387ab';
 
 /// See also [TagViewmodel].
 @ProviderFor(TagViewmodel)

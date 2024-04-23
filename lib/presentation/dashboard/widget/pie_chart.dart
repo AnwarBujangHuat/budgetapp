@@ -3,6 +3,7 @@ import 'package:budgetapp/common/utils/utils.dart';
 import 'package:budgetapp/common/viewmodel/tag/tag_viewmodel.dart';
 import 'package:budgetapp/common/viewmodel/transaction/transaction_viewmodel.dart';
 import 'package:budgetapp/common/widgets/icons/custom_icon.dart';
+import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -20,8 +21,21 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
 
   @override
   Widget build(BuildContext context) {
+    List<PieChartSectionData> pieChartDataList = [];
     return ref.watch(transactionViewmodelProvider).when(
       data: (data) {
+        //Todo create a provider to handle all the colors
+        List<TagModel> tagList = ref.watch(tagViewmodelProvider).asData!.value;
+        for (int i = 0; i < data.length; i++) {
+          pieChartDataList.add(pieChartData(
+              value: double.parse(data[i].transactionAmount),
+              tagId: data[i].tagId,
+              color: getColorFromHex(tagList
+                  .firstWhere((element) => element.tagId == data[i].tagId)
+                  .color),
+              isTouched: touchedIndex == i));
+        }
+
         return AspectRatio(
           aspectRatio: 1.8,
           child: Row(
@@ -51,16 +65,7 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
                       sectionsSpace: 0,
                       centerSpaceRadius: 40,
                       startDegreeOffset: 180,
-                      sections: [
-                        for (int i = 0; i < data.length; i++)
-                          pieChartData(
-                              value: double.parse(data[i].transactionAmount),
-                              tagId: data[i].tagId,
-                              color: getColorFromHex(ref
-                                  .read(tagViewmodelProvider.notifier)
-                                  .getTagColor(tagId: data[i].tagId)),
-                              isTouched: touchedIndex == i),
-                      ],
+                      sections: pieChartDataList,
                     ),
                   ),
                 ),

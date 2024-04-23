@@ -8,6 +8,7 @@ part 'tag_viewmodel.g.dart';
 class TagViewmodel extends _$TagViewmodel {
   @override
   Future<List<TagModel>> build() async {
+    print('COME HERE 0');
     final result = await ref.read(tagRepositoryProvider).getAllTags();
     return result.fold(
       (error) => throw Exception(error),
@@ -26,9 +27,5 @@ class TagViewmodel extends _$TagViewmodel {
 
   Future<void> insertNewTag({required int tagId}) async {
     state = const AsyncLoading();
-  }
-
-  String getTagColor({required int tagId}) {
-    return ref.read(tagRepositoryProvider).getTagColor(tagId: tagId);
   }
 }

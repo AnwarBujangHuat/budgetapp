@@ -1,6 +1,7 @@
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/const/const.dart';
 import 'package:budgetapp/common/widgets/button/transaction_type_button.dart';
+import 'package:budgetapp/domain/repository/tag/tag_repository.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/presentation/dashboard/widget/expanded_fab.dart';
 import 'package:budgetapp/presentation/dashboard/widget/line_chart.dart';
@@ -13,64 +14,79 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class DashboardView extends ConsumerWidget {
+class DashboardView extends ConsumerStatefulWidget {
   const DashboardView({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) => Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(AppLocalizations.of(context)!.dashboard),
-          automaticallyImplyLeading: false,
-          leading: GestureDetector(
-            child: const Icon(Icons.menu),
+  ConsumerState<ConsumerStatefulWidget> createState() => _DashboardViewState();
+}
+
+class _DashboardViewState extends ConsumerState<DashboardView> {
+  @override
+  void initState() {
+    print('COME HERE Init');
+
+    ref.read(tagRepositoryProvider);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(AppLocalizations.of(context)!.dashboard),
+        automaticallyImplyLeading: false,
+        leading: GestureDetector(
+          child: const Icon(Icons.menu),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.analytics_outlined,
+              color: Colors.white,
+            ),
+            onPressed: null,
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(
-                Icons.analytics_outlined,
-                color: Colors.white,
+        ],
+      ),
+      floatingActionButton: IBFlaotingFAB(
+        distance: 60,
+        children: [
+          ActionButton(
+            title: AppLocalizations.of(context)!.transaction,
+            onPressed: () async =>
+                {Navigator.pushNamed(context, RouteNames.transactionPage)},
+            icon: const Icon(Icons.attach_money),
+          ),
+          ActionButton(
+            title: 'Import Transaction',
+            onPressed: () => {},
+            icon: const Icon(Icons.attachment_sharp),
+          ),
+        ],
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async {},
+        child: ListView(
+          shrinkWrap: true,
+          children: const [
+            MyHeader(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IBTranscationListWidget(),
+                  IBGoalListWidget(),
+                ],
               ),
-              onPressed: null,
-            ),
+            )
           ],
         ),
-        floatingActionButton: IBFlaotingFAB(
-          distance: 60,
-          children: [
-            ActionButton(
-              title: AppLocalizations.of(context)!.transaction,
-              onPressed: () async =>
-                  {Navigator.pushNamed(context, RouteNames.transactionPage)},
-              icon: const Icon(Icons.attach_money),
-            ),
-            ActionButton(
-              title: 'Import Transaction',
-              onPressed: () => {},
-              icon: const Icon(Icons.attachment_sharp),
-            ),
-          ],
-        ),
-        body: RefreshIndicator(
-          onRefresh: () async {},
-          child: ListView(
-            shrinkWrap: true,
-            children: const [
-              MyHeader(),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    IBTranscationListWidget(),
-                    IBGoalListWidget(),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-      );
+      ),
+    );
+  }
 }
 
 class MyHeader extends ConsumerWidget {
