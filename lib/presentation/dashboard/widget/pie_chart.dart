@@ -24,15 +24,14 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
     List<PieChartSectionData> pieChartDataList = [];
     return ref.watch(transactionViewmodelProvider).when(
       data: (data) {
-        //Todo create a provider to handle all the colors
-        List<TagModel> tagList = ref.watch(tagViewmodelProvider).asData!.value;
+        List<TagModel> tagList =
+            ref.watch(tagViewmodelProvider).asData?.value ?? [];
+        //Do data processing here to map object with set
         for (int i = 0; i < data.length; i++) {
           pieChartDataList.add(pieChartData(
               value: double.parse(data[i].transactionAmount),
               tagId: data[i].tagId,
-              color: getColorFromHex(tagList
-                  .firstWhere((element) => element.tagId == data[i].tagId)
-                  .color),
+              color: getColorFromTag(tagId: data[i].tagId, tagList: tagList),
               isTouched: touchedIndex == i));
         }
 

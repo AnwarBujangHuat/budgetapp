@@ -24,8 +24,6 @@ class DashboardView extends ConsumerStatefulWidget {
 class _DashboardViewState extends ConsumerState<DashboardView> {
   @override
   void initState() {
-    print('COME HERE Init');
-
     ref.read(tagRepositoryProvider);
     super.initState();
   }

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
@@ -20,6 +21,17 @@ Color calculateProgressColor({required double value, required double total}) {
 Color getColorFromHex(String hexColor) {
   String color = hexColor.replaceAll('#', '');
   return Color(int.parse('0xFF$color'));
+}
+
+Color getColorFromTag({required int tagId, required List<TagModel> tagList}) {
+  String currentColor = 'FFFFF';
+  for (var tag in tagList) {
+    if (tag.tagId == tagId) {
+      currentColor = tag.color;
+      break;
+    }
+  }
+  return getColorFromHex(currentColor);
 }
 
 Future<Map<String, dynamic>> loadJsonFromAssets(String filePath) async {
