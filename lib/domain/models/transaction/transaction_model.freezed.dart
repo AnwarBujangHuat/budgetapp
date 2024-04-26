@@ -27,6 +27,7 @@ mixin _$TransactionModel {
   String get source => throw _privateConstructorUsedError;
   String get attachmentUrl => throw _privateConstructorUsedError;
   int get tagId => throw _privateConstructorUsedError;
+  int? get parentTagId => throw _privateConstructorUsedError;
   int get goalTagId => throw _privateConstructorUsedError;
   TransactionType get type => throw _privateConstructorUsedError;
 
@@ -50,6 +51,7 @@ abstract class $TransactionModelCopyWith<$Res> {
       String source,
       String attachmentUrl,
       int tagId,
+      int? parentTagId,
       int goalTagId,
       TransactionType type});
 }
@@ -74,6 +76,7 @@ class _$TransactionModelCopyWithImpl<$Res, $Val extends TransactionModel>
     Object? source = null,
     Object? attachmentUrl = null,
     Object? tagId = null,
+    Object? parentTagId = freezed,
     Object? goalTagId = null,
     Object? type = null,
   }) {
@@ -106,6 +109,10 @@ class _$TransactionModelCopyWithImpl<$Res, $Val extends TransactionModel>
           ? _value.tagId
           : tagId // ignore: cast_nullable_to_non_nullable
               as int,
+      parentTagId: freezed == parentTagId
+          ? _value.parentTagId
+          : parentTagId // ignore: cast_nullable_to_non_nullable
+              as int?,
       goalTagId: null == goalTagId
           ? _value.goalTagId
           : goalTagId // ignore: cast_nullable_to_non_nullable
@@ -134,6 +141,7 @@ abstract class _$$TransactionModelImplCopyWith<$Res>
       String source,
       String attachmentUrl,
       int tagId,
+      int? parentTagId,
       int goalTagId,
       TransactionType type});
 }
@@ -156,6 +164,7 @@ class __$$TransactionModelImplCopyWithImpl<$Res>
     Object? source = null,
     Object? attachmentUrl = null,
     Object? tagId = null,
+    Object? parentTagId = freezed,
     Object? goalTagId = null,
     Object? type = null,
   }) {
@@ -188,6 +197,10 @@ class __$$TransactionModelImplCopyWithImpl<$Res>
           ? _value.tagId
           : tagId // ignore: cast_nullable_to_non_nullable
               as int,
+      parentTagId: freezed == parentTagId
+          ? _value.parentTagId
+          : parentTagId // ignore: cast_nullable_to_non_nullable
+              as int?,
       goalTagId: null == goalTagId
           ? _value.goalTagId
           : goalTagId // ignore: cast_nullable_to_non_nullable
@@ -211,6 +224,7 @@ class _$TransactionModelImpl implements _TransactionModel {
       required this.source,
       required this.attachmentUrl,
       required this.tagId,
+      this.parentTagId = null,
       this.goalTagId = 0,
       this.type = TransactionType.out});
 
@@ -233,6 +247,9 @@ class _$TransactionModelImpl implements _TransactionModel {
   final int tagId;
   @override
   @JsonKey()
+  final int? parentTagId;
+  @override
+  @JsonKey()
   final int goalTagId;
   @override
   @JsonKey()
@@ -240,7 +257,7 @@ class _$TransactionModelImpl implements _TransactionModel {
 
   @override
   String toString() {
-    return 'TransactionModel(title: $title, description: $description, dateTime: $dateTime, transactionAmount: $transactionAmount, source: $source, attachmentUrl: $attachmentUrl, tagId: $tagId, goalTagId: $goalTagId, type: $type)';
+    return 'TransactionModel(title: $title, description: $description, dateTime: $dateTime, transactionAmount: $transactionAmount, source: $source, attachmentUrl: $attachmentUrl, tagId: $tagId, parentTagId: $parentTagId, goalTagId: $goalTagId, type: $type)';
   }
 
   @override
@@ -259,6 +276,8 @@ class _$TransactionModelImpl implements _TransactionModel {
             (identical(other.attachmentUrl, attachmentUrl) ||
                 other.attachmentUrl == attachmentUrl) &&
             (identical(other.tagId, tagId) || other.tagId == tagId) &&
+            (identical(other.parentTagId, parentTagId) ||
+                other.parentTagId == parentTagId) &&
             (identical(other.goalTagId, goalTagId) ||
                 other.goalTagId == goalTagId) &&
             (identical(other.type, type) || other.type == type));
@@ -266,8 +285,18 @@ class _$TransactionModelImpl implements _TransactionModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, dateTime,
-      transactionAmount, source, attachmentUrl, tagId, goalTagId, type);
+  int get hashCode => Object.hash(
+      runtimeType,
+      title,
+      description,
+      dateTime,
+      transactionAmount,
+      source,
+      attachmentUrl,
+      tagId,
+      parentTagId,
+      goalTagId,
+      type);
 
   @JsonKey(ignore: true)
   @override
@@ -293,6 +322,7 @@ abstract class _TransactionModel implements TransactionModel {
       required final String source,
       required final String attachmentUrl,
       required final int tagId,
+      final int? parentTagId,
       final int goalTagId,
       final TransactionType type}) = _$TransactionModelImpl;
 
@@ -313,6 +343,8 @@ abstract class _TransactionModel implements TransactionModel {
   String get attachmentUrl;
   @override
   int get tagId;
+  @override
+  int? get parentTagId;
   @override
   int get goalTagId;
   @override

@@ -4,10 +4,12 @@ import 'package:budgetapp/common/viewmodel/tag/tag_viewmodel.dart';
 import 'package:budgetapp/common/viewmodel/transaction/transaction_viewmodel.dart';
 import 'package:budgetapp/common/widgets/icons/custom_icon.dart';
 import 'package:budgetapp/domain/models/tags/tag_model.dart';
+import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+//TODO seperate the code to ensure theres no uncessary rerendring
 class IBPieChartWidget extends ConsumerStatefulWidget {
   const IBPieChartWidget({super.key});
 
@@ -17,7 +19,7 @@ class IBPieChartWidget extends ConsumerStatefulWidget {
 }
 
 class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
-  int touchedIndex = -1;
+  int touchedKey = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +28,39 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
       data: (data) {
         List<TagModel> tagList =
             ref.watch(tagViewmodelProvider).asData?.value ?? [];
+        final Map<int, List<TransactionModel>> _mapTransRecToParTag = {};
+
         //Do data processing here to map object with set
-        for (int i = 0; i < data.length; i++) {
+        for (var transaction in data) {
+          _mapTransRecToParTag[transaction.parentTagId ?? transaction.tagId] = [
+            ..._mapTransRecToParTag[
+                    transaction.parentTagId ?? transaction.tagId] ??
+                [],
+            transaction
+          ];
+        }
+        Map<int, double> key2Val = {};
+        _mapTransRecToParTag.forEach((key, value) {
+          for (var element in value) {
+            double curBalance = key2Val[key] ?? 0;
+            key2Val[key] =
+                (curBalance += double.parse(element.transactionAmount));
+          }
+        });
+//         var sortedEntries = key2Val.entries.toList()
+//           ..sort((a, b) => b.value.compareTo(a.value));
+//
+//         // Take only the top 5 entries
+//         var top5Entries = sortedEntries.take(5);
+
+        // Iterate through the top 5 entries and add them to pieChartDataList
+        for (var entry in key2Val.entries) {
           pieChartDataList.add(pieChartData(
-              value: double.parse(data[i].transactionAmount),
-              tagId: data[i].tagId,
-              color: getColorFromTag(tagId: data[i].tagId, tagList: tagList),
-              isTouched: touchedIndex == i));
+            value: entry.value,
+            tagId: entry.key,
+            color: getColorFromTag(tagId: entry.key, tagList: tagList),
+            isTouched: touchedKey == entry.key,
+          ));
         }
 
         return AspectRatio(
@@ -50,10 +78,10 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
                             if (!event.isInterestedForInteractions ||
                                 pieTouchResponse == null ||
                                 pieTouchResponse.touchedSection == null) {
-                              touchedIndex = -1;
+                              touchedKey = -1;
                               return;
                             }
-                            touchedIndex = pieTouchResponse
+                            touchedKey = pieTouchResponse
                                 .touchedSection!.touchedSectionIndex;
                           });
                         },
