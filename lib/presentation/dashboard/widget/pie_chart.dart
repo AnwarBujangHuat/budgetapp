@@ -55,6 +55,7 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
 
         // Iterate through the top 5 entries and add them to pieChartDataList
         for (var entry in key2Val.entries) {
+          print('Not $entry');
           pieChartDataList.add(pieChartData(
             value: entry.value,
             tagId: entry.key,

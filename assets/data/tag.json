@@ -28,7 +28,7 @@
                 "codePaint": 57454,
                 "fontFamily": "MaterialIcons"
             },
-            "color": "#FFFFD700"
+            "color": "#FFA79DF3"
         },
         {
             "tagId": 4,
@@ -48,7 +48,7 @@
                 "codePaint": 58236,
                 "fontFamily": "MaterialIcons"
             },
-            "color": "#FFA79DF3"
+            "color": "#FF64C4D6"
         },
         {
             "tagId": 6,
@@ -58,7 +58,7 @@
                 "codePaint": 58237,
                 "fontFamily": "MaterialIcons"
             },
-            "color": "#FFFA7F72"
+            "color": "#CC4F9360"
         },
         {
             "tagId": 7,
@@ -68,7 +68,7 @@
                 "codePaint": 58136,
                 "fontFamily": "MaterialIcons"
             },
-            "color": "#FF64C4D6"
+            "color": "#FF7E59B3"
         },
         {
             "tagId": 9,
@@ -78,7 +78,7 @@
                 "codePaint": 58267,
                 "fontFamily": "MaterialIcons"
             },
-            "color": "#FF7E59B3"
+            "color": "#FF282D49"
         },
         {
             "tagId": 10,
@@ -88,7 +88,17 @@
                 "codePaint": 57454,
                 "fontFamily": "MaterialIcons"
             },
-            "color": "#CC4F9360"
+            "color": "#CC8EFFA8"
+        },
+        {
+            "tagId": 11,
+            "tagName": "salary",
+            "parentTagId": null,
+            "icon": {
+                "codePaint": 58261,
+                "fontFamily": "MaterialIcons"
+            },
+            "color": "#FFFA7F72"
         }
     ]
 }
