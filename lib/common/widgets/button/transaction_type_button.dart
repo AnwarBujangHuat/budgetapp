@@ -25,7 +25,7 @@ class IBTransactionTypeWidget extends ConsumerWidget {
           border: Border.all(
             color: selectedButton != TransactionType.income
                 ? AppColors.lightRed
-                : AppColors.lighterGreen,
+                : AppColors.green,
           ),
           borderRadius: BorderRadius.circular(5),
         ),
@@ -41,7 +41,7 @@ class IBTransactionTypeWidget extends ConsumerWidget {
                 style: TextStyle(
                   color: selectedButton != TransactionType.income
                       ? AppColors.lightRed
-                      : AppColors.lighterGreen,
+                      : AppColors.green,
                   fontWeight: FontWeight.bold,
                 ),
               ),

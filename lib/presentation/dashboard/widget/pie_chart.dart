@@ -24,8 +24,8 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
   @override
   Widget build(BuildContext context) {
     List<PieChartSectionData> pieChartDataList = [];
-    Color textColor = Colors.white;
-    // Color textColor=AppColors.darkBlue;
+    // Color textColor = Colors.white;
+    Color textColor = AppColors.darkBlue;
     return ref.watch(transactionViewmodelProvider).when(
       data: (data) {
         List<TagModel> tagList =

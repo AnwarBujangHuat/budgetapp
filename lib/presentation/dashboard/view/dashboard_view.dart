@@ -116,7 +116,6 @@ class MyHeader extends ConsumerWidget {
               // ),
               // const IBSizedH20(),
               Card(
-                color: AppColors.darkBlue,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -134,12 +133,12 @@ class MyHeader extends ConsumerWidget {
                                           .totalExpenses
                                       : AppLocalizations.of(context)!
                                           .totalIncome,
-                                  style: theme.textTheme.titleSmall!
-                                      .copyWith(color: Colors.white)),
+                                  style: theme.textTheme.titleSmall!.copyWith(
+                                      color: AppColors.darkBlueVariant)),
                               const IBSizedH05(),
                               Text('RM 9700',
-                                  style: theme.textTheme.displaySmall!
-                                      .copyWith(color: Colors.white)),
+                                  style: theme.textTheme.displaySmall!.copyWith(
+                                      color: AppColors.darkBlueVariant)),
                             ],
                           ),
                           IBTransactionTypeWidget()

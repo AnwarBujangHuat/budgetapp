@@ -8,11 +8,11 @@ part of 'tag_model.dart';
 
 _$TagModelImpl _$$TagModelImplFromJson(Map<String, dynamic> json) =>
     _$TagModelImpl(
-      tagId: json['tagId'] as int,
+      tagId: (json['tagId'] as num).toInt(),
       tagName: json['tagName'] as String,
       icon: IconModel.fromJson(json['icon'] as Map<String, dynamic>),
       color: json['color'] as String,
-      parentTagId: json['parentTagId'] as int?,
+      parentTagId: (json['parentTagId'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$TagModelImplToJson(_$TagModelImpl instance) =>
@@ -26,7 +26,7 @@ Map<String, dynamic> _$$TagModelImplToJson(_$TagModelImpl instance) =>
 
 _$IconModelImpl _$$IconModelImplFromJson(Map<String, dynamic> json) =>
     _$IconModelImpl(
-      codePaint: json['codePaint'] as int,
+      codePaint: (json['codePaint'] as num).toInt(),
       fontFamily: json['fontFamily'] as String,
     );
 
