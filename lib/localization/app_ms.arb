@@ -1,0 +1,20 @@
+{
+  "@@locale": "ms",
+  "appTitle": "budgetapp MY",
+  "goals": "goals MY",
+  "transaction": "transaction MY",
+  "recentTransaction": "Transaction Terkini",
+  "dashboard": "dashboard MY",
+  "totalNetWorth": "Total Net Worth MY",  
+  "totalExpenses": "Jumlah Belanjawan",
+  "totalIncome": "Jumlah Kemasukan",
+  "expenses": "Expenses",
+  "income": "Income",
+  "yearly": "Tahunan",
+  "monthly": "Bulanan",
+  "weekly": "Mingguan",
+  "daily": "Harian",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
