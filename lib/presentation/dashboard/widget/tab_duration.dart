@@ -19,19 +19,19 @@ class TimelineTab extends StatelessWidget {
 
     return SizedBox(
       height: 40,
-      width: width * .92,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
-          itemCount: filterButton.length,
-          itemBuilder: (context, index) => GestureDetector(
+      width: width * .9,
+      child: Row(
+        children: [
+          for (int index = 0; index < filterButton.length; index++)
+            Expanded(
+              child: GestureDetector(
                 onTap: () => onTap(filterButton[index]),
                 child: Container(
                   decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.darkBlue),
+                      border: Border.all(color: AppColors.white),
                       color: selected == filterButton[index]
-                          ? AppColors.darkBlue
-                          : Colors.transparent,
+                          ? AppColors.white
+                          : AppColors.darkBlueLessOpacity,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(index == 0 ? 5 : 0),
                           topLeft: Radius.circular(index == 0 ? 5 : 0),
@@ -39,17 +39,19 @@ class TimelineTab extends StatelessWidget {
                               index + 1 == filterButton.length ? 5 : 0),
                           topRight: Radius.circular(
                               index + 1 == filterButton.length ? 5 : 0))),
-                  width: width * .23,
                   child: Center(
                       child: Text(
                     filterButton[index],
                     style: TextStyle(
                         color: selected == filterButton[index]
-                            ? AppColors.white
-                            : AppColors.darkBlueVariant),
+                            ? AppColors.darkBlue
+                            : AppColors.white),
                   )),
                 ),
-              )),
+              ),
+            )
+        ],
+      ),
     );
   }
 }

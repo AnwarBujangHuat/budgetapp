@@ -15,21 +15,24 @@ class IBTranscationListWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int maxDisplayTrascation = 5;
+    int maxDisplayTrascation = 3;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IBTextHeader(
-                title: AppLocalizations.of(context)!.recentTransaction),
-            IBTextButton(
-              title: 'View More',
-              onTap: () {},
-            ),
-          ],
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IBTextHeader(
+                  title: AppLocalizations.of(context)!.recentTransaction),
+              IBTextButton(
+                title: 'View More',
+                onTap: () {},
+              ),
+            ],
+          ),
         ),
         //Todo make locale for this
         Card(

@@ -70,16 +70,13 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
           shrinkWrap: true,
           children: const [
             MyHeader(),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IBTranscationListWidget(),
-                  IBGoalListWidget(),
-                ],
-              ),
-            )
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IBTranscationListWidget(),
+                IBGoalListWidget(),
+              ],
+            ),
           ],
         ),
       ),
@@ -96,28 +93,26 @@ class MyHeader extends ConsumerWidget {
 
     final selectedPeriod = ref.watch(selectedPeriodProvider);
 
-    double screenWidth = MediaQuery.of(context).size.width;
-
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
-          child: Column(
-            children: [
-              // SizedBox(
-              //   height: 40,
-              //   width: screenWidth,
-              //   child: TimelineTab(
-              //     selected: selectedPeriod,
-              //     onTap: (selected) => ref
-              //         .read(selectedPeriodProvider.notifier)
-              //         .state = selected,
-              //   ),
-              // ),
-              // const IBSizedH20(),
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+    return Card(
+      color: AppColors.darkBlue,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 40,
+                  child: TimelineTab(
+                    selected: selectedPeriod,
+                    onTap: (selected) => ref
+                        .read(selectedPeriodProvider.notifier)
+                        .state = selected,
+                  ),
+                ),
+                const IBSizedH20(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Column(
                     children: [
                       Row(
@@ -133,12 +128,12 @@ class MyHeader extends ConsumerWidget {
                                           .totalExpenses
                                       : AppLocalizations.of(context)!
                                           .totalIncome,
-                                  style: theme.textTheme.titleSmall!.copyWith(
-                                      color: AppColors.darkBlueVariant)),
+                                  style: theme.textTheme.titleSmall!
+                                      .copyWith(color: AppColors.white)),
                               const IBSizedH05(),
                               Text('RM 9700',
-                                  style: theme.textTheme.displaySmall!.copyWith(
-                                      color: AppColors.darkBlueVariant)),
+                                  style: theme.textTheme.displaySmall!
+                                      .copyWith(color: AppColors.white)),
                             ],
                           ),
                           IBTransactionTypeWidget()
@@ -147,12 +142,12 @@ class MyHeader extends ConsumerWidget {
                       IBPieChartWidget()
                     ],
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
