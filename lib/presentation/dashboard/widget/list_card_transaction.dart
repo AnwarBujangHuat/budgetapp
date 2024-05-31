@@ -32,40 +32,43 @@ class IBTranscationListWidget extends ConsumerWidget {
           ],
         ),
         //Todo make locale for this
-        ref.watch(transactionViewmodelProvider).when(
-              data: (transactionList) {
-                return transactionList.isEmpty
-                    ? IBCard(
-                        title: 'Add New Transaction',
-                        icon: IconWidget(
-                          iconData: Icons.add,
-                          backgroundColor: AppColors.slateBlue,
-                        ),
-                        description: 'No Transaction Record Found')
-                    : ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) => IBTransactionCard(
-                          //Todo open page for transaction details, like a reciept page
-                          onPressed: () {},
-                          title: transactionList[index].title,
-                          date: transactionList[index].dateTime,
-                          tagId: transactionList[index].tagId,
-                          type: transactionList[index].type,
-                          expenses: double.parse(
-                              transactionList[index].transactionAmount),
-                        ),
-                        itemCount: transactionList.length > maxDisplayTrascation
-                            ? maxDisplayTrascation
-                            : transactionList.length,
-                      );
-              },
-              error: (error, stackTrace) => Container(
-                height: 100,
-                child: Text(error.toString()),
+        Card(
+          child: ref.watch(transactionViewmodelProvider).when(
+                data: (transactionList) {
+                  return transactionList.isEmpty
+                      ? IBCard(
+                          title: 'Add New Transaction',
+                          icon: IconWidget(
+                            iconData: Icons.add,
+                            backgroundColor: AppColors.slateBlue,
+                          ),
+                          description: 'No Transaction Record Found')
+                      : ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) => IBTransactionCard(
+                            //Todo open page for transaction details, like a reciept page
+                            onPressed: () {},
+                            title: transactionList[index].title,
+                            date: transactionList[index].dateTime,
+                            tagId: transactionList[index].tagId,
+                            type: transactionList[index].type,
+                            expenses: double.parse(
+                                transactionList[index].transactionAmount),
+                          ),
+                          itemCount:
+                              transactionList.length > maxDisplayTrascation
+                                  ? maxDisplayTrascation
+                                  : transactionList.length,
+                        );
+                },
+                error: (error, stackTrace) => Container(
+                  height: 100,
+                  child: Text(error.toString()),
+                ),
+                loading: () => Container(),
               ),
-              loading: () => Container(),
-            )
+        )
       ],
     );
   }

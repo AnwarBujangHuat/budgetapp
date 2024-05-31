@@ -28,10 +28,10 @@ class TimelineTab extends StatelessWidget {
                 onTap: () => onTap(filterButton[index]),
                 child: Container(
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      color: selected != filterButton[index]
-                          ? Colors.transparent
-                          : AppColors.offWhite,
+                      border: Border.all(color: AppColors.darkBlue),
+                      color: selected == filterButton[index]
+                          ? AppColors.darkBlue
+                          : Colors.transparent,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(index == 0 ? 5 : 0),
                           topLeft: Radius.circular(index == 0 ? 5 : 0),
@@ -44,7 +44,7 @@ class TimelineTab extends StatelessWidget {
                       child: Text(
                     filterButton[index],
                     style: TextStyle(
-                        color: selected != filterButton[index]
+                        color: selected == filterButton[index]
                             ? AppColors.white
                             : AppColors.darkBlueVariant),
                   )),

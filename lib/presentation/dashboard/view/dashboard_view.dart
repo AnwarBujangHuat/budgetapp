@@ -42,7 +42,6 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
           IconButton(
             icon: const Icon(
               Icons.analytics_outlined,
-              color: Colors.white,
             ),
             onPressed: null,
           ),
@@ -67,6 +66,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
       body: RefreshIndicator(
         onRefresh: () async {},
         child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 8),
           shrinkWrap: true,
           children: const [
             MyHeader(),
@@ -98,56 +98,62 @@ class MyHeader extends ConsumerWidget {
 
     double screenWidth = MediaQuery.of(context).size.width;
 
-    return Container(
-      decoration: const BoxDecoration(color: AppColors.darkBlue),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 40,
-                  width: screenWidth,
-                  child: TimelineTab(
-                    selected: selectedPeriod,
-                    onTap: (selected) => ref
-                        .read(selectedPeriodProvider.notifier)
-                        .state = selected,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
+          child: Column(
+            children: [
+              // SizedBox(
+              //   height: 40,
+              //   width: screenWidth,
+              //   child: TimelineTab(
+              //     selected: selectedPeriod,
+              //     onTap: (selected) => ref
+              //         .read(selectedPeriodProvider.notifier)
+              //         .state = selected,
+              //   ),
+              // ),
+              // const IBSizedH20(),
+              Card(
+                color: AppColors.darkBlue,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  ref.watch(selectedButtonProvider) !=
+                                          TransactionType.income
+                                      ? AppLocalizations.of(context)!
+                                          .totalExpenses
+                                      : AppLocalizations.of(context)!
+                                          .totalIncome,
+                                  style: theme.textTheme.titleSmall!
+                                      .copyWith(color: Colors.white)),
+                              const IBSizedH05(),
+                              Text('RM 9700',
+                                  style: theme.textTheme.displaySmall!
+                                      .copyWith(color: Colors.white)),
+                            ],
+                          ),
+                          IBTransactionTypeWidget()
+                        ],
+                      ),
+                      IBPieChartWidget()
+                    ],
                   ),
                 ),
-                const IBSizedH20(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          ref.watch(selectedButtonProvider) !=
-                                  TransactionType.income
-                              ? AppLocalizations.of(context)!.totalExpenses
-                              : AppLocalizations.of(context)!.totalIncome,
-                          style: theme.textTheme.titleSmall!
-                              .copyWith(color: AppColors.offWhiteVariant),
-                        ),
-                        const IBSizedH05(),
-                        Text(
-                          'RM 9700',
-                          style: theme.textTheme.displaySmall!
-                              .copyWith(color: AppColors.white),
-                        ),
-                      ],
-                    ),
-                    IBTransactionTypeWidget()
-                  ],
-                ),
-                IBPieChartWidget()
-              ],
-            ),
+              )
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

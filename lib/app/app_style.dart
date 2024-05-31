@@ -4,13 +4,13 @@ ThemeData lightThemeData = ThemeData(
     fontFamily: 'RobotoFlex',
     scaffoldBackgroundColor: AppColors.offWhite,
     appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.darkBlue,
-        iconTheme: IconThemeData(color: AppColors.white),
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(color: AppColors.darkBlue),
         titleTextStyle: TextStyle(
-            color: AppColors.white,
+            color: AppColors.darkBlue,
             fontWeight: FontWeight.bold,
-            fontSize: FontSize.mediumTitle)),
-    cardColor: AppColors.white,
+            fontSize: FontSize.largeTitle)),
+    cardColor: AppColors.offWhite,
     textTheme: const TextTheme(
       titleSmall: TextStyle(
         letterSpacing: 0,
@@ -89,8 +89,7 @@ ThemeData lightThemeData = ThemeData(
       elevation: 1,
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(16), topLeft: Radius.circular(16)),
+        borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(

@@ -24,6 +24,8 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
   @override
   Widget build(BuildContext context) {
     List<PieChartSectionData> pieChartDataList = [];
+    Color textColor = Colors.white;
+    // Color textColor=AppColors.darkBlue;
     return ref.watch(transactionViewmodelProvider).when(
       data: (data) {
         List<TagModel> tagList =
@@ -55,7 +57,6 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
 
         // Iterate through the top 5 entries and add them to pieChartDataList
         for (var entry in key2Val.entries) {
-          print('Not $entry');
           pieChartDataList.add(pieChartData(
             value: entry.value,
             tagId: entry.key,
@@ -65,8 +66,8 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
         }
 
         return AspectRatio(
-          aspectRatio: 1.8,
-          child: Row(
+          aspectRatio: 1,
+          child: Column(
             children: <Widget>[
               Expanded(
                 child: AspectRatio(
@@ -91,43 +92,34 @@ class _IBPieChartWidgetState extends ConsumerState<IBPieChartWidget> {
                         show: false,
                       ),
                       sectionsSpace: 0,
-                      centerSpaceRadius: 40,
+                      centerSpaceRadius: 80,
                       startDegreeOffset: 180,
                       sections: pieChartDataList,
                     ),
                   ),
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  for (int i = 0; i <= 4; i++)
-                    if (i < 4)
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              data.elementAt(i).title,
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            IBIcon(tagId: data.elementAt(i).tagId)
-                          ],
-                        ),
+              GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 4, crossAxisCount: 2),
+                itemCount: 4,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Row(
+                    children: [
+                      IBIcon(tagId: data.elementAt(index).tagId),
+                      SizedBox(
+                        width: 5,
                       ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Text(
-                      '...Others',
-                      style: TextStyle(color: AppColors.offWhiteVariant),
-                    ),
+                      Text(
+                        data.elementAt(index).title,
+                        style: TextStyle(color: textColor),
+                      ),
+                    ],
                   ),
-                ],
-              )
+                ),
+              ),
             ],
           ),
         );
@@ -153,6 +145,7 @@ PieChartSectionData pieChartData(
       radius: radius,
       value: value,
       color: color,
+      showTitle: false,
       titleStyle: TextStyle(
           color: AppColors.white,
           fontWeight: FontWeight.bold,

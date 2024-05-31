@@ -17,6 +17,8 @@ class TagRepository {
   final Ref _ref;
   final List<TagModel> tagsList = [];
   Future<Either<AppException, List<TagModel>>> getAllTags() async {
+    //return tag directly when not empty
+    if (tagsList.isNotEmpty) return Right(tagsList);
     try {
       Map<String, dynamic> jsonData =
           await loadJsonFromAssets('assets/data/tag.json');
