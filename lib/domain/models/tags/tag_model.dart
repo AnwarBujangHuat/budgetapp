@@ -6,11 +6,11 @@ part 'tag_model.freezed.dart';
 @freezed
 class TagModel with _$TagModel {
   const factory TagModel({
+    required int parentTagId,
     required int tagId,
     required String tagName,
     required IconModel icon,
     required String color,
-    int? parentTagId,
   }) = _TagModel;
 
   factory TagModel.fromJson(Map<String, Object?> json) =>

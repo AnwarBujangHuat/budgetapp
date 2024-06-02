@@ -3,7 +3,7 @@
         {
             "tagId": 1,
             "tagName": "grocery",
-            "parentTagId": null,
+            "parentTagId": 1,
             "icon": {
                 "codePaint": 58261,
                 "fontFamily": "MaterialIcons"
@@ -13,7 +13,7 @@
         {
             "tagId": 2,
             "tagName": "travel",
-            "parentTagId": null,
+            "parentTagId": 2,
             "icon": {
                 "codePaint": 58262,
                 "fontFamily": "MaterialIcons"
@@ -23,7 +23,7 @@
         {
             "tagId": 3,
             "tagName": "utilities",
-            "parentTagId": null,
+            "parentTagId": 3,
             "icon": {
                 "codePaint": 57454,
                 "fontFamily": "MaterialIcons"
@@ -33,7 +33,7 @@
         {
             "tagId": 4,
             "tagName": "rent",
-            "parentTagId": null,
+            "parentTagId": 4,
             "icon": {
                 "codePaint": 57455,
                 "fontFamily": "MaterialIcons"
@@ -43,7 +43,7 @@
         {
             "tagId": 5,
             "tagName": "entertainment",
-            "parentTagId": null,
+            "parentTagId": 5,
             "icon": {
                 "codePaint": 58236,
                 "fontFamily": "MaterialIcons"
@@ -53,7 +53,7 @@
         {
             "tagId": 6,
             "tagName": "dining",
-            "parentTagId": null,
+            "parentTagId": 6,
             "icon": {
                 "codePaint": 58237,
                 "fontFamily": "MaterialIcons"
@@ -63,7 +63,7 @@
         {
             "tagId": 7,
             "tagName": "healthcare",
-            "parentTagId": null,
+            "parentTagId": 7,
             "icon": {
                 "codePaint": 58136,
                 "fontFamily": "MaterialIcons"
@@ -93,12 +93,22 @@
         {
             "tagId": 11,
             "tagName": "salary",
-            "parentTagId": null,
+            "parentTagId": 11,
             "icon": {
                 "codePaint": 58261,
                 "fontFamily": "MaterialIcons"
             },
-            "color": "#FFFA7F72"
+            "color": "#B9CAEE"
+        },
+        {
+            "tagId": 12,
+            "tagName": "gift",
+            "parentTagId": 12,
+            "icon": {
+                "codePaint": 58261,
+                "fontFamily": "MaterialIcons"
+            },
+            "color": "#FFC0CB"
         }
     ]
 }

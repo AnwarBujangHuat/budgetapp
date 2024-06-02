@@ -16,7 +16,7 @@ _$TransactionModelImpl _$$TransactionModelImplFromJson(
       source: json['source'] as String,
       attachmentUrl: json['attachmentUrl'] as String,
       tagId: (json['tagId'] as num).toInt(),
-      parentTagId: (json['parentTagId'] as num?)?.toInt() ?? null,
+      parentTagId: (json['parentTagId'] as num?)?.toInt(),
       goalTagId: (json['goalTagId'] as num?)?.toInt() ?? 0,
       type: $enumDecodeNullable(_$TransactionTypeEnumMap, json['type']) ??
           TransactionType.out,
@@ -34,7 +34,7 @@ Map<String, dynamic> _$$TransactionModelImplToJson(
       'tagId': instance.tagId,
       'parentTagId': instance.parentTagId,
       'goalTagId': instance.goalTagId,
-      'type': _$TransactionTypeEnumMap[instance.type]!,
+      'type': _$TransactionTypeEnumMap[instance.type],
     };
 
 const _$TransactionTypeEnumMap = {

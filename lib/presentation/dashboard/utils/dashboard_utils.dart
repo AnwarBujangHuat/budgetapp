@@ -1,0 +1,44 @@
+import 'package:budgetapp/common/const/const.dart';
+import 'package:budgetapp/common/utils/utils.dart';
+import 'package:budgetapp/domain/models/tags/tag_model.dart';
+import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
+
+Map<int, List<TransactionModel>> mapTransactionToParentTag(
+    {required List<TransactionModel> transactionList,
+    TransactionType transactionType = TransactionType.income}) {
+  final Map<int, List<TransactionModel>> mapTransactionToParentTag = {};
+
+  for (var transaction in transactionList) {
+    if (transaction.type == transactionType) {
+      mapTransactionToParentTag[transaction.parentTagId ?? 0] = [
+        ...mapTransactionToParentTag[transaction.parentTagId ?? 0] ?? [],
+        transaction
+      ];
+    }
+  }
+  return mapTransactionToParentTag;
+}
+
+Map<int, double> getTotalTransaction(
+    {required List<TransactionModel> transactionList,
+    TransactionType transactionType = TransactionType.income}) {
+  Map<int, double> result = {};
+  mapTransactionToParentTag(
+          transactionList: transactionList, transactionType: transactionType)
+      .forEach((key, value) {
+    for (var element in value) {
+      double currentTotal = result[key] ?? 0;
+      result[key] = (currentTotal += double.parse(element.transactionAmount));
+    }
+  });
+  return result;
+}
+
+String? getTagDetail({required List<TagModel> tagList, required int tagId}) {
+  for (var tag in tagList) {
+    if (tag.tagId == tagId) {
+      return capitalize(s: tag.tagName);
+    }
+  }
+  return null;
+}

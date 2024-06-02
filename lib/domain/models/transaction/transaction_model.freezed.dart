@@ -224,7 +224,7 @@ class _$TransactionModelImpl implements _TransactionModel {
       required this.source,
       required this.attachmentUrl,
       required this.tagId,
-      this.parentTagId = null,
+      this.parentTagId,
       this.goalTagId = 0,
       this.type = TransactionType.out});
 
@@ -246,7 +246,6 @@ class _$TransactionModelImpl implements _TransactionModel {
   @override
   final int tagId;
   @override
-  @JsonKey()
   final int? parentTagId;
   @override
   @JsonKey()

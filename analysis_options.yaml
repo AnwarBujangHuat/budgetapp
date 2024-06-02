@@ -5,6 +5,7 @@ analyzer:
     # ignore vscode .history files
     - .history/**
     - test_data/**
+    - .g.dart/
   language:
     strict-casts: true
 linter:

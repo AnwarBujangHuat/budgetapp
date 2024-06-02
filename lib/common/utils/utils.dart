@@ -41,3 +41,4 @@ Future<Map<String, dynamic>> loadJsonFromAssets(String filePath) async {
 
 String formatDate({required DateTime dateTime}) =>
     DateFormat('dd MMM yy').format(dateTime);
+String capitalize({required String s}) => s[0].toUpperCase() + s.substring(1);

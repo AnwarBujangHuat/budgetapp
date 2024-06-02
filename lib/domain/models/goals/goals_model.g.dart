@@ -28,7 +28,7 @@ Map<String, dynamic> _$$GoalsModelImplToJson(_$GoalsModelImpl instance) =>
       'progress': instance.progress,
       'startDate': instance.startDate.toIso8601String(),
       'endDate': instance.endDate.toIso8601String(),
-      'type': _$TransactionTypeEnumMap[instance.type]!,
+      'type': _$TransactionTypeEnumMap[instance.type],
     };
 
 const _$TransactionTypeEnumMap = {
