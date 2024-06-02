@@ -8,7 +8,7 @@ import 'package:budgetapp/presentation/dashboard/widget/line_chart.dart';
 import 'package:budgetapp/presentation/dashboard/widget/list_card_transaction.dart';
 import 'package:budgetapp/presentation/dashboard/widget/list_goal_card.dart';
 import 'package:budgetapp/presentation/dashboard/widget/pie_chart.dart';
-import 'package:budgetapp/presentation/dashboard/widget/sized_boxes.dart';
+import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

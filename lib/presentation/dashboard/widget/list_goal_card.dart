@@ -4,7 +4,7 @@ import 'package:budgetapp/common/viewmodel/goals/goals_viewmodel.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/icons/custom_icon.dart';
 import 'package:budgetapp/common/widgets/text/header.dart';
-import 'package:budgetapp/presentation/dashboard/widget/sized_boxes.dart';
+import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/shared/card/card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

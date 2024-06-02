@@ -106,7 +106,7 @@ class IBTransactionCard extends ConsumerWidget {
       subtitle: Text(formatDate(dateTime: date),
           style: currentTheme.textTheme.labelSmall),
       trailing: Text('RM ${expenses.toStringAsFixed(2)}',
-          style: currentTheme.textTheme.bodyMedium!.copyWith(
+          style: currentTheme.textTheme.bodyLarge!.copyWith(
               fontWeight: FontWeight.bold,
               color: type == TransactionType.out
                   ? AppColors.lightRed

@@ -3,7 +3,7 @@ import 'package:budgetapp/common/widgets/button/outlined_button.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/button/transaction_type_button.dart';
 import 'package:budgetapp/common/widgets/calculator/calculator.dart';
-import 'package:budgetapp/presentation/dashboard/widget/sized_boxes.dart';
+import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
