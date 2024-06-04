@@ -10,6 +10,7 @@ import 'package:budgetapp/presentation/dashboard/widget/list_goal_card.dart';
 import 'package:budgetapp/presentation/dashboard/widget/pie_chart.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
+import 'package:budgetapp/presentation/dashboard/widget/total_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -131,9 +132,7 @@ class MyHeader extends ConsumerWidget {
                                   style: theme.textTheme.titleSmall!
                                       .copyWith(color: AppColors.white)),
                               const IBSizedH05(),
-                              Text('RM 9700',
-                                  style: theme.textTheme.displaySmall!
-                                      .copyWith(color: AppColors.white)),
+                              TotalTransactionValue(),
                             ],
                           ),
                           IBTransactionTypeWidget()
