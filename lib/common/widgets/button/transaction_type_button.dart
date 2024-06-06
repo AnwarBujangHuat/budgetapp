@@ -1,7 +1,7 @@
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/const/const.dart';
-import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
+import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,11 +11,11 @@ class IBTransactionTypeWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedButton = ref.watch(selectedButtonProvider);
+    final selectedButton = ref.watch(selectedTransactionTypeProvider);
 
     return GestureDetector(
       onTap: () {
-        ref.read(selectedButtonProvider.notifier).state =
+        ref.read(selectedTransactionTypeProvider.notifier).state =
             selectedButton == TransactionType.income
                 ? TransactionType.out
                 : TransactionType.income;

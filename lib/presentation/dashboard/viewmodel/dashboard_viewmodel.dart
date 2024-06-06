@@ -7,6 +7,6 @@ const List<String> filterButton = <String>[
   'Monthly',
   'Yearly',
 ];
-final selectedButtonProvider =
+final selectedTransactionTypeProvider =
     StateProvider<TransactionType>((_) => TransactionType.income);
 final selectedPeriodProvider = StateProvider<String>((_) => filterButton[0]);

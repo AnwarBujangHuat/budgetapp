@@ -98,7 +98,6 @@ class IBTransactionCard extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     ThemeData currentTheme = Theme.of(context);
     return ListTile(
-      minVerticalPadding: 0,
       dense: true,
       leading: IBIcon(tagId: tagId),
       contentPadding: const EdgeInsets.symmetric(horizontal: 8),

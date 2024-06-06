@@ -1,6 +1,7 @@
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/const/const.dart';
 import 'package:budgetapp/common/widgets/button/transaction_type_button.dart';
+import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/domain/repository/tag/tag_repository.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/presentation/dashboard/widget/expanded_fab.dart';
@@ -8,7 +9,6 @@ import 'package:budgetapp/presentation/dashboard/widget/line_chart.dart';
 import 'package:budgetapp/presentation/dashboard/widget/list_card_transaction.dart';
 import 'package:budgetapp/presentation/dashboard/widget/list_goal_card.dart';
 import 'package:budgetapp/presentation/dashboard/widget/pie_chart.dart';
-import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -122,7 +122,7 @@ class MyHeader extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                  ref.watch(selectedButtonProvider) !=
+                                  ref.watch(selectedTransactionTypeProvider) !=
                                           TransactionType.income
                                       ? AppLocalizations.of(context)!
                                           .totalExpenses
@@ -157,7 +157,7 @@ class MyLineChartWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    TransactionType selectedValue = ref.watch(selectedButtonProvider);
+    TransactionType selectedValue = ref.watch(selectedTransactionTypeProvider);
 
     return SizedBox(
       height: 200,
