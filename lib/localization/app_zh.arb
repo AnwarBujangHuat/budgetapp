@@ -1,9 +1,10 @@
 {
   "appTitle": "budgetapp ZH",
-  "goals": "goals ZH",
+  "goals": "goals MY",
   "transaction": "transaction MY",
+  "recentTransaction": "Transaction Terkini",
   "dashboard": "dashboard MY",
-  "totalNetWorth": "Total Net Worth MY",  
+  "totalNetWorth": "Total Net Worth MY",
   "totalExpenses": "Jumlah Belanjawan",
   "totalIncome": "Jumlah Kemasukan",
   "expenses": "Expenses",

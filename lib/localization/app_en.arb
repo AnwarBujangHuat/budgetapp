@@ -3,6 +3,7 @@
   "appTitle": "budgetapp",
   "goals": "Goals",
   "transaction": "Transaction",
+  "importTransaction": "Import Transaction",
   "recentTransaction": "Recent Transaction",
   "dashboard": "Dashboard",
   "totalNetWorth": "Total Net Worth",

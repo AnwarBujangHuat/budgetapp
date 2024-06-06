@@ -5,12 +5,10 @@ import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/domain/repository/tag/tag_repository.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/presentation/dashboard/widget/expanded_fab.dart';
-import 'package:budgetapp/presentation/dashboard/widget/line_chart.dart';
 import 'package:budgetapp/presentation/dashboard/widget/list_card_transaction.dart';
 import 'package:budgetapp/presentation/dashboard/widget/list_goal_card.dart';
 import 'package:budgetapp/presentation/dashboard/widget/pie_chart.dart';
 import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
-import 'package:budgetapp/presentation/dashboard/widget/total_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -58,7 +56,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
             icon: const Icon(Icons.attach_money),
           ),
           ActionButton(
-            title: 'Import Transaction',
+            title: AppLocalizations.of(context)!.importTransaction,
             onPressed: () => {},
             icon: const Icon(Icons.attachment_sharp),
           ),
@@ -132,7 +130,9 @@ class MyHeader extends ConsumerWidget {
                                   style: theme.textTheme.titleSmall!
                                       .copyWith(color: AppColors.white)),
                               const IBSizedH05(),
-                              TotalTransactionValue(),
+                              Text('RM 9700',
+                                  style: theme.textTheme.displaySmall!
+                                      .copyWith(color: AppColors.white)),
                             ],
                           ),
                           IBTransactionTypeWidget()
@@ -147,21 +147,6 @@ class MyHeader extends ConsumerWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class MyLineChartWidget extends ConsumerWidget {
-  const MyLineChartWidget({super.key});
-
-  @override
-  Widget build(BuildContext context, ref) {
-    TransactionType selectedValue = ref.watch(selectedTransactionTypeProvider);
-
-    return SizedBox(
-      height: 200,
-      child:
-          LineChartWidget(isExpenses: selectedValue == TransactionType.income),
     );
   }
 }
