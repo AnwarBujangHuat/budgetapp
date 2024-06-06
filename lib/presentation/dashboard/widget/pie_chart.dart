@@ -23,49 +23,51 @@ class IBPieChartWidget extends ConsumerWidget {
         TransactionType transactionType =
             ref.watch(selectedTransactionTypeProvider);
 
-        Map<int, double> groupByTotal = getTotalTransaction(
+        Map<int, double> groupByTotal = getTotalTransactionByParentGroup(
             transactionList: data, transactionType: transactionType);
         return AspectRatio(
-          aspectRatio: 1.8,
+          aspectRatio: 1.7,
           child: Row(
             children: <Widget>[
               Expanded(
-                child: AspectRatio(
-                    aspectRatio: 2,
-                    child: PieChartWidget(
-                      tagList: tagList,
-                      groupByTotal: groupByTotal,
-                    )),
+                child: PieChartWidget(
+                  tagList: tagList,
+                  groupByTotal: groupByTotal,
+                ),
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  for (int i = 0; i < 4 && i < groupByTotal.length; i++)
-                    if (i < 4)
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              getTagDetail(
-                                      tagList: tagList,
-                                      tagId: groupByTotal.keys.elementAt(i)) ??
-                                  'Transaction',
-                              style: TextStyle(color: Colors.white),
+                  for (int i = 0; i <= 4 && i < groupByTotal.length; i++)
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: i < 4
+                          ? Row(
+                              children: [
+                                Container(
+                                  alignment: Alignment.centerRight,
+                                  width: MediaQuery.of(context).size.width * .2,
+                                  child: Text(
+                                    getTagDetail(
+                                            tagList: tagList,
+                                            tagId: groupByTotal.keys
+                                                .elementAt(i)) ??
+                                        'Transaction',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                                SizedBox(width: 5),
+                                IBIcon(tagId: groupByTotal.keys.elementAt(i))
+                              ],
+                            )
+                          : Text(
+                              '...Others',
+                              style:
+                                  TextStyle(color: AppColors.offWhiteVariant),
                             ),
-                            SizedBox(width: 5),
-                            IBIcon(tagId: groupByTotal.keys.elementAt(i))
-                          ],
-                        ),
-                      ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Text(
-                      '...Others',
-                      style: TextStyle(color: AppColors.offWhiteVariant),
                     ),
-                  ),
                 ],
               )
             ],

@@ -19,7 +19,7 @@ Map<int, List<TransactionModel>> mapTransactionToParentTag(
   return mapTransactionToParentTag;
 }
 
-Map<int, double> getTotalTransaction(
+Map<int, double> getTotalTransactionByParentGroup(
     {required List<TransactionModel> transactionList,
     TransactionType transactionType = TransactionType.income}) {
   Map<int, double> result = {};
@@ -41,4 +41,16 @@ String? getTagDetail({required List<TagModel> tagList, required int tagId}) {
     }
   }
   return null;
+}
+
+double getTotalTransaction(
+    {required List<TransactionModel> transactionList,
+    TransactionType transactionType = TransactionType.income}) {
+  double result = 0;
+  getTotalTransactionByParentGroup(
+          transactionList: transactionList, transactionType: transactionType)
+      .forEach((key, value) {
+    result += value;
+  });
+  return result;
 }
