@@ -11,7 +11,7 @@ class TotalTransactionValue extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final transactionType = ref.watch(selectedButtonProvider);
+    final transactionType = ref.watch(selectedTransactionTypeProvider);
 
     return ref.watch(transactionViewmodelProvider).when(
           data: (transactionList) => Text(

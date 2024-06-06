@@ -3,8 +3,8 @@ import 'package:budgetapp/common/utils/utils.dart';
 import 'package:budgetapp/common/viewmodel/goals/goals_viewmodel.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/icons/custom_icon.dart';
-import 'package:budgetapp/common/widgets/text/header.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
+import 'package:budgetapp/common/widgets/text/header.dart';
 import 'package:budgetapp/shared/card/card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -159,6 +159,7 @@ class _LinearProgressIndicator extends StatelessWidget {
       borderRadius: BorderRadius.circular(10));
 }
 
+// ignore: unused_element
 class _CircularProgressIndicator extends StatelessWidget {
   const _CircularProgressIndicator({required this.value, required this.total});
   final double value;
