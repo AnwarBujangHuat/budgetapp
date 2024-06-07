@@ -3,6 +3,7 @@
   "appTitle": "budgetapp MY",
   "goals": "goals MY",
   "transaction": "transaction MY",
+  "total": "Jumlah",
   "recentTransaction": "Transaksi Terkini",
   "importTransaction": "Import Transaction",
   "dashboard": "dashboard MY",
@@ -15,6 +16,9 @@
   "monthly": "Bulanan",
   "weekly": "Mingguan",
   "daily": "Harian",
+  "daysLeft": "Hari Tinggal",
+  "setupGoals": "Sediakan Matlamat",
+  "noGoals": "Tiada Rekod Matlamat Dijumpai",
   "@appTitle": {
     "description": "The title of the application"
   }

@@ -51,12 +51,12 @@ class IBGoalListWidget extends ConsumerWidget {
                           itemCount: goalList.length,
                         )
                       : IBCard(
-                          title: 'Setup Goals',
+                          title: AppLocalizations.of(context)!.setupGoals,
                           icon: IconWidget(
                             iconData: Icons.add,
                             backgroundColor: AppColors.slateBlue,
                           ),
-                          description: 'No Goal Record Found')),
+                          description: AppLocalizations.of(context)!.noGoals)),
               const IBSizedH10(),
             ],
           ),
@@ -135,7 +135,7 @@ class IBGoalCard extends StatelessWidget {
               total: total,
             ),
             Text(
-                '${calculateDaysLeft(startDate: startDate, endDate: endDate)} Days Left',
+                '${calculateDaysLeft(startDate: startDate, endDate: endDate)} ${AppLocalizations.of(context)!.daysLeft}',
                 style: currentTheme.textTheme.labelSmall!
                     .copyWith(fontWeight: FontWeight.bold)),
           ],
@@ -201,7 +201,7 @@ class _CircularProgressIndicator extends StatelessWidget {
         Expanded(
           child: Center(
             child: Text(
-              'Total: RM${total.toStringAsFixed(2)}',
+              '${AppLocalizations.of(context)!.total}: RM${total.toStringAsFixed(2)}',
               style: currentTheme.textTheme.bodyMedium!
                   .copyWith(fontWeight: FontWeight.bold),
             ),
