@@ -19,6 +19,7 @@ class TransactionRepository {
   final List<TransactionModel> _transactionsRecords = [];
   Future<Either<AppException, List<TransactionModel>>> getAllExpanses() async {
     try {
+      /// Load from local storage now
       Map<String, dynamic> jsonData =
           await loadJsonFromAssets('assets/data/transaction.json');
 
