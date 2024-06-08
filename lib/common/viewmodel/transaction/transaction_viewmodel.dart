@@ -28,4 +28,11 @@ class TransactionViewmodel extends _$TransactionViewmodel {
   Future<void> insertNewdata() async {
     state = const AsyncLoading();
   }
+
+  Future<void> filterByDate({required String dateType}) async {
+    final result = ref
+        .read(transactionsRepositoryProvider)
+        .filterTransactionByDate(dateType: dateType);
+    state = AsyncData(result);
+  }
 }

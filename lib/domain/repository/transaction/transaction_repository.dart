@@ -17,7 +17,6 @@ class TransactionRepository {
 
   final Ref _ref;
   final List<TransactionModel> _transactionsRecords = [];
-  final Map<int, List<TransactionModel>> _mapTransRecToParTag = {};
   Future<Either<AppException, List<TransactionModel>>> getAllExpanses() async {
     try {
       Map<String, dynamic> jsonData =
@@ -27,7 +26,6 @@ class TransactionRepository {
         _transactionsRecords
             .add(TransactionModel.fromJson(element as Map<String, dynamic>));
       }
-      getTransactionRecordMap();
       return Right(_transactionsRecords);
     } on Exception catch (e) {
       return Left(AppException.errorWithMessage('Failed to load expenses: $e'));
@@ -35,15 +33,12 @@ class TransactionRepository {
   }
 
   Future<List<TransactionModel>> addElement({required String data}) async => [];
-  Map<int, List<TransactionModel>> getTransactionRecordMap() {
-    for (var transaction in _transactionsRecords) {
-      _mapTransRecToParTag[transaction.parentTagId ?? transaction.tagId] = [
-        ..._mapTransRecToParTag[transaction.parentTagId ?? transaction.tagId] ??
-            [],
-        transaction
-      ];
-    }
 
-    return _mapTransRecToParTag;
+  List<TransactionModel> filterTransactionByDate({required String dateType}) {
+    final result = _transactionsRecords
+        .where((element) => element.dateTime == DateTime.now())
+        .toList();
+
+    return result;
   }
 }
