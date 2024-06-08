@@ -19,6 +19,7 @@
   "daysLeft": "Hari Tinggal",
   "setupGoals": "Sediakan Matlamat",
   "noGoals": "Tiada Rekod Matlamat Dijumpai",
+  "others": "Lain-Lain",
   "@appTitle": {
     "description": "The title of the application"
   }

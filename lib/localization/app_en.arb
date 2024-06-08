@@ -19,6 +19,7 @@
   "daysLeft": "Days Left",
   "setupGoals": "Setup Goal",
   "noGoals": "No Goal Record Found",
+  "others": "Others",
   "@appTitle": {
     "description": "The title of the application"
   }

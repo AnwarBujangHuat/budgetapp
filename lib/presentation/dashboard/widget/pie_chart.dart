@@ -9,6 +9,7 @@ import 'package:budgetapp/presentation/dashboard/utils/dashboard_utils.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class IBPieChartWidget extends ConsumerWidget {
@@ -53,7 +54,8 @@ class IBPieChartWidget extends ConsumerWidget {
                                             tagList: tagList,
                                             tagId: groupByTotal.keys
                                                 .elementAt(i)) ??
-                                        'Transaction',
+                                        AppLocalizations.of(context)!
+                                            .transaction,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(color: Colors.white),
                                   ),
@@ -63,7 +65,7 @@ class IBPieChartWidget extends ConsumerWidget {
                               ],
                             )
                           : Text(
-                              '...Others',
+                              '...${AppLocalizations.of(context)!.others}',
                               style:
                                   TextStyle(color: AppColors.offWhiteVariant),
                             ),
