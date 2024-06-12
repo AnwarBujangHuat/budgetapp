@@ -5,7 +5,9 @@
   "transaction": "transaction MY",
   "total": "Jumlah",
   "recentTransaction": "Transaksi Terkini",
-  "importTransaction": "Import Transaction",
+  "importTransaction": "Import Transaksi",
+  "addNewTransaction": "Tambah Transaksi",
+  "noTransaction": "Tiada Rekod Transaksi",
   "dashboard": "dashboard MY",
   "totalNetWorth": "Total Net Worth MY",
   "totalExpenses": "Jumlah Belanjawan",
@@ -20,6 +22,7 @@
   "setupGoals": "Sediakan Matlamat",
   "noGoals": "Tiada Rekod Matlamat Dijumpai",
   "others": "Lain-Lain",
+  "viewMore": "Lihat Lebih",
   "@appTitle": {
     "description": "The title of the application"
   }

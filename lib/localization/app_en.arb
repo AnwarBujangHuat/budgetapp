@@ -6,6 +6,8 @@
   "total": "Total",
   "importTransaction": "Import Transaction",
   "recentTransaction": "Recent Transaction",
+  "addNewTransaction": "Add New Transaction",
+  "noTransaction": "No Transaction Record Found",
   "dashboard": "Dashboard",
   "totalNetWorth": "Total Net Worth",
   "totalExpenses": "Total Expenses",
@@ -19,6 +21,7 @@
   "daysLeft": "Days Left",
   "setupGoals": "Setup Goal",
   "noGoals": "No Goal Record Found",
+  "viewMore": "View More",
   "others": "Others",
   "@appTitle": {
     "description": "The title of the application"

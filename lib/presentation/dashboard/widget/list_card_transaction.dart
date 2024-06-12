@@ -28,24 +28,25 @@ class IBTranscationListWidget extends ConsumerWidget {
               IBTextHeader(
                   title: AppLocalizations.of(context)!.recentTransaction),
               IBTextButton(
-                title: 'View More',
+                title: AppLocalizations.of(context)!.viewMore,
                 onTap: () {},
               ),
             ],
           ),
         ),
-        //Todo make locale for this
         Card(
           child: ref.watch(transactionViewmodelProvider).when(
                 data: (transactionList) {
                   return transactionList.isEmpty
                       ? IBCard(
-                          title: 'Add New Transaction',
+                          title:
+                              AppLocalizations.of(context)!.addNewTransaction,
                           icon: IconWidget(
                             iconData: Icons.add,
                             backgroundColor: AppColors.slateBlue,
                           ),
-                          description: 'No Transaction Record Found')
+                          description:
+                              AppLocalizations.of(context)!.noTransaction)
                       : ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,

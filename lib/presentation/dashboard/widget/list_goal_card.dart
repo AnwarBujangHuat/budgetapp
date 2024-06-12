@@ -25,7 +25,7 @@ class IBGoalListWidget extends ConsumerWidget {
                 children: [
                   IBTextHeader(title: AppLocalizations.of(context)!.goals),
                   IBTextButton(
-                    title: 'View More',
+                    title: AppLocalizations.of(context)!.viewMore,
                     onTap: () {},
                   ),
                 ],
