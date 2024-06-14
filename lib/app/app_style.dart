@@ -80,10 +80,17 @@ ThemeData lightThemeData = ThemeData(
         onSecondary: AppColors.white,
         error: AppColors.lightRed,
         onError: AppColors.lightRedVariant,
-        background: AppColors.offWhite,
+        background: AppColors.white,
         onBackground: AppColors.offWhite,
         surface: Colors.white,
         onSurface: AppColors.black),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+        style: ButtonStyle(
+            shape: MaterialStatePropertyAll<OutlinedBorder>(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ))),
     cardTheme: const CardTheme(
       surfaceTintColor: Colors.white,
       elevation: 1,
@@ -111,8 +118,9 @@ ThemeData darkThemeData = ThemeData(
 );
 
 class AppColors {
-  static const Color offWhite = Color(0xFFF5F5F5);
-  static const Color offWhiteVariant = Colors.white70;
+  static const Color offWhite = Color(0xFFFEFEFE);
+  // static const Color offWhite = Color(0xFFF5F5F5);
+  // static const Color offWhiteVariant = Color(0xFFFEFEFE);
   static const Color white = Colors.white;
   static const Color whiteVariant = Color(0xFFF8F8F8);
   static const Color black = Colors.black;
@@ -123,7 +131,7 @@ class AppColors {
   static const Color primaryDarkBackground = Color.fromARGB(255, 19, 19, 20);
   static const Color secondaryDarkBackground = Color(0xFF1F212A);
   static const Color darkBlueVariant = Color(0xFF202531);
-  static const Color lightGreen = Color(0xCC4F9360);
+  static const Color lightGreen = Color.fromARGB(204, 128, 223, 135);
   static const Color lighterGreen = Color(0xCC8EFFA8);
   static const Color lightRed = Colors.red;
   static const Color lightRedVariant = Colors.redAccent;

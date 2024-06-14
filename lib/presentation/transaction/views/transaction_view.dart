@@ -14,11 +14,9 @@ class TransactionPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      bottomSheet: IBCalculatorWidget(),
       body: Column(
         children: [
           Container(
-            color: AppColors.darkBlue,
             padding: EdgeInsets.all(4),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -34,6 +32,9 @@ class TransactionPage extends ConsumerWidget {
               ],
             ),
           ),
+          Expanded(
+            child: IBCalculatorWidget(),
+          ),
         ],
       ),
       appBar: AppBar(
@@ -45,9 +46,8 @@ class TransactionPage extends ConsumerWidget {
         ),
         actions: [
           IBTextButton(
-            title: 'Submit',
+            title: AppLocalizations.of(context)!.add,
             onTap: () {},
-            textColor: AppColors.white,
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           ),
         ],

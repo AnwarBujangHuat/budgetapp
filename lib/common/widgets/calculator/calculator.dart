@@ -272,7 +272,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
   void _handleKeyEvent(int row, int col) {
     final renderObj = context.findRenderObject();
     if (renderObj is! RenderBox) return;
-    final cellW = renderObj.size.width / 4;
+    final cellW = renderObj.size.width / 3;
     final cellH = renderObj.size.height / 6;
     final pos = renderObj.localToGlobal(
         Offset(cellW * col + cellW / 2, cellH * (row + 1) + cellH / 2));
@@ -468,15 +468,13 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
         return KeyEventResult.ignored;
       },
       descendantsAreFocusable: false,
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height * .8,
+      child: SizedBox.expand(
         child: GestureDetector(
           onTap: () {
             _focusNode.requestFocus();
           },
           child: Column(children: <Widget>[
             Expanded(
-              flex: 2,
               child: _CalcDisplay(
                 hideSurroundingBorder: widget.hideSurroundingBorder,
                 hideExpression: widget.hideExpression,
@@ -489,7 +487,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
               ),
             ),
             Expanded(
-              flex: 10,
+              flex: 5,
               child: _getButtons(),
             ),
           ]),
@@ -549,12 +547,12 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
   Widget _getButtons() {
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.all(20),
       itemCount: 20,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
+        crossAxisSpacing: 12,
+        mainAxisSpacing: 12,
       ),
       itemBuilder: (context, index) {
         List<Text> button = _getTextItems();
@@ -568,7 +566,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
                   Colors.grey[400]!), // Change overlay color
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(10),
                     side: BorderSide(
                         color: Colors.grey[400]!)), // Add border side
               ),
@@ -696,7 +694,6 @@ class _CalcDisplayState extends State<_CalcDisplay> {
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             flex: 2,
@@ -710,7 +707,7 @@ class _CalcDisplayState extends State<_CalcDisplay> {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 18, right: 18),
+                    padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: Text(
                       widget.controller.display!,
                       style: widget.theme?.displayStyle ??
