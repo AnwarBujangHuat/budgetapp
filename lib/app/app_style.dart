@@ -4,7 +4,7 @@ ThemeData lightThemeData = ThemeData(
     fontFamily: 'RobotoFlex',
     scaffoldBackgroundColor: AppColors.offWhite,
     appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: AppColors.darkBlue),
         titleTextStyle: TextStyle(
             color: AppColors.darkBlue,
@@ -83,7 +83,7 @@ ThemeData lightThemeData = ThemeData(
         background: AppColors.white,
         onBackground: AppColors.offWhite,
         surface: Colors.white,
-        onSurface: AppColors.black),
+        onSurface: AppColors.white),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
             shape: MaterialStatePropertyAll<OutlinedBorder>(
@@ -120,10 +120,12 @@ ThemeData darkThemeData = ThemeData(
 class AppColors {
   static const Color offWhite = Color(0xFFFEFEFE);
   // static const Color offWhite = Color(0xFFF5F5F5);
+
   // static const Color offWhiteVariant = Color(0xFFFEFEFE);
   static const Color white = Colors.white;
   static const Color whiteVariant = Color(0xFFF8F8F8);
   static const Color black = Colors.black;
+  static const Color grey = Colors.grey;
   static const Color cardBackgroundColor = Color.fromARGB(255, 28, 28, 28);
   static const Color blackVariant = Color(0xFF333333);
   static const Color darkBlue = Color(0xFF282D49);

@@ -17,17 +17,20 @@ class TransactionPage extends ConsumerWidget {
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(4),
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            // height: 60,
+            // decoration:
+            //     BoxDecoration(border: Border.all(color: AppColors.grey)),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Expanded(
                   child: IBOutlinedButton(
-                    title: 'Category',
+                    title: 'Default Category',
+                    borderColors: AppColors.grey,
                     onTap: () {},
                   ),
                 ),
-                IBSizedW05(),
+                IBSizedW10(),
                 Expanded(child: IBTransactionTypeWidget())
               ],
             ),
