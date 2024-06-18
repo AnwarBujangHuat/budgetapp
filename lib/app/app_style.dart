@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData lightThemeData = ThemeData(
     fontFamily: 'RobotoFlex',
-    scaffoldBackgroundColor: AppColors.offWhite,
+    scaffoldBackgroundColor: AppColors.rarifiedAir,
     appBarTheme: const AppBarTheme(
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: AppColors.darkBlue),
@@ -10,7 +10,7 @@ ThemeData lightThemeData = ThemeData(
             color: AppColors.darkBlue,
             fontWeight: FontWeight.bold,
             fontSize: FontSize.largeTitle)),
-    cardColor: AppColors.offWhite,
+    cardColor: AppColors.white,
     textTheme: const TextTheme(
       titleSmall: TextStyle(
         letterSpacing: 0,
@@ -98,7 +98,7 @@ ThemeData lightThemeData = ThemeData(
       ),
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
-        circularTrackColor: AppColors.offWhite),
+        circularTrackColor: AppColors.rarifiedAir),
     primaryColorLight: AppColors.darkBlue,
     primaryColor: AppColors.darkBlue);
 ThemeData darkThemeData = ThemeData(
@@ -175,7 +175,7 @@ ThemeData darkThemeData = ThemeData(
   colorScheme: const ColorScheme(
       brightness: Brightness.dark,
       primary: AppColors.white,
-      onPrimary: AppColors.offWhite,
+      onPrimary: AppColors.rarifiedAir,
       secondary: AppColors.white,
       onSecondary: AppColors.white,
       error: AppColors.lightRed,
@@ -204,12 +204,12 @@ ThemeData darkThemeData = ThemeData(
 );
 
 class AppColors {
-  ///Todo Improve Coloring Name
+  //Todo Improve Coloring Name
   /// For Light Theme
 
-  static const Color offWhite = Color(0xFFFEFEFE);
-
-  // static const Color offWhiteVariant = Color(0xFFFEFEFE);
+  static const Color rarifiedAir = Color(0xFFF2F3F8);
+  // static const Color rarifiedAir = Color(0xFFFEFEFE);
+  // static const Color rarifiedAirVariant = Color(0xFFFEFEFE);
   static const Color white = Colors.white;
   static const Color whiteVariant = Color(0xFFF8F8F8);
   static const Color black = Colors.black;

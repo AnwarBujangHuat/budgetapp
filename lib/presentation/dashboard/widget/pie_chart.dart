@@ -66,7 +66,7 @@ class IBPieChartWidget extends ConsumerWidget {
                             )
                           : Text(
                               '...${AppLocalizations.of(context)!.others}',
-                              style: TextStyle(color: AppColors.offWhite),
+                              style: TextStyle(color: AppColors.rarifiedAir),
                             ),
                     ),
                 ],
