@@ -37,7 +37,8 @@ class MyApp extends StatelessWidget {
           locale: const Locale('en', ''),
           theme: lightThemeData,
           darkTheme: darkThemeData,
-          themeMode: settingsController.themeMode,
+          themeMode: ThemeMode.dark,
+          // themeMode: settingsController.themeMode,
           onGenerateRoute: (RouteSettings routeSettings) =>
               MaterialPageRoute<void>(
             settings: routeSettings,

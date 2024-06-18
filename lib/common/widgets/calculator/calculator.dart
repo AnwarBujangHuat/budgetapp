@@ -468,7 +468,8 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
         return KeyEventResult.ignored;
       },
       descendantsAreFocusable: false,
-      child: SizedBox.expand(
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * .7,
         child: GestureDetector(
           onTap: () {
             _focusNode.requestFocus();
@@ -487,9 +488,21 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
               ),
             ),
             Expanded(
-              flex: 5,
-              child: _getButtons(),
-            ),
+                flex: 4,
+                child: LayoutBuilder(
+                  builder:
+                      (BuildContext childContext, BoxConstraints constraints) {
+                    //check if width is equal to parent width than make it 80% of parent width
+                    bool isWiderThanParent =
+                        (constraints.maxHeight * .8) + 10 >=
+                            MediaQuery.of(context).size.width;
+                    return Container(
+                        width: !isWiderThanParent
+                            ? constraints.maxHeight * .8
+                            : constraints.maxWidth * .95,
+                        child: _getButtons());
+                  },
+                )),
           ]),
         ),
       ),
@@ -547,24 +560,21 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
   Widget _getButtons() {
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.all(20),
       itemCount: 20,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 6,
       ),
       itemBuilder: (context, index) {
         List<Text> button = _getTextItems();
         return TextButton(
             style: ButtonStyle(
-              padding: MaterialStateProperty.all<EdgeInsets>(
+              padding: WidgetStateProperty.all<EdgeInsets>(
                   EdgeInsets.zero), // Remove padding
-              backgroundColor: MaterialStateProperty.all<Color>(
-                  Colors.transparent), // Make background transparent
-              overlayColor: MaterialStateProperty.all<Color>(
-                  Colors.grey[400]!), // Change overlay color
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              backgroundColor: WidgetStateProperty.all<Color>(AppColors.grey
+                  .withOpacity(.1)), // Make background transparent
+              shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                     side: BorderSide(

@@ -80,13 +80,11 @@ ThemeData lightThemeData = ThemeData(
         onSecondary: AppColors.white,
         error: AppColors.lightRed,
         onError: AppColors.lightRedVariant,
-        background: AppColors.white,
-        onBackground: AppColors.offWhite,
         surface: Colors.white,
         onSurface: AppColors.white),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
-            shape: MaterialStatePropertyAll<OutlinedBorder>(
+            shape: WidgetStatePropertyAll<OutlinedBorder>(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
@@ -104,22 +102,112 @@ ThemeData lightThemeData = ThemeData(
     primaryColorLight: AppColors.darkBlue,
     primaryColor: AppColors.darkBlue);
 ThemeData darkThemeData = ThemeData(
-  cardColor: AppColors.cardBackgroundColor,
   scaffoldBackgroundColor: AppColors.primaryDarkBackground,
-  primaryColorLight: AppColors.whiteVariant,
-  textButtonTheme: TextButtonThemeData(
-      style: const ButtonStyle(
-          textStyle: MaterialStatePropertyAll(TextStyle(
-    letterSpacing: 0,
-    fontSize: FontSize.smallTitle,
-    fontWeight: FontWeight.bold,
-    color: AppColors.white,
-  )))),
+  appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.secondaryDarkBackground,
+      iconTheme: IconThemeData(color: AppColors.white),
+      titleTextStyle: TextStyle(
+          color: AppColors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: FontSize.largeTitle)),
+  cardColor: AppColors.secondaryDarkBackground,
+  textTheme: const TextTheme(
+    titleSmall: TextStyle(
+      letterSpacing: 0,
+      fontSize: FontSize.smallTitle,
+      fontWeight: FontWeight.bold,
+      color: AppColors.white,
+    ),
+    titleMedium: TextStyle(
+      letterSpacing: 0,
+      fontSize: FontSize.mediumTitle,
+      fontWeight: FontWeight.bold,
+      color: AppColors.white,
+    ),
+    titleLarge: TextStyle(
+      letterSpacing: 0,
+      fontSize: FontSize.largeTitle,
+      fontWeight: FontWeight.bold,
+      color: AppColors.white,
+    ),
+    displaySmall: TextStyle(
+      letterSpacing: 0,
+      fontSize: FontSize.smallDisplay,
+      color: AppColors.white,
+    ),
+    displayMedium: TextStyle(
+      fontSize: FontSize.mediumDisplay,
+      fontWeight: FontWeight.w900,
+      color: AppColors.white,
+    ),
+    displayLarge: TextStyle(
+      fontSize: FontSize.largeDisplay,
+      color: AppColors.white,
+    ),
+    bodySmall: TextStyle(
+      fontSize: FontSize.subtitle,
+      color: AppColors.white,
+    ),
+    bodyMedium: TextStyle(
+      fontSize: FontSize.body,
+      color: AppColors.white,
+    ),
+    bodyLarge: TextStyle(
+      fontSize: FontSize.smallTitle,
+      color: AppColors.white,
+    ),
+    labelMedium: TextStyle(
+      letterSpacing: 0,
+      fontSize: FontSize.body,
+      color: AppColors.whiteVariant,
+    ),
+    labelSmall: TextStyle(
+      letterSpacing: 0,
+      fontSize: FontSize.subtitle,
+      color: AppColors.whiteVariant,
+    ),
+    labelLarge: TextStyle(
+      letterSpacing: 0,
+      fontSize: FontSize.smallTitle,
+      color: AppColors.whiteVariant,
+    ),
+  ),
+  colorScheme: const ColorScheme(
+      brightness: Brightness.dark,
+      primary: AppColors.white,
+      onPrimary: AppColors.offWhite,
+      secondary: AppColors.white,
+      onSecondary: AppColors.white,
+      error: AppColors.lightRed,
+      onError: AppColors.lightRed,
+      surface: AppColors.secondaryDarkBackground,
+      onSurface: AppColors.secondaryDarkBackground),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+      style: ButtonStyle(
+          shape: WidgetStatePropertyAll<OutlinedBorder>(
+    RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+  ))),
+  cardTheme: const CardTheme(
+    surfaceTintColor: AppColors.secondaryDarkBackground,
+    elevation: 1,
+    clipBehavior: Clip.antiAlias,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(16)),
+    ),
+  ),
+  progressIndicatorTheme:
+      const ProgressIndicatorThemeData(circularTrackColor: AppColors.white),
+  primaryColorLight: AppColors.white,
+  primaryColor: AppColors.white,
 );
 
 class AppColors {
+  ///Todo Improve Coloring Name
+  /// For Light Theme
+
   static const Color offWhite = Color(0xFFFEFEFE);
-  // static const Color offWhite = Color(0xFFF5F5F5);
 
   // static const Color offWhiteVariant = Color(0xFFFEFEFE);
   static const Color white = Colors.white;
@@ -130,8 +218,9 @@ class AppColors {
   static const Color blackVariant = Color(0xFF333333);
   static const Color darkBlue = Color(0xFF282D49);
   static const Color darkBlueLessOpacity = Color(0xB3282D49);
-  static const Color primaryDarkBackground = Color.fromARGB(255, 19, 19, 20);
-  static const Color secondaryDarkBackground = Color(0xFF1F212A);
+  static const Color primaryDarkBackground = Color(0xFF252627);
+  static const Color secondaryDarkBackground = Color(0xFF303030);
+  // static const Color secondaryDarkBackground = Color(0xFF3C3F4F);
   static const Color darkBlueVariant = Color(0xFF202531);
   static const Color lightGreen = Color.fromARGB(204, 128, 223, 135);
   static const Color lighterGreen = Color(0xCC8EFFA8);
@@ -148,6 +237,8 @@ class AppColors {
   static const Color pink = Color(0xFFFA7F72);
   static const Color teal = Color(0xFF64C4D6);
   static const Color slateBlue = Color(0xFF62758D);
+
+  /// For Dark Theme
 }
 
 class FontSize {

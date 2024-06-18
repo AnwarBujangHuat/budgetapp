@@ -9,8 +9,7 @@ class IBTextHeader extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(4),
-      child: Text(title,
-          style: theme.textTheme.titleMedium!.copyWith(color: Colors.black54)),
+      child: Text(title, style: theme.textTheme.titleMedium),
     );
   }
 }

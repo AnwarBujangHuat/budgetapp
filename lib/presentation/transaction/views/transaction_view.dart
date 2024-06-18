@@ -14,13 +14,25 @@ class TransactionPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(AppLocalizations.of(context)!.transaction),
+        automaticallyImplyLeading: false,
+        leading: GestureDetector(
+          child: BackButton(),
+        ),
+        actions: [
+          IBTextButton(
+            title: AppLocalizations.of(context)!.add,
+            onTap: () {},
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          ),
+        ],
+      ),
       body: Column(
         children: [
-          Container(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),
-            // height: 60,
-            // decoration:
-            //     BoxDecoration(border: Border.all(color: AppColors.grey)),
             child: Row(
               children: [
                 Expanded(
@@ -35,24 +47,26 @@ class TransactionPage extends ConsumerWidget {
               ],
             ),
           ),
-          Expanded(
-            child: IBCalculatorWidget(),
+          Padding(
+            padding: EdgeInsets.all(8),
+            child: IBOutlinedButton(
+              buttonBuilder: Builder(builder: (context) {
+                return Row(
+                  children: [
+                    Expanded(child: Text('Comment')),
+                    IconButton(
+                        onPressed: () => {},
+                        icon: Icon(
+                          Icons.attachment,
+                        ))
+                  ],
+                );
+              }),
+              borderColors: AppColors.grey,
+              onTap: () {},
+            ),
           ),
-        ],
-      ),
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(AppLocalizations.of(context)!.transaction),
-        automaticallyImplyLeading: false,
-        leading: GestureDetector(
-          child: BackButton(),
-        ),
-        actions: [
-          IBTextButton(
-            title: AppLocalizations.of(context)!.add,
-            onTap: () {},
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          ),
+          IBCalculatorWidget(),
         ],
       ),
     );

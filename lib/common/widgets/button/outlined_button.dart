@@ -21,8 +21,8 @@ class IBOutlinedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-        style: Theme.of(context).outlinedButtonTheme.style!.copyWith(
-                side: MaterialStatePropertyAll(
+        style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
+                side: WidgetStatePropertyAll(
               BorderSide(color: borderColors ?? Colors.white),
             )),
         onPressed: onTap,
