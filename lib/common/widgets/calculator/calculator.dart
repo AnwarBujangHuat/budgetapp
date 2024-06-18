@@ -610,7 +610,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
       '±',
       '='
     ].map((title) {
-      TextStyle? style = Theme.of(context).textTheme.bodyLarge;
+      TextStyle? style = Theme.of(context).textTheme.titleMedium;
       if (title == '=' ||
           title == '+' ||
           title == '-' ||
