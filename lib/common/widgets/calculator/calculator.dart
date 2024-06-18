@@ -610,14 +610,13 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
       '±',
       '='
     ].map((title) {
-      TextStyle style =
-          TextStyle(color: AppColors.darkBlue, fontSize: FontSize.mediumTitle);
+      TextStyle? style = Theme.of(context).textTheme.bodyLarge;
       if (title == '=' ||
           title == '+' ||
           title == '-' ||
           title == '×' ||
           title == '÷') {
-        style = style.copyWith(fontSize: FontSize.largeTitle);
+        style = style!.copyWith(fontSize: FontSize.largeTitle);
       }
       if (title == _controller.numberFormat.symbols.PERCENT ||
           title == '→' ||
