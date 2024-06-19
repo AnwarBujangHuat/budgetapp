@@ -7,71 +7,103 @@ ThemeData lightThemeData = ThemeData(
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: AppColors.darkBlue),
         titleTextStyle: TextStyle(
+            overflow: TextOverflow.ellipsis,
             color: AppColors.darkBlue,
             fontWeight: FontWeight.bold,
             fontSize: FontSize.largeTitle)),
     cardColor: AppColors.white,
+    inputDecorationTheme: InputDecorationTheme(
+      isDense: true,
+      labelStyle: TextStyle(
+        overflow: TextOverflow.ellipsis,
+        letterSpacing: 0,
+        fontSize: FontSize.body,
+        color: AppColors.darkBlue,
+      ),
+      hintStyle: TextStyle(
+        overflow: TextOverflow.ellipsis,
+        letterSpacing: 0,
+        fontSize: FontSize.body,
+        color: AppColors.grey,
+      ),
+      border: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.grey),
+          borderRadius: BorderRadius.circular(10)),
+    ),
     textTheme: const TextTheme(
       titleSmall: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.smallTitle,
         fontWeight: FontWeight.bold,
         color: AppColors.darkBlue,
       ),
       titleMedium: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.mediumTitle,
         fontWeight: FontWeight.bold,
         color: AppColors.darkBlue,
       ),
       titleLarge: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.largeTitle,
         fontWeight: FontWeight.bold,
         color: AppColors.darkBlue,
       ),
       displaySmall: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.smallDisplay,
         color: AppColors.darkBlue,
       ),
       displayMedium: TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontSize: FontSize.mediumDisplay,
         fontWeight: FontWeight.w900,
         color: AppColors.darkBlue,
       ),
       displayLarge: TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontSize: FontSize.largeDisplay,
         color: AppColors.darkBlue,
       ),
       bodySmall: TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontSize: FontSize.subtitle,
         color: AppColors.darkBlue,
       ),
       bodyMedium: TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontSize: FontSize.body,
         color: AppColors.darkBlue,
       ),
       bodyLarge: TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontSize: FontSize.smallTitle,
         color: AppColors.darkBlue,
       ),
       labelMedium: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.body,
         color: AppColors.darkBlueLessOpacity,
       ),
       labelSmall: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.subtitle,
         color: AppColors.darkBlueLessOpacity,
       ),
       labelLarge: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.smallTitle,
         color: AppColors.darkBlueLessOpacity,
       ),
     ),
+    iconTheme: IconThemeData(size: 24),
     colorScheme: const ColorScheme(
         brightness: Brightness.light,
         primary: AppColors.darkBlue,
@@ -81,14 +113,17 @@ ThemeData lightThemeData = ThemeData(
         error: AppColors.lightRed,
         onError: AppColors.lightRedVariant,
         surface: Colors.white,
-        onSurface: AppColors.white),
+        onSurface: AppColors.grey),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
+            textStyle: WidgetStatePropertyAll(
+              TextStyle(overflow: TextOverflow.ellipsis),
+            ),
             shape: WidgetStatePropertyAll<OutlinedBorder>(
-      RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-    ))),
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ))),
     cardTheme: const CardTheme(
       surfaceTintColor: Colors.white,
       elevation: 1,
@@ -107,66 +142,79 @@ ThemeData darkThemeData = ThemeData(
       backgroundColor: AppColors.secondaryDarkBackground,
       iconTheme: IconThemeData(color: AppColors.white),
       titleTextStyle: TextStyle(
+          overflow: TextOverflow.ellipsis,
           color: AppColors.white,
           fontWeight: FontWeight.bold,
           fontSize: FontSize.largeTitle)),
   cardColor: AppColors.secondaryDarkBackground,
   textTheme: const TextTheme(
     titleSmall: TextStyle(
+      overflow: TextOverflow.ellipsis,
       letterSpacing: 0,
       fontSize: FontSize.smallTitle,
       fontWeight: FontWeight.bold,
       color: AppColors.white,
     ),
     titleMedium: TextStyle(
+      overflow: TextOverflow.ellipsis,
       letterSpacing: 0,
       fontSize: FontSize.mediumTitle,
       fontWeight: FontWeight.bold,
       color: AppColors.white,
     ),
     titleLarge: TextStyle(
+      overflow: TextOverflow.ellipsis,
       letterSpacing: 0,
       fontSize: FontSize.largeTitle,
       fontWeight: FontWeight.bold,
       color: AppColors.white,
     ),
     displaySmall: TextStyle(
+      overflow: TextOverflow.ellipsis,
       letterSpacing: 0,
       fontSize: FontSize.smallDisplay,
       color: AppColors.white,
     ),
     displayMedium: TextStyle(
+      overflow: TextOverflow.ellipsis,
       fontSize: FontSize.mediumDisplay,
       fontWeight: FontWeight.w900,
       color: AppColors.white,
     ),
     displayLarge: TextStyle(
+      overflow: TextOverflow.ellipsis,
       fontSize: FontSize.largeDisplay,
       color: AppColors.white,
     ),
     bodySmall: TextStyle(
+      overflow: TextOverflow.ellipsis,
       fontSize: FontSize.subtitle,
       color: AppColors.white,
     ),
     bodyMedium: TextStyle(
+      overflow: TextOverflow.ellipsis,
       fontSize: FontSize.body,
       color: AppColors.white,
     ),
     bodyLarge: TextStyle(
+      overflow: TextOverflow.ellipsis,
       fontSize: FontSize.smallTitle,
       color: AppColors.white,
     ),
     labelMedium: TextStyle(
+      overflow: TextOverflow.ellipsis,
       letterSpacing: 0,
       fontSize: FontSize.body,
       color: AppColors.whiteVariant,
     ),
     labelSmall: TextStyle(
+      overflow: TextOverflow.ellipsis,
       letterSpacing: 0,
       fontSize: FontSize.subtitle,
       color: AppColors.whiteVariant,
     ),
     labelLarge: TextStyle(
+      overflow: TextOverflow.ellipsis,
       letterSpacing: 0,
       fontSize: FontSize.smallTitle,
       color: AppColors.whiteVariant,

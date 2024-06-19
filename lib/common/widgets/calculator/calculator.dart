@@ -469,7 +469,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
       },
       descendantsAreFocusable: false,
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * .7,
+        height: MediaQuery.of(context).size.height * .63,
         child: GestureDetector(
           onTap: () {
             _focusNode.requestFocus();
@@ -477,7 +477,6 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
           child: Column(children: <Widget>[
             Expanded(
               child: _CalcDisplay(
-                hideSurroundingBorder: widget.hideSurroundingBorder,
                 hideExpression: widget.hideExpression,
                 onTappedDisplay: (a, b) {
                   _focusNode.requestFocus();
@@ -494,7 +493,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
                       (BuildContext childContext, BoxConstraints constraints) {
                     //check if width is equal to parent width than make it 80% of parent width
                     bool isWiderThanParent =
-                        (constraints.maxHeight * .8) + 10 >=
+                        (constraints.maxHeight * .8) + 30 >=
                             MediaQuery.of(context).size.width;
                     return Container(
                         width: !isWiderThanParent
@@ -634,7 +633,6 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
 
 class _CalcDisplay extends StatefulWidget {
   /// Whether to show surrounding borders.
-  final bool? hideSurroundingBorder;
 
   /// Whether to show expression area.
   final bool? hideExpression;
@@ -651,7 +649,6 @@ class _CalcDisplay extends StatefulWidget {
   const _CalcDisplay({
     required this.onTappedDisplay,
     required this.controller,
-    this.hideSurroundingBorder,
     this.hideExpression,
     this.theme,
   });
@@ -688,70 +685,52 @@ class _CalcDisplayState extends State<_CalcDisplay> {
 
   @override
   Widget build(BuildContext context) {
-    final borderSide = Divider.createBorderSide(
-      context,
-      color: widget.theme?.borderColor ?? Theme.of(context).dividerColor,
-      width: widget.theme?.borderWidth ?? 1.0,
-    );
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          top: widget.hideSurroundingBorder! ? BorderSide.none : borderSide,
-          left: widget.hideSurroundingBorder! ? BorderSide.none : borderSide,
-          right: widget.hideSurroundingBorder! ? BorderSide.none : borderSide,
-          bottom: widget.hideSurroundingBorder! ? borderSide : BorderSide.none,
+    return Column(
+      children: <Widget>[
+        Expanded(
+          flex: 2,
+          child: GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onTapDown: (details) => widget.onTappedDisplay == null
+                ? null
+                : widget.onTappedDisplay!(widget.controller.value, details),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  widget.controller.display!,
+                  style: const TextStyle(
+                    fontSize: 50,
+                    wordSpacing: 0,
+                    height: 1,
+                  ),
+                  maxLines: 1,
+                ),
+              ),
+            ),
+          ),
         ),
-      ),
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              onTapDown: (details) => widget.onTappedDisplay == null
-                  ? null
-                  : widget.onTappedDisplay!(widget.controller.value, details),
-              child: Container(
-                color: widget.theme?.displayColor,
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18),
-                    child: Text(
-                      widget.controller.display!,
-                      style: widget.theme?.displayStyle ??
-                          const TextStyle(fontSize: 50),
-                      maxLines: 1,
-                    ),
-                  ),
+        Expanded(
+          child: Container(
+            color: widget.theme?.expressionColor,
+            child: Align(
+              alignment: Alignment.topRight,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                scrollDirection: Axis.horizontal,
+                reverse: true,
+                child: Text(
+                  widget.controller.expression!,
+                  style: widget.theme?.expressionStyle ??
+                      const TextStyle(color: Colors.grey),
+                  maxLines: 1,
                 ),
               ),
             ),
           ),
-          Visibility(
-            visible: !widget.hideExpression!,
-            child: Expanded(
-              child: Container(
-                color: widget.theme?.expressionColor,
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                    scrollDirection: Axis.horizontal,
-                    reverse: true,
-                    child: Text(
-                      widget.controller.expression!,
-                      style: widget.theme?.expressionStyle ??
-                          const TextStyle(color: Colors.grey),
-                      maxLines: 1,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

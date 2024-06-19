@@ -31,10 +31,11 @@ class IBOutlinedButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 icon ?? SizedBox.shrink(),
-                if (icon != null) IBSizedW10(),
+                if (icon != null) IBSizedW05(),
                 titleBuilder ??
                     Text(
-                      title ?? '-',
+                      overflow: TextOverflow.ellipsis,
+                      'dddddddddddd' ?? '-',
                     ),
               ],
             ));

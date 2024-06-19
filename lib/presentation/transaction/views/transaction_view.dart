@@ -4,9 +4,11 @@ import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/button/transaction_type_button.dart';
 import 'package:budgetapp/common/widgets/calculator/calculator.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
+import 'package:budgetapp/common/widgets/text_field/ib_text__form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 class TransactionPage extends ConsumerWidget {
   const TransactionPage({super.key});
@@ -29,16 +31,28 @@ class TransactionPage extends ConsumerWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
+      body: Padding(
+        padding: EdgeInsets.all(8),
+        child: Column(
+          children: [
+            Container(
+              height: 40,
+              child: IBOutlinedButton(
+                title: DateFormat('dd MMM yy')
+                    .format(DateTime(DateTime.now().year, DateTime.september)),
+                borderColors: AppColors.darkBlueLessOpacity,
+                icon: Icon(Icons.calendar_month),
+                onTap: () {},
+              ),
+            ),
+            IBSizedH05(),
+            Row(
               children: [
                 Expanded(
                   child: IBOutlinedButton(
                     title: 'Default Category',
-                    borderColors: AppColors.grey,
+                    borderColors: AppColors.darkBlueLessOpacity,
+                    icon: Icon(Icons.arrow_drop_down),
                     onTap: () {},
                   ),
                 ),
@@ -46,28 +60,21 @@ class TransactionPage extends ConsumerWidget {
                 Expanded(child: IBTransactionTypeWidget())
               ],
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(8),
-            child: IBOutlinedButton(
-              buttonBuilder: Builder(builder: (context) {
-                return Row(
-                  children: [
-                    Expanded(child: Text('Comment')),
-                    IconButton(
-                        onPressed: () => {},
-                        icon: Icon(
-                          Icons.attachment,
-                        ))
-                  ],
-                );
-              }),
-              borderColors: AppColors.grey,
-              onTap: () {},
+            IBSizedH05(),
+            Row(
+              children: [
+                Expanded(
+                    flex: 2,
+                    child: IBTextFormField(
+                      hintText: 'Notes',
+                      trailingButton: IconButton(
+                          onPressed: () {}, icon: Icon(Icons.attachment)),
+                    ))
+              ],
             ),
-          ),
-          IBCalculatorWidget(),
-        ],
+            IBCalculatorWidget(),
+          ],
+        ),
       ),
     );
   }
