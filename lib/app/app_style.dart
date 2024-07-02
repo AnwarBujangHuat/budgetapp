@@ -13,23 +13,27 @@ ThemeData lightThemeData = ThemeData(
             fontSize: FontSize.largeTitle)),
     cardColor: AppColors.white,
     inputDecorationTheme: InputDecorationTheme(
-      isDense: true,
-      labelStyle: TextStyle(
-        overflow: TextOverflow.ellipsis,
-        letterSpacing: 0,
-        fontSize: FontSize.body,
-        color: AppColors.darkBlue,
-      ),
-      hintStyle: TextStyle(
-        overflow: TextOverflow.ellipsis,
-        letterSpacing: 0,
-        fontSize: FontSize.body,
-        color: AppColors.grey,
-      ),
-      border: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.grey),
-          borderRadius: BorderRadius.circular(10)),
-    ),
+        fillColor: AppColors.white,
+        filled: true,
+        isDense: true,
+        labelStyle: TextStyle(
+          overflow: TextOverflow.ellipsis,
+          letterSpacing: 0,
+          fontSize: FontSize.body,
+          color: AppColors.darkBlue,
+        ),
+        hintStyle: TextStyle(
+          overflow: TextOverflow.ellipsis,
+          letterSpacing: 0,
+          fontSize: FontSize.body,
+          color: AppColors.grey,
+        ),
+        border: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.grey),
+            borderRadius: BorderRadius.circular(10)),
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.grey),
+            borderRadius: BorderRadius.circular(10))),
     textTheme: const TextTheme(
       titleSmall: TextStyle(
         overflow: TextOverflow.ellipsis,
@@ -104,16 +108,20 @@ ThemeData lightThemeData = ThemeData(
       ),
     ),
     iconTheme: IconThemeData(size: 24),
+    datePickerTheme: DatePickerThemeData(
+        dayStyle: TextStyle(color: Colors.white),
+        // dayOverlayColor: WidgetStatePropertyAll(AppColors.white),
+        surfaceTintColor: Colors.white),
     colorScheme: const ColorScheme(
         brightness: Brightness.light,
         primary: AppColors.darkBlue,
-        onPrimary: AppColors.darkBlue,
+        onPrimary: AppColors.white,
         secondary: AppColors.darkBlueVariant,
         onSecondary: AppColors.white,
         error: AppColors.lightRed,
-        onError: AppColors.lightRedVariant,
+        onError: AppColors.white,
         surface: Colors.white,
-        onSurface: AppColors.grey),
+        onSurface: AppColors.darkBlueLessOpacity),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
             textStyle: WidgetStatePropertyAll(

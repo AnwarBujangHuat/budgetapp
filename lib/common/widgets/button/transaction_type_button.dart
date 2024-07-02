@@ -7,12 +7,17 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class IBTransactionTypeWidget extends ConsumerWidget {
-  const IBTransactionTypeWidget({super.key});
+  const IBTransactionTypeWidget({
+    super.key,
+    this.backgroundColor,
+  });
+  final Color? backgroundColor;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedButton = ref.watch(selectedTransactionTypeProvider);
 
     return IBOutlinedButton(
+      backgroundColor: backgroundColor,
       borderColors: selectedButton != TransactionType.income
           ? AppColors.lightRed
           : AppColors.lightGreen,

@@ -5,25 +5,28 @@ import 'package:flutter/material.dart';
 class IBOutlinedButton extends StatelessWidget {
   const IBOutlinedButton(
       {required this.onTap,
-      this.title,
+      this.title = '-',
       this.icon,
       this.buttonBuilder,
       this.borderColors,
       super.key,
-      this.titleBuilder});
+      this.titleBuilder,
+      this.backgroundColor});
   final Function() onTap;
-  final String? title;
+  final String title;
   final Widget? icon;
   final Builder? buttonBuilder;
   final Builder? titleBuilder;
   final Color? borderColors;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
         style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
-                side: WidgetStatePropertyAll(
-              BorderSide(color: borderColors ?? Colors.white),
+            backgroundColor: WidgetStatePropertyAll(backgroundColor),
+            side: WidgetStatePropertyAll(
+              BorderSide(color: borderColors ?? AppColors.grey),
             )),
         onPressed: onTap,
         child: buttonBuilder ??
@@ -35,7 +38,7 @@ class IBOutlinedButton extends StatelessWidget {
                 titleBuilder ??
                     Text(
                       overflow: TextOverflow.ellipsis,
-                      'dddddddddddd' ?? '-',
+                      title,
                     ),
               ],
             ));

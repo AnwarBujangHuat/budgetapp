@@ -469,7 +469,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
       },
       descendantsAreFocusable: false,
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * .63,
+        height: MediaQuery.of(context).size.height * .68,
         child: GestureDetector(
           onTap: () {
             _focusNode.requestFocus();
@@ -493,12 +493,12 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
                       (BuildContext childContext, BoxConstraints constraints) {
                     //check if width is equal to parent width than make it 80% of parent width
                     bool isWiderThanParent =
-                        (constraints.maxHeight * .8) + 30 >=
+                        (constraints.maxHeight * .8) + 20 >=
                             MediaQuery.of(context).size.width;
                     return Container(
                         width: !isWiderThanParent
                             ? constraints.maxHeight * .8
-                            : constraints.maxWidth * .95,
+                            : constraints.maxWidth * .9,
                         child: _getButtons());
                   },
                 )),

@@ -16,6 +16,7 @@ class TransactionPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         centerTitle: true,
         title: Text(AppLocalizations.of(context)!.transaction),
@@ -31,50 +32,57 @@ class TransactionPage extends ConsumerWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(8),
-        child: Column(
-          children: [
-            Container(
-              height: 40,
-              child: IBOutlinedButton(
-                title: DateFormat('dd MMM yy')
-                    .format(DateTime(DateTime.now().year, DateTime.september)),
-                borderColors: AppColors.darkBlueLessOpacity,
-                icon: Icon(Icons.calendar_month),
-                onTap: () {},
-              ),
-            ),
-            IBSizedH05(),
-            Row(
-              children: [
-                Expanded(
-                  child: IBOutlinedButton(
-                    title: 'Default Category',
-                    borderColors: AppColors.darkBlueLessOpacity,
-                    icon: Icon(Icons.arrow_drop_down),
-                    onTap: () {},
-                  ),
+      body: ListView(
+        physics: NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        children: [
+          IBSizedH05(),
+          IBOutlinedButton(
+            backgroundColor: AppColors.white,
+            title: DateFormat('dd MMM yy')
+                .format(DateTime(DateTime.now().year, DateTime.september)),
+            icon: Icon(Icons.calendar_month),
+            onTap: () async {
+              await showDatePicker(
+                context: context,
+                initialEntryMode: DatePickerEntryMode.calendarOnly,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(DateTime.now().year - 10),
+                lastDate: DateTime(DateTime.now().year + 10),
+              );
+            },
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: IBOutlinedButton(
+                  title: 'Default Category',
+                  backgroundColor: AppColors.white,
+                  icon: Icon(Icons.arrow_drop_down),
+                  onTap: () {},
                 ),
-                IBSizedW10(),
-                Expanded(child: IBTransactionTypeWidget())
-              ],
-            ),
-            IBSizedH05(),
-            Row(
-              children: [
-                Expanded(
-                    flex: 2,
-                    child: IBTextFormField(
-                      hintText: 'Notes',
-                      trailingButton: IconButton(
-                          onPressed: () {}, icon: Icon(Icons.attachment)),
-                    ))
-              ],
-            ),
-            IBCalculatorWidget(),
-          ],
-        ),
+              ),
+              IBSizedW10(),
+              Expanded(
+                  child: IBTransactionTypeWidget(
+                backgroundColor: AppColors.white,
+              ))
+            ],
+          ),
+          IBSizedH05(),
+          Row(
+            children: [
+              Expanded(
+                  flex: 2,
+                  child: IBTextFormField(
+                    hintText: 'Notes',
+                    trailingButton: IconButton(
+                        onPressed: () {}, icon: Icon(Icons.attachment)),
+                  ))
+            ],
+          ),
+          IBCalculatorWidget(),
+        ],
       ),
     );
   }
