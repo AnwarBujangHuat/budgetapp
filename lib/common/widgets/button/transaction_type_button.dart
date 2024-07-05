@@ -10,14 +10,17 @@ class IBTransactionTypeWidget extends ConsumerWidget {
   const IBTransactionTypeWidget({
     super.key,
     this.backgroundColor,
+    this.shadowColor,
   });
   final Color? backgroundColor;
+  final Color? shadowColor;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedButton = ref.watch(selectedTransactionTypeProvider);
 
     return IBOutlinedButton(
       backgroundColor: backgroundColor,
+      shadowColor: shadowColor,
       borderColors: selectedButton != TransactionType.income
           ? AppColors.lightRed
           : AppColors.lightGreen,

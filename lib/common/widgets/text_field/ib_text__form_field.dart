@@ -19,6 +19,7 @@ class _IBTextFormFieldState extends State<IBTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textAlignVertical: TextAlignVertical.center,
       controller: widget.controller,
       decoration: InputDecoration(
           suffixIcon: widget.trailingButton,

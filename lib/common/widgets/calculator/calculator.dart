@@ -569,15 +569,16 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
         List<Text> button = _getTextItems();
         return TextButton(
             style: ButtonStyle(
+              elevation: WidgetStatePropertyAll(1),
+              shadowColor: WidgetStatePropertyAll(AppColors.grey),
               padding: WidgetStateProperty.all<EdgeInsets>(
                   EdgeInsets.zero), // Remove padding
-              backgroundColor: WidgetStateProperty.all<Color>(AppColors.grey
-                  .withOpacity(.1)), // Make background transparent
+              backgroundColor: WidgetStateProperty.all<Color>(
+                  AppColors.white), // Make background transparent
               shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    side: BorderSide(
-                        color: Colors.grey[400]!)), // Add border side
+                  borderRadius: BorderRadius.circular(10),
+                ), // Add border side
               ),
             ),
             onPressed: () => _onButtonPressed(button[index].data ?? ''),

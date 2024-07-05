@@ -15,7 +15,9 @@ ThemeData lightThemeData = ThemeData(
     inputDecorationTheme: InputDecorationTheme(
         fillColor: AppColors.white,
         filled: true,
+        isCollapsed: true,
         isDense: true,
+        contentPadding: EdgeInsets.symmetric(horizontal: 5),
         labelStyle: TextStyle(
           overflow: TextOverflow.ellipsis,
           letterSpacing: 0,
@@ -23,16 +25,15 @@ ThemeData lightThemeData = ThemeData(
           color: AppColors.darkBlue,
         ),
         hintStyle: TextStyle(
-          overflow: TextOverflow.ellipsis,
           letterSpacing: 0,
           fontSize: FontSize.body,
           color: AppColors.grey,
         ),
-        border: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.grey),
+        border: UnderlineInputBorder(
+            borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(10)),
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.grey),
+        enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(10))),
     textTheme: const TextTheme(
       titleSmall: TextStyle(

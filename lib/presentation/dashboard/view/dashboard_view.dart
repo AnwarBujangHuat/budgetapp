@@ -134,7 +134,9 @@ class MyHeader extends ConsumerWidget {
                               TotalTransactionValue(),
                             ],
                           ),
-                          IBTransactionTypeWidget()
+                          IBTransactionTypeWidget(
+                            shadowColor: Colors.transparent,
+                          )
                         ],
                       ),
                       IBPieChartWidget()

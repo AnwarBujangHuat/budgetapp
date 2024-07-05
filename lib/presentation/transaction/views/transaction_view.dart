@@ -6,6 +6,7 @@ import 'package:budgetapp/common/widgets/calculator/calculator.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/common/widgets/text_field/ib_text__form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -39,6 +40,7 @@ class TransactionPage extends ConsumerWidget {
           IBSizedH05(),
           IBOutlinedButton(
             backgroundColor: AppColors.white,
+            borderColors: Colors.transparent,
             title: DateFormat('dd MMM yy')
                 .format(DateTime(DateTime.now().year, DateTime.september)),
             icon: Icon(Icons.calendar_month),
@@ -57,6 +59,7 @@ class TransactionPage extends ConsumerWidget {
               Expanded(
                 child: IBOutlinedButton(
                   title: 'Default Category',
+                  borderColors: Colors.transparent,
                   backgroundColor: AppColors.white,
                   icon: Icon(Icons.arrow_drop_down),
                   onTap: () {},
@@ -70,16 +73,17 @@ class TransactionPage extends ConsumerWidget {
             ],
           ),
           IBSizedH05(),
-          Row(
-            children: [
-              Expanded(
-                  flex: 2,
-                  child: IBTextFormField(
-                    hintText: 'Notes',
-                    trailingButton: IconButton(
-                        onPressed: () {}, icon: Icon(Icons.attachment)),
-                  ))
-            ],
+          Card(
+            elevation: 1,
+            margin: EdgeInsets.zero,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+            child: IBTextFormField(
+              hintText: 'Notes',
+              trailingButton:
+                  IconButton(onPressed: () {}, icon: Icon(Icons.attachment)),
+            ),
           ),
           IBCalculatorWidget(),
         ],

@@ -11,6 +11,7 @@ class IBOutlinedButton extends StatelessWidget {
       this.borderColors,
       super.key,
       this.titleBuilder,
+      this.shadowColor = AppColors.grey,
       this.backgroundColor});
   final Function() onTap;
   final String title;
@@ -19,15 +20,19 @@ class IBOutlinedButton extends StatelessWidget {
   final Builder? titleBuilder;
   final Color? borderColors;
   final Color? backgroundColor;
+  final Color? shadowColor;
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
         style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
-            backgroundColor: WidgetStatePropertyAll(backgroundColor),
-            side: WidgetStatePropertyAll(
-              BorderSide(color: borderColors ?? AppColors.grey),
-            )),
+              elevation: WidgetStatePropertyAll(1),
+              shadowColor: WidgetStatePropertyAll(shadowColor),
+              backgroundColor: WidgetStatePropertyAll(backgroundColor),
+              side: WidgetStatePropertyAll(
+                BorderSide(color: borderColors ?? AppColors.grey),
+              ),
+            ),
         onPressed: onTap,
         child: buttonBuilder ??
             Row(
