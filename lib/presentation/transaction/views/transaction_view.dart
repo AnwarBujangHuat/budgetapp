@@ -5,9 +5,19 @@ import 'package:budgetapp/common/widgets/button/transaction_type_button.dart';
 import 'package:budgetapp/common/widgets/calculator/calculator.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/common/widgets/text_field/ib_text__form_field.dart';
+import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+List<TagModel> tagList = [
+  TagModel(
+      parentTagId: 1,
+      tagId: 2,
+      tagName: 'Default Tag',
+      icon: IconModel(codePaint: 58261, fontFamily: 'MaterialIcons'),
+      color: '#B9CAEE')
+];
 
 class TransactionPage extends ConsumerWidget {
   const TransactionPage({super.key});
@@ -40,7 +50,7 @@ class TransactionPage extends ConsumerWidget {
             children: [
               Expanded(
                 child: IBOutlinedButton(
-                  title: 'Default Category',
+                  title: tagList[0].tagName,
                   borderColors: Colors.transparent,
                   backgroundColor: AppColors.white,
                   icon: Icon(Icons.arrow_drop_down),
