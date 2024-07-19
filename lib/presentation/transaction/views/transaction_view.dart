@@ -6,10 +6,8 @@ import 'package:budgetapp/common/widgets/calculator/calculator.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/common/widgets/text_field/ib_text__form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
 
 class TransactionPage extends ConsumerWidget {
   const TransactionPage({super.key});
@@ -38,22 +36,6 @@ class TransactionPage extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         children: [
           IBSizedH05(),
-          IBOutlinedButton(
-            backgroundColor: AppColors.white,
-            borderColors: Colors.transparent,
-            title: DateFormat('dd MMM yy')
-                .format(DateTime(DateTime.now().year, DateTime.september)),
-            icon: Icon(Icons.calendar_month),
-            onTap: () async {
-              await showDatePicker(
-                context: context,
-                initialEntryMode: DatePickerEntryMode.calendarOnly,
-                initialDate: DateTime.now(),
-                firstDate: DateTime(DateTime.now().year - 10),
-                lastDate: DateTime(DateTime.now().year + 10),
-              );
-            },
-          ),
           Row(
             children: [
               Expanded(
@@ -80,12 +62,14 @@ class TransactionPage extends ConsumerWidget {
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
             child: IBTextFormField(
-              hintText: 'Notes',
+              hintText: AppLocalizations.of(context)!.notes,
               trailingButton:
                   IconButton(onPressed: () {}, icon: Icon(Icons.attachment)),
             ),
           ),
-          IBCalculatorWidget(),
+          IBCalculatorWidget(
+            maxHeight: MediaQuery.of(context).size.height * .73,
+          ),
         ],
       ),
     );

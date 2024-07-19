@@ -239,6 +239,9 @@ class IBCalculatorWidget extends StatefulWidget {
   /// Controller for calculator.
   final CalcController? controller;
 
+  /// Widget Height Relative to the screen
+  final double? maxHeight;
+
   const IBCalculatorWidget({
     super.key,
     this.theme,
@@ -252,6 +255,7 @@ class IBCalculatorWidget extends StatefulWidget {
     this.autofocus = false,
     this.focusNode,
     this.controller,
+    this.maxHeight,
   });
 
   @override
@@ -469,7 +473,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
       },
       descendantsAreFocusable: false,
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * .68,
+        height: widget.maxHeight,
         child: GestureDetector(
           onTap: () {
             _focusNode.requestFocus();
