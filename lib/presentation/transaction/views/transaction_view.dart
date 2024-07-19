@@ -1,4 +1,5 @@
 import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/common/viewmodel/tag/tag_viewmodel.dart';
 import 'package:budgetapp/common/widgets/button/outlined_button.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/button/transaction_type_button.dart';
@@ -9,15 +10,6 @@ import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-List<TagModel> tagList = [
-  TagModel(
-      parentTagId: 1,
-      tagId: 2,
-      tagName: 'Default Tag',
-      icon: IconModel(codePaint: 58261, fontFamily: 'MaterialIcons'),
-      color: '#B9CAEE')
-];
 
 class TransactionPage extends ConsumerWidget {
   const TransactionPage({super.key});
@@ -48,16 +40,8 @@ class TransactionPage extends ConsumerWidget {
           IBSizedH05(),
           Row(
             children: [
-              Expanded(
-                child: IBOutlinedButton(
-                  title: tagList[0].tagName,
-                  borderColors: Colors.transparent,
-                  backgroundColor: AppColors.white,
-                  icon: Icon(Icons.arrow_drop_down),
-                  onTap: () {},
-                ),
-              ),
               IBSizedW10(),
+              TransactionTypeSelect(),
               Expanded(
                   child: IBTransactionTypeWidget(
                 backgroundColor: AppColors.white,
@@ -83,5 +67,35 @@ class TransactionPage extends ConsumerWidget {
         ],
       ),
     );
+  }
+}
+
+class TransactionTypeSelect extends ConsumerWidget {
+  const TransactionTypeSelect({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    AsyncValue<List<TagModel>> tagProvider = ref.watch(tagViewmodelProvider);
+
+    Widget bodyWidget() {
+      switch (tagProvider) {
+        case AsyncData(:final value):
+          return Expanded(
+            child: IBOutlinedButton(
+              title: value[0].tagName,
+              borderColors: Colors.transparent,
+              backgroundColor: AppColors.white,
+              icon: Icon(Icons.arrow_drop_down),
+              onTap: () {},
+            ),
+          );
+        case AsyncError(:final error):
+          return Text(error.toString());
+        default:
+          return Container();
+      }
+    }
+
+    return bodyWidget();
   }
 }
