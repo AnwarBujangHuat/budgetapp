@@ -51,7 +51,7 @@ class IBTranscationListWidget extends ConsumerWidget {
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemBuilder: (context, index) => IBTransactionCard(
-                            //Todo open page for transaction details, like a reciept page
+                            // Todo open page for transaction details, like a reciept page
                             onPressed: () {},
                             title: transactionList[index].title,
                             date: transactionList[index].dateTime,
@@ -66,10 +66,12 @@ class IBTranscationListWidget extends ConsumerWidget {
                                   : transactionList.length,
                         );
                 },
+                // Todo create a error handling page for retrieving transaction data from remote database
                 error: (error, stackTrace) => Container(
                   height: 100,
                   child: Text(error.toString()),
                 ),
+                // Todo create a loading widget for the loading animation
                 loading: () => Container(),
               ),
         )
