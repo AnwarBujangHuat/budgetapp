@@ -16,7 +16,9 @@ class TransactionTypeNotifier extends _$TransactionTypeNotifier {
   TransactionType build() => TransactionType.income;
 
   void changeType({required TransactionType type}) {
-    state = type;
+    state = (type == TransactionType.income
+        ? TransactionType.out
+        : TransactionType.income);
   }
 }
 

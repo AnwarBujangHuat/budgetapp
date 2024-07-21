@@ -23,8 +23,7 @@ Map<int, double> getTotalTransactionByParentGroup(
     {required List<TransactionModel> transactionList,
     TransactionType transactionType = TransactionType.income}) {
   Map<int, double> result = {};
-  mapTransactionToParentTag(
-          transactionList: transactionList, transactionType: transactionType)
+  mapTransactionToParentTag(transactionList: transactionList)
       .forEach((key, value) {
     for (var element in value) {
       double currentTotal = result[key] ?? 0;

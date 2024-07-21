@@ -1,6 +1,7 @@
 import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
 import 'package:budgetapp/domain/repository/transaction/transaction_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 part 'transaction_viewmodel.g.dart';
 
 @riverpod
@@ -11,7 +12,9 @@ class TransactionViewmodel extends _$TransactionViewmodel {
         await ref.read(transactionsRepositoryProvider).getAllExpanses();
     return result.fold(
       (error) => throw Exception(error),
-      (data) => data,
+      (data) {
+        return data;
+      },
     );
   }
 

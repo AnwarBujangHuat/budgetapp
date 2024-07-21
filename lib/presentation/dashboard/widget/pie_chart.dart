@@ -19,6 +19,7 @@ class IBPieChartWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ref.watch(transactionViewmodelProvider).when(
       data: (data) {
+        // TODO change here, dont access the transactionType here
         List<TagModel> tagList =
             ref.watch(tagViewmodelProvider).asData?.value ?? [];
         TransactionType transactionType =
