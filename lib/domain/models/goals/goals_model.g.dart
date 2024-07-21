@@ -8,11 +8,11 @@ part of 'goals_model.dart';
 
 _$GoalsModelImpl _$$GoalsModelImplFromJson(Map<String, dynamic> json) =>
     _$GoalsModelImpl(
-      goalTagId: (json['goalTagId'] as num).toInt(),
+      goalTagId: json['goalTagId'] as int,
       title: json['title'] as String,
       description: json['description'] as String,
-      total: (json['total'] as num).toInt(),
-      progress: (json['progress'] as num).toInt(),
+      total: json['total'] as int,
+      progress: json['progress'] as int,
       startDate: DateTime.parse(json['startDate'] as String),
       endDate: DateTime.parse(json['endDate'] as String),
       type: $enumDecodeNullable(_$TransactionTypeEnumMap, json['type']) ??
@@ -28,7 +28,7 @@ Map<String, dynamic> _$$GoalsModelImplToJson(_$GoalsModelImpl instance) =>
       'progress': instance.progress,
       'startDate': instance.startDate.toIso8601String(),
       'endDate': instance.endDate.toIso8601String(),
-      'type': _$TransactionTypeEnumMap[instance.type],
+      'type': _$TransactionTypeEnumMap[instance.type]!,
     };
 
 const _$TransactionTypeEnumMap = {

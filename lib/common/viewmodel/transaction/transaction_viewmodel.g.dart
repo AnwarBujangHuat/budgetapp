@@ -7,7 +7,7 @@ part of 'transaction_viewmodel.dart';
 // **************************************************************************
 
 String _$transactionViewmodelHash() =>
-    r'c4a08a954a98988439ae4079b14df9c4799cc6a7';
+    r'0ecdb86434fd12231be89b1962a1f97dba8ada6d';
 
 /// See also [TransactionViewmodel].
 @ProviderFor(TransactionViewmodel)

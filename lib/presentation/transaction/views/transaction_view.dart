@@ -1,4 +1,5 @@
 import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/common/const/const.dart';
 import 'package:budgetapp/common/viewmodel/tag/tag_viewmodel.dart';
 import 'package:budgetapp/common/widgets/button/outlined_button.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
@@ -11,11 +12,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class TransactionPage extends ConsumerWidget {
+class TransactionPage extends ConsumerStatefulWidget {
   const TransactionPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _TransactionPageState();
+}
+
+class _TransactionPageState extends ConsumerState<TransactionPage> {
+  TagModel? selectedTag;
+  TransactionType selectedTransactionType = TransactionType.out;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -40,10 +55,18 @@ class TransactionPage extends ConsumerWidget {
           IBSizedH05(),
           Row(
             children: [
+              TransactionTypeSelect(
+                selectedTag: selectedTag,
+                onSelectTag: (tag) => setState(() => selectedTag = tag),
+              ),
               IBSizedW10(),
-              TransactionTypeSelect(),
               Expanded(
                   child: IBTransactionTypeWidget(
+                transactionType: selectedTransactionType,
+                onChange: (type) => setState(() => selectedTransactionType =
+                    type == TransactionType.income
+                        ? TransactionType.out
+                        : TransactionType.income),
                 backgroundColor: AppColors.white,
               ))
             ],
@@ -71,8 +94,10 @@ class TransactionPage extends ConsumerWidget {
 }
 
 class TransactionTypeSelect extends ConsumerWidget {
-  const TransactionTypeSelect({super.key});
-
+  const TransactionTypeSelect(
+      {required this.onSelectTag, required this.selectedTag, super.key});
+  final Function(TagModel tag) onSelectTag;
+  final TagModel? selectedTag;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     AsyncValue<List<TagModel>> tagProvider = ref.watch(tagViewmodelProvider);
@@ -80,13 +105,16 @@ class TransactionTypeSelect extends ConsumerWidget {
     Widget bodyWidget() {
       switch (tagProvider) {
         case AsyncData(:final value):
+          // TODO set initial tag
           return Expanded(
             child: IBOutlinedButton(
               title: value[0].tagName,
               borderColors: Colors.transparent,
               backgroundColor: AppColors.white,
               icon: Icon(Icons.arrow_drop_down),
-              onTap: () {},
+              onTap: () {
+                onSelectTag(value.first);
+              },
             ),
           );
         case AsyncError(:final error):

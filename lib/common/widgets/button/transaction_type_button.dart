@@ -8,29 +8,31 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class IBTransactionTypeWidget extends ConsumerWidget {
   const IBTransactionTypeWidget({
+    required this.onChange,
     super.key,
     this.backgroundColor,
+    this.transactionType = TransactionType.out,
     this.shadowColor,
   });
   final Color? backgroundColor;
   final Color? shadowColor;
+  final TransactionType transactionType;
+  final Function(TransactionType type) onChange;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedButton = ref.watch(selectedTransactionTypeProvider);
-
     return IBOutlinedButton(
       backgroundColor: backgroundColor,
       shadowColor: shadowColor,
-      borderColors: selectedButton != TransactionType.income
+      borderColors: transactionType != TransactionType.income
           ? AppColors.lightRed
           : AppColors.lightGreen,
       titleBuilder: Builder(
         builder: (context) => Text(
-          selectedButton == TransactionType.income
+          transactionType == TransactionType.income
               ? AppLocalizations.of(context)!.income
               : AppLocalizations.of(context)!.expenses,
           style: TextStyle(
-            color: selectedButton != TransactionType.income
+            color: transactionType != TransactionType.income
                 ? AppColors.lightRed
                 : AppColors.lightGreen,
           ),
@@ -39,16 +41,11 @@ class IBTransactionTypeWidget extends ConsumerWidget {
       icon: Icon(
         Icons.compare_arrows,
         size: 24,
-        color: selectedButton != TransactionType.income
+        color: transactionType != TransactionType.income
             ? AppColors.lightRed
             : AppColors.lightGreen,
       ),
-      onTap: () {
-        ref.read(selectedTransactionTypeProvider.notifier).state =
-            selectedButton == TransactionType.income
-                ? TransactionType.out
-                : TransactionType.income;
-      },
+      onTap: () => onChange(transactionType),
     );
   }
 }

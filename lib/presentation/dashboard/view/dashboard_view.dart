@@ -122,7 +122,7 @@ class MyHeader extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                  ref.watch(selectedTransactionTypeProvider) !=
+                                  ref.watch(transactionTypeNotifierProvider) !=
                                           TransactionType.income
                                       ? AppLocalizations.of(context)!
                                           .totalExpenses
@@ -135,7 +135,12 @@ class MyHeader extends ConsumerWidget {
                             ],
                           ),
                           IBTransactionTypeWidget(
+                            transactionType:
+                                ref.watch(transactionTypeNotifierProvider),
                             shadowColor: Colors.transparent,
+                            onChange: (type) => ref
+                                .read(transactionTypeNotifierProvider.notifier)
+                                .changeType(type: type),
                           )
                         ],
                       ),

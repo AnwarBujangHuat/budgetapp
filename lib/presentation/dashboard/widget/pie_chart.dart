@@ -22,7 +22,7 @@ class IBPieChartWidget extends ConsumerWidget {
         List<TagModel> tagList =
             ref.watch(tagViewmodelProvider).asData?.value ?? [];
         TransactionType transactionType =
-            ref.watch(selectedTransactionTypeProvider);
+            ref.watch(transactionTypeNotifierProvider);
 
         Map<int, double> groupByTotal = getTotalTransactionByParentGroup(
             transactionList: data, transactionType: transactionType);
