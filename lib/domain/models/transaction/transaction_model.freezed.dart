@@ -24,7 +24,6 @@ mixin _$TransactionModel {
   String get description => throw _privateConstructorUsedError;
   DateTime get dateTime => throw _privateConstructorUsedError;
   String get transactionAmount => throw _privateConstructorUsedError;
-  String get source => throw _privateConstructorUsedError;
   String get attachmentUrl => throw _privateConstructorUsedError;
   int get tagId => throw _privateConstructorUsedError;
   int? get parentTagId => throw _privateConstructorUsedError;
@@ -48,7 +47,6 @@ abstract class $TransactionModelCopyWith<$Res> {
       String description,
       DateTime dateTime,
       String transactionAmount,
-      String source,
       String attachmentUrl,
       int tagId,
       int? parentTagId,
@@ -73,7 +71,6 @@ class _$TransactionModelCopyWithImpl<$Res, $Val extends TransactionModel>
     Object? description = null,
     Object? dateTime = null,
     Object? transactionAmount = null,
-    Object? source = null,
     Object? attachmentUrl = null,
     Object? tagId = null,
     Object? parentTagId = freezed,
@@ -96,10 +93,6 @@ class _$TransactionModelCopyWithImpl<$Res, $Val extends TransactionModel>
       transactionAmount: null == transactionAmount
           ? _value.transactionAmount
           : transactionAmount // ignore: cast_nullable_to_non_nullable
-              as String,
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
               as String,
       attachmentUrl: null == attachmentUrl
           ? _value.attachmentUrl
@@ -138,7 +131,6 @@ abstract class _$$TransactionModelImplCopyWith<$Res>
       String description,
       DateTime dateTime,
       String transactionAmount,
-      String source,
       String attachmentUrl,
       int tagId,
       int? parentTagId,
@@ -161,7 +153,6 @@ class __$$TransactionModelImplCopyWithImpl<$Res>
     Object? description = null,
     Object? dateTime = null,
     Object? transactionAmount = null,
-    Object? source = null,
     Object? attachmentUrl = null,
     Object? tagId = null,
     Object? parentTagId = freezed,
@@ -184,10 +175,6 @@ class __$$TransactionModelImplCopyWithImpl<$Res>
       transactionAmount: null == transactionAmount
           ? _value.transactionAmount
           : transactionAmount // ignore: cast_nullable_to_non_nullable
-              as String,
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
               as String,
       attachmentUrl: null == attachmentUrl
           ? _value.attachmentUrl
@@ -221,7 +208,6 @@ class _$TransactionModelImpl implements _TransactionModel {
       required this.description,
       required this.dateTime,
       required this.transactionAmount,
-      required this.source,
       required this.attachmentUrl,
       required this.tagId,
       this.parentTagId,
@@ -240,8 +226,6 @@ class _$TransactionModelImpl implements _TransactionModel {
   @override
   final String transactionAmount;
   @override
-  final String source;
-  @override
   final String attachmentUrl;
   @override
   final int tagId;
@@ -256,7 +240,7 @@ class _$TransactionModelImpl implements _TransactionModel {
 
   @override
   String toString() {
-    return 'TransactionModel(title: $title, description: $description, dateTime: $dateTime, transactionAmount: $transactionAmount, source: $source, attachmentUrl: $attachmentUrl, tagId: $tagId, parentTagId: $parentTagId, goalTagId: $goalTagId, type: $type)';
+    return 'TransactionModel(title: $title, description: $description, dateTime: $dateTime, transactionAmount: $transactionAmount, attachmentUrl: $attachmentUrl, tagId: $tagId, parentTagId: $parentTagId, goalTagId: $goalTagId, type: $type)';
   }
 
   @override
@@ -271,7 +255,6 @@ class _$TransactionModelImpl implements _TransactionModel {
                 other.dateTime == dateTime) &&
             (identical(other.transactionAmount, transactionAmount) ||
                 other.transactionAmount == transactionAmount) &&
-            (identical(other.source, source) || other.source == source) &&
             (identical(other.attachmentUrl, attachmentUrl) ||
                 other.attachmentUrl == attachmentUrl) &&
             (identical(other.tagId, tagId) || other.tagId == tagId) &&
@@ -284,18 +267,8 @@ class _$TransactionModelImpl implements _TransactionModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      title,
-      description,
-      dateTime,
-      transactionAmount,
-      source,
-      attachmentUrl,
-      tagId,
-      parentTagId,
-      goalTagId,
-      type);
+  int get hashCode => Object.hash(runtimeType, title, description, dateTime,
+      transactionAmount, attachmentUrl, tagId, parentTagId, goalTagId, type);
 
   @JsonKey(ignore: true)
   @override
@@ -318,7 +291,6 @@ abstract class _TransactionModel implements TransactionModel {
       required final String description,
       required final DateTime dateTime,
       required final String transactionAmount,
-      required final String source,
       required final String attachmentUrl,
       required final int tagId,
       final int? parentTagId,
@@ -336,8 +308,6 @@ abstract class _TransactionModel implements TransactionModel {
   DateTime get dateTime;
   @override
   String get transactionAmount;
-  @override
-  String get source;
   @override
   String get attachmentUrl;
   @override

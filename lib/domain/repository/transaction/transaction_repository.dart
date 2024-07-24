@@ -33,7 +33,13 @@ class TransactionRepository {
     }
   }
 
-  Future<List<TransactionModel>> addElement({required String data}) async => [];
+  Future<Either<AppException, bool>> addNewTransaction(
+      {required TransactionModel newTransaction}) async {
+    ///Update the new transaction
+    //TODO fire api here
+    _transactionsRecords.add(newTransaction);
+    return Right(true);
+  }
 
   List<TransactionModel> filterTransactionByDate({required String dateType}) {
     final result = _transactionsRecords

@@ -11,7 +11,6 @@ class TransactionModel with _$TransactionModel {
     required String description,
     required DateTime dateTime,
     required String transactionAmount,
-    required String source,
     required String attachmentUrl,
     required int tagId,
     int? parentTagId,

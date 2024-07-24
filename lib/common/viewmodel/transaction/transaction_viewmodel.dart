@@ -1,5 +1,7 @@
+import 'package:budgetapp/domain/http/app_exception.dart';
 import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
 import 'package:budgetapp/domain/repository/transaction/transaction_repository.dart';
+import 'package:dartz/dartz.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'transaction_viewmodel.g.dart';
@@ -28,14 +30,32 @@ class TransactionViewmodel extends _$TransactionViewmodel {
     );
   }
 
-  Future<void> insertNewdata() async {
-    state = const AsyncLoading();
-  }
-
   Future<void> filterByDate({required String dateType}) async {
     final result = ref
         .read(transactionsRepositoryProvider)
         .filterTransactionByDate(dateType: dateType);
     state = AsyncData(result);
+  }
+}
+
+@riverpod
+class AddNewTransactionNotifier extends _$AddNewTransactionNotifier {
+  @override
+  Future<bool?> build() async {
+    return null;
+  }
+
+  Future<void> addNewTransaction(
+      {required TransactionModel newTransaction}) async {
+    state = const AsyncLoading();
+    Either<AppException, bool> result = await ref
+        .read(transactionsRepositoryProvider)
+        .addNewTransaction(newTransaction: newTransaction);
+    state = result.fold((err) => AsyncError(err, StackTrace.current),
+        (transactionList) {
+      ///Invalidate the old provider
+      ref.invalidate(transactionViewmodelProvider);
+      return AsyncData(true);
+    });
   }
 }

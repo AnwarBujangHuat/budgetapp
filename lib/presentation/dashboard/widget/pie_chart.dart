@@ -12,6 +12,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+/* Documentation for Pie Chart in Dashboard view
+1. Fetch all the list from the transactionViewModel
+2. Fetch the current selected transaction type
+3. Filter the transaction list based on the type selected by the user etc. income or out
+4. Group the transaction based on the parent tag
+ */
 class IBPieChartWidget extends ConsumerWidget {
   const IBPieChartWidget({super.key});
 
@@ -19,7 +25,6 @@ class IBPieChartWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ref.watch(transactionViewmodelProvider).when(
       data: (data) {
-        // TODO change here, dont access the transactionType here
         List<TagModel> tagList =
             ref.watch(tagViewmodelProvider).asData?.value ?? [];
         TransactionType transactionType =

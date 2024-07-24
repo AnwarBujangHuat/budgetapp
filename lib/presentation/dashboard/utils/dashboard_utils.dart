@@ -28,7 +28,8 @@ Map<int, double> getTotalTransactionByParentGroup(
       .forEach((key, value) {
     for (var element in value) {
       double currentTotal = result[key] ?? 0;
-      result[key] = (currentTotal += double.parse(element.transactionAmount));
+      result[key] =
+          (currentTotal += double.tryParse(element.transactionAmount) ?? 0);
     }
   });
   return result;

@@ -14,11 +14,16 @@ class TotalTransactionValue extends ConsumerWidget {
     final transactionType = ref.watch(transactionTypeNotifierProvider);
 
     return ref.watch(transactionViewmodelProvider).when(
+          //TODO do multi currency
+
           data: (transactionList) => Text(
               'RM ${getTotalTransaction(transactionList: transactionList, transactionType: transactionType).toStringAsFixed(2)}',
               style: theme.textTheme.displaySmall!
                   .copyWith(color: AppColors.white)),
+          //TODO handle proper error
+
           error: (error, stackTrace) => Text(error.toString()),
+          //TODO handle proper loading
           loading: () => Text('Loading'),
         );
   }

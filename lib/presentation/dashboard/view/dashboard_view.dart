@@ -64,6 +64,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
         ],
       ),
       body: RefreshIndicator(
+        //TODO handle refresh list here
         onRefresh: () async {},
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 8),

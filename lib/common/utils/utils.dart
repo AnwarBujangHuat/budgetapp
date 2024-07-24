@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/domain/models/tags/tag_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
@@ -42,3 +43,5 @@ Future<Map<String, dynamic>> loadJsonFromAssets(String filePath) async {
 String formatDate({required DateTime dateTime}) =>
     DateFormat('dd MMM yy').format(dateTime);
 String capitalize({required String s}) => s[0].toUpperCase() + s.substring(1);
+bool isThereCurrentDialogShowing(BuildContext context) =>
+    ModalRoute.of(context)?.isCurrent != true;
