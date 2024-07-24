@@ -5,6 +5,8 @@ import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+/*Documentation for Utilities File 
+List Down all The utilities here*/
 
 Color calculateProgressColor({required double value, required double total}) {
   double progress = value / total;
