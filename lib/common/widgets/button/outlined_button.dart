@@ -40,11 +40,13 @@ class IBOutlinedButton extends StatelessWidget {
               children: [
                 icon ?? SizedBox.shrink(),
                 if (icon != null) IBSizedW05(),
-                titleBuilder ??
-                    Text(
-                      overflow: TextOverflow.ellipsis,
-                      title,
-                    ),
+                Flexible(
+                  child: titleBuilder ??
+                      Text(
+                        overflow: TextOverflow.ellipsis,
+                        title,
+                      ),
+                ),
               ],
             ));
   }
