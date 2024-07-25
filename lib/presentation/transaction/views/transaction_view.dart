@@ -158,10 +158,10 @@ class TransactionTypeSelect extends ConsumerWidget {
     Widget bodyWidget() {
       switch (tagProvider) {
         case AsyncData(:final value):
-          // TODO set initial tag
           return Expanded(
             child: IBOutlinedButton(
-              title: value[0].tagName,
+              title: selectedTag?.tagName ??
+                  AppLocalizations.of(context)!.pleaseSelectTag,
               borderColors: Colors.transparent,
               backgroundColor: AppColors.white,
               icon: Icon(Icons.arrow_drop_down),
