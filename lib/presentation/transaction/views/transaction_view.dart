@@ -161,7 +161,6 @@ class TransactionTypeSelect extends ConsumerWidget {
       switch (tagProvider) {
         case AsyncData(:final value):
           return IBOutlinedButton(
-            // title: 'meoww',
             title: selectedTag?.tagName ??
                 AppLocalizations.of(context)!.pleaseSelectTag,
             borderColors: Colors.transparent,
