@@ -8,6 +8,7 @@
   "recentTransaction": "Recent Transaction",
   "addNewTransaction": "Add New Transaction",
   "add": "Add",
+  "pleaseSelectTag": "Please Select a Tag",
   "noTransaction": "No Transaction Record Found",
   "dashboard": "Dashboard",
   "totalNetWorth": "Total Net Worth",

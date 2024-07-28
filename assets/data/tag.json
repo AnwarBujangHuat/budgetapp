@@ -2,7 +2,7 @@
     "tags": [
         {
             "tagId": 1,
-            "tagName": "grocery",
+            "tagName": "Grocery",
             "parentTagId": 1,
             "icon": {
                 "codePaint": 58261,
@@ -12,7 +12,7 @@
         },
         {
             "tagId": 2,
-            "tagName": "travel",
+            "tagName": "Travel",
             "parentTagId": 2,
             "icon": {
                 "codePaint": 58262,
@@ -22,7 +22,7 @@
         },
         {
             "tagId": 3,
-            "tagName": "utilities",
+            "tagName": "Utilities",
             "parentTagId": 3,
             "icon": {
                 "codePaint": 57454,
@@ -32,7 +32,7 @@
         },
         {
             "tagId": 4,
-            "tagName": "rent",
+            "tagName": "Rent",
             "parentTagId": 4,
             "icon": {
                 "codePaint": 57455,
@@ -42,7 +42,7 @@
         },
         {
             "tagId": 5,
-            "tagName": "entertainment",
+            "tagName": "Entertainment",
             "parentTagId": 5,
             "icon": {
                 "codePaint": 58236,
@@ -52,7 +52,7 @@
         },
         {
             "tagId": 6,
-            "tagName": "dining",
+            "tagName": "Dining",
             "parentTagId": 6,
             "icon": {
                 "codePaint": 58237,
@@ -62,7 +62,7 @@
         },
         {
             "tagId": 7,
-            "tagName": "healthcare",
+            "tagName": "Healthcare",
             "parentTagId": 7,
             "icon": {
                 "codePaint": 58136,
@@ -72,7 +72,7 @@
         },
         {
             "tagId": 9,
-            "tagName": "clothing",
+            "tagName": "Clothing",
             "parentTagId": 1,
             "icon": {
                 "codePaint": 58267,
@@ -82,7 +82,7 @@
         },
         {
             "tagId": 10,
-            "tagName": "electric bills",
+            "tagName": "Electric bills",
             "parentTagId": 3,
             "icon": {
                 "codePaint": 57454,
@@ -92,7 +92,7 @@
         },
         {
             "tagId": 11,
-            "tagName": "salary",
+            "tagName": "Salary",
             "parentTagId": 11,
             "icon": {
                 "codePaint": 58261,
@@ -102,7 +102,7 @@
         },
         {
             "tagId": 12,
-            "tagName": "gift",
+            "tagName": "Gift",
             "parentTagId": 12,
             "icon": {
                 "codePaint": 58261,

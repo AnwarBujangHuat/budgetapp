@@ -106,9 +106,11 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
           IBSizedH05(),
           Row(
             children: [
-              TransactionTypeSelect(
-                selectedTag: selectedTag,
-                onSelectTag: (tag) => setState(() => selectedTag = tag),
+              Expanded(
+                child: TransactionTypeSelect(
+                  selectedTag: selectedTag,
+                  onSelectTag: (tag) => setState(() => selectedTag = tag),
+                ),
               ),
               IBSizedW10(),
               Expanded(
@@ -158,17 +160,16 @@ class TransactionTypeSelect extends ConsumerWidget {
     Widget bodyWidget() {
       switch (tagProvider) {
         case AsyncData(:final value):
-          // TODO set initial tag
-          return Expanded(
-            child: IBOutlinedButton(
-              title: value[0].tagName,
-              borderColors: Colors.transparent,
-              backgroundColor: AppColors.white,
-              icon: Icon(Icons.arrow_drop_down),
-              onTap: () {
-                onSelectTag(value.first);
-              },
-            ),
+          return IBOutlinedButton(
+            // title: 'meoww',
+            title: selectedTag?.tagName ??
+                AppLocalizations.of(context)!.pleaseSelectTag,
+            borderColors: Colors.transparent,
+            backgroundColor: AppColors.white,
+            icon: Icon(Icons.arrow_drop_down),
+            onTap: () {
+              onSelectTag(value.first);
+            },
           );
         case AsyncError(:final error):
           return Text(error.toString());
