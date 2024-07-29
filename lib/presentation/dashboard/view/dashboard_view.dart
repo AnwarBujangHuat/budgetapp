@@ -113,7 +113,7 @@ class MyHeader extends ConsumerWidget {
               child: Column(
                 children: [
                   Row(
-                    mainAxisSize: MainAxisSize.min, // Use MainAxisSize.min here
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(
                         child: Column(
@@ -132,15 +132,17 @@ class MyHeader extends ConsumerWidget {
                           ],
                         ),
                       ),
-                      Flexible(
-                          child: IBTransactionTypeWidget(
-                        transactionType:
-                            ref.watch(transactionTypeNotifierProvider),
-                        shadowColor: Colors.transparent,
-                        onChange: (type) => ref
-                            .read(transactionTypeNotifierProvider.notifier)
-                            .changeType(type: type),
-                      ))
+                      IntrinsicWidth(
+                        /// Ensures IBTransactionTypeWidget takes minimal width
+                        child: IBTransactionTypeWidget(
+                          transactionType:
+                              ref.watch(transactionTypeNotifierProvider),
+                          shadowColor: Colors.transparent,
+                          onChange: (type) => ref
+                              .read(transactionTypeNotifierProvider.notifier)
+                              .changeType(type: type),
+                        ),
+                      ),
                     ],
                   ),
                   IBPieChartWidget(),
