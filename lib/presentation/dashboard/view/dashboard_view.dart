@@ -93,66 +93,62 @@ class MyHeader extends ConsumerWidget {
     final theme = Theme.of(context);
 
     final selectedPeriod = ref.watch(selectedPeriodProvider);
-
     return Card(
       color: AppColors.darkBlue,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 40,
-                  child: TimelineTab(
-                    selected: selectedPeriod,
-                    onTap: (selected) => ref
-                        .read(selectedPeriodProvider.notifier)
-                        .state = selected,
-                  ),
-                ),
-                const IBSizedH20(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Column(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 40,
+              child: TimelineTab(
+                selected: selectedPeriod,
+                onTap: (selected) =>
+                    ref.read(selectedPeriodProvider.notifier).state = selected,
+              ),
+            ),
+            const IBSizedH20(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min, // Use MainAxisSize.min here
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                  ref.watch(transactionTypeNotifierProvider) !=
-                                          TransactionType.income
-                                      ? AppLocalizations.of(context)!
-                                          .totalExpenses
-                                      : AppLocalizations.of(context)!
-                                          .totalIncome,
-                                  style: theme.textTheme.titleSmall!
-                                      .copyWith(color: AppColors.white)),
-                              const IBSizedH05(),
-                              TotalTransactionValue(),
-                            ],
-                          ),
-                          IBTransactionTypeWidget(
-                            transactionType:
-                                ref.watch(transactionTypeNotifierProvider),
-                            shadowColor: Colors.transparent,
-                            onChange: (type) => ref
-                                .read(transactionTypeNotifierProvider.notifier)
-                                .changeType(type: type),
-                          )
-                        ],
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              ref.watch(transactionTypeNotifierProvider) !=
+                                      TransactionType.income
+                                  ? AppLocalizations.of(context)!.totalExpenses
+                                  : AppLocalizations.of(context)!.totalIncome,
+                              style: theme.textTheme.titleSmall!
+                                  .copyWith(color: AppColors.white),
+                            ),
+                            const IBSizedH05(),
+                            TotalTransactionValue(),
+                          ],
+                        ),
                       ),
-                      IBPieChartWidget()
+                      Flexible(
+                          child: IBTransactionTypeWidget(
+                        transactionType:
+                            ref.watch(transactionTypeNotifierProvider),
+                        shadowColor: Colors.transparent,
+                        onChange: (type) => ref
+                            .read(transactionTypeNotifierProvider.notifier)
+                            .changeType(type: type),
+                      ))
                     ],
                   ),
-                )
-              ],
+                  IBPieChartWidget(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
