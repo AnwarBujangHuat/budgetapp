@@ -29,6 +29,8 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
   TransactionModel? newTransaction;
   late TextEditingController noteController;
 
+  /// Controller for calculator.
+  double calculatorValue = 0;
   @override
   void initState() {
     super.initState();
@@ -47,10 +49,10 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
       switch (current) {
         case AsyncData(:final value):
           if (value != null && value) {
-            showDialog(
-              context: context,
-              builder: (context) => AlertDialog(content: Text('YEAYYY')),
+            const snackBar = SnackBar(
+              content: Text('Yay! A SnackBar!'),
             );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         case AsyncError(:final error):
 
@@ -76,23 +78,25 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
         actions: [
           IBTextButton(
             title: AppLocalizations.of(context)!.add,
-            onTap: () {
-              //TODO get the value from the calculator widget
+            onTap: () async {
               if (selectedTag != null) {
                 newTransaction = TransactionModel(
-                    type: selectedTransactionType,
-                    title: selectedTag!.tagName,
-                    description: noteController.text,
-                    dateTime: DateTime.now(),
-                    transactionAmount: 'transactionAmount',
-                    attachmentUrl:
-                        'https://img.freepik.com/free-vector/realistic-receipt-template_23-2147938550.jpg?t=st=1721825445~exp=1721829045~hmac=e600207f2739a82e4fea660e62604d21102ac53795c8758d2c24a32c80740545&w=826',
-                    tagId: selectedTag!.tagId);
+                  type: selectedTransactionType,
+                  title: selectedTag!.tagName,
+                  description: noteController.text,
+                  dateTime: DateTime.now(),
+                  transactionAmount: calculatorValue.toString(),
+                  tagId: selectedTag!.tagId,
+                  parentTagId: selectedTag!.parentTagId,
+                  attachmentUrl:
+                      'https://img.freepik.com/free-vector/realistic-receipt-template_23-2147938550.jpg?t=st=1721825445~exp=1721829045~hmac=e600207f2739a82e4fea660e62604d21102ac53795c8758d2c24a32c80740545&w=826',
+                );
               }
               if (newTransaction != null) {
-                ref
+                await ref
                     .read(addNewTransactionNotifierProvider.notifier)
                     .addNewTransaction(newTransaction: newTransaction!);
+                Navigator.pop(context);
               }
             },
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -141,6 +145,9 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
           //TODO implement provider here to reduce rerending and only read the value once the user add
           IBCalculatorWidget(
             maxHeight: MediaQuery.of(context).size.height * .73,
+            onChanged: (key, value, expression) => setState(() {
+              calculatorValue = value ?? 0;
+            }),
           ),
         ],
       ),

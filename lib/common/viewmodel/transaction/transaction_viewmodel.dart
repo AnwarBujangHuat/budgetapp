@@ -20,10 +20,11 @@ class TransactionViewmodel extends _$TransactionViewmodel {
     );
   }
 
-  Future<void> getAllExpanses() async {
+  Future<void> getAllExpanses({bool fetchFromRemote = false}) async {
     state = const AsyncLoading();
-    final result =
-        await ref.read(transactionsRepositoryProvider).getAllExpanses();
+    final result = await ref
+        .read(transactionsRepositoryProvider)
+        .getAllExpanses(fetchFromRemote: fetchFromRemote);
     state = result.fold(
       (error) => AsyncError(error, StackTrace.current),
       (data) => AsyncData(data),
@@ -51,11 +52,13 @@ class AddNewTransactionNotifier extends _$AddNewTransactionNotifier {
     Either<AppException, bool> result = await ref
         .read(transactionsRepositoryProvider)
         .addNewTransaction(newTransaction: newTransaction);
-    state = result.fold((err) => AsyncError(err, StackTrace.current),
-        (transactionList) {
-      ///Invalidate the old provider
-      ref.invalidate(transactionViewmodelProvider);
-      return AsyncData(true);
+    state =
+        result.fold((err) => AsyncError(err, StackTrace.current), (isSuccess) {
+      ///Get the new list from the local database instead of the remote database
+      ref
+          .read(transactionViewmodelProvider.notifier)
+          .getAllExpanses(fetchFromRemote: true);
+      return AsyncData(isSuccess);
     });
   }
 }

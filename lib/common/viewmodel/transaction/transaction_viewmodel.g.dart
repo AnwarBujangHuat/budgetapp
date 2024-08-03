@@ -7,7 +7,7 @@ part of 'transaction_viewmodel.dart';
 // **************************************************************************
 
 String _$transactionViewmodelHash() =>
-    r'd1648e524faa3829eece2fdf9ee9756dabe02037';
+    r'0342f9fb9d98ac0f269837a09103046e192cf99b';
 
 /// See also [TransactionViewmodel].
 @ProviderFor(TransactionViewmodel)
@@ -25,7 +25,7 @@ final transactionViewmodelProvider = AutoDisposeAsyncNotifierProvider<
 typedef _$TransactionViewmodel
     = AutoDisposeAsyncNotifier<List<TransactionModel>>;
 String _$addNewTransactionNotifierHash() =>
-    r'10e997d4d39aa6369f7aa750a574467348c6193a';
+    r'751bd68707119f17a16bdb78bb65ed5ba5eaf550';
 
 /// See also [AddNewTransactionNotifier].
 @ProviderFor(AddNewTransactionNotifier)

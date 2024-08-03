@@ -17,8 +17,14 @@ class TransactionRepository {
 
   final Ref _ref;
   final List<TransactionModel> _transactionsRecords = [];
-  Future<Either<AppException, List<TransactionModel>>> getAllExpanses() async {
+  Future<Either<AppException, List<TransactionModel>>> getAllExpanses(
+      {bool fetchFromRemote = false}) async {
+    if (fetchFromRemote) {
+      return Right(_transactionsRecords);
+    }
     try {
+      _transactionsRecords.clear();
+
       /// Load from local storage now
       Map<String, dynamic> jsonData =
           await loadJsonFromAssets('assets/data/transaction.json');
@@ -35,9 +41,9 @@ class TransactionRepository {
 
   Future<Either<AppException, bool>> addNewTransaction(
       {required TransactionModel newTransaction}) async {
-    ///Update the new transaction
-    //TODO fire api here
-    _transactionsRecords.add(newTransaction);
+    /// Insert at first index
+
+    _transactionsRecords.insert(0, newTransaction);
     return Right(true);
   }
 

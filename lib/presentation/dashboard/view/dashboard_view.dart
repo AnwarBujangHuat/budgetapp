@@ -1,5 +1,6 @@
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/const/const.dart';
+import 'package:budgetapp/common/viewmodel/transaction/transaction_viewmodel.dart';
 import 'package:budgetapp/common/widgets/button/transaction_type_button.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/domain/repository/tag/tag_repository.dart';
@@ -65,7 +66,9 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
       ),
       body: RefreshIndicator(
         //TODO handle refresh list here
-        onRefresh: () async {},
+        onRefresh: () async {
+          final _ = await ref.refresh(transactionViewmodelProvider.future);
+        },
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 8),
           shrinkWrap: true,
