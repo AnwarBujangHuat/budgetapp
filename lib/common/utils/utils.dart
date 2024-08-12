@@ -2,8 +2,18 @@ import 'dart:convert';
 
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/domain/models/tags/tag_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+/*Documentation for Utilities File 
+Function Name : Functionality
+calculateProgressColor : return a color based on the double value given %
+getColorFromHex : return a Color from a hex String
+getColorFromTag : return a Color from a list of tag based on the tag id argument
+formatDate : return a formatted Date Time "dd MMM yy" 02 May 24
+capitalize : Capitalize the String arguments
+isThereCurrentDialogShowing : return a bool to check whether the current context is the top context or not (the latest page/widget)
+*/
 
 Color calculateProgressColor({required double value, required double total}) {
   double progress = value / total;
@@ -39,5 +49,10 @@ Future<Map<String, dynamic>> loadJsonFromAssets(String filePath) async {
   return jsonDecode(jsonString) as Map<String, dynamic>;
 }
 
-String formatDate({required DateTime dateTime}) =>
-    DateFormat('dd MMM yy').format(dateTime);
+String formatDate({required DateTime dateTime, String dateFormat='dd MMM yy'}) =>
+    DateFormat(dateFormat).format(dateTime);
+
+String capitalize({required String s}) => s[0].toUpperCase() + s.substring(1);
+
+bool isThereCurrentDialogShowing(BuildContext context) =>
+    ModalRoute.of(context)?.isCurrent != true;

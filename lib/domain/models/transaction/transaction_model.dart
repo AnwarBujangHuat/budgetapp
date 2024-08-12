@@ -11,11 +11,10 @@ class TransactionModel with _$TransactionModel {
     required String description,
     required DateTime dateTime,
     required String transactionAmount,
-    required String source,
-    required String attachmentUrl,
     required int tagId,
-    @Default(null) int? parentTagId,
+    required int parentTagId,
     @Default(0) int goalTagId,
+    String? attachmentUrl,
     @Default(TransactionType.out) TransactionType type,
   }) = _TransactionModel;
 

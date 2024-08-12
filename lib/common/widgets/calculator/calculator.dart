@@ -239,6 +239,9 @@ class IBCalculatorWidget extends StatefulWidget {
   /// Controller for calculator.
   final CalcController? controller;
 
+  /// Widget Height Relative to the screen
+  final double? maxHeight;
+
   const IBCalculatorWidget({
     super.key,
     this.theme,
@@ -252,6 +255,7 @@ class IBCalculatorWidget extends StatefulWidget {
     this.autofocus = false,
     this.focusNode,
     this.controller,
+    this.maxHeight,
   });
 
   @override
@@ -272,7 +276,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
   void _handleKeyEvent(int row, int col) {
     final renderObj = context.findRenderObject();
     if (renderObj is! RenderBox) return;
-    final cellW = renderObj.size.width / 4;
+    final cellW = renderObj.size.width / 3;
     final cellH = renderObj.size.height / 6;
     final pos = renderObj.localToGlobal(
         Offset(cellW * col + cellW / 2, cellH * (row + 1) + cellH / 2));
@@ -469,16 +473,14 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
       },
       descendantsAreFocusable: false,
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * .8,
+        height: widget.maxHeight,
         child: GestureDetector(
           onTap: () {
             _focusNode.requestFocus();
           },
           child: Column(children: <Widget>[
             Expanded(
-              flex: 2,
               child: _CalcDisplay(
-                hideSurroundingBorder: widget.hideSurroundingBorder,
                 hideExpression: widget.hideExpression,
                 onTappedDisplay: (a, b) {
                   _focusNode.requestFocus();
@@ -489,9 +491,21 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
               ),
             ),
             Expanded(
-              flex: 10,
-              child: _getButtons(),
-            ),
+                flex: 4,
+                child: LayoutBuilder(
+                  builder:
+                      (BuildContext childContext, BoxConstraints constraints) {
+                    //check if width is equal to parent width than make it 80% of parent width
+                    bool isWiderThanParent =
+                        (constraints.maxHeight * .8) + 20 >=
+                            MediaQuery.of(context).size.width;
+                    return Container(
+                        width: !isWiderThanParent
+                            ? constraints.maxHeight * .8
+                            : constraints.maxWidth * .9,
+                        child: _getButtons());
+                  },
+                )),
           ]),
         ),
       ),
@@ -549,28 +563,26 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
   Widget _getButtons() {
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.all(8),
       itemCount: 20,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
         crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
+        mainAxisSpacing: 6,
       ),
       itemBuilder: (context, index) {
         List<Text> button = _getTextItems();
         return TextButton(
             style: ButtonStyle(
-              padding: MaterialStateProperty.all<EdgeInsets>(
+              elevation: WidgetStatePropertyAll(1),
+              shadowColor: WidgetStatePropertyAll(AppColors.grey),
+              padding: WidgetStateProperty.all<EdgeInsets>(
                   EdgeInsets.zero), // Remove padding
-              backgroundColor: MaterialStateProperty.all<Color>(
-                  Colors.transparent), // Make background transparent
-              overlayColor: MaterialStateProperty.all<Color>(
-                  Colors.grey[400]!), // Change overlay color
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              backgroundColor: WidgetStateProperty.all<Color>(
+                  AppColors.white), // Make background transparent
+              shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100),
-                    side: BorderSide(
-                        color: Colors.grey[400]!)), // Add border side
+                  borderRadius: BorderRadius.circular(10),
+                ), // Add border side
               ),
             ),
             onPressed: () => _onButtonPressed(button[index].data ?? ''),
@@ -602,14 +614,13 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
       '±',
       '='
     ].map((title) {
-      TextStyle style =
-          TextStyle(color: AppColors.darkBlue, fontSize: FontSize.mediumTitle);
+      TextStyle? style = Theme.of(context).textTheme.titleMedium;
       if (title == '=' ||
           title == '+' ||
           title == '-' ||
           title == '×' ||
           title == '÷') {
-        style = style.copyWith(fontSize: FontSize.largeTitle);
+        style = style!.copyWith(fontSize: FontSize.largeTitle);
       }
       if (title == _controller.numberFormat.symbols.PERCENT ||
           title == '→' ||
@@ -627,7 +638,6 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
 
 class _CalcDisplay extends StatefulWidget {
   /// Whether to show surrounding borders.
-  final bool? hideSurroundingBorder;
 
   /// Whether to show expression area.
   final bool? hideExpression;
@@ -644,7 +654,6 @@ class _CalcDisplay extends StatefulWidget {
   const _CalcDisplay({
     required this.onTappedDisplay,
     required this.controller,
-    this.hideSurroundingBorder,
     this.hideExpression,
     this.theme,
   });
@@ -681,71 +690,52 @@ class _CalcDisplayState extends State<_CalcDisplay> {
 
   @override
   Widget build(BuildContext context) {
-    final borderSide = Divider.createBorderSide(
-      context,
-      color: widget.theme?.borderColor ?? Theme.of(context).dividerColor,
-      width: widget.theme?.borderWidth ?? 1.0,
-    );
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          top: widget.hideSurroundingBorder! ? BorderSide.none : borderSide,
-          left: widget.hideSurroundingBorder! ? BorderSide.none : borderSide,
-          right: widget.hideSurroundingBorder! ? BorderSide.none : borderSide,
-          bottom: widget.hideSurroundingBorder! ? borderSide : BorderSide.none,
+    return Column(
+      children: <Widget>[
+        Expanded(
+          flex: 2,
+          child: GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onTapDown: (details) => widget.onTappedDisplay == null
+                ? null
+                : widget.onTappedDisplay!(widget.controller.value, details),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  widget.controller.display!,
+                  style: const TextStyle(
+                    fontSize: 50,
+                    wordSpacing: 0,
+                    height: 1,
+                  ),
+                  maxLines: 1,
+                ),
+              ),
+            ),
+          ),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              onTapDown: (details) => widget.onTappedDisplay == null
-                  ? null
-                  : widget.onTappedDisplay!(widget.controller.value, details),
-              child: Container(
-                color: widget.theme?.displayColor,
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 18, right: 18),
-                    child: Text(
-                      widget.controller.display!,
-                      style: widget.theme?.displayStyle ??
-                          const TextStyle(fontSize: 50),
-                      maxLines: 1,
-                    ),
-                  ),
+        Expanded(
+          child: Container(
+            color: widget.theme?.expressionColor,
+            child: Align(
+              alignment: Alignment.topRight,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                scrollDirection: Axis.horizontal,
+                reverse: true,
+                child: Text(
+                  widget.controller.expression!,
+                  style: widget.theme?.expressionStyle ??
+                      const TextStyle(color: Colors.grey),
+                  maxLines: 1,
                 ),
               ),
             ),
           ),
-          Visibility(
-            visible: !widget.hideExpression!,
-            child: Expanded(
-              child: Container(
-                color: widget.theme?.expressionColor,
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                    scrollDirection: Axis.horizontal,
-                    reverse: true,
-                    child: Text(
-                      widget.controller.expression!,
-                      style: widget.theme?.expressionStyle ??
-                          const TextStyle(color: Colors.grey),
-                      maxLines: 1,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

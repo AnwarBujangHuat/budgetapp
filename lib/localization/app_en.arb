@@ -3,7 +3,13 @@
   "appTitle": "budgetapp",
   "goals": "Goals",
   "transaction": "Transaction",
+  "total": "Total",
+  "importTransaction": "Import Transaction",
   "recentTransaction": "Recent Transaction",
+  "addNewTransaction": "Add New Transaction",
+  "add": "Add",
+  "pleaseSelectTag": "Please Select a Tag",
+  "noTransaction": "No Transaction Record Found",
   "dashboard": "Dashboard",
   "totalNetWorth": "Total Net Worth",
   "totalExpenses": "Total Expenses",
@@ -14,6 +20,12 @@
   "monthly": "Monthly",
   "weekly": "Weekly",
   "daily": "Daily",
+  "daysLeft": "Days Left",
+  "setupGoals": "Setup Goal",
+  "noGoals": "No Goal Record Found",
+  "notes": "Notes",
+  "viewMore": "View More",
+  "others": "Others",
   "@appTitle": {
     "description": "The title of the application"
   }

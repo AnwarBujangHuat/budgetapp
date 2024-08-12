@@ -3,8 +3,8 @@ import 'package:budgetapp/common/utils/utils.dart';
 import 'package:budgetapp/common/viewmodel/goals/goals_viewmodel.dart';
 import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/icons/custom_icon.dart';
+import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/common/widgets/text/header.dart';
-import 'package:budgetapp/presentation/dashboard/widget/sized_boxes.dart';
 import 'package:budgetapp/shared/card/card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -25,7 +25,7 @@ class IBGoalListWidget extends ConsumerWidget {
                 children: [
                   IBTextHeader(title: AppLocalizations.of(context)!.goals),
                   IBTextButton(
-                    title: 'View More',
+                    title: AppLocalizations.of(context)!.viewMore,
                     onTap: () {},
                   ),
                 ],
@@ -51,12 +51,12 @@ class IBGoalListWidget extends ConsumerWidget {
                           itemCount: goalList.length,
                         )
                       : IBCard(
-                          title: 'Setup Goals',
+                          title: AppLocalizations.of(context)!.setupGoals,
                           icon: IconWidget(
                             iconData: Icons.add,
                             backgroundColor: AppColors.slateBlue,
                           ),
-                          description: 'No Goal Record Found')),
+                          description: AppLocalizations.of(context)!.noGoals)),
               const IBSizedH10(),
             ],
           ),
@@ -135,7 +135,7 @@ class IBGoalCard extends StatelessWidget {
               total: total,
             ),
             Text(
-                '${calculateDaysLeft(startDate: startDate, endDate: endDate)} Days Left',
+                '${calculateDaysLeft(startDate: startDate, endDate: endDate)} ${AppLocalizations.of(context)!.daysLeft}',
                 style: currentTheme.textTheme.labelSmall!
                     .copyWith(fontWeight: FontWeight.bold)),
           ],
@@ -159,6 +159,7 @@ class _LinearProgressIndicator extends StatelessWidget {
       borderRadius: BorderRadius.circular(10));
 }
 
+// ignore: unused_element
 class _CircularProgressIndicator extends StatelessWidget {
   const _CircularProgressIndicator({required this.value, required this.total});
   final double value;
@@ -200,7 +201,7 @@ class _CircularProgressIndicator extends StatelessWidget {
         Expanded(
           child: Center(
             child: Text(
-              'Total: RM${total.toStringAsFixed(2)}',
+              '${AppLocalizations.of(context)!.total}: RM${total.toStringAsFixed(2)}',
               style: currentTheme.textTheme.bodyMedium!
                   .copyWith(fontWeight: FontWeight.bold),
             ),

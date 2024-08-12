@@ -22,8 +22,19 @@ class IBIcon extends ConsumerWidget {
     AsyncValue<List<TagModel>> asyncValue = ref.watch(tagViewmodelProvider);
     return asyncValue.map(
       data: (tagList) {
-        TagModel currentTag =
-            tagList.value.firstWhere((tag) => tag.tagId == tagId);
+        TagModel currentTag = TagModel(
+            parentTagId: 1,
+            tagId: tagId,
+            tagName: '-',
+            icon: IconModel(codePaint: 57455, fontFamily: 'MaterialIcons'),
+            color: 'FFFFF');
+
+        for (var tag in tagList.requireValue) {
+          if (tag.tagId == tagId) {
+            currentTag = tag;
+            break;
+          }
+        }
 
         IconModel icon = currentTag.icon;
 

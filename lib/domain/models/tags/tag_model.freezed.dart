@@ -20,11 +20,11 @@ TagModel _$TagModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TagModel {
+  int get parentTagId => throw _privateConstructorUsedError;
   int get tagId => throw _privateConstructorUsedError;
   String get tagName => throw _privateConstructorUsedError;
   IconModel get icon => throw _privateConstructorUsedError;
   String get color => throw _privateConstructorUsedError;
-  int? get parentTagId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,11 +38,11 @@ abstract class $TagModelCopyWith<$Res> {
       _$TagModelCopyWithImpl<$Res, TagModel>;
   @useResult
   $Res call(
-      {int tagId,
+      {int parentTagId,
+      int tagId,
       String tagName,
       IconModel icon,
-      String color,
-      int? parentTagId});
+      String color});
 
   $IconModelCopyWith<$Res> get icon;
 }
@@ -60,13 +60,17 @@ class _$TagModelCopyWithImpl<$Res, $Val extends TagModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? parentTagId = null,
     Object? tagId = null,
     Object? tagName = null,
     Object? icon = null,
     Object? color = null,
-    Object? parentTagId = freezed,
   }) {
     return _then(_value.copyWith(
+      parentTagId: null == parentTagId
+          ? _value.parentTagId
+          : parentTagId // ignore: cast_nullable_to_non_nullable
+              as int,
       tagId: null == tagId
           ? _value.tagId
           : tagId // ignore: cast_nullable_to_non_nullable
@@ -83,10 +87,6 @@ class _$TagModelCopyWithImpl<$Res, $Val extends TagModel>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as String,
-      parentTagId: freezed == parentTagId
-          ? _value.parentTagId
-          : parentTagId // ignore: cast_nullable_to_non_nullable
-              as int?,
     ) as $Val);
   }
 
@@ -108,11 +108,11 @@ abstract class _$$TagModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int tagId,
+      {int parentTagId,
+      int tagId,
       String tagName,
       IconModel icon,
-      String color,
-      int? parentTagId});
+      String color});
 
   @override
   $IconModelCopyWith<$Res> get icon;
@@ -129,13 +129,17 @@ class __$$TagModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? parentTagId = null,
     Object? tagId = null,
     Object? tagName = null,
     Object? icon = null,
     Object? color = null,
-    Object? parentTagId = freezed,
   }) {
     return _then(_$TagModelImpl(
+      parentTagId: null == parentTagId
+          ? _value.parentTagId
+          : parentTagId // ignore: cast_nullable_to_non_nullable
+              as int,
       tagId: null == tagId
           ? _value.tagId
           : tagId // ignore: cast_nullable_to_non_nullable
@@ -152,10 +156,6 @@ class __$$TagModelImplCopyWithImpl<$Res>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as String,
-      parentTagId: freezed == parentTagId
-          ? _value.parentTagId
-          : parentTagId // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 }
@@ -164,15 +164,17 @@ class __$$TagModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TagModelImpl implements _TagModel {
   const _$TagModelImpl(
-      {required this.tagId,
+      {required this.parentTagId,
+      required this.tagId,
       required this.tagName,
       required this.icon,
-      required this.color,
-      this.parentTagId});
+      required this.color});
 
   factory _$TagModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TagModelImplFromJson(json);
 
+  @override
+  final int parentTagId;
   @override
   final int tagId;
   @override
@@ -181,12 +183,10 @@ class _$TagModelImpl implements _TagModel {
   final IconModel icon;
   @override
   final String color;
-  @override
-  final int? parentTagId;
 
   @override
   String toString() {
-    return 'TagModel(tagId: $tagId, tagName: $tagName, icon: $icon, color: $color, parentTagId: $parentTagId)';
+    return 'TagModel(parentTagId: $parentTagId, tagId: $tagId, tagName: $tagName, icon: $icon, color: $color)';
   }
 
   @override
@@ -194,18 +194,18 @@ class _$TagModelImpl implements _TagModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TagModelImpl &&
+            (identical(other.parentTagId, parentTagId) ||
+                other.parentTagId == parentTagId) &&
             (identical(other.tagId, tagId) || other.tagId == tagId) &&
             (identical(other.tagName, tagName) || other.tagName == tagName) &&
             (identical(other.icon, icon) || other.icon == icon) &&
-            (identical(other.color, color) || other.color == color) &&
-            (identical(other.parentTagId, parentTagId) ||
-                other.parentTagId == parentTagId));
+            (identical(other.color, color) || other.color == color));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, tagId, tagName, icon, color, parentTagId);
+      Object.hash(runtimeType, parentTagId, tagId, tagName, icon, color);
 
   @JsonKey(ignore: true)
   @override
@@ -223,15 +223,17 @@ class _$TagModelImpl implements _TagModel {
 
 abstract class _TagModel implements TagModel {
   const factory _TagModel(
-      {required final int tagId,
+      {required final int parentTagId,
+      required final int tagId,
       required final String tagName,
       required final IconModel icon,
-      required final String color,
-      final int? parentTagId}) = _$TagModelImpl;
+      required final String color}) = _$TagModelImpl;
 
   factory _TagModel.fromJson(Map<String, dynamic> json) =
       _$TagModelImpl.fromJson;
 
+  @override
+  int get parentTagId;
   @override
   int get tagId;
   @override
@@ -240,8 +242,6 @@ abstract class _TagModel implements TagModel {
   IconModel get icon;
   @override
   String get color;
-  @override
-  int? get parentTagId;
   @override
   @JsonKey(ignore: true)
   _$$TagModelImplCopyWith<_$TagModelImpl> get copyWith =>

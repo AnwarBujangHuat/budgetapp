@@ -2,8 +2,8 @@
     "tags": [
         {
             "tagId": 1,
-            "tagName": "grocery",
-            "parentTagId": null,
+            "tagName": "Grocery",
+            "parentTagId": 1,
             "icon": {
                 "codePaint": 58261,
                 "fontFamily": "MaterialIcons"
@@ -12,8 +12,8 @@
         },
         {
             "tagId": 2,
-            "tagName": "travel",
-            "parentTagId": null,
+            "tagName": "Travel",
+            "parentTagId": 2,
             "icon": {
                 "codePaint": 58262,
                 "fontFamily": "MaterialIcons"
@@ -22,8 +22,8 @@
         },
         {
             "tagId": 3,
-            "tagName": "utilities",
-            "parentTagId": null,
+            "tagName": "Utilities",
+            "parentTagId": 3,
             "icon": {
                 "codePaint": 57454,
                 "fontFamily": "MaterialIcons"
@@ -32,8 +32,8 @@
         },
         {
             "tagId": 4,
-            "tagName": "rent",
-            "parentTagId": null,
+            "tagName": "Rent",
+            "parentTagId": 4,
             "icon": {
                 "codePaint": 57455,
                 "fontFamily": "MaterialIcons"
@@ -42,8 +42,8 @@
         },
         {
             "tagId": 5,
-            "tagName": "entertainment",
-            "parentTagId": null,
+            "tagName": "Entertainment",
+            "parentTagId": 5,
             "icon": {
                 "codePaint": 58236,
                 "fontFamily": "MaterialIcons"
@@ -52,8 +52,8 @@
         },
         {
             "tagId": 6,
-            "tagName": "dining",
-            "parentTagId": null,
+            "tagName": "Dining",
+            "parentTagId": 6,
             "icon": {
                 "codePaint": 58237,
                 "fontFamily": "MaterialIcons"
@@ -62,8 +62,8 @@
         },
         {
             "tagId": 7,
-            "tagName": "healthcare",
-            "parentTagId": null,
+            "tagName": "Healthcare",
+            "parentTagId": 7,
             "icon": {
                 "codePaint": 58136,
                 "fontFamily": "MaterialIcons"
@@ -72,7 +72,7 @@
         },
         {
             "tagId": 9,
-            "tagName": "clothing",
+            "tagName": "Clothing",
             "parentTagId": 1,
             "icon": {
                 "codePaint": 58267,
@@ -82,7 +82,7 @@
         },
         {
             "tagId": 10,
-            "tagName": "electric bills",
+            "tagName": "Electric bills",
             "parentTagId": 3,
             "icon": {
                 "codePaint": 57454,
@@ -92,13 +92,23 @@
         },
         {
             "tagId": 11,
-            "tagName": "salary",
-            "parentTagId": null,
+            "tagName": "Salary",
+            "parentTagId": 11,
             "icon": {
                 "codePaint": 58261,
                 "fontFamily": "MaterialIcons"
             },
-            "color": "#FFFA7F72"
+            "color": "#B9CAEE"
+        },
+        {
+            "tagId": 12,
+            "tagName": "Gift",
+            "parentTagId": 12,
+            "icon": {
+                "codePaint": 58261,
+                "fontFamily": "MaterialIcons"
+            },
+            "color": "#FFC0CB"
         }
     ]
 }

@@ -7,7 +7,7 @@ part of 'transaction_viewmodel.dart';
 // **************************************************************************
 
 String _$transactionViewmodelHash() =>
-    r'c4a08a954a98988439ae4079b14df9c4799cc6a7';
+    r'0342f9fb9d98ac0f269837a09103046e192cf99b';
 
 /// See also [TransactionViewmodel].
 @ProviderFor(TransactionViewmodel)
@@ -24,5 +24,22 @@ final transactionViewmodelProvider = AutoDisposeAsyncNotifierProvider<
 
 typedef _$TransactionViewmodel
     = AutoDisposeAsyncNotifier<List<TransactionModel>>;
+String _$addNewTransactionNotifierHash() =>
+    r'751bd68707119f17a16bdb78bb65ed5ba5eaf550';
+
+/// See also [AddNewTransactionNotifier].
+@ProviderFor(AddNewTransactionNotifier)
+final addNewTransactionNotifierProvider =
+    AutoDisposeAsyncNotifierProvider<AddNewTransactionNotifier, bool?>.internal(
+  AddNewTransactionNotifier.new,
+  name: r'addNewTransactionNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$addNewTransactionNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$AddNewTransactionNotifier = AutoDisposeAsyncNotifier<bool?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

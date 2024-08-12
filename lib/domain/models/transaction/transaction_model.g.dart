@@ -13,11 +13,10 @@ _$TransactionModelImpl _$$TransactionModelImplFromJson(
       description: json['description'] as String,
       dateTime: DateTime.parse(json['dateTime'] as String),
       transactionAmount: json['transactionAmount'] as String,
-      source: json['source'] as String,
-      attachmentUrl: json['attachmentUrl'] as String,
-      tagId: (json['tagId'] as num).toInt(),
-      parentTagId: (json['parentTagId'] as num?)?.toInt() ?? null,
-      goalTagId: (json['goalTagId'] as num?)?.toInt() ?? 0,
+      tagId: json['tagId'] as int,
+      parentTagId: json['parentTagId'] as int,
+      goalTagId: json['goalTagId'] as int? ?? 0,
+      attachmentUrl: json['attachmentUrl'] as String?,
       type: $enumDecodeNullable(_$TransactionTypeEnumMap, json['type']) ??
           TransactionType.out,
     );
@@ -29,11 +28,10 @@ Map<String, dynamic> _$$TransactionModelImplToJson(
       'description': instance.description,
       'dateTime': instance.dateTime.toIso8601String(),
       'transactionAmount': instance.transactionAmount,
-      'source': instance.source,
-      'attachmentUrl': instance.attachmentUrl,
       'tagId': instance.tagId,
       'parentTagId': instance.parentTagId,
       'goalTagId': instance.goalTagId,
+      'attachmentUrl': instance.attachmentUrl,
       'type': _$TransactionTypeEnumMap[instance.type]!,
     };
 

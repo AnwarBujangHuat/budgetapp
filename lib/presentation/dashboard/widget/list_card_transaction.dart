@@ -28,29 +28,30 @@ class IBTranscationListWidget extends ConsumerWidget {
               IBTextHeader(
                   title: AppLocalizations.of(context)!.recentTransaction),
               IBTextButton(
-                title: 'View More',
+                title: AppLocalizations.of(context)!.viewMore,
                 onTap: () {},
               ),
             ],
           ),
         ),
-        //Todo make locale for this
         Card(
           child: ref.watch(transactionViewmodelProvider).when(
                 data: (transactionList) {
                   return transactionList.isEmpty
                       ? IBCard(
-                          title: 'Add New Transaction',
+                          title:
+                              AppLocalizations.of(context)!.addNewTransaction,
                           icon: IconWidget(
                             iconData: Icons.add,
                             backgroundColor: AppColors.slateBlue,
                           ),
-                          description: 'No Transaction Record Found')
+                          description:
+                              AppLocalizations.of(context)!.noTransaction)
                       : ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemBuilder: (context, index) => IBTransactionCard(
-                            //Todo open page for transaction details, like a reciept page
+                            // Todo open page for transaction details, like a reciept page
                             onPressed: () {},
                             title: transactionList[index].title,
                             date: transactionList[index].dateTime,
@@ -65,10 +66,12 @@ class IBTranscationListWidget extends ConsumerWidget {
                                   : transactionList.length,
                         );
                 },
+                // Todo create a error handling page for retrieving transaction data from remote database
                 error: (error, stackTrace) => Container(
                   height: 100,
                   child: Text(error.toString()),
                 ),
+                // Todo create a loading widget for the loading animation
                 loading: () => Container(),
               ),
         )
@@ -98,7 +101,6 @@ class IBTransactionCard extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     ThemeData currentTheme = Theme.of(context);
     return ListTile(
-      minVerticalPadding: 0,
       dense: true,
       leading: IBIcon(tagId: tagId),
       contentPadding: const EdgeInsets.symmetric(horizontal: 8),
@@ -106,7 +108,7 @@ class IBTransactionCard extends ConsumerWidget {
       subtitle: Text(formatDate(dateTime: date),
           style: currentTheme.textTheme.labelSmall),
       trailing: Text('RM ${expenses.toStringAsFixed(2)}',
-          style: currentTheme.textTheme.bodyMedium!.copyWith(
+          style: currentTheme.textTheme.bodyLarge!.copyWith(
               fontWeight: FontWeight.bold,
               color: type == TransactionType.out
                   ? AppColors.lightRed

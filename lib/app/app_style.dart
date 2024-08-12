@@ -2,88 +2,137 @@ import 'package:flutter/material.dart';
 
 ThemeData lightThemeData = ThemeData(
     fontFamily: 'RobotoFlex',
-    scaffoldBackgroundColor: AppColors.offWhite,
+    scaffoldBackgroundColor: AppColors.rarifiedAir,
     appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: AppColors.darkBlue),
         titleTextStyle: TextStyle(
+            overflow: TextOverflow.ellipsis,
             color: AppColors.darkBlue,
             fontWeight: FontWeight.bold,
             fontSize: FontSize.largeTitle)),
-    cardColor: AppColors.offWhite,
+    cardColor: AppColors.white,
+    inputDecorationTheme: InputDecorationTheme(
+        fillColor: AppColors.white,
+        filled: true,
+        isCollapsed: true,
+        isDense: true,
+        contentPadding: EdgeInsets.symmetric(horizontal: 5),
+        labelStyle: TextStyle(
+          overflow: TextOverflow.ellipsis,
+          letterSpacing: 0,
+          fontSize: FontSize.body,
+          color: AppColors.darkBlue,
+        ),
+        hintStyle: TextStyle(
+          letterSpacing: 0,
+          fontSize: FontSize.body,
+          color: AppColors.grey,
+        ),
+        border: UnderlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(10)),
+        enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(10))),
     textTheme: const TextTheme(
       titleSmall: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.smallTitle,
         fontWeight: FontWeight.bold,
         color: AppColors.darkBlue,
       ),
       titleMedium: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.mediumTitle,
         fontWeight: FontWeight.bold,
         color: AppColors.darkBlue,
       ),
       titleLarge: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.largeTitle,
         fontWeight: FontWeight.bold,
         color: AppColors.darkBlue,
       ),
       displaySmall: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.smallDisplay,
         color: AppColors.darkBlue,
       ),
       displayMedium: TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontSize: FontSize.mediumDisplay,
         fontWeight: FontWeight.w900,
         color: AppColors.darkBlue,
       ),
       displayLarge: TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontSize: FontSize.largeDisplay,
         color: AppColors.darkBlue,
       ),
       bodySmall: TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontSize: FontSize.subtitle,
         color: AppColors.darkBlue,
       ),
       bodyMedium: TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontSize: FontSize.body,
         color: AppColors.darkBlue,
       ),
       bodyLarge: TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontSize: FontSize.smallTitle,
         color: AppColors.darkBlue,
       ),
       labelMedium: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.body,
         color: AppColors.darkBlueLessOpacity,
       ),
       labelSmall: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.subtitle,
         color: AppColors.darkBlueLessOpacity,
       ),
       labelLarge: TextStyle(
+        overflow: TextOverflow.ellipsis,
         letterSpacing: 0,
         fontSize: FontSize.smallTitle,
         color: AppColors.darkBlueLessOpacity,
       ),
     ),
+    iconTheme: IconThemeData(size: 24),
+    datePickerTheme: DatePickerThemeData(
+        dayStyle: TextStyle(color: Colors.white),
+        // dayOverlayColor: WidgetStatePropertyAll(AppColors.white),
+        surfaceTintColor: Colors.white),
     colorScheme: const ColorScheme(
         brightness: Brightness.light,
         primary: AppColors.darkBlue,
-        onPrimary: AppColors.darkBlue,
+        onPrimary: AppColors.white,
         secondary: AppColors.darkBlueVariant,
         onSecondary: AppColors.white,
         error: AppColors.lightRed,
-        onError: AppColors.lightRedVariant,
-        background: AppColors.offWhite,
-        onBackground: AppColors.offWhite,
+        onError: AppColors.white,
         surface: Colors.white,
-        onSurface: AppColors.black),
+        onSurface: AppColors.darkBlueLessOpacity),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+        style: ButtonStyle(
+            textStyle: WidgetStatePropertyAll(
+              TextStyle(overflow: TextOverflow.ellipsis),
+            ),
+            shape: WidgetStatePropertyAll<OutlinedBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ))),
     cardTheme: const CardTheme(
       surfaceTintColor: Colors.white,
       elevation: 1,
@@ -93,37 +142,144 @@ ThemeData lightThemeData = ThemeData(
       ),
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
-        circularTrackColor: AppColors.offWhite),
+        circularTrackColor: AppColors.rarifiedAir),
     primaryColorLight: AppColors.darkBlue,
     primaryColor: AppColors.darkBlue);
 ThemeData darkThemeData = ThemeData(
-  cardColor: AppColors.cardBackgroundColor,
   scaffoldBackgroundColor: AppColors.primaryDarkBackground,
-  primaryColorLight: AppColors.whiteVariant,
-  textButtonTheme: TextButtonThemeData(
-      style: const ButtonStyle(
-          textStyle: MaterialStatePropertyAll(TextStyle(
-    letterSpacing: 0,
-    fontSize: FontSize.smallTitle,
-    fontWeight: FontWeight.bold,
-    color: AppColors.white,
-  )))),
+  appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.secondaryDarkBackground,
+      iconTheme: IconThemeData(color: AppColors.white),
+      titleTextStyle: TextStyle(
+          overflow: TextOverflow.ellipsis,
+          color: AppColors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: FontSize.largeTitle)),
+  cardColor: AppColors.secondaryDarkBackground,
+  textTheme: const TextTheme(
+    titleSmall: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      letterSpacing: 0,
+      fontSize: FontSize.smallTitle,
+      fontWeight: FontWeight.bold,
+      color: AppColors.white,
+    ),
+    titleMedium: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      letterSpacing: 0,
+      fontSize: FontSize.mediumTitle,
+      fontWeight: FontWeight.bold,
+      color: AppColors.white,
+    ),
+    titleLarge: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      letterSpacing: 0,
+      fontSize: FontSize.largeTitle,
+      fontWeight: FontWeight.bold,
+      color: AppColors.white,
+    ),
+    displaySmall: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      letterSpacing: 0,
+      fontSize: FontSize.smallDisplay,
+      color: AppColors.white,
+    ),
+    displayMedium: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      fontSize: FontSize.mediumDisplay,
+      fontWeight: FontWeight.w900,
+      color: AppColors.white,
+    ),
+    displayLarge: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      fontSize: FontSize.largeDisplay,
+      color: AppColors.white,
+    ),
+    bodySmall: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      fontSize: FontSize.subtitle,
+      color: AppColors.white,
+    ),
+    bodyMedium: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      fontSize: FontSize.body,
+      color: AppColors.white,
+    ),
+    bodyLarge: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      fontSize: FontSize.smallTitle,
+      color: AppColors.white,
+    ),
+    labelMedium: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      letterSpacing: 0,
+      fontSize: FontSize.body,
+      color: AppColors.whiteVariant,
+    ),
+    labelSmall: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      letterSpacing: 0,
+      fontSize: FontSize.subtitle,
+      color: AppColors.whiteVariant,
+    ),
+    labelLarge: TextStyle(
+      overflow: TextOverflow.ellipsis,
+      letterSpacing: 0,
+      fontSize: FontSize.smallTitle,
+      color: AppColors.whiteVariant,
+    ),
+  ),
+  colorScheme: const ColorScheme(
+      brightness: Brightness.dark,
+      primary: AppColors.white,
+      onPrimary: AppColors.rarifiedAir,
+      secondary: AppColors.white,
+      onSecondary: AppColors.white,
+      error: AppColors.lightRed,
+      onError: AppColors.lightRed,
+      surface: AppColors.secondaryDarkBackground,
+      onSurface: AppColors.secondaryDarkBackground),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+      style: ButtonStyle(
+          shape: WidgetStatePropertyAll<OutlinedBorder>(
+    RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+  ))),
+  cardTheme: const CardTheme(
+    surfaceTintColor: AppColors.secondaryDarkBackground,
+    elevation: 1,
+    clipBehavior: Clip.antiAlias,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(16)),
+    ),
+  ),
+  progressIndicatorTheme:
+      const ProgressIndicatorThemeData(circularTrackColor: AppColors.white),
+  primaryColorLight: AppColors.white,
+  primaryColor: AppColors.white,
 );
 
 class AppColors {
-  static const Color offWhite = Color(0xFFF5F5F5);
-  static const Color offWhiteVariant = Colors.white70;
+  //Todo Improve Coloring Name
+  /// For Light Theme
+
+  static const Color rarifiedAir = Color(0xFFF2F3F8);
+  // static const Color rarifiedAir = Color(0xFFFEFEFE);
+  // static const Color rarifiedAirVariant = Color(0xFFFEFEFE);
   static const Color white = Colors.white;
   static const Color whiteVariant = Color(0xFFF8F8F8);
   static const Color black = Colors.black;
+  static const Color grey = Colors.grey;
   static const Color cardBackgroundColor = Color.fromARGB(255, 28, 28, 28);
   static const Color blackVariant = Color(0xFF333333);
   static const Color darkBlue = Color(0xFF282D49);
   static const Color darkBlueLessOpacity = Color(0xB3282D49);
-  static const Color primaryDarkBackground = Color.fromARGB(255, 19, 19, 20);
-  static const Color secondaryDarkBackground = Color(0xFF1F212A);
+  static const Color primaryDarkBackground = Color(0xFF252627);
+  static const Color secondaryDarkBackground = Color(0xFF303030);
+  // static const Color secondaryDarkBackground = Color(0xFF3C3F4F);
   static const Color darkBlueVariant = Color(0xFF202531);
-  static const Color lightGreen = Color(0xCC4F9360);
+  static const Color lightGreen = Color.fromARGB(204, 128, 223, 135);
   static const Color lighterGreen = Color(0xCC8EFFA8);
   static const Color lightRed = Colors.red;
   static const Color lightRedVariant = Colors.redAccent;
@@ -138,6 +294,8 @@ class AppColors {
   static const Color pink = Color(0xFFFA7F72);
   static const Color teal = Color(0xFF64C4D6);
   static const Color slateBlue = Color(0xFF62758D);
+
+  /// For Dark Theme
 }
 
 class FontSize {

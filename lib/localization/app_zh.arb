@@ -1,9 +1,17 @@
 {
-  "appTitle": "budgetapp ZH",
-  "goals": "goals ZH",
+  "@@locale": "zh",
+  "appTitle": "budgetapp MY",
+  "goals": "goals MY",
   "transaction": "transaction MY",
+  "total": "Jumlah",
+  "recentTransaction": "Transaksi Terkini",
+  "importTransaction": "Import Transaksi",
+  "addNewTransaction": "Tambah Transaksi",
+  "add": "Tambah",  "pleaseSelectTag": "Please Select a Tag",
+
+  "noTransaction": "Tiada Rekod Transaksi",
   "dashboard": "dashboard MY",
-  "totalNetWorth": "Total Net Worth MY",  
+  "totalNetWorth": "Total Net Worth MY",
   "totalExpenses": "Jumlah Belanjawan",
   "totalIncome": "Jumlah Kemasukan",
   "expenses": "Expenses",
@@ -12,6 +20,12 @@
   "monthly": "Bulanan",
   "weekly": "Mingguan",
   "daily": "Harian",
+  "daysLeft": "Hari Tinggal",
+  "setupGoals": "Sediakan Matlamat",
+  "noGoals": "Tiada Rekod Matlamat Dijumpai",
+  "notes": "Nota",
+  "others": "Lain-Lain",
+  "viewMore": "Lihat Lebih",
   "@appTitle": {
     "description": "The title of the application"
   }

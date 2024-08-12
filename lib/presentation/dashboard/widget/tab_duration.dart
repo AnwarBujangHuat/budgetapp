@@ -31,7 +31,7 @@ class TimelineTab extends StatelessWidget {
                       border: Border.all(color: AppColors.white),
                       color: selected == filterButton[index]
                           ? AppColors.white
-                          : AppColors.darkBlueLessOpacity,
+                          : Colors.transparent,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(index == 0 ? 5 : 0),
                           topLeft: Radius.circular(index == 0 ? 5 : 0),

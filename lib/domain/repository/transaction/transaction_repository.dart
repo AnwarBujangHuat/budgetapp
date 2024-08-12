@@ -1,11 +1,10 @@
 import 'package:budgetapp/common/utils/utils.dart';
-import 'package:budgetapp/common/viewmodel/tag/tag_viewmodel.dart';
 import 'package:budgetapp/domain/http/app_exception.dart';
-import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 part 'transaction_repository.g.dart';
 
 @Riverpod(keepAlive: true)
@@ -18,9 +17,15 @@ class TransactionRepository {
 
   final Ref _ref;
   final List<TransactionModel> _transactionsRecords = [];
-  final Map<int, List<TransactionModel>> _mapTransRecToParTag = {};
-  Future<Either<AppException, List<TransactionModel>>> getAllExpanses() async {
+  Future<Either<AppException, List<TransactionModel>>> getAllExpanses(
+      {bool fetchFromRemote = false}) async {
+    if (fetchFromRemote) {
+      return Right(_transactionsRecords);
+    }
     try {
+      _transactionsRecords.clear();
+
+      /// Load from local storage now
       Map<String, dynamic> jsonData =
           await loadJsonFromAssets('assets/data/transaction.json');
 
@@ -28,23 +33,25 @@ class TransactionRepository {
         _transactionsRecords
             .add(TransactionModel.fromJson(element as Map<String, dynamic>));
       }
-      getTransactionRecordMap();
       return Right(_transactionsRecords);
     } on Exception catch (e) {
       return Left(AppException.errorWithMessage('Failed to load expenses: $e'));
     }
   }
 
-  Future<List<TransactionModel>> addElement({required String data}) async => [];
-  Map<int, List<TransactionModel>> getTransactionRecordMap() {
-    for (var transaction in _transactionsRecords) {
-      _mapTransRecToParTag[transaction.parentTagId ?? transaction.tagId] = [
-        ..._mapTransRecToParTag[transaction.parentTagId ?? transaction.tagId] ??
-            [],
-        transaction
-      ];
-    }
+  Future<Either<AppException, bool>> addNewTransaction(
+      {required TransactionModel newTransaction}) async {
+    /// Insert at first index
 
-    return _mapTransRecToParTag;
+    _transactionsRecords.insert(0, newTransaction);
+    return Right(true);
+  }
+
+  List<TransactionModel> filterTransactionByDate({required String dateType}) {
+    final result = _transactionsRecords
+        .where((element) => element.dateTime == DateTime.now())
+        .toList();
+
+    return result;
   }
 }
