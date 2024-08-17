@@ -11,6 +11,7 @@ import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/common/widgets/text_field/ib_text__form_field.dart';
 import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
+import 'package:budgetapp/presentation/transaction/widgets/tag_selection_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -80,6 +81,7 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
             title: AppLocalizations.of(context)!.add,
             onTap: () async {
               if (selectedTag != null) {
+                /// Create a new Transaction
                 newTransaction = TransactionModel(
                   type: selectedTransactionType,
                   title: selectedTag!.tagName,
@@ -173,8 +175,18 @@ class TransactionTypeSelect extends ConsumerWidget {
             borderColors: Colors.transparent,
             backgroundColor: AppColors.white,
             icon: Icon(Icons.arrow_drop_down),
-            onTap: () {
-              onSelectTag(value.first);
+            onTap: () async {
+              /// Open a select Dialog model
+
+              TagModel? tag = await showDialog<TagModel?>(
+                context: context,
+                builder: (context) => TagSelectionDialog(
+                  tagList: value,
+                ),
+              );
+              if (tag != null) {
+                onSelectTag(tag);
+              }
             },
           );
         case AsyncError(:final error):

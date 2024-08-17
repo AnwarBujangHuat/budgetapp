@@ -25,6 +25,8 @@
   "noGoals": "No Goal Record Found",
   "notes": "Notes",
   "viewMore": "View More",
+  "cancel": "Cancel",
+  "okay": "Okay",
   "others": "Others",
   "@appTitle": {
     "description": "The title of the application"

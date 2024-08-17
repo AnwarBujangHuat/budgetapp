@@ -7,7 +7,7 @@
   "recentTransaction": "Transaksi Terkini",
   "importTransaction": "Import Transaksi",
   "addNewTransaction": "Tambah Transaksi",
-  "add": "Tambah", 
+  "add": "Tambah",
   "pleaseSelectTag": "Sila Pilih Tag",
   "noTransaction": "Tiada Rekod Transaksi",
   "dashboard": "dashboard MY",
@@ -26,6 +26,8 @@
   "notes": "Nota",
   "others": "Lain-Lain",
   "viewMore": "Lihat Lebih",
+  "cancel": "Batal",
+  "okay": "Setuju",
   "@appTitle": {
     "description": "The title of the application"
   }
