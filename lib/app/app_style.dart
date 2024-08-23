@@ -17,7 +17,7 @@ ThemeData lightThemeData = ThemeData(
         filled: true,
         isCollapsed: true,
         isDense: true,
-        contentPadding: EdgeInsets.symmetric(horizontal: 5),
+        contentPadding: EdgeInsets.symmetric(horizontal: 8),
         labelStyle: TextStyle(
           overflow: TextOverflow.ellipsis,
           letterSpacing: 0,
