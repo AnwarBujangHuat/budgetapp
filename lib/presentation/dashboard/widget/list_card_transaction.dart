@@ -34,7 +34,7 @@ class IBTranscationListWidget extends ConsumerWidget {
             ],
           ),
         ),
-        Card(
+        Container(
           child: ref.watch(transactionViewmodelProvider).when(
                 data: (transactionList) {
                   return transactionList.isEmpty

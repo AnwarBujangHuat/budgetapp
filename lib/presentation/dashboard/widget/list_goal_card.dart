@@ -31,7 +31,7 @@ class IBGoalListWidget extends ConsumerWidget {
                 ],
               ),
               SizedBox(
-                  height: 130,
+                  height: 140,
                   child: goalList.isNotEmpty
                       ? ListView.separated(
                           shrinkWrap: true,
@@ -104,7 +104,7 @@ class IBGoalCard extends StatelessWidget {
     ThemeData currentTheme = Theme.of(context);
     return Card(
       child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(12),
         constraints: const BoxConstraints(minWidth: 100, maxWidth: 250),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,16 +117,17 @@ class IBGoalCard extends StatelessWidget {
                 Text(description, style: currentTheme.textTheme.labelSmall),
               ],
             )),
+            IBSizedH10(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 //Do handle for multiple currencies
                 Text(
                     'RM ${progress.toStringAsFixed(2)} / RM ${total.toStringAsFixed(2)}',
-                    style: currentTheme.textTheme.labelSmall!
+                    style: currentTheme.textTheme.labelMedium!
                         .copyWith(fontWeight: FontWeight.bold)),
                 Text('${((progress / total) * 100).toInt()}%',
-                    style: currentTheme.textTheme.labelSmall!
+                    style: currentTheme.textTheme.labelMedium!
                         .copyWith(fontWeight: FontWeight.bold)),
               ],
             ),
@@ -134,6 +135,7 @@ class IBGoalCard extends StatelessWidget {
               value: progress,
               total: total,
             ),
+            IBSizedH05(),
             Text(
                 '${calculateDaysLeft(startDate: startDate, endDate: endDate)} ${AppLocalizations.of(context)!.daysLeft}',
                 style: currentTheme.textTheme.labelSmall!

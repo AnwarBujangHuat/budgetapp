@@ -5,7 +5,8 @@ analyzer:
     # ignore vscode .history files
     - .history/**
     - test_data/**
-    - .g.dart/**
+    - lib/domain/models/**
+    - .g.dart
   language:
     strict-casts: true
 linter:
