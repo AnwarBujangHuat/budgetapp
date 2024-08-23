@@ -124,10 +124,10 @@ class IBGoalCard extends StatelessWidget {
                 //Do handle for multiple currencies
                 Text(
                     'RM ${progress.toStringAsFixed(2)} / RM ${total.toStringAsFixed(2)}',
-                    style: currentTheme.textTheme.labelMedium!
+                    style: currentTheme.textTheme.bodyMedium!
                         .copyWith(fontWeight: FontWeight.bold)),
                 Text('${((progress / total) * 100).toInt()}%',
-                    style: currentTheme.textTheme.labelMedium!
+                    style: currentTheme.textTheme.bodyMedium!
                         .copyWith(fontWeight: FontWeight.bold)),
               ],
             ),
