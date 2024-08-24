@@ -261,12 +261,7 @@ ThemeData darkThemeData = ThemeData(
 );
 
 class AppColors {
-  //Todo Improve Coloring Name
-  /// For Light Theme
-
   static const Color rarifiedAir = Color(0xFFF2F3F8);
-  // static const Color rarifiedAir = Color(0xFFFEFEFE);
-  // static const Color rarifiedAirVariant = Color(0xFFFEFEFE);
   static const Color white = Colors.white;
   static const Color whiteVariant = Color(0xFFF8F8F8);
   static const Color black = Colors.black;
@@ -277,7 +272,6 @@ class AppColors {
   static const Color darkBlueLessOpacity = Color(0xB3282D49);
   static const Color primaryDarkBackground = Color(0xFF252627);
   static const Color secondaryDarkBackground = Color(0xFF303030);
-  // static const Color secondaryDarkBackground = Color(0xFF3C3F4F);
   static const Color darkBlueVariant = Color(0xFF202531);
   static const Color lightGreen = Color.fromARGB(204, 128, 223, 135);
   static const Color lighterGreen = Color(0xCC8EFFA8);
