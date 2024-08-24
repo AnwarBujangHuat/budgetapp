@@ -27,6 +27,24 @@ class IBSizedH20 extends StatelessWidget {
       );
 }
 
+class IBSizedH30 extends StatelessWidget {
+  const IBSizedH30({super.key});
+
+  @override
+  Widget build(BuildContext context) => const SizedBox(
+        height: 30,
+      );
+}
+
+class IBSizedH40 extends StatelessWidget {
+  const IBSizedH40({super.key});
+
+  @override
+  Widget build(BuildContext context) => const SizedBox(
+        height: 40,
+      );
+}
+
 class IBSizedW10 extends StatelessWidget {
   const IBSizedW10({super.key});
 

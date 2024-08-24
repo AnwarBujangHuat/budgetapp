@@ -135,8 +135,11 @@ class IBDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.info_sharp, size: AppSize.iconSizeExtraLarge),
-            IBSizedH20(),
+            Padding(
+              padding: const EdgeInsets.all(AppSize.paddingLarge),
+              child: Icon(Icons.info_sharp, size: AppSize.iconSizeExtraLarge),
+            ),
+            IBSizedH30(),
             _dialogTitleText(
                 context: context,
                 message: 'This is a typical dialog.',
