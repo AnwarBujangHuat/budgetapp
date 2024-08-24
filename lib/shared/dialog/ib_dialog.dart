@@ -1,4 +1,7 @@
+import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 /* The Default [Dialog] Design for InBalance
 
@@ -125,16 +128,49 @@ class IBDialog extends StatelessWidget {
   }
 
   Widget _buildMessageDialog(BuildContext context) {
-    return AlertDialog(
-      title: Icon(Icons.info, color: Colors.blue, size: 40), // Info logo
-      content: Center(
-        child: Text(message ?? 'No message provided.',
-            textAlign: TextAlign.center),
+    return Dialog(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(Icons.info_sharp, size: AppSize.iconSizeExtraLarge),
+            IBSizedH20(),
+            _dialogTitleText(
+                context: context,
+                message: 'This is a typical dialog.',
+                title: 'Header Title'),
+            const SizedBox(height: 15),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Close'),
+            ),
+          ],
+        ),
       ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: Text('OK'),
+    );
+  }
+
+  Widget _dialogTitleText(
+      {required BuildContext context,
+      required String message,
+      String title = ''}) {
+    ThemeData currentTheme = Theme.of(context);
+
+    return Column(
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: FontSize.mediumTitle),
+        ),
+        IBSizedH10(),
+        Text(
+          title,
+          style: currentTheme.textTheme.labelMedium,
         ),
       ],
     );

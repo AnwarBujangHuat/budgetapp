@@ -11,26 +11,18 @@ import 'package:budgetapp/presentation/dashboard/widget/list_goal_card.dart';
 import 'package:budgetapp/presentation/dashboard/widget/pie_chart.dart';
 import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
 import 'package:budgetapp/presentation/dashboard/widget/total_text.dart';
+import 'package:budgetapp/shared/dialog/ib_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class DashboardView extends ConsumerStatefulWidget {
+class DashboardView extends ConsumerWidget {
   const DashboardView({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _DashboardViewState();
-}
-
-class _DashboardViewState extends ConsumerState<DashboardView> {
-  @override
-  void initState() {
+  Widget build(BuildContext context, WidgetRef ref) {
     ref.read(tagRepositoryProvider);
-    super.initState();
-  }
 
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -44,7 +36,11 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
             icon: const Icon(
               Icons.analytics_outlined,
             ),
-            onPressed: null,
+
+            ///This is for testing purposes
+            //TODO delete this latter
+            onPressed: () =>
+                showDialog(builder: (context) => IBDialog(), context: context),
           ),
         ],
       ),

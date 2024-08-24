@@ -13,7 +13,7 @@ const List<String> filterButton = <String>[
 @riverpod
 class TransactionTypeNotifier extends _$TransactionTypeNotifier {
   @override
-  TransactionType build() => TransactionType.income;
+  TransactionType build() => TransactionType.out;
 
   void changeType({required TransactionType type}) {
     state = (type == TransactionType.income
