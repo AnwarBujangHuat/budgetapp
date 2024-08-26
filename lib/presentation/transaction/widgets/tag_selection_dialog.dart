@@ -85,20 +85,21 @@ class _TagSelectionDialogState extends State<TagSelectionDialog> {
                   )),
                   IBSizedW10(),
                   Expanded(
-                      child: IBOutlinedButton(
-                    onTap: () {
-                      Navigator.pop(context, selectedTag);
-                    },
-                    titleBuilder: Builder(
-                      builder: (context) => Text(
-                        AppLocalizations.of(context)!.okay,
-                        style: TextStyle(
-                          color: AppColors.white,
+                    child: IBOutlinedButton(
+                      onTap: () {
+                        Navigator.pop(context, selectedTag);
+                      },
+                      titleBuilder: Builder(
+                        builder: (context) => Text(
+                          AppLocalizations.of(context)!.okay,
+                          style: TextStyle(
+                            color: AppColors.white,
+                          ),
                         ),
                       ),
+                      backgroundColor: AppColors.darkBlue,
                     ),
-                    backgroundColor: AppColors.darkBlue,
-                  )),
+                  ),
                 ],
               ),
             ),

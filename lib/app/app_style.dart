@@ -20,12 +20,12 @@ ThemeData lightThemeData = ThemeData(
         contentPadding: EdgeInsets.symmetric(horizontal: 8),
         labelStyle: TextStyle(
           overflow: TextOverflow.ellipsis,
-          letterSpacing: 0,
+          letterSpacing: AppSize.appSizeS0,
           fontSize: FontSize.body,
           color: AppColors.darkBlue,
         ),
         hintStyle: TextStyle(
-          letterSpacing: 0,
+          letterSpacing: AppSize.appSizeS0,
           fontSize: FontSize.body,
           color: AppColors.grey,
         ),
@@ -38,28 +38,28 @@ ThemeData lightThemeData = ThemeData(
     textTheme: const TextTheme(
       titleSmall: TextStyle(
         overflow: TextOverflow.ellipsis,
-        letterSpacing: 0,
+        letterSpacing: AppSize.appSizeS0,
         fontSize: FontSize.smallTitle,
         fontWeight: FontWeight.bold,
         color: AppColors.darkBlue,
       ),
       titleMedium: TextStyle(
         overflow: TextOverflow.ellipsis,
-        letterSpacing: 0,
+        letterSpacing: AppSize.appSizeS0,
         fontSize: FontSize.mediumTitle,
         fontWeight: FontWeight.bold,
         color: AppColors.darkBlue,
       ),
       titleLarge: TextStyle(
         overflow: TextOverflow.ellipsis,
-        letterSpacing: 0,
+        letterSpacing: AppSize.appSizeS0,
         fontSize: FontSize.largeTitle,
         fontWeight: FontWeight.bold,
         color: AppColors.darkBlue,
       ),
       displaySmall: TextStyle(
         overflow: TextOverflow.ellipsis,
-        letterSpacing: 0,
+        letterSpacing: AppSize.appSizeS0,
         fontSize: FontSize.smallDisplay,
         color: AppColors.darkBlue,
       ),
@@ -91,19 +91,19 @@ ThemeData lightThemeData = ThemeData(
       ),
       labelMedium: TextStyle(
         overflow: TextOverflow.ellipsis,
-        letterSpacing: 0,
+        letterSpacing: AppSize.appSizeS0,
         fontSize: FontSize.body,
         color: AppColors.darkBlueLessOpacity,
       ),
       labelSmall: TextStyle(
         overflow: TextOverflow.ellipsis,
-        letterSpacing: 0,
+        letterSpacing: AppSize.appSizeS0,
         fontSize: FontSize.subtitle,
         color: AppColors.darkBlueLessOpacity,
       ),
       labelLarge: TextStyle(
         overflow: TextOverflow.ellipsis,
-        letterSpacing: 0,
+        letterSpacing: AppSize.appSizeS0,
         fontSize: FontSize.smallTitle,
         color: AppColors.darkBlueLessOpacity,
       ),
@@ -125,12 +125,14 @@ ThemeData lightThemeData = ThemeData(
         onSurface: AppColors.darkBlueLessOpacity),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
+            minimumSize: WidgetStatePropertyAll(
+                Size(AppSize.appSizeS0, AppSize.appSizeS48)),
             textStyle: WidgetStatePropertyAll(
               TextStyle(overflow: TextOverflow.ellipsis),
             ),
             shape: WidgetStatePropertyAll<OutlinedBorder>(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(AppSize.appSizeS10),
               ),
             ))),
     cardTheme: const CardTheme(
@@ -138,7 +140,7 @@ ThemeData lightThemeData = ThemeData(
       elevation: 1,
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(16)),
+        borderRadius: BorderRadius.all(Radius.circular(AppSize.appSizeS16)),
       ),
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
@@ -159,28 +161,28 @@ ThemeData darkThemeData = ThemeData(
   textTheme: const TextTheme(
     titleSmall: TextStyle(
       overflow: TextOverflow.ellipsis,
-      letterSpacing: 0,
+      letterSpacing: AppSize.appSizeS0,
       fontSize: FontSize.smallTitle,
       fontWeight: FontWeight.bold,
       color: AppColors.white,
     ),
     titleMedium: TextStyle(
       overflow: TextOverflow.ellipsis,
-      letterSpacing: 0,
+      letterSpacing: AppSize.appSizeS0,
       fontSize: FontSize.mediumTitle,
       fontWeight: FontWeight.bold,
       color: AppColors.white,
     ),
     titleLarge: TextStyle(
       overflow: TextOverflow.ellipsis,
-      letterSpacing: 0,
+      letterSpacing: AppSize.appSizeS0,
       fontSize: FontSize.largeTitle,
       fontWeight: FontWeight.bold,
       color: AppColors.white,
     ),
     displaySmall: TextStyle(
       overflow: TextOverflow.ellipsis,
-      letterSpacing: 0,
+      letterSpacing: AppSize.appSizeS0,
       fontSize: FontSize.smallDisplay,
       color: AppColors.white,
     ),
@@ -212,19 +214,19 @@ ThemeData darkThemeData = ThemeData(
     ),
     labelMedium: TextStyle(
       overflow: TextOverflow.ellipsis,
-      letterSpacing: 0,
+      letterSpacing: AppSize.appSizeS0,
       fontSize: FontSize.body,
       color: AppColors.whiteVariant,
     ),
     labelSmall: TextStyle(
       overflow: TextOverflow.ellipsis,
-      letterSpacing: 0,
+      letterSpacing: AppSize.appSizeS0,
       fontSize: FontSize.subtitle,
       color: AppColors.whiteVariant,
     ),
     labelLarge: TextStyle(
       overflow: TextOverflow.ellipsis,
-      letterSpacing: 0,
+      letterSpacing: AppSize.appSizeS0,
       fontSize: FontSize.smallTitle,
       color: AppColors.whiteVariant,
     ),
@@ -312,6 +314,7 @@ class AppSize {
   static const double appSizeS16 = 16.0;
   static const double appSizeS14 = 14.0;
   static const double appSizeS12 = 12.0;
+  static const double appSizeS0 = 0.0;
 
   // Add more common sizes
   static const double appSizeS8 = 8.0;
@@ -336,6 +339,7 @@ class AppSize {
   static const double borderRadiusSmall = 4.0;
   static const double borderRadiusMedium = 8.0;
   static const double borderRadiusLarge = 12.0;
+  static const double borderRadiusExtraLarge = 16.0;
 
   // Common elevation sizes for shadows
   static const double elevationLow = 2.0;

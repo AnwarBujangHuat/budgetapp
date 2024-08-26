@@ -39,8 +39,8 @@ class DashboardView extends ConsumerWidget {
 
             ///This is for testing purposes
             //TODO delete this latter
-            onPressed: () =>
-                showDialog(builder: (context) => IBDialog(), context: context),
+            onPressed: () => showDialog(
+                builder: (context) => IBDialog.error(), context: context),
           ),
         ],
       ),

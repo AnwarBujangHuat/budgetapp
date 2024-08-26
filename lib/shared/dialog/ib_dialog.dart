@@ -1,7 +1,8 @@
 import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/common/widgets/button/outlined_button.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /* The Default [Dialog] Design for InBalance
 
@@ -58,12 +59,10 @@ class IBDialog extends StatelessWidget {
         return _buildMessageDialog(context);
     }
   }
-  //TODO create the single design for the title text and
 
   Widget _buildConfirmationDialog(BuildContext context) {
     return AlertDialog(
-      title: Icon(Icons.check_circle,
-          color: Colors.green, size: 40), // Accept logo
+      title: Icon(Icons.check_circle, color: Colors.green, size: 40),
       content: Center(
         child: Text(message ?? 'Are you sure?', textAlign: TextAlign.center),
       ),
@@ -104,53 +103,94 @@ class IBDialog extends StatelessWidget {
   }
 
   Widget _buildErrorDialog(BuildContext context) {
-    return AlertDialog(
-      title: Icon(Icons.error, color: Colors.red, size: 40), // Error logo
-      content: Center(
-        child:
-            Text(message ?? 'An error occurred.', textAlign: TextAlign.center),
-      ),
-      actions: [
-        if (onRetry != null)
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              onRetry?.call();
+    return _dialogBody(
+      context: context,
+      icon: Icon(Icons.error,
+          color: Colors.red, size: AppSize.iconSizeExtraLarge),
+      message: 'This is a typical dialog.',
+      title: 'An error occurred.',
+      button: Row(
+        children: [
+          Expanded(
+              child: IBOutlinedButton(
+            onTap: () {
+              Navigator.pop(context);
             },
-            child: Text('Retry'),
+            title: AppLocalizations.of(context)!.cancel,
+            backgroundColor: Colors.white,
+            borderColors: AppColors.darkBlue,
+          )),
+          IBSizedW10(),
+          Expanded(
+            child: IBOutlinedButton(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              titleBuilder: Builder(
+                builder: (context) => Text(
+                  AppLocalizations.of(context)!.okay,
+                  style: TextStyle(
+                    color: AppColors.white,
+                  ),
+                ),
+              ),
+              backgroundColor: AppColors.darkBlue,
+            ),
           ),
-        TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: Text('Dismiss'),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   Widget _buildMessageDialog(BuildContext context) {
+    return _dialogBody(
+        context: context,
+        icon: Icon(Icons.info_sharp, size: AppSize.iconSizeExtraLarge),
+        message: 'This is a typical dialog.',
+        title: 'Header Title',
+        button: IBOutlinedButton(
+          onTap: () {
+            Navigator.pop(
+              context,
+            );
+          },
+          titleBuilder: Builder(
+            builder: (context) => Text(
+              AppLocalizations.of(context)!.okay,
+              style: TextStyle(
+                color: AppColors.white,
+              ),
+            ),
+          ),
+          backgroundColor: AppColors.darkBlue,
+        ));
+  }
+
+  Widget _dialogBody({
+    required BuildContext context,
+    required String message,
+    required Widget icon,
+    String title = '',
+    Widget? button,
+  }) {
     return Dialog(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(AppSize.paddingLarge),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(AppSize.paddingLarge),
-              child: Icon(Icons.info_sharp, size: AppSize.iconSizeExtraLarge),
+              child: icon,
             ),
-            IBSizedH30(),
+            IBSizedH20(),
             _dialogTitleText(
                 context: context,
                 message: 'This is a typical dialog.',
-                title: 'Header Title'),
-            const SizedBox(height: 15),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Close'),
-            ),
+                title: title),
+            if (button != null) IBSizedH20(),
+            if (button != null) button,
           ],
         ),
       ),
