@@ -8,7 +8,10 @@ part 'tag_viewmodel.g.dart';
 class TagViewmodel extends _$TagViewmodel {
   @override
   Future<List<TagModel>> build() async {
+    state = AsyncLoading();
+
     final result = await ref.read(tagRepositoryProvider).getAllTags();
+
     return result.fold(
       (error) => throw Exception(error),
       (data) => data,

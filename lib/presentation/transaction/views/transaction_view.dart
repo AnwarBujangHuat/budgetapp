@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/const/const.dart';
 import 'package:budgetapp/common/utils/utils.dart';
@@ -12,6 +14,7 @@ import 'package:budgetapp/common/widgets/text_field/ib_text__form_field.dart';
 import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
 import 'package:budgetapp/presentation/transaction/widgets/tag_selection_dialog.dart';
+import 'package:budgetapp/shared/dialog/ib_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -164,38 +167,56 @@ class TransactionTypeSelect extends ConsumerWidget {
   final TagModel? selectedTag;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    return IBOutlinedButton(
+      title:
+          selectedTag?.tagName ?? AppLocalizations.of(context)!.pleaseSelectTag,
+      borderColors: Colors.transparent,
+      backgroundColor: AppColors.white,
+      icon: Icon(Icons.arrow_drop_down),
+      onTap: () async {
+        AsyncValue<List<TagModel>> tagProvider = ref.read(tagViewmodelProvider);
+
+        /// Open a select Dialog model
+        switch (tagProvider) {
+          case AsyncData(:final value):
+            TagModel? tag = await showDialog<TagModel?>(
+              context: context,
+              builder: (context) => TagSelectionDialog(
+                tagList: value,
+              ),
+            );
+            if (tag != null) {
+              onSelectTag(tag);
+            }
+          case AsyncError():
+            unawaited(showDialog(
+              context: context,
+              builder: (context) => _ErrorDialog(),
+            ));
+        }
+      },
+    );
+  }
+}
+
+class _ErrorDialog extends ConsumerStatefulWidget {
+  const _ErrorDialog();
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => __ErrorDialogState();
+}
+
+class __ErrorDialogState extends ConsumerState<_ErrorDialog> {
+  @override
+  Widget build(BuildContext context) {
     AsyncValue<List<TagModel>> tagProvider = ref.watch(tagViewmodelProvider);
 
-    Widget bodyWidget() {
-      switch (tagProvider) {
-        case AsyncData(:final value):
-          return IBOutlinedButton(
-            title: selectedTag?.tagName ??
-                AppLocalizations.of(context)!.pleaseSelectTag,
-            borderColors: Colors.transparent,
-            backgroundColor: AppColors.white,
-            icon: Icon(Icons.arrow_drop_down),
-            onTap: () async {
-              /// Open a select Dialog model
-
-              TagModel? tag = await showDialog<TagModel?>(
-                context: context,
-                builder: (context) => TagSelectionDialog(
-                  tagList: value,
-                ),
-              );
-              if (tag != null) {
-                onSelectTag(tag);
-              }
-            },
-          );
-        case AsyncError(:final error):
-          return Text(error.toString());
-        default:
-          return Container();
-      }
-    }
-
-    return bodyWidget();
+    return IBDialog.error(
+      isLoading: tagProvider.isLoading,
+      message: tagProvider.error.toString(),
+      onRetry: () async {
+        final _ = ref.invalidate(tagViewmodelProvider);
+      },
+    );
   }
 }

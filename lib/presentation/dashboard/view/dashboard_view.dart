@@ -61,7 +61,6 @@ class DashboardView extends ConsumerWidget {
         ],
       ),
       body: RefreshIndicator(
-        //TODO handle refresh list here
         onRefresh: () async {
           final _ = await ref.refresh(transactionViewmodelProvider.future);
         },

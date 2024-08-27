@@ -145,11 +145,9 @@ class IBDialog extends StatelessWidget {
           IBSizedW10(),
           Expanded(
             child: IBOutlinedButton(
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: onRetry ?? () {},
               titleBuilder: Builder(
-                builder: (context) => (isLoading != true || isLoading != null)
+                builder: (context) => (isLoading != true && isLoading != null)
                     ? Text(
                         AppLocalizations.of(context)!.retry,
                         style: TextStyle(
