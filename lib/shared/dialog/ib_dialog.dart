@@ -151,7 +151,7 @@ class IBDialog extends StatelessWidget {
               titleBuilder: Builder(
                 builder: (context) => (isLoading != true || isLoading != null)
                     ? Text(
-                        AppLocalizations.of(context)!.okay,
+                        AppLocalizations.of(context)!.retry,
                         style: TextStyle(
                           color: AppColors.white,
                         ),

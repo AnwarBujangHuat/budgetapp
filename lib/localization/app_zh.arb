@@ -5,6 +5,7 @@
   "transaction": "transaction MY",
   "total": "Jumlah",
   "recentTransaction": "Transaksi Terkini",
+  "retry": "Cuba Kembali",
   "importTransaction": "Import Transaksi",
   "addNewTransaction": "Tambah Transaksi",
   "add": "Tambah",

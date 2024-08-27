@@ -33,10 +33,15 @@ class DashboardView extends ConsumerWidget {
         ),
         actions: [
           IconButton(
-              icon: const Icon(
-                Icons.analytics_outlined,
-              ),
-              onPressed: () => {}),
+            icon: const Icon(
+              Icons.analytics_outlined,
+            ),
+            onPressed: () => showDialog(
+                builder: (context) => IBDialog.error(
+                      message: 'add new transcation',
+                    ),
+                context: context),
+          ),
         ],
       ),
       floatingActionButton: IBFlaotingFAB(

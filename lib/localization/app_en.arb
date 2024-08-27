@@ -6,6 +6,7 @@
   "total": "Total",
   "importTransaction": "Import Transaction",
   "recentTransaction": "Recent Transaction",
+  "retry": "Retry",
   "addNewTransaction": "Add New Transaction",
   "add": "Add",
   "pleaseSelectTag": "Please Select a Tag",
