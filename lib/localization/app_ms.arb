@@ -28,6 +28,10 @@
   "viewMore": "Lihat Lebih",
   "cancel": "Batal",
   "okay": "Setuju",
+  "errorDialog": "Oops, Ada masalah",
+  "loadingDialog": "Harap tunggu. Sedang diproses...",
+  "successDialog": "Tindakan berjaya diselesaikan.",
+  "confirmationDialog": "Pasti?",
   "@appTitle": {
     "description": "The title of the application"
   }

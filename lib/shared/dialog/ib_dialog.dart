@@ -61,44 +61,51 @@ class IBDialog extends StatelessWidget {
   }
 
   Widget _buildConfirmationDialog(BuildContext context) {
-    return AlertDialog(
-      title: Icon(Icons.check_circle, color: Colors.green, size: 40),
-      content: Center(
-        child: Text(message ?? 'Are you sure?', textAlign: TextAlign.center),
+    return _dialogBody(
+      context: context,
+      icon: Icon(Icons.check_circle,
+          color: Colors.green, size: AppSize.iconSizeExtraLarge),
+      message: message,
+      title: AppLocalizations.of(context)!.confirmationDialog,
+      button: Row(
+        children: [
+          Expanded(
+              child: IBOutlinedButton(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            title: AppLocalizations.of(context)!.cancel,
+            backgroundColor: Colors.white,
+            borderColors: AppColors.darkBlue,
+          )),
+          IBSizedW10(),
+          Expanded(
+            child: IBOutlinedButton(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              titleBuilder: Builder(
+                builder: (context) => Text(
+                  AppLocalizations.of(context)!.okay,
+                  style: TextStyle(
+                    color: AppColors.white,
+                  ),
+                ),
+              ),
+              backgroundColor: AppColors.darkBlue,
+            ),
+          ),
+        ],
       ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: Text('Cancel'),
-        ),
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-            // Handle confirmation action here
-          },
-          child: Text('OK'),
-        ),
-      ],
     );
   }
 
   Widget _buildLoadingDialog(BuildContext context) {
-    return Dialog(
-      backgroundColor: Colors.transparent,
-      child: PopScope(
-        canPop: false,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircularProgressIndicator(),
-              SizedBox(height: 16),
-              Text(message ?? 'Loading...', textAlign: TextAlign.center),
-            ],
-          ),
-        ),
-      ),
+    return _dialogBody(
+      context: context,
+      icon: CircularProgressIndicator(),
+      message: message,
+      title: AppLocalizations.of(context)!.loadingDialog,
     );
   }
 
@@ -107,8 +114,8 @@ class IBDialog extends StatelessWidget {
       context: context,
       icon: Icon(Icons.error,
           color: Colors.red, size: AppSize.iconSizeExtraLarge),
-      message: 'This is a typical dialog.',
-      title: 'An error occurred.',
+      message: message,
+      title: AppLocalizations.of(context)!.errorDialog,
       button: Row(
         children: [
           Expanded(
@@ -146,7 +153,7 @@ class IBDialog extends StatelessWidget {
     return _dialogBody(
         context: context,
         icon: Icon(Icons.info_sharp, size: AppSize.iconSizeExtraLarge),
-        message: 'This is a typical dialog.',
+        message: message,
         title: 'Header Title',
         button: IBOutlinedButton(
           onTap: () {
@@ -168,8 +175,8 @@ class IBDialog extends StatelessWidget {
 
   Widget _dialogBody({
     required BuildContext context,
-    required String message,
     required Widget icon,
+    String? message,
     String title = '',
     Widget? button,
   }) {
@@ -185,10 +192,7 @@ class IBDialog extends StatelessWidget {
               child: icon,
             ),
             IBSizedH20(),
-            _dialogTitleText(
-                context: context,
-                message: 'This is a typical dialog.',
-                title: title),
+            _dialogTitleText(context: context, message: message, title: title),
             if (button != null) IBSizedH20(),
             if (button != null) button,
           ],
@@ -199,7 +203,7 @@ class IBDialog extends StatelessWidget {
 
   Widget _dialogTitleText(
       {required BuildContext context,
-      required String message,
+      String? message = '',
       String title = ''}) {
     ThemeData currentTheme = Theme.of(context);
 
@@ -212,8 +216,8 @@ class IBDialog extends StatelessWidget {
         ),
         IBSizedH10(),
         Text(
-          title,
-          style: currentTheme.textTheme.labelMedium,
+          message ?? '',
+          style: currentTheme.textTheme.labelLarge,
         ),
       ],
     );

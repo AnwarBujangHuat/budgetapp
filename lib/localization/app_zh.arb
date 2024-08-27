@@ -28,6 +28,10 @@
   "viewMore": "Lihat Lebih",
   "cancel": "Cancel",
   "okay": "Okay",
+  "errorDialog": "Error. Please retry.",
+  "loadingDialog": "Please wait. Processing...",
+  "successDialog": "Action completed successfully.",
+  "confirmationDialog": "Anda Pasti?.",
   "@appTitle": {
     "description": "The title of the application"
   }

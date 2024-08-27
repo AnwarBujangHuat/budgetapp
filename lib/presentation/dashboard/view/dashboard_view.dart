@@ -36,11 +36,11 @@ class DashboardView extends ConsumerWidget {
             icon: const Icon(
               Icons.analytics_outlined,
             ),
-
-            ///This is for testing purposes
-            //TODO delete this latter
             onPressed: () => showDialog(
-                builder: (context) => IBDialog.error(), context: context),
+                builder: (context) => IBDialog.loading(
+                      message: 'add new transcation',
+                    ),
+                context: context),
           ),
         ],
       ),

@@ -27,6 +27,10 @@
   "viewMore": "View More",
   "cancel": "Cancel",
   "okay": "Okay",
+  "errorDialog": "Oops, Something went wrong",
+  "loadingDialog": "Hang tight! Processing...",
+  "confirmationDialog": "Confirm?",
+  "successDialog": "Success! Your action was completed.",
   "others": "Others",
   "@appTitle": {
     "description": "The title of the application"
