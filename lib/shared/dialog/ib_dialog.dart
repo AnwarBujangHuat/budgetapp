@@ -19,32 +19,41 @@ enum DialogType { confirmation, loading, error, message }
 class IBDialog extends StatelessWidget {
   final String? message;
   final Function()? onRetry;
+  final Function()? onSubmit;
+  final Function()? onDismiss;
+  final bool? isLoading;
   final DialogType dialogType;
 
   /// This is the default dialog that is used with only contains a String message
-  const IBDialog({
-    super.key,
-    this.message,
-  })  : onRetry = null,
+  const IBDialog({super.key, this.message})
+      : onRetry = null,
+        onSubmit = null,
+        onDismiss = null,
+        isLoading = false,
         dialogType = DialogType.message;
 
-  const IBDialog.confirmation({
-    super.key,
-    this.message,
-  })  : onRetry = null,
+  const IBDialog.confirmation(
+      {super.key, this.message, this.onSubmit, this.onDismiss, this.isLoading})
+      : onRetry = null,
         dialogType = DialogType.confirmation;
 
   const IBDialog.loading({
     super.key,
     this.message,
   })  : onRetry = null,
+        onSubmit = null,
+        onDismiss = null,
+        isLoading = false,
         dialogType = DialogType.loading;
 
   const IBDialog.error({
     super.key,
     this.message,
     this.onRetry,
-  }) : dialogType = DialogType.error;
+    this.isLoading,
+  })  : onSubmit = null,
+        onDismiss = null,
+        dialogType = DialogType.error;
 
   @override
   Widget build(BuildContext context) {
@@ -85,12 +94,18 @@ class IBDialog extends StatelessWidget {
                 Navigator.pop(context);
               },
               titleBuilder: Builder(
-                builder: (context) => Text(
-                  AppLocalizations.of(context)!.okay,
-                  style: TextStyle(
-                    color: AppColors.white,
-                  ),
-                ),
+                builder: (context) => (isLoading != true || isLoading != null)
+                    ? Text(
+                        AppLocalizations.of(context)!.okay,
+                        style: TextStyle(
+                          color: AppColors.white,
+                        ),
+                      )
+                    : SizedBox(
+                        width: AppSize.appSizeS20,
+                        height: AppSize.appSizeS20,
+                        child: CircularProgressIndicator(),
+                      ),
               ),
               backgroundColor: AppColors.darkBlue,
             ),
@@ -134,12 +149,18 @@ class IBDialog extends StatelessWidget {
                 Navigator.pop(context);
               },
               titleBuilder: Builder(
-                builder: (context) => Text(
-                  AppLocalizations.of(context)!.okay,
-                  style: TextStyle(
-                    color: AppColors.white,
-                  ),
-                ),
+                builder: (context) => (isLoading != true || isLoading != null)
+                    ? Text(
+                        AppLocalizations.of(context)!.okay,
+                        style: TextStyle(
+                          color: AppColors.white,
+                        ),
+                      )
+                    : SizedBox(
+                        width: AppSize.appSizeS20,
+                        height: AppSize.appSizeS20,
+                        child: CircularProgressIndicator(),
+                      ),
               ),
               backgroundColor: AppColors.darkBlue,
             ),
