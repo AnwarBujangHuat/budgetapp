@@ -7,7 +7,7 @@ part of 'dashboard_viewmodel.dart';
 // **************************************************************************
 
 String _$transactionTypeNotifierHash() =>
-    r'134c5331233c82aade7788aa20676d38b05ed158';
+    r'089fcc73247dfba11956a4b794c31c0e5e1858a7';
 
 /// See also [TransactionTypeNotifier].
 @ProviderFor(TransactionTypeNotifier)

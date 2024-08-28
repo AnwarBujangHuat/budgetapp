@@ -13,6 +13,7 @@ import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/common/widgets/text_field/ib_text__form_field.dart';
 import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
+import 'package:budgetapp/presentation/transaction/viewmodel/transaction_view_viewmodel.dart';
 import 'package:budgetapp/presentation/transaction/widgets/tag_selection_dialog.dart';
 import 'package:budgetapp/shared/dialog/ib_dialog.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +34,6 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
   TransactionModel? newTransaction;
   late TextEditingController noteController;
 
-  /// Controller for calculator.
-  double calculatorValue = 0;
   @override
   void initState() {
     super.initState();
@@ -90,7 +89,7 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
                   title: selectedTag!.tagName,
                   description: noteController.text,
                   dateTime: DateTime.now(),
-                  transactionAmount: calculatorValue.toString(),
+                  transactionAmount: ref.read(calculatorNotifierProvider),
                   tagId: selectedTag!.tagId,
                   parentTagId: selectedTag!.parentTagId,
                   attachmentUrl:
@@ -104,7 +103,9 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
                 Navigator.pop(context);
               }
             },
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.symmetric(
+                horizontal: AppSize.paddingLarge,
+                vertical: AppSize.paddingSmall),
           ),
         ],
       ),
@@ -147,15 +148,22 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
                   IconButton(onPressed: () {}, icon: Icon(Icons.attachment)),
             ),
           ),
-          //TODO implement provider here to reduce rerending and only read the value once the user add
-          IBCalculatorWidget(
-            maxHeight: MediaQuery.of(context).size.height * .73,
-            onChanged: (key, value, expression) => setState(() {
-              calculatorValue = value ?? 0;
-            }),
-          ),
+          TransactionCalculator()
         ],
       ),
+    );
+  }
+}
+
+class TransactionCalculator extends ConsumerWidget {
+  const TransactionCalculator({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return IBCalculatorWidget(
+      maxHeight: MediaQuery.of(context).size.height * .73,
+      onChanged: (key, value, expression) =>
+          ref.read(calculatorNotifierProvider.notifier).updateValue(val: value),
     );
   }
 }

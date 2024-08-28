@@ -13,9 +13,9 @@ _$TransactionModelImpl _$$TransactionModelImplFromJson(
       description: json['description'] as String,
       dateTime: DateTime.parse(json['dateTime'] as String),
       transactionAmount: json['transactionAmount'] as String,
-      tagId: json['tagId'] as int,
-      parentTagId: json['parentTagId'] as int,
-      goalTagId: json['goalTagId'] as int? ?? 0,
+      tagId: (json['tagId'] as num).toInt(),
+      parentTagId: (json['parentTagId'] as num).toInt(),
+      goalTagId: (json['goalTagId'] as num?)?.toInt() ?? 0,
       attachmentUrl: json['attachmentUrl'] as String?,
       type: $enumDecodeNullable(_$TransactionTypeEnumMap, json['type']) ??
           TransactionType.out,
