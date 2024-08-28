@@ -49,6 +49,8 @@ class AddNewTransactionNotifier extends _$AddNewTransactionNotifier {
   Future<void> addNewTransaction(
       {required TransactionModel newTransaction}) async {
     state = const AsyncLoading();
+
+    await Future.delayed(Duration(seconds: 5));
     Either<AppException, bool> result = await ref
         .read(transactionsRepositoryProvider)
         .addNewTransaction(newTransaction: newTransaction);

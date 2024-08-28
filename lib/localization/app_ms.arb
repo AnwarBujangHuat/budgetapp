@@ -8,6 +8,7 @@
   "retry": "Cuba Kembali",
   "importTransaction": "Import Transaksi",
   "addNewTransaction": "Tambah Transaksi",
+  "confirmationAddNewTransaction": "Anda Pasti Ingin Menambah Transaksi Baharu",
   "add": "Tambah",
   "pleaseSelectTag": "Sila Pilih Tag",
   "noTransaction": "Tiada Rekod Transaksi",
@@ -33,6 +34,8 @@
   "loadingDialog": "Harap tunggu. Sedang diproses...",
   "successDialog": "Tindakan berjaya diselesaikan.",
   "confirmationDialog": "Pasti?",
+  "successAddTransaction": "Yay, Transaksi Baharu Telah Ditambah",
+  "emptyTag": "Sila Pilih Tag",
   "@appTitle": {
     "description": "The title of the application"
   }

@@ -90,11 +90,9 @@ class IBDialog extends StatelessWidget {
           IBSizedW10(),
           Expanded(
             child: IBOutlinedButton(
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: onSubmit ?? () {},
               titleBuilder: Builder(
-                builder: (context) => (isLoading != true || isLoading != null)
+                builder: (context) => (isLoading != true && isLoading != null)
                     ? Text(
                         AppLocalizations.of(context)!.okay,
                         style: TextStyle(
@@ -171,9 +169,9 @@ class IBDialog extends StatelessWidget {
   Widget _buildMessageDialog(BuildContext context) {
     return _dialogBody(
         context: context,
-        icon: Icon(Icons.info_sharp, size: AppSize.iconSizeExtraLarge),
-        message: message,
-        title: 'Header Title',
+        icon: Icon(Icons.info_sharp,
+            color: AppColors.darkBlue, size: AppSize.iconSizeExtraLarge),
+        title: message ?? '',
         button: IBOutlinedButton(
           onTap: () {
             Navigator.pop(

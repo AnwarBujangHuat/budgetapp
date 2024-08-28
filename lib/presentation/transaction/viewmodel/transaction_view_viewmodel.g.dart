@@ -6,28 +6,47 @@ part of 'transaction_view_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$selectedTagHash() => r'1def1b4bb39cc2e6b974004dcfae51330d95c17b';
+String _$transactionSelectedTagHash() =>
+    r'13d70af79b69d5b81b135c3ea2a2816e9a0ff18b';
 
-/// See also [SelectedTag].
-@ProviderFor(SelectedTag)
-final selectedTagProvider =
-    AutoDisposeNotifierProvider<SelectedTag, TagModel?>.internal(
-  SelectedTag.new,
-  name: r'selectedTagProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$selectedTagHash,
+/// See also [TransactionSelectedTag].
+@ProviderFor(TransactionSelectedTag)
+final transactionSelectedTagProvider =
+    AutoDisposeNotifierProvider<TransactionSelectedTag, TagModel?>.internal(
+  TransactionSelectedTag.new,
+  name: r'transactionSelectedTagProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$transactionSelectedTagHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$SelectedTag = AutoDisposeNotifier<TagModel?>;
+typedef _$TransactionSelectedTag = AutoDisposeNotifier<TagModel?>;
+String _$transactionSelectedTypeHash() =>
+    r'098b01f2a230ac59196a0df708c5948a82563251';
+
+/// See also [TransactionSelectedType].
+@ProviderFor(TransactionSelectedType)
+final transactionSelectedTypeProvider = AutoDisposeNotifierProvider<
+    TransactionSelectedType, TransactionType>.internal(
+  TransactionSelectedType.new,
+  name: r'transactionSelectedTypeProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$transactionSelectedTypeHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$TransactionSelectedType = AutoDisposeNotifier<TransactionType>;
 String _$calculatorNotifierHash() =>
-    r'e77fc7322f850c17f7b1133133197d0229e80cfd';
+    r'fcd7e14a70df24208ce8047f947d5b612136706d';
 
 /// See also [CalculatorNotifier].
 @ProviderFor(CalculatorNotifier)
 final calculatorNotifierProvider =
-    AutoDisposeNotifierProvider<CalculatorNotifier, Double?>.internal(
+    AutoDisposeNotifierProvider<CalculatorNotifier, double?>.internal(
   CalculatorNotifier.new,
   name: r'calculatorNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -37,6 +56,6 @@ final calculatorNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$CalculatorNotifier = AutoDisposeNotifier<Double?>;
+typedef _$CalculatorNotifier = AutoDisposeNotifier<double?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
