@@ -112,6 +112,7 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
                 unawaited(showDialog(
                   context: context,
                   builder: (context) => IBDialog(
+                    title: AppLocalizations.of(context)!.emptyTag,
                     message: AppLocalizations.of(context)!.emptyTag,
                   ),
                 ));

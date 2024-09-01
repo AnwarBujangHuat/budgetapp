@@ -15,7 +15,7 @@ class IBTranscationListWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int maxDisplayTrascation = 3;
+    int maxDisplayTrascation = 8;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

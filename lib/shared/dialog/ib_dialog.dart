@@ -18,6 +18,7 @@ enum DialogType { confirmation, loading, error, message }
 
 class IBDialog extends StatelessWidget {
   final String? message;
+  final String? title;
   final Function()? onRetry;
   final Function()? onSubmit;
   final Function()? onDismiss;
@@ -25,7 +26,7 @@ class IBDialog extends StatelessWidget {
   final DialogType dialogType;
 
   /// This is the default dialog that is used with only contains a String message
-  const IBDialog({super.key, this.message})
+  const IBDialog({super.key, this.message, this.title})
       : onRetry = null,
         onSubmit = null,
         onDismiss = null,
@@ -33,25 +34,25 @@ class IBDialog extends StatelessWidget {
         dialogType = DialogType.message;
 
   const IBDialog.confirmation(
-      {super.key, this.message, this.onSubmit, this.onDismiss, this.isLoading})
+      {super.key,
+      this.message,
+      this.onSubmit,
+      this.onDismiss,
+      this.isLoading,
+      this.title})
       : onRetry = null,
         dialogType = DialogType.confirmation;
 
-  const IBDialog.loading({
-    super.key,
-    this.message,
-  })  : onRetry = null,
+  const IBDialog.loading({super.key, this.message, this.title})
+      : onRetry = null,
         onSubmit = null,
         onDismiss = null,
         isLoading = false,
         dialogType = DialogType.loading;
 
-  const IBDialog.error({
-    super.key,
-    this.message,
-    this.onRetry,
-    this.isLoading,
-  })  : onSubmit = null,
+  const IBDialog.error(
+      {super.key, this.message, this.onRetry, this.isLoading, this.title})
+      : onSubmit = null,
         onDismiss = null,
         dialogType = DialogType.error;
 
@@ -75,7 +76,7 @@ class IBDialog extends StatelessWidget {
       icon: Icon(Icons.check_circle,
           color: Colors.green, size: AppSize.iconSizeExtraLarge),
       message: message,
-      title: AppLocalizations.of(context)!.confirmationDialog,
+      title: title ?? AppLocalizations.of(context)!.confirmationDialog,
       button: Row(
         children: [
           Expanded(
@@ -118,7 +119,7 @@ class IBDialog extends StatelessWidget {
       context: context,
       icon: CircularProgressIndicator(),
       message: message,
-      title: AppLocalizations.of(context)!.loadingDialog,
+      title: title ?? AppLocalizations.of(context)!.loadingDialog,
     );
   }
 
@@ -128,7 +129,7 @@ class IBDialog extends StatelessWidget {
       icon: Icon(Icons.error,
           color: Colors.red, size: AppSize.iconSizeExtraLarge),
       message: message,
-      title: AppLocalizations.of(context)!.errorDialog,
+      title: title ?? AppLocalizations.of(context)!.errorDialog,
       button: Row(
         children: [
           Expanded(
@@ -171,7 +172,8 @@ class IBDialog extends StatelessWidget {
         context: context,
         icon: Icon(Icons.info_sharp,
             color: AppColors.darkBlue, size: AppSize.iconSizeExtraLarge),
-        title: message ?? '',
+        title: title ?? '',
+        message: message,
         button: IBOutlinedButton(
           onTap: () {
             Navigator.pop(

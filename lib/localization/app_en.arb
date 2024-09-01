@@ -8,7 +8,7 @@
   "recentTransaction": "Recent Transaction",
   "retry": "Retry",
   "addNewTransaction": "Add New Transaction",
-  "confirmationAddNewTransaction": "Do You Want To Add New Transaction",
+  "confirmationAddNewTransaction": "Do You Want To Add New Transaction?",
   "add": "Add",
   "pleaseSelectTag": "Please Select a Tag",
   "noTransaction": "No Transaction Record Found",
@@ -35,6 +35,7 @@
   "successDialog": "Success! Your action was completed.",
   "successAddTransaction": "Yay, A New Transaction Has Been Added",
   "emptyTag": "Please Select A Tag",
+  "messageEmptyTag": "Please Select A Tag for The Transaction",
   "others": "Others",
   "@appTitle": {
     "description": "The title of the application"

@@ -35,6 +35,7 @@
   "successDialog": "Tindakan berjaya diselesaikan.",
   "confirmationDialog": "Pasti?",
   "successAddTransaction": "Yay, Transaksi Baharu Telah Ditambah",
+  "messageEmptyTag": "Silih Pilih Tag untuk Membuat Merekod Transaksi",
   "emptyTag": "Sila Pilih Tag",
   "@appTitle": {
     "description": "The title of the application"

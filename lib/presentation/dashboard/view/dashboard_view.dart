@@ -73,7 +73,6 @@ class DashboardView extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 IBTranscationListWidget(),
-                IBGoalListWidget(),
               ],
             ),
           ],
@@ -94,7 +93,10 @@ class MyHeader extends ConsumerWidget {
     return Card(
       color: AppColors.darkBlue,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSize.paddingSmall,
+          vertical: AppSize.paddingMedium,
+        ),
         child: Column(
           children: [
             SizedBox(
