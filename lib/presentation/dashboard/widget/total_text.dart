@@ -13,9 +13,7 @@ class TotalTransactionValue extends ConsumerWidget {
     final theme = Theme.of(context);
     final transactionType = ref.watch(transactionTypeNotifierProvider);
 
-    return ref.watch(transactionViewmodelProvider).when(
-          //TODO do multi currency
-
+    return ref.watch(dashboardTransactionListProvider).when(
           data: (transactionList) => Text(
               'RM ${getTotalTransaction(transactionList: transactionList, transactionType: transactionType).toStringAsFixed(2)}',
               style: theme.textTheme.displaySmall!

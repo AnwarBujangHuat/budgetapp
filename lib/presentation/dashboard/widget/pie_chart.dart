@@ -23,7 +23,7 @@ class IBPieChartWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ref.watch(transactionViewmodelProvider).when(
+    return ref.watch(dashboardTransactionListProvider).when(
       data: (data) {
         List<TagModel> tagList =
             ref.watch(tagViewmodelProvider).asData?.value ?? [];

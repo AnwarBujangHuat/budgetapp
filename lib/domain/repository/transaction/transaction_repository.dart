@@ -1,6 +1,7 @@
 import 'package:budgetapp/common/utils/utils.dart';
 import 'package:budgetapp/domain/http/app_exception.dart';
 import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
+import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -47,11 +48,25 @@ class TransactionRepository {
     return Right(true);
   }
 
-  List<TransactionModel> filterTransactionByDate({required String dateType}) {
-    final result = _transactionsRecords
-        .where((element) => element.dateTime == DateTime.now())
-        .toList();
+  List<TransactionModel> filterTransactionDuration(
+      {required TransactionDuration dateType}) {
+    switch (dateType) {
+      case TransactionDuration.weekly:
+        {
+          return _transactionsRecords.sublist(0, 2);
+        }
+      case TransactionDuration.monthly:
+        {
+          return _transactionsRecords.sublist(2, 5);
+        }
+      case TransactionDuration.yearly:
+        {
+          return _transactionsRecords.sublist(0, 5);
+        }
 
-    return result;
+      /// The default duration is daily
+      default:
+        return _transactionsRecords;
+    }
   }
 }

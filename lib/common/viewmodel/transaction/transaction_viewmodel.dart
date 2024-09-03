@@ -30,13 +30,6 @@ class TransactionViewmodel extends _$TransactionViewmodel {
       (data) => AsyncData(data),
     );
   }
-
-  Future<void> filterByDate({required String dateType}) async {
-    final result = ref
-        .read(transactionsRepositoryProvider)
-        .filterTransactionByDate(dateType: dateType);
-    state = AsyncData(result);
-  }
 }
 
 @riverpod
@@ -50,7 +43,6 @@ class AddNewTransactionNotifier extends _$AddNewTransactionNotifier {
       {required TransactionModel newTransaction}) async {
     state = const AsyncLoading();
 
-    await Future.delayed(Duration(seconds: 5));
     Either<AppException, bool> result = await ref
         .read(transactionsRepositoryProvider)
         .addNewTransaction(newTransaction: newTransaction);

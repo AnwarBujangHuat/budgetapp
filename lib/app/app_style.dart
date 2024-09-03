@@ -307,6 +307,7 @@ class FontSize {
 
 class AppSize {
   static const double appSizeS96 = 96.0;
+  static const double appSizeS60 = 60.0;
   static const double appSizeS48 = 48.0;
   static const double appSizeS32 = 32.0;
   static const double appSizeS24 = 24.0;

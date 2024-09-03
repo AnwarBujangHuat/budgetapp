@@ -45,12 +45,12 @@ class DashboardView extends ConsumerWidget {
         ],
       ),
       floatingActionButton: IBFlaotingFAB(
-        distance: 60,
+        distance: AppSize.appSizeS60,
         children: [
           ActionButton(
             title: AppLocalizations.of(context)!.transaction,
             onPressed: () async =>
-                {Navigator.pushNamed(context, RouteNames.transactionPage)},
+                Navigator.pushNamed(context, RouteNames.transactionPage),
             icon: const Icon(Icons.attach_money),
           ),
           ActionButton(
@@ -89,7 +89,7 @@ class MyHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
 
-    final selectedPeriod = ref.watch(selectedPeriodProvider);
+    final selectedPeriod = ref.watch(transactionDurationNotifierProvider);
     return Card(
       color: AppColors.darkBlue,
       child: Padding(
@@ -100,16 +100,18 @@ class MyHeader extends ConsumerWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 40,
+              height: AppSize.appSizeS48,
               child: TimelineTab(
                 selected: selectedPeriod,
-                onTap: (selected) =>
-                    ref.read(selectedPeriodProvider.notifier).state = selected,
+                onTap: (selected) => ref
+                    .read(transactionDurationNotifierProvider.notifier)
+                    .changeDuration(duration: selected),
               ),
             ),
             const IBSizedH20(),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: AppSize.paddingSmall),
               child: Column(
                 children: [
                   Row(
@@ -133,7 +135,6 @@ class MyHeader extends ConsumerWidget {
                         ),
                       ),
                       IntrinsicWidth(
-                        /// Ensures IBTransactionTypeWidget takes minimal width
                         child: IBTransactionTypeWidget(
                           transactionType:
                               ref.watch(transactionTypeNotifierProvider),
