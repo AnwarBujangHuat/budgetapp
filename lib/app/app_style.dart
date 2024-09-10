@@ -148,9 +148,9 @@ ThemeData lightThemeData = ThemeData(
     primaryColorLight: AppColors.darkBlue,
     primaryColor: AppColors.darkBlue);
 ThemeData darkThemeData = ThemeData(
-  scaffoldBackgroundColor: AppColors.primaryDarkBackground,
+  scaffoldBackgroundColor: AppColors.darkBlueBlack,
   appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.secondaryDarkBackground,
+      backgroundColor: AppColors.darkBlueBlack,
       iconTheme: IconThemeData(color: AppColors.white),
       titleTextStyle: TextStyle(
           overflow: TextOverflow.ellipsis,
@@ -290,8 +290,9 @@ class AppColors {
   static const Color pink = Color(0xFFFA7F72);
   static const Color teal = Color(0xFF64C4D6);
   static const Color slateBlue = Color(0xFF62758D);
-
-  /// For Dark Theme
+  static const Color pantoneBlue = Color(0xFF0a192f);
+  static const Color pantoneCoated = Color(0xFF172a46);
+  static const Color darkBlueBlack = Color(0xFF0c0e19);
 }
 
 class FontSize {

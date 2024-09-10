@@ -193,13 +193,15 @@ class TransactionType extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ThemeData currentTheme = Theme.of(context);
+
     return Expanded(
         child: IBTransactionTypeWidget(
       transactionType: ref.watch(transactionTypeNotifierProvider),
       onChange: (type) => ref
           .read(transactionTypeNotifierProvider.notifier)
           .changeType(type: type),
-      backgroundColor: AppColors.white,
+      backgroundColor: currentTheme.scaffoldBackgroundColor,
     ));
   }
 }
@@ -223,13 +225,16 @@ class TransactionTypeSelect extends ConsumerWidget {
       {required this.onSelectTag, required this.selectedTag, super.key});
   final Function(TagModel tag) onSelectTag;
   final TagModel? selectedTag;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ThemeData currentTheme = Theme.of(context);
+
     return IBOutlinedButton(
       title:
           selectedTag?.tagName ?? AppLocalizations.of(context)!.pleaseSelectTag,
       borderColors: Colors.transparent,
-      backgroundColor: AppColors.white,
+      backgroundColor: currentTheme.scaffoldBackgroundColor,
       icon: Icon(Icons.arrow_drop_down),
       onTap: () async {
         AsyncValue<List<TagModel>> tagProvider = ref.read(tagViewmodelProvider);

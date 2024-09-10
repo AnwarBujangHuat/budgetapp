@@ -561,6 +561,8 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
   }
 
   Widget _getButtons() {
+    ThemeData currentTheme = Theme.of(context);
+
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
       itemCount: 20,
@@ -577,12 +579,12 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
               shadowColor: WidgetStatePropertyAll(AppColors.grey),
               padding: WidgetStateProperty.all<EdgeInsets>(
                   EdgeInsets.zero), // Remove padding
-              backgroundColor: WidgetStateProperty.all<Color>(
-                  AppColors.white), // Make background transparent
+              backgroundColor: WidgetStateProperty.all<Color>(currentTheme
+                  .scaffoldBackgroundColor), // Make background transparent
               shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ), // Add border side
+                    borderRadius: BorderRadius.circular(10),
+                    side: BorderSide(color: currentTheme.dividerColor)),
               ),
             ),
             onPressed: () => _onButtonPressed(button[index].data ?? ''),

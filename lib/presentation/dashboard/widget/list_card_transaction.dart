@@ -47,24 +47,25 @@ class IBTranscationListWidget extends ConsumerWidget {
                           ),
                           description:
                               AppLocalizations.of(context)!.noTransaction)
-                      : ListView.builder(
+                      : ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemBuilder: (context, index) => IBTransactionCard(
-                            // Todo open page for transaction details, like a reciept page
-                            onPressed: () {},
-                            title: transactionList[index].title,
-                            date: transactionList[index].dateTime,
-                            tagId: transactionList[index].tagId,
-                            type: transactionList[index].type,
-                            expenses: double.parse(
-                                transactionList[index].transactionAmount),
-                          ),
+                                // Todo open page for transaction details, like a reciept page
+                                onPressed: () {},
+                                title: transactionList[index].title,
+                                date: transactionList[index].dateTime,
+                                tagId: transactionList[index].tagId,
+                                type: transactionList[index].type,
+                                expenses: double.parse(
+                                    transactionList[index].transactionAmount),
+                              ),
                           itemCount:
                               transactionList.length > maxDisplayTrascation
                                   ? maxDisplayTrascation
                                   : transactionList.length,
-                        );
+                          separatorBuilder: (BuildContext context, int index) =>
+                              SizedBox(height: 1));
                 },
                 // Todo create a error handling page for retrieving transaction data from remote database
                 error: (error, stackTrace) => Container(
@@ -101,18 +102,20 @@ class IBTransactionCard extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     ThemeData currentTheme = Theme.of(context);
     return ListTile(
-      dense: true,
       leading: IBIcon(tagId: tagId),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+      contentPadding: const EdgeInsets.all(AppSize.paddingSmall),
+      subtitleTextStyle: currentTheme.textTheme.labelMedium,
+      leadingAndTrailingTextStyle: currentTheme.textTheme.bodyLarge!.copyWith(
+          fontWeight: FontWeight.bold,
+          color: type == TransactionType.out
+              ? AppColors.lightRed
+              : AppColors.lightGreen),
       title: Text(title, style: currentTheme.textTheme.titleSmall),
-      subtitle: Text(formatDate(dateTime: date),
-          style: currentTheme.textTheme.labelSmall),
-      trailing: Text('RM ${expenses.toStringAsFixed(2)}',
-          style: currentTheme.textTheme.bodyLarge!.copyWith(
-              fontWeight: FontWeight.bold,
-              color: type == TransactionType.out
-                  ? AppColors.lightRed
-                  : AppColors.lightGreen)),
+      subtitle: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Text(formatDate(dateTime: date)),
+      ),
+      trailing: Text('RM ${expenses.toStringAsFixed(2)}'),
     );
   }
 }

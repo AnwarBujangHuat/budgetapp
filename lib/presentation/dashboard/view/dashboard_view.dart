@@ -7,7 +7,6 @@ import 'package:budgetapp/domain/repository/tag/tag_repository.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/presentation/dashboard/widget/expanded_fab.dart';
 import 'package:budgetapp/presentation/dashboard/widget/list_card_transaction.dart';
-import 'package:budgetapp/presentation/dashboard/widget/list_goal_card.dart';
 import 'package:budgetapp/presentation/dashboard/widget/pie_chart.dart';
 import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
 import 'package:budgetapp/presentation/dashboard/widget/total_text.dart';
@@ -91,7 +90,7 @@ class MyHeader extends ConsumerWidget {
 
     final selectedPeriod = ref.watch(transactionDurationNotifierProvider);
     return Card(
-      color: AppColors.darkBlue,
+      color: AppColors.pantoneBlue,
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: AppSize.paddingSmall,
