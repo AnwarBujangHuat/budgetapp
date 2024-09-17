@@ -16,7 +16,7 @@ ThemeData lightThemeData = ThemeData(
         fillColor: AppColors.white,
         filled: true,
         isCollapsed: true,
-        isDense: true,
+        iconColor: AppColors.black,
         contentPadding: EdgeInsets.symmetric(horizontal: 8),
         labelStyle: TextStyle(
           overflow: TextOverflow.ellipsis,
@@ -29,11 +29,11 @@ ThemeData lightThemeData = ThemeData(
           fontSize: FontSize.body,
           color: AppColors.grey,
         ),
-        border: UnderlineInputBorder(
-            borderSide: BorderSide.none,
+        border: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.grey),
             borderRadius: BorderRadius.circular(10)),
-        enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide.none,
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.grey),
             borderRadius: BorderRadius.circular(10))),
     textTheme: const TextTheme(
       titleSmall: TextStyle(
@@ -148,7 +148,10 @@ ThemeData lightThemeData = ThemeData(
     primaryColorLight: AppColors.darkBlue,
     primaryColor: AppColors.darkBlue);
 ThemeData darkThemeData = ThemeData(
+  dialogBackgroundColor: AppColors.coarseWool,
+  iconTheme: IconThemeData(color: AppColors.white),
   scaffoldBackgroundColor: AppColors.darkBlueBlack,
+  shadowColor: AppColors.white,
   appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.darkBlueBlack,
       iconTheme: IconThemeData(color: AppColors.white),
@@ -157,7 +160,31 @@ ThemeData darkThemeData = ThemeData(
           color: AppColors.white,
           fontWeight: FontWeight.bold,
           fontSize: FontSize.largeTitle)),
-  cardColor: AppColors.secondaryDarkBackground,
+  cardColor: AppColors.coarseWool,
+  inputDecorationTheme: InputDecorationTheme(
+      fillColor: AppColors.darkBlueBlack,
+      filled: true,
+      isCollapsed: true,
+      iconColor: AppColors.white,
+      suffixIconColor: AppColors.white,
+      contentPadding: EdgeInsets.symmetric(horizontal: AppSize.paddingSmall),
+      labelStyle: TextStyle(
+        overflow: TextOverflow.ellipsis,
+        letterSpacing: AppSize.appSizeS0,
+        fontSize: FontSize.body,
+        color: AppColors.white,
+      ),
+      hintStyle: TextStyle(
+        letterSpacing: AppSize.appSizeS0,
+        fontSize: FontSize.body,
+        color: AppColors.grey,
+      ),
+      border: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.white),
+          borderRadius: BorderRadius.circular(10)),
+      enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.white),
+          borderRadius: BorderRadius.circular(10))),
   textTheme: const TextTheme(
     titleSmall: TextStyle(
       overflow: TextOverflow.ellipsis,
@@ -293,6 +320,7 @@ class AppColors {
   static const Color pantoneBlue = Color(0xFF0a192f);
   static const Color pantoneCoated = Color(0xFF172a46);
   static const Color darkBlueBlack = Color(0xFF0c0e19);
+  static const Color coarseWool = Color(0xFF171d24);
 }
 
 class FontSize {

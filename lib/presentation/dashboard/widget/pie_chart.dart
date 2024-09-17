@@ -2,7 +2,6 @@ import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/const/const.dart';
 import 'package:budgetapp/common/utils/utils.dart';
 import 'package:budgetapp/common/viewmodel/tag/tag_viewmodel.dart';
-import 'package:budgetapp/common/viewmodel/transaction/transaction_viewmodel.dart';
 import 'package:budgetapp/common/widgets/icons/custom_icon.dart';
 import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:budgetapp/presentation/dashboard/utils/dashboard_utils.dart';

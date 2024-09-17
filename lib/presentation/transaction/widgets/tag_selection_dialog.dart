@@ -18,6 +18,8 @@ class _TagSelectionDialogState extends State<TagSelectionDialog> {
   TagModel? selectedTag;
   @override
   Widget build(BuildContext context) {
+    ThemeData currentTheme = Theme.of(context);
+
     return Dialog(
       child: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -40,13 +42,13 @@ class _TagSelectionDialogState extends State<TagSelectionDialog> {
                     }),
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8)),
+                        borderRadius: const BorderRadius.all(
+                            Radius.circular(AppSize.paddingSmall)),
                         color: item != selectedTag
-                            ? AppColors.white
-                            : AppColors.darkBlue.withOpacity(.1),
+                            ? currentTheme.dialogBackgroundColor
+                            : currentTheme.scaffoldBackgroundColor,
                       ),
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(AppSize.paddingSmall),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -60,7 +62,7 @@ class _TagSelectionDialogState extends State<TagSelectionDialog> {
                           Text(
                             textAlign: TextAlign.center,
                             item.tagName,
-                            style: TextStyle(fontSize: 14),
+                            style: TextStyle(fontSize: FontSize.body),
                           )
                         ],
                       ),
@@ -79,9 +81,16 @@ class _TagSelectionDialogState extends State<TagSelectionDialog> {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    title: AppLocalizations.of(context)!.cancel,
-                    backgroundColor: Colors.white,
-                    borderColors: AppColors.darkBlue,
+                    titleBuilder: Builder(
+                      builder: (context) => Text(
+                        AppLocalizations.of(context)!.cancel,
+                        style: TextStyle(
+                          color: AppColors.white,
+                        ),
+                      ),
+                    ),
+                    backgroundColor: currentTheme.dialogBackgroundColor,
+                    borderColors: currentTheme.shadowColor,
                   )),
                   IBSizedW10(),
                   Expanded(
@@ -97,7 +106,7 @@ class _TagSelectionDialogState extends State<TagSelectionDialog> {
                           ),
                         ),
                       ),
-                      backgroundColor: AppColors.darkBlue,
+                      backgroundColor: AppColors.darkBlueBlack,
                     ),
                   ),
                 ],

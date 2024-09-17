@@ -10,7 +10,6 @@ import 'package:budgetapp/presentation/dashboard/widget/list_card_transaction.da
 import 'package:budgetapp/presentation/dashboard/widget/pie_chart.dart';
 import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
 import 'package:budgetapp/presentation/dashboard/widget/total_text.dart';
-import 'package:budgetapp/shared/dialog/ib_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -35,11 +34,7 @@ class DashboardView extends ConsumerWidget {
             icon: const Icon(
               Icons.analytics_outlined,
             ),
-            onPressed: () => showDialog(
-                builder: (context) => IBDialog.error(
-                      message: 'add new transcation',
-                    ),
-                context: context),
+            onPressed: () => Navigator.pushNamed(context, '/settings'),
           ),
         ],
       ),

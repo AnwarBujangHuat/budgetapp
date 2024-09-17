@@ -528,7 +528,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
   void _onButtonPressed(String val) {
     _focusNode.requestFocus();
     switch (val) {
-      case '→':
+      case '←':
         _controller.removeDigit();
       case '±':
         _controller.toggleSign();
@@ -596,7 +596,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
   List<Text> _getTextItems() {
     return [
       _acLabel,
-      '→',
+      '±',
       _controller.numberFormat.symbols.PERCENT,
       '÷',
       _nums[7],
@@ -613,7 +613,7 @@ class IBCalculatorWidgetState extends State<IBCalculatorWidget> {
       '+',
       _controller.numberFormat.symbols.DECIMAL_SEP,
       _nums[0],
-      '±',
+      '←',
       '='
     ].map((title) {
       TextStyle? style = Theme.of(context).textTheme.titleMedium;

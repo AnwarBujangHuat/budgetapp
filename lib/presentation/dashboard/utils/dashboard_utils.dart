@@ -10,8 +10,8 @@ Map<int, List<TransactionModel>> mapTransactionToParentTag(
 
   for (var transaction in transactionList) {
     if (transaction.type == transactionType) {
-      mapTransactionToParentTag[transaction.parentTagId ?? 0] = [
-        ...mapTransactionToParentTag[transaction.parentTagId ?? 0] ?? [],
+      mapTransactionToParentTag[transaction.parentTagId] = [
+        ...mapTransactionToParentTag[transaction.parentTagId] ?? [],
         transaction
       ];
     }
