@@ -103,38 +103,38 @@ class IBTransactionCard extends ConsumerWidget {
     ThemeData currentTheme = Theme.of(context);
 
     ///Style 2
-    return ListTile(
-      leading: IBIcon(tagId: tagId),
-      contentPadding: const EdgeInsets.all(AppSize.paddingSmall),
-      titleTextStyle: currentTheme.textTheme.labelMedium,
-      subtitleTextStyle: currentTheme.textTheme.titleMedium!.copyWith(
-          fontWeight: FontWeight.bold,
-          color: type == TransactionType.out
-              ? AppColors.lightRed
-              : AppColors.lightGreen),
-      title: Text(title),
-      subtitle: Text('RM ${expenses.toStringAsFixed(2)}'),
-      trailing: Text(
-        formatDate(dateTime: date),
-        style: currentTheme.textTheme.bodyLarge,
-      ),
-    );
     // return ListTile(
     //   leading: IBIcon(tagId: tagId),
     //   contentPadding: const EdgeInsets.all(AppSize.paddingSmall),
-    //   subtitleTextStyle: currentTheme.textTheme.labelMedium,
-    //   leadingAndTrailingTextStyle: currentTheme.textTheme.bodyLarge!.copyWith(
+    //   titleTextStyle: currentTheme.textTheme.labelMedium,
+    //   subtitleTextStyle: currentTheme.textTheme.titleMedium!.copyWith(
     //       fontWeight: FontWeight.bold,
     //       color: type == TransactionType.out
     //           ? AppColors.lightRed
     //           : AppColors.lightGreen),
-    //   title: Text(title, style: currentTheme.textTheme.titleMedium),
-    //   subtitle: Padding(
-    //     padding: const EdgeInsets.symmetric(vertical: AppSize.paddingSmall),
-    //     child: Text(formatDate(dateTime: date)),
-    //   ),
+    //   title: Text(title),
+    //   subtitle: Text('RM ${expenses.toStringAsFixed(2)}'),
     //   trailing: Text(
-    //       '${type == TransactionType.out ? '-' : ''} RM ${expenses.toStringAsFixed(2)}'),
+    //     formatDate(dateTime: date),
+    //     style: currentTheme.textTheme.bodyLarge,
+    //   ),
     // );
+    return ListTile(
+      leading: IBIcon(tagId: tagId),
+      contentPadding: const EdgeInsets.all(AppSize.paddingSmall),
+      subtitleTextStyle: currentTheme.textTheme.labelMedium,
+      leadingAndTrailingTextStyle: currentTheme.textTheme.titleMedium!.copyWith(
+          fontWeight: FontWeight.bold,
+          color: type == TransactionType.out
+              ? AppColors.lightRed
+              : AppColors.lightGreen),
+      title: Text(title, style: currentTheme.textTheme.titleSmall),
+      subtitle: Padding(
+        padding: const EdgeInsets.symmetric(vertical: AppSize.paddingSmall),
+        child: Text(formatDate(dateTime: date)),
+      ),
+      trailing: Text(
+          '${type == TransactionType.out ? '-' : ''} RM ${expenses.toStringAsFixed(2)}'),
+    );
   }
 }
