@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 ThemeData lightThemeData = ThemeData(
     fontFamily: 'RobotoFlex',
     scaffoldBackgroundColor: AppColors.rarifiedAir,
+    buttonTheme: ButtonThemeData(height: 50),
     appBarTheme: const AppBarTheme(
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: AppColors.darkBlue),

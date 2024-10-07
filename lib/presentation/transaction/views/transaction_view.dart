@@ -81,9 +81,7 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
         centerTitle: true,
         title: Text(AppLocalizations.of(context)!.transaction),
         automaticallyImplyLeading: false,
-        leading: GestureDetector(
-          child: BackButton(),
-        ),
+        leading: BackButton(),
         actions: [
           IBTextButton(
             title: AppLocalizations.of(context)!.add,
