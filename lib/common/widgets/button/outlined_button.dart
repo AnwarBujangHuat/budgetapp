@@ -24,30 +24,33 @@ class IBOutlinedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-        style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
-              elevation: WidgetStatePropertyAll(1),
-              shadowColor: WidgetStatePropertyAll(shadowColor),
-              backgroundColor: WidgetStatePropertyAll(backgroundColor),
-              side: WidgetStatePropertyAll(
-                BorderSide(color: borderColors ?? AppColors.grey),
-              ),
-            ),
-        onPressed: onTap,
-        child: buttonBuilder ??
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                icon ?? SizedBox.shrink(),
-                if (icon != null) IBSizedW05(),
-                Flexible(
-                  child: titleBuilder ??
-                      Text(
-                        overflow: TextOverflow.ellipsis,
-                        title,
-                      ),
+    return SizedBox(
+      height: AppSize.appSizeS48,
+      child: OutlinedButton(
+          style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
+                elevation: WidgetStatePropertyAll(1),
+                shadowColor: WidgetStatePropertyAll(shadowColor),
+                backgroundColor: WidgetStatePropertyAll(backgroundColor),
+                side: WidgetStatePropertyAll(
+                  BorderSide(color: borderColors ?? AppColors.grey),
                 ),
-              ],
-            ));
+              ),
+          onPressed: onTap,
+          child: buttonBuilder ??
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  icon ?? SizedBox.shrink(),
+                  if (icon != null) IBSizedW05(),
+                  Flexible(
+                    child: titleBuilder ??
+                        Text(
+                          overflow: TextOverflow.ellipsis,
+                          title,
+                        ),
+                  ),
+                ],
+              )),
+    );
   }
 }

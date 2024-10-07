@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 ThemeData lightThemeData = ThemeData(
     fontFamily: 'RobotoFlex',
     scaffoldBackgroundColor: AppColors.rarifiedAir,
-    buttonTheme: ButtonThemeData(height: 50),
+    buttonTheme: ButtonThemeData(height: AppSize.appSizeS50),
     appBarTheme: const AppBarTheme(
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: AppColors.darkBlue),
@@ -18,7 +18,7 @@ ThemeData lightThemeData = ThemeData(
         filled: true,
         isCollapsed: true,
         iconColor: AppColors.black,
-        contentPadding: EdgeInsets.symmetric(horizontal: 8),
+        contentPadding: EdgeInsets.all(8),
         labelStyle: TextStyle(
           overflow: TextOverflow.ellipsis,
           letterSpacing: AppSize.appSizeS0,
@@ -338,6 +338,7 @@ class FontSize {
 class AppSize {
   static const double appSizeS96 = 96.0;
   static const double appSizeS60 = 60.0;
+  static const double appSizeS50 = 50.0;
   static const double appSizeS48 = 48.0;
   static const double appSizeS32 = 32.0;
   static const double appSizeS24 = 24.0;
