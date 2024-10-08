@@ -97,7 +97,7 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
               if (selectedTag != null) {
                 /// Create a new Transaction
                 newTransaction = TransactionModel(
-                  type: ref.watch(transactionTypeNotifierProvider),
+                  type: ref.watch(transactionSelectedTypeProvider),
                   title: selectedTag.tagName,
                   description: noteController.text,
                   dateTime: DateTime.now(),
@@ -199,9 +199,9 @@ class TransactionType extends ConsumerWidget {
 
     return Expanded(
         child: IBTransactionTypeWidget(
-      transactionType: ref.watch(transactionTypeNotifierProvider),
+      transactionType: ref.watch(transactionSelectedTypeProvider),
       onChange: (type) => ref
-          .read(transactionTypeNotifierProvider.notifier)
+          .read(transactionSelectedTypeProvider.notifier)
           .changeType(type: type),
       shadowColor: currentTheme.shadowColor,
       backgroundColor: currentTheme.scaffoldBackgroundColor,
