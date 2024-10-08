@@ -15,8 +15,8 @@ ThemeData lightThemeData = ThemeData(
     cardColor: AppColors.white,
     inputDecorationTheme: InputDecorationTheme(
         fillColor: AppColors.white,
+        constraints: BoxConstraints(minHeight: AppSize.appSizeS60),
         filled: true,
-        isCollapsed: true,
         iconColor: AppColors.black,
         contentPadding: EdgeInsets.all(8),
         labelStyle: TextStyle(
@@ -126,6 +126,7 @@ ThemeData lightThemeData = ThemeData(
         onSurface: AppColors.darkBlueLessOpacity),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(AppColors.rarifiedAir),
             minimumSize: WidgetStatePropertyAll(
                 Size(AppSize.appSizeS0, AppSize.appSizeS48)),
             textStyle: WidgetStatePropertyAll(
@@ -165,10 +166,9 @@ ThemeData darkThemeData = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
       fillColor: AppColors.darkBlueBlack,
       filled: true,
-      isCollapsed: true,
       iconColor: AppColors.white,
       suffixIconColor: AppColors.white,
-      contentPadding: EdgeInsets.symmetric(horizontal: AppSize.paddingSmall),
+      contentPadding: EdgeInsets.all(AppSize.paddingMedium),
       labelStyle: TextStyle(
         overflow: TextOverflow.ellipsis,
         letterSpacing: AppSize.appSizeS0,
@@ -271,11 +271,12 @@ ThemeData darkThemeData = ThemeData(
       onSurface: AppColors.secondaryDarkBackground),
   outlinedButtonTheme: OutlinedButtonThemeData(
       style: ButtonStyle(
+          backgroundColor: WidgetStatePropertyAll(AppColors.darkBlueBlack),
           shape: WidgetStatePropertyAll<OutlinedBorder>(
-    RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-  ))),
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ))),
   cardTheme: const CardTheme(
     surfaceTintColor: AppColors.secondaryDarkBackground,
     elevation: 1,
@@ -322,6 +323,7 @@ class AppColors {
   static const Color pantoneCoated = Color(0xFF172a46);
   static const Color darkBlueBlack = Color(0xFF0c0e19);
   static const Color coarseWool = Color(0xFF171d24);
+  static const Color dodgerBlue = Color(0xFF5787e9);
 }
 
 class FontSize {
