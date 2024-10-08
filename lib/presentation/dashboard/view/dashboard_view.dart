@@ -130,6 +130,7 @@ class MyHeader extends ConsumerWidget {
                       ),
                       IntrinsicWidth(
                         child: IBTransactionTypeWidget(
+                          backgroundColor: Colors.transparent,
                           transactionType:
                               ref.watch(transactionTypeNotifierProvider),
                           shadowColor: Colors.transparent,

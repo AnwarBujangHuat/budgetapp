@@ -54,8 +54,12 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
             Navigator.pop(context);
 
             final snackBar = SnackBar(
-              content:
-                  Text(AppLocalizations.of(context)!.successAddTransaction),
+              backgroundColor: AppColors.lightGreen,
+              content: Text(
+                AppLocalizations.of(context)!.successAddTransaction,
+                style: TextStyle(
+                    color: AppColors.white, fontWeight: FontWeight.bold),
+              ),
             );
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }

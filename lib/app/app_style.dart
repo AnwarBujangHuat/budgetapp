@@ -304,7 +304,7 @@ class AppColors {
   static const Color primaryDarkBackground = Color(0xFF252627);
   static const Color secondaryDarkBackground = Color(0xFF303030);
   static const Color darkBlueVariant = Color(0xFF202531);
-  static const Color lightGreen = Color.fromARGB(204, 128, 223, 135);
+  static const Color lightGreen = Color(0xFF4BB543);
   static const Color lighterGreen = Color(0xCC8EFFA8);
   static const Color lightRed = Colors.red;
   static const Color lightRedVariant = Colors.redAccent;
