@@ -5,7 +5,7 @@ ThemeData lightThemeData = ThemeData(
     scaffoldBackgroundColor: AppColors.rarifiedAir,
     buttonTheme: ButtonThemeData(height: AppSize.appSizeS50),
     appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.rarifiedAir,
         iconTheme: IconThemeData(color: AppColors.darkBlue),
         titleTextStyle: TextStyle(
             overflow: TextOverflow.ellipsis,
@@ -15,7 +15,6 @@ ThemeData lightThemeData = ThemeData(
     cardColor: AppColors.white,
     inputDecorationTheme: InputDecorationTheme(
         fillColor: AppColors.white,
-        constraints: BoxConstraints(minHeight: AppSize.appSizeS60),
         filled: true,
         iconColor: AppColors.black,
         contentPadding: EdgeInsets.all(8),

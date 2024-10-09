@@ -236,7 +236,6 @@ class TransactionTagSelect extends ConsumerWidget {
     return IBOutlinedButton(
       title:
           selectedTag?.tagName ?? AppLocalizations.of(context)!.pleaseSelectTag,
-      borderColors: currentTheme.shadowColor,
       backgroundColor: currentTheme.scaffoldBackgroundColor,
       icon: Icon(Icons.arrow_drop_down),
       onTap: () async {
