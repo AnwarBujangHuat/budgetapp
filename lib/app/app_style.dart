@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData lightThemeData = ThemeData(
     fontFamily: 'RobotoFlex',
+    dividerColor:AppColors.grey,
     scaffoldBackgroundColor: AppColors.rarifiedAir,
     buttonTheme: ButtonThemeData(height: AppSize.appSizeS50),
     appBarTheme: const AppBarTheme(
@@ -14,7 +15,7 @@ ThemeData lightThemeData = ThemeData(
             fontSize: FontSize.largeTitle)),
     cardColor: AppColors.white,
     inputDecorationTheme: InputDecorationTheme(
-        fillColor: AppColors.white,
+        fillColor: AppColors.rarifiedAir,
         filled: true,
         iconColor: AppColors.black,
         contentPadding: EdgeInsets.all(8),
