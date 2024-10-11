@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData lightThemeData = ThemeData(
     fontFamily: 'RobotoFlex',
-    dividerColor:AppColors.grey,
+    dividerColor: AppColors.grey,
     scaffoldBackgroundColor: AppColors.rarifiedAir,
     buttonTheme: ButtonThemeData(height: AppSize.appSizeS50),
     appBarTheme: const AppBarTheme(
@@ -259,6 +259,8 @@ ThemeData darkThemeData = ThemeData(
       color: AppColors.whiteVariant,
     ),
   ),
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(elevation: AppSize.appSizeS0),
   colorScheme: const ColorScheme(
       brightness: Brightness.dark,
       primary: AppColors.white,
@@ -368,6 +370,7 @@ class AppSize {
   static const double paddingSmall = 8.0;
   static const double paddingMedium = 16.0;
   static const double paddingLarge = 24.0;
+  static const double paddingExtraLarge = 36.0;
 
   // Common border radius sizes
   static const double borderRadiusSmall = 4.0;
