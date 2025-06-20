@@ -148,7 +148,6 @@ ThemeData lightThemeData = ThemeData(
     primaryColorLight: AppColors.darkBlue,
     primaryColor: AppColors.darkBlue);
 ThemeData darkThemeData = ThemeData(
-  dialogBackgroundColor: AppColors.coarseWool,
   iconTheme: IconThemeData(color: AppColors.white),
   scaffoldBackgroundColor: AppColors.darkBlueBlack,
   shadowColor: AppColors.white,
@@ -321,6 +320,7 @@ class AppColors {
   static const Color pantoneCoated = Color(0xFF172a46);
   static const Color darkBlueBlack = Color(0xFF0c0e19);
   static const Color coarseWool = Color(0xFF171d24);
+  static const Color ashyBlue = Color(0xFF64748B);
 }
 
 class FontSize {

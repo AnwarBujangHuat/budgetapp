@@ -156,7 +156,7 @@ class _LinearProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) => LinearProgressIndicator(
       minHeight: 8,
       value: value / total,
-      backgroundColor: Colors.grey.withOpacity(.5),
+      backgroundColor: Colors.grey.withValues(alpha: 0.5),
       color: calculateProgressColor(value: value, total: total),
       borderRadius: BorderRadius.circular(10));
 }

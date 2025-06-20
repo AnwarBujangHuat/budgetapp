@@ -45,7 +45,7 @@ class _TagSelectionDialogState extends State<TagSelectionDialog> {
                         borderRadius: const BorderRadius.all(
                             Radius.circular(AppSize.paddingSmall)),
                         color: item != selectedTag
-                            ? currentTheme.dialogBackgroundColor
+                            ? currentTheme.dialogTheme.backgroundColor
                             : currentTheme.scaffoldBackgroundColor,
                       ),
                       padding: const EdgeInsets.all(AppSize.paddingSmall),
@@ -89,7 +89,7 @@ class _TagSelectionDialogState extends State<TagSelectionDialog> {
                         ),
                       ),
                     ),
-                    backgroundColor: currentTheme.dialogBackgroundColor,
+                    backgroundColor: currentTheme.dialogTheme.backgroundColor,
                     borderColors: currentTheme.shadowColor,
                   )),
                   IBSizedW10(),
