@@ -325,6 +325,7 @@ class AppColors {
   static const Color darkBlueBlack = Color(0xFF0c0e19);
   static const Color coarseWool = Color(0xFF171d24);
   static const Color ashyBlue = Color(0xFF64748B);
+  static const Color dodgerBlue = Color(0xFF5787e9);
 }
 
 class FontSize {
