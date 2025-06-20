@@ -42,7 +42,7 @@ final dashboardTransactionListProvider = AutoDisposeAsyncNotifierProvider<
 typedef _$DashboardTransactionList
     = AutoDisposeAsyncNotifier<List<TransactionModel>>;
 String _$transactionDurationNotifierHash() =>
-    r'dd557589c91474a880dea9de5a670a559fa314af';
+    r'b61f886caf8424f4b39b7eb38a6ed17c9cc5acfb';
 
 /// See also [TransactionDurationNotifier].
 @ProviderFor(TransactionDurationNotifier)

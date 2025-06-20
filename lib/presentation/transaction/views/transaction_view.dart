@@ -12,7 +12,6 @@ import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/common/widgets/text_field/ib_text__form_field.dart';
 import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
-import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/presentation/transaction/viewmodel/transaction_view_viewmodel.dart';
 import 'package:budgetapp/presentation/transaction/widgets/tag_selection_dialog.dart';
 import 'package:budgetapp/shared/dialog/ib_dialog.dart';
@@ -54,8 +53,12 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
             Navigator.pop(context);
 
             final snackBar = SnackBar(
-              content:
-                  Text(AppLocalizations.of(context)!.successAddTransaction),
+              backgroundColor: AppColors.lightGreen,
+              content: Text(
+                AppLocalizations.of(context)!.successAddTransaction,
+                style: TextStyle(
+                    color: AppColors.white, fontWeight: FontWeight.bold),
+              ),
             );
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
@@ -81,9 +84,7 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
         centerTitle: true,
         title: Text(AppLocalizations.of(context)!.transaction),
         automaticallyImplyLeading: false,
-        leading: GestureDetector(
-          child: BackButton(),
-        ),
+        leading: BackButton(),
         actions: [
           IBTextButton(
             title: AppLocalizations.of(context)!.add,
@@ -95,7 +96,7 @@ class _TransactionPageState extends ConsumerState<TransactionPage> {
               if (selectedTag != null) {
                 /// Create a new Transaction
                 newTransaction = TransactionModel(
-                  type: ref.watch(transactionTypeNotifierProvider),
+                  type: ref.watch(transactionSelectedTypeProvider),
                   title: selectedTag.tagName,
                   description: noteController.text,
                   dateTime: DateTime.now(),
@@ -197,9 +198,9 @@ class TransactionType extends ConsumerWidget {
 
     return Expanded(
         child: IBTransactionTypeWidget(
-      transactionType: ref.watch(transactionTypeNotifierProvider),
+      transactionType: ref.watch(transactionSelectedTypeProvider),
       onChange: (type) => ref
-          .read(transactionTypeNotifierProvider.notifier)
+          .read(transactionSelectedTypeProvider.notifier)
           .changeType(type: type),
       shadowColor: currentTheme.shadowColor,
       backgroundColor: currentTheme.scaffoldBackgroundColor,
@@ -234,7 +235,6 @@ class TransactionTagSelect extends ConsumerWidget {
     return IBOutlinedButton(
       title:
           selectedTag?.tagName ?? AppLocalizations.of(context)!.pleaseSelectTag,
-      borderColors: currentTheme.shadowColor,
       backgroundColor: currentTheme.scaffoldBackgroundColor,
       icon: Icon(Icons.arrow_drop_down),
       onTap: () async {

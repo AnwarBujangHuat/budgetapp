@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 ThemeData lightThemeData = ThemeData(
     fontFamily: 'RobotoFlex',
+    dividerColor: AppColors.grey,
     scaffoldBackgroundColor: AppColors.rarifiedAir,
+    buttonTheme: ButtonThemeData(height: AppSize.appSizeS50),
     appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.rarifiedAir,
         iconTheme: IconThemeData(color: AppColors.darkBlue),
         titleTextStyle: TextStyle(
             overflow: TextOverflow.ellipsis,
@@ -13,11 +15,10 @@ ThemeData lightThemeData = ThemeData(
             fontSize: FontSize.largeTitle)),
     cardColor: AppColors.white,
     inputDecorationTheme: InputDecorationTheme(
-        fillColor: AppColors.white,
+        fillColor: AppColors.rarifiedAir,
         filled: true,
-        isCollapsed: true,
         iconColor: AppColors.black,
-        contentPadding: EdgeInsets.symmetric(horizontal: 8),
+        contentPadding: EdgeInsets.all(8),
         labelStyle: TextStyle(
           overflow: TextOverflow.ellipsis,
           letterSpacing: AppSize.appSizeS0,
@@ -125,6 +126,7 @@ ThemeData lightThemeData = ThemeData(
         onSurface: AppColors.darkBlueLessOpacity),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(AppColors.rarifiedAir),
             minimumSize: WidgetStatePropertyAll(
                 Size(AppSize.appSizeS0, AppSize.appSizeS48)),
             textStyle: WidgetStatePropertyAll(
@@ -163,10 +165,9 @@ ThemeData darkThemeData = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
       fillColor: AppColors.darkBlueBlack,
       filled: true,
-      isCollapsed: true,
       iconColor: AppColors.white,
       suffixIconColor: AppColors.white,
-      contentPadding: EdgeInsets.symmetric(horizontal: AppSize.paddingSmall),
+      contentPadding: EdgeInsets.all(AppSize.paddingMedium),
       labelStyle: TextStyle(
         overflow: TextOverflow.ellipsis,
         letterSpacing: AppSize.appSizeS0,
@@ -257,6 +258,8 @@ ThemeData darkThemeData = ThemeData(
       color: AppColors.whiteVariant,
     ),
   ),
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(elevation: AppSize.appSizeS0),
   colorScheme: const ColorScheme(
       brightness: Brightness.dark,
       primary: AppColors.white,
@@ -269,11 +272,12 @@ ThemeData darkThemeData = ThemeData(
       onSurface: AppColors.secondaryDarkBackground),
   outlinedButtonTheme: OutlinedButtonThemeData(
       style: ButtonStyle(
+          backgroundColor: WidgetStatePropertyAll(AppColors.darkBlueBlack),
           shape: WidgetStatePropertyAll<OutlinedBorder>(
-    RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-  ))),
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ))),
   cardTheme: const CardTheme(
     surfaceTintColor: AppColors.secondaryDarkBackground,
     elevation: 1,
@@ -301,7 +305,7 @@ class AppColors {
   static const Color primaryDarkBackground = Color(0xFF252627);
   static const Color secondaryDarkBackground = Color(0xFF303030);
   static const Color darkBlueVariant = Color(0xFF202531);
-  static const Color lightGreen = Color.fromARGB(204, 128, 223, 135);
+  static const Color lightGreen = Color(0xFF4BB543);
   static const Color lighterGreen = Color(0xCC8EFFA8);
   static const Color lightRed = Colors.red;
   static const Color lightRedVariant = Colors.redAccent;
@@ -337,6 +341,7 @@ class FontSize {
 class AppSize {
   static const double appSizeS96 = 96.0;
   static const double appSizeS60 = 60.0;
+  static const double appSizeS50 = 50.0;
   static const double appSizeS48 = 48.0;
   static const double appSizeS32 = 32.0;
   static const double appSizeS24 = 24.0;
@@ -364,6 +369,7 @@ class AppSize {
   static const double paddingSmall = 8.0;
   static const double paddingMedium = 16.0;
   static const double paddingLarge = 24.0;
+  static const double paddingExtraLarge = 36.0;
 
   // Common border radius sizes
   static const double borderRadiusSmall = 4.0;

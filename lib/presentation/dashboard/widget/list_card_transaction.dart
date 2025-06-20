@@ -102,33 +102,18 @@ class IBTransactionCard extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     ThemeData currentTheme = Theme.of(context);
 
-    ///Style 2
-    // return ListTile(
-    //   leading: IBIcon(tagId: tagId),
-    //   contentPadding: const EdgeInsets.all(AppSize.paddingSmall),
-    //   titleTextStyle: currentTheme.textTheme.labelMedium,
-    //   subtitleTextStyle: currentTheme.textTheme.titleMedium!.copyWith(
-    //       fontWeight: FontWeight.bold,
-    //       color: type == TransactionType.out
-    //           ? AppColors.lightRed
-    //           : AppColors.lightGreen),
-    //   title: Text(title),
-    //   subtitle: Text('RM ${expenses.toStringAsFixed(2)}'),
-    //   trailing: Text(
-    //     formatDate(dateTime: date),
-    //     style: currentTheme.textTheme.bodyLarge,
-    //   ),
-    // );
     return ListTile(
       leading: IBIcon(tagId: tagId),
       contentPadding: const EdgeInsets.all(AppSize.paddingSmall),
       subtitleTextStyle: currentTheme.textTheme.labelMedium,
-      leadingAndTrailingTextStyle: currentTheme.textTheme.titleMedium!.copyWith(
+      leadingAndTrailingTextStyle: currentTheme.textTheme.bodyLarge!.copyWith(
           fontWeight: FontWeight.bold,
           color: type == TransactionType.out
               ? AppColors.lightRed
               : AppColors.lightGreen),
-      title: Text(title, style: currentTheme.textTheme.titleSmall),
+      title: Text(title,
+          style: currentTheme.textTheme.labelMedium!
+              .copyWith(fontWeight: FontWeight.bold)),
       subtitle: Padding(
         padding: const EdgeInsets.symmetric(vertical: AppSize.paddingSmall),
         child: Text(formatDate(dateTime: date)),

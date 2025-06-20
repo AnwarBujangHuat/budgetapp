@@ -81,12 +81,11 @@ class IBDialog extends StatelessWidget {
         children: [
           Expanded(
               child: IBOutlinedButton(
+            backgroundColor: AppColors.coarseWool,
             onTap: () {
               Navigator.pop(context);
             },
             title: AppLocalizations.of(context)!.cancel,
-            backgroundColor: Colors.white,
-            borderColors: AppColors.darkBlue,
           )),
           IBSizedW10(),
           Expanded(
@@ -106,7 +105,7 @@ class IBDialog extends StatelessWidget {
                         child: CircularProgressIndicator(),
                       ),
               ),
-              backgroundColor: AppColors.darkBlue,
+              backgroundColor: AppColors.dodgerBlue,
             ),
           ),
         ],
@@ -139,7 +138,7 @@ class IBDialog extends StatelessWidget {
             },
             title: AppLocalizations.of(context)!.cancel,
             backgroundColor: Colors.white,
-            borderColors: AppColors.darkBlue,
+            borderColors: AppColors.coarseWool,
           )),
           IBSizedW10(),
           Expanded(
@@ -188,7 +187,7 @@ class IBDialog extends StatelessWidget {
               ),
             ),
           ),
-          backgroundColor: AppColors.darkBlue,
+          borderColors: AppColors.coarseWool,
         ));
   }
 
