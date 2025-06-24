@@ -26,8 +26,12 @@ mixin _$TagModel {
   IconModel get icon => throw _privateConstructorUsedError;
   String get color => throw _privateConstructorUsedError;
 
+  /// Serializes this TagModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TagModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TagModelCopyWith<TagModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$TagModelCopyWithImpl<$Res, $Val extends TagModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TagModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -90,6 +96,8 @@ class _$TagModelCopyWithImpl<$Res, $Val extends TagModel>
     ) as $Val);
   }
 
+  /// Create a copy of TagModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IconModelCopyWith<$Res> get icon {
@@ -126,6 +134,8 @@ class __$$TagModelImplCopyWithImpl<$Res>
       _$TagModelImpl _value, $Res Function(_$TagModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TagModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -202,12 +212,14 @@ class _$TagModelImpl implements _TagModel {
             (identical(other.color, color) || other.color == color));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, parentTagId, tagId, tagName, icon, color);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TagModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TagModelImplCopyWith<_$TagModelImpl> get copyWith =>
@@ -242,8 +254,11 @@ abstract class _TagModel implements TagModel {
   IconModel get icon;
   @override
   String get color;
+
+  /// Create a copy of TagModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TagModelImplCopyWith<_$TagModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -257,8 +272,12 @@ mixin _$IconModel {
   int get codePaint => throw _privateConstructorUsedError;
   String get fontFamily => throw _privateConstructorUsedError;
 
+  /// Serializes this IconModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IconModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IconModelCopyWith<IconModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -281,6 +300,8 @@ class _$IconModelCopyWithImpl<$Res, $Val extends IconModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IconModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -319,6 +340,8 @@ class __$$IconModelImplCopyWithImpl<$Res>
       _$IconModelImpl _value, $Res Function(_$IconModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IconModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -367,11 +390,13 @@ class _$IconModelImpl implements _IconModel {
                 other.fontFamily == fontFamily));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, codePaint, fontFamily);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IconModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IconModelImplCopyWith<_$IconModelImpl> get copyWith =>
@@ -397,8 +422,11 @@ abstract class _IconModel implements IconModel {
   int get codePaint;
   @override
   String get fontFamily;
+
+  /// Create a copy of IconModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IconModelImplCopyWith<_$IconModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

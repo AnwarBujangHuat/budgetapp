@@ -29,8 +29,12 @@ mixin _$GoalsModel {
   DateTime get endDate => throw _privateConstructorUsedError;
   TransactionType get type => throw _privateConstructorUsedError;
 
+  /// Serializes this GoalsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GoalsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GoalsModelCopyWith<GoalsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$GoalsModelCopyWithImpl<$Res, $Val extends GoalsModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GoalsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,6 +144,8 @@ class __$$GoalsModelImplCopyWithImpl<$Res>
       _$GoalsModelImpl _value, $Res Function(_$GoalsModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GoalsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -245,12 +253,14 @@ class _$GoalsModelImpl implements _GoalsModel {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, goalTagId, title, description,
       total, progress, startDate, endDate, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GoalsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GoalsModelImplCopyWith<_$GoalsModelImpl> get copyWith =>
@@ -294,8 +304,11 @@ abstract class _GoalsModel implements GoalsModel {
   DateTime get endDate;
   @override
   TransactionType get type;
+
+  /// Create a copy of GoalsModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GoalsModelImplCopyWith<_$GoalsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
