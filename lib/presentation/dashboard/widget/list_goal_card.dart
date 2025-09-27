@@ -5,9 +5,9 @@ import 'package:budgetapp/common/widgets/button/text_button.dart';
 import 'package:budgetapp/common/widgets/icons/custom_icon.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/common/widgets/text/header.dart';
+import 'package:budgetapp/localization/app_localizations.dart';
 import 'package:budgetapp/shared/card/card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class IBGoalListWidget extends ConsumerWidget {
@@ -156,7 +156,7 @@ class _LinearProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) => LinearProgressIndicator(
       minHeight: 8,
       value: value / total,
-      backgroundColor: Colors.grey.withOpacity(.5),
+      backgroundColor: Colors.grey.withValues(alpha: .5),
       color: calculateProgressColor(value: value, total: total),
       borderRadius: BorderRadius.circular(10));
 }

@@ -4,6 +4,7 @@ import 'package:budgetapp/common/viewmodel/transaction/transaction_viewmodel.dar
 import 'package:budgetapp/common/widgets/button/transaction_type_button.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/domain/repository/tag/tag_repository.dart';
+import 'package:budgetapp/localization/app_localizations.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/presentation/dashboard/widget/expanded_fab.dart';
 import 'package:budgetapp/presentation/dashboard/widget/list_card_transaction.dart';
@@ -13,7 +14,6 @@ import 'package:budgetapp/presentation/dashboard/widget/tab_duration.dart';
 import 'package:budgetapp/presentation/dashboard/widget/total_text.dart';
 import 'package:budgetapp/shared/dialog/ib_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DashboardView extends ConsumerWidget {

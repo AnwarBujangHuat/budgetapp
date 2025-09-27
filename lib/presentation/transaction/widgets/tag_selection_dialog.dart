@@ -4,8 +4,8 @@ import 'package:budgetapp/common/widgets/button/outlined_button.dart';
 import 'package:budgetapp/common/widgets/icons/custom_icon.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/domain/models/tags/tag_model.dart';
+import 'package:budgetapp/localization/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TagSelectionDialog extends StatefulWidget {
   const TagSelectionDialog({required this.tagList, super.key});
@@ -44,7 +44,7 @@ class _TagSelectionDialogState extends State<TagSelectionDialog> {
                             const BorderRadius.all(Radius.circular(8)),
                         color: item != selectedTag
                             ? AppColors.white
-                            : AppColors.darkBlue.withOpacity(.1),
+                            : AppColors.darkBlue.withValues(alpha: .1),
                       ),
                       padding: const EdgeInsets.all(8.0),
                       child: Column(

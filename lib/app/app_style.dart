@@ -135,7 +135,7 @@ ThemeData lightThemeData = ThemeData(
                 borderRadius: BorderRadius.circular(AppSize.appSizeS10),
               ),
             ))),
-    cardTheme: const CardTheme(
+    cardTheme: const CardThemeData(
       surfaceTintColor: Colors.white,
       elevation: 1,
       clipBehavior: Clip.antiAlias,
@@ -248,7 +248,7 @@ ThemeData darkThemeData = ThemeData(
       borderRadius: BorderRadius.circular(10),
     ),
   ))),
-  cardTheme: const CardTheme(
+  cardTheme: const CardThemeData(
     surfaceTintColor: AppColors.secondaryDarkBackground,
     elevation: 1,
     clipBehavior: Clip.antiAlias,

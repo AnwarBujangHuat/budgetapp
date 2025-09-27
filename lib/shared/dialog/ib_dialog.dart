@@ -1,8 +1,8 @@
 import 'package:budgetapp/app/app_style.dart';
 import 'package:budgetapp/common/widgets/button/outlined_button.dart';
 import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
+import 'package:budgetapp/localization/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /* The Default [Dialog] Design for InBalance
 

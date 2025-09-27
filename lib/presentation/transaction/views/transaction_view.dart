@@ -12,12 +12,12 @@ import 'package:budgetapp/common/widgets/size_box/sized_boxes.dart';
 import 'package:budgetapp/common/widgets/text_field/ib_text__form_field.dart';
 import 'package:budgetapp/domain/models/tags/tag_model.dart';
 import 'package:budgetapp/domain/models/transaction/transaction_model.dart';
+import 'package:budgetapp/localization/app_localizations.dart';
 import 'package:budgetapp/presentation/dashboard/viewmodel/dashboard_viewmodel.dart';
 import 'package:budgetapp/presentation/transaction/viewmodel/transaction_view_viewmodel.dart';
 import 'package:budgetapp/presentation/transaction/widgets/tag_selection_dialog.dart';
 import 'package:budgetapp/shared/dialog/ib_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TransactionPage extends ConsumerStatefulWidget {

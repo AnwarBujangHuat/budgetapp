@@ -1,6 +1,6 @@
 import 'package:budgetapp/app/app_style.dart';
+import 'package:budgetapp/localization/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TimelineTab extends StatelessWidget {
   const TimelineTab({required this.onTap, required this.selected, super.key});
