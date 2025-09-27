@@ -25,7 +25,7 @@ final transactionViewmodelProvider = AutoDisposeAsyncNotifierProvider<
 typedef _$TransactionViewmodel
     = AutoDisposeAsyncNotifier<List<TransactionModel>>;
 String _$addNewTransactionNotifierHash() =>
-    r'751bd68707119f17a16bdb78bb65ed5ba5eaf550';
+    r'ae789f30930f9177d6fec6d63d344150715cd63b';
 
 /// See also [AddNewTransactionNotifier].
 @ProviderFor(AddNewTransactionNotifier)
